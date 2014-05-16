@@ -20,5 +20,5 @@
  *
  *= require_directory ./vendor/stylesheets
  *= require stylesheets/grid
- *= require stylesheets/style
+ *= require stylesheets/styles
  */

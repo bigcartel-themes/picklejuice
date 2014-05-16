@@ -15,4 +15,4 @@
 // Here we're including a couple CoffeeScript files written for different areas of the store, we're
 // also including jQuery in our layout.html from Google so that it can be better cached by users.
 //
-//= require javascripts/script
+//= require javascripts/scripts
