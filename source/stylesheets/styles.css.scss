@@ -12,95 +12,83 @@ fonts
 global
 ========================================================================== */
 
-html {
-  background-color: $white;
+a {
+  color: $dark-gray;
+  outline: none;
+  text-decoration: none;
 
-}
-
-
-body:before, body:after {
-    content: "";
-    position: fixed;
-    background: $dark-gray;
-    left: 0;
-    right: 0;
-    height: 3px;
-
-}
-
-body:before {
-    top: 0;
-}
-
-body:after {
-    bottom: 0;
+  &:hover {
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+    opacity: .9;
+  }
 }
 
 body {
-    border-left: 3px solid $dark-gray;
-    border-right: 3px solid $dark-gray;
-    color: $dark-gray;
-    background-color: $light-green;
-
-}
-
-a {
-
-  text-decoration: none;
-  outline: none;
+  background-color: $light-green;
+  border: solid $dark-gray;
+  border-width: 0 3px;
   color: $dark-gray;
+  padding: 3px 0;
+
+  &:after, &:before {
+    border-top: 3px solid $dark-gray;
+    content: '';
+    display: block;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &:after { top: 0; }
+  &:before { bottom: 0; }
 }
 
-a:hover {
-  opacity: .9;
-  filter:alpha(opacity=90); /* For IE8 and earlier */
+h1, h4 {
+  font-family: $halisr;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2, h3 { font-family: $kistt; }
+
+h1 {
+  font-size: 1.5em;
+  letter-spacing: .3em;
+}
+
+h2 { font-size: 1.75em; }
+
+h3 { font-size: 1em; }
+
+h4 {
+  font-size: .875em;
+  letter-spacing: .2em;
 }
 
 hr {
+  background: $white;
   border: 0;
   height: 3px;
-  background: $white;
   margin-bottom: 28px;
-
 }
+
+img { vertical-align: bottom; }
+
+p {
+  font: .875em $kistt;
+  line-height: 24px;
+}
+
+span { font: 1em $kistt; }
 
 ul {
   padding: 0;
-}
 
-ul li {
-  list-style: none;
-  display: inline-block;
-}
-
-h1 {
-  font: bold 1.500em "HalisR-Bold", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-}
-
-h2 {
-  font: 1.750em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
-
-h3 {
-  font: 1em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
-
-h4 {
-  font: bold 0.875em "HalisR-Bold", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-
-span {
-  font: 1em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-
-}
-
-p {
-  font: 0.875em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  line-height: 24px;
+  li {
+    display: inline-block;
+    list-style: none;
+  }
 }
 
 /* ==========================================================================
@@ -109,7 +97,7 @@ global  buttons attr.
 
 .button {
   border: 2px solid $dark-gray;
-  font: bold 0.750em "HalisR-Bold", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: bold 0.750em $halisr;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.2em;
@@ -167,7 +155,7 @@ header {
   border: none;
   outline: none;
   box-shadow: none;
-  font: 0.875em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: 0.875em $kistt;
   font-style: italic;
   width: 138px;
   padding-left: 50px;
@@ -177,7 +165,7 @@ header {
   border: none;
   border-left: 2px solid $dark-gray;
   background-color: rgba(255, 255, 255, .0);
-  font: bold 0.750em "HalisR-Bold", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: bold 0.750em $halisr;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.2em;
@@ -210,7 +198,7 @@ header {
 }
 
 .categories {
-  font: 1em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: 1em $kistt;
   text-align: center;
   padding-top: 20px;
 }
@@ -248,7 +236,7 @@ sidebar {
   -moz-box-shadow: 0 0 12px $light-gray;
   -webkit-box-shadow: 0 0 12px $light-gray;
   box-shadow: 0 0 12px $light-gray;
-  font: 1.750em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: 1.750em $kistt;
   padding: 27px;
   z-index: 5;
   -webkit-transition: all 0.5s ease-in-out;
@@ -568,7 +556,7 @@ single product
     margin-bottom: 20px;
     padding: 12px 15px;
   text-align: left;
-  font: bold 0.750em "HalisR-Bold", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: bold 0.750em $halisr;
   text-transform: uppercase;
   letter-spacing: 0.2em;
     border: 3px solid $dark-gray;
@@ -677,7 +665,7 @@ single product
 
 
 #share_this {
-  font: 0.875em "KisTT BT", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: 0.875em $kistt;
   font-style: italic;
 
 }

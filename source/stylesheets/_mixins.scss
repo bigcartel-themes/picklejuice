@@ -1,8 +1,12 @@
-// Variables
-
+// Colors
 $black: #000;
 $dark-gray: #333;
 $dark-green: #5fb252;
 $light-gray: #ccc;
 $light-green: #dbf1da;
 $white: #fff;
+
+// Fonts
+$fallbacks: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+$halisr: "HalisR-Bold", $fallbacks;
+$kistt: "KisTT BT", $fallbacks;
