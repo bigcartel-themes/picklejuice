@@ -1,269 +1,40 @@
-<!DOCTYPE html>
 
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>PickleJuice</title>
-
-<link href="{{ theme | theme_css_url }}" rel="stylesheet" type="text/css" />
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="javascripts/script.js"></script>
-<!--[if lte IE 9]>
-<script src="dist/html5shiv.js"></script>
-<![endif]-->
-</head>
-<body>
-  <header>
-    <div class="container .clearfix">
-      <div class="grid_3 search_bar">
-        <img src="images/search_icon.png" alt="search flashlight" />
-        <input type="search" name="search" value="Search Products..." />
-        <input type="submit" name="submit" value="GO" />
-      </div>
-      <div class="grid_4 logo">
-        <a href="#"><h1>Picklejuice</h1></a>
-      </div>
-      <div class="grid_2 last_element cart">
-        <a href="3">
-          <img src="images/cart_icon.png" alt="Shoping Cart" />
-          <span>$32</span>
-        </a>
-      </div>
-    </div>
-    <div class="container clearfix">
-      <div class="grid_12 categories">
-        <ul>
-          <a href="#"><li>Ongoing Items</li></a>
-          <a href="#"><li>One of a Kind</li></a>
-          <a href="#"><li>For Little Hands</li></a>
-          <a href="#"><li>For the Kitchen</li></a>
-          <a href="#"><li>For Celebrations</li></a>
-          <a href="#"><li>Fabric</li></a>
-          <a href="#"><li>Wood</li></a>
-          <a href="#"><li>Porcelain + Stonewear</li></a>
-          <a href="#"><li>Tine + Copper</li></a>
-        </ul>
-      </div>
-    </div>
-  </header> <!-- END OF HEADER -->
-  <sidebar>
-    <a href="#">Hamburger</a>
-    <div class="">
-      <ul>
-        <a href="#"><li>Our Story</li></a>
-        <a href="#"><li>FAQ</li></a>
-        <a href="#"><li>Shop</li></a>
-        <a href="#"><li>Blog</li></a>
-        <a href="#"><li>Contact</li></a>
-      </ul>
-    </div>
-    <div id="social_icons">
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-      <a href="#">Pintress</a>
-    </div>
-  </sidebar>
-  <div class="container clearfix">
+  {% paginate products from products.current by theme.products_per_page %}
+  
+  {% if products != blank %}
+  <div class="container clearfix" >
     <div class="grid_12 product_list">
       <ul>
+       {% for product in products %}
         <li>
-          <a href="#">
+          <a href="{{ product.url }}">
             <figure>
-              <img src="images/product_test.jpg" alt="product" />
+              <img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}" />
               <figcaption>
-                <h4>Wood stacked in a pile</h4>
-                <span>$200</span>
+                <h4>{{ product.name }}</h4>
+                <span>{{ product.default_price | money_with_sign }}</span>
               </figcaption>
             </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test2.jpg" alt="product" />
-              <figcaption>
-                <h4>Rolling Pin</h4>
-                <span>$200</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test3.jpg" alt="product" />
-              <figcaption>
-                <h4>Bowl made of wood</h4>
-                <span>$50</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test4.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test.jpg" alt="product" />
-              <figcaption>
-                <h4>Wood</h4>
-                <span>$200</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test5.jpg" alt="product" />
-              <figcaption>
-                <h4>Rolling Pin</h4>
-                <span>$200</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test4.jpg" alt="product" />
-              <figcaption>
-                <h4>Bowl made of wood</h4>
-                <span>$50</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test3.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test5.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test2.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test3.jpg" alt="product" />
-              <figcaption>
-                <h4>Bowl made of wood</h4>
-                <span>$50</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test5.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test.jpg" alt="product" />
-              <figcaption>
-                <h4>Wood</h4>
-                <span>$200</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="images/product_test5.jpg" alt="product" />
-              <figcaption>
-                <h4>Rolling Pin</h4>
-                <span>$200</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test3.jpg" alt="product" />
-              <figcaption>
-                <h4>Bowl made of wood</h4>
-                <span>$50</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <figure>
-              <img src="images/product_test4.jpg" alt="product" />
-              <figcaption>
-                <h4>Casserole dish</h4>
-                <span>$500</span>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-      </ul>
-    </div>
+        <!--  {% if product.on_sale %}
+               <em>On Sale</em>
+               {% endif %}-->
+             </a>
+           </li>
+           {% endfor %}
+         </ul>
+         
+       <!--  {{ paginate | default_pagination }}-->
+         
+         {% else %}
+         <p>No products found.</p>
+         {% endif %}
+         
+         {% endpaginate %}
+	</div>
   </div>
   <div class="container clearfix">
     <div class="grid_12" id="load_more">
       <a class="button" href="#">Load More</a>
     </div>
   </div>
-  <footer>
-    <div class="container clearfix">
-      <div class="grid_2 push_1">
-        <span>© 2014 PickleJuice</span>
-      </div>
-      <div class="grid_2 last_element pull_1 ">
-        <span>Powered by <a href="#">BigCartel</a></span>
-      </div>
-    </div>
-  </footer> <!--END OF FOOTER -->
-</body>
-</html>
+

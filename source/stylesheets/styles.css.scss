@@ -44,7 +44,18 @@ body {
   &:before { bottom: 0; }
 }
 
-h1, h4 {
+#loading {
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: $light-green;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+
+h1, h4, h5 {
   font-family: $halisr;
   font-weight: bold;
   text-transform: uppercase;
@@ -63,6 +74,11 @@ h3 { font-size: 1em; }
 
 h4 {
   font-size: .875em;
+  letter-spacing: .2em;
+}
+
+h5 { 
+  font-size: 1.125em; 
   letter-spacing: .2em;
 }
 
@@ -102,16 +118,23 @@ global  buttons attr.
   text-align: center;
   letter-spacing: 0.2em;
   padding: 11px 23px;
+  outline: none;
 }
 
 .button:hover {
   border-color: $dark-green;
   color: $dark-green;
+  outline: none;
 }
 
 .button:active {
   background-color: $dark-green;
   color: $white;
+  outline: none;
+}
+
+.button:focus {
+	outline: none;
 }
 
 
@@ -325,29 +348,29 @@ product list
 
 
 .product_list li {
-  padding-right: 28px;
-  margin-bottom: 30px;
+  
 }
 
 .product_list li:nth-child(4n) {
   padding-right: 0;
 }
 
+
 .product_list figure {
-  display: inline-block;
+  display: block;
   border: 3px solid $white;
   -moz-box-shadow: 0 0 12px $light-gray;
   -webkit-box-shadow: 0 0 12px $light-gray;
   box-shadow: 0 0 12px $light-gray;
-  width: 261px;
-  height: 305px;
+  height: auto;
   overflow: hidden;
   position: relative;
 
 }
 
 .product_list figure img {
-  max-width: 260px;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
@@ -359,10 +382,10 @@ product list
 }
 
 .product_list figure:hover img {
-  -webkit-filter: blur(1.5px);
-  filter: blur(1.5px);
-  -o-filter: blur(1.5px);
-  -ms-filter: blur(1.5px);
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
   filter: url(../blur.svg#blur);
   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
 }
@@ -454,6 +477,10 @@ single product
 	-moz-box-shadow: 0 0 12px $light-gray;
 	-webkit-box-shadow: 0 0 12px $light-gray;
 	box-shadow: 0 0 12px $light-gray;
+	margin-bottom: 100px;
+	max-width: 770px;
+	min-width: 770px;
+	height: auto;
 }
 
 #thumbs a img:hover {
@@ -462,17 +489,14 @@ single product
 	-o-transition: all .5s ease;
 	-ms-transition: all .5s ease;
 	transition: all .5s ease;
-	-webkit-filter: blur(1.5px);
-	filter: blur(1.5px);
-	-o-filter: blur(1.5px);
-	-ms-filter: blur(1.5px);
+	-webkit-filter: blur(4px);
+	filter: blur(4px);
+	-o-filter: blur(4px);
+	-ms-filter: blur(4px);
 	filter: url(../blur.svg#blur);
 	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
 }
 
-.single_product > img {
-	margin-bottom: 100px;
-}
 
 #breadcrumbs h4 {
 	font-size: 0.625em;
@@ -481,32 +505,39 @@ single product
 .deets {
 	float: left;
 	width: 25%;
-	text-align: center;
 	margin-top: 10px;
 	padding-left: 85px;
+	text-align: center;
 }
 
-#thumbs {
-	padding-bottom: 20px;
-}
 
 #thumbs img {
-	max-width: 70px;
-	max-height: 70px;
+	max-width: 61px;
+	min-width: 61px;
+	max-height: 61px;
+	min-height: 61px;
 }
 
-#thumbs a {
+#thumbs ul {
+	margin-top: 0;
+	
+}
+
+#thumbs li a  {
 	display: inline-block;
 	max-height: 70px;
-	margin-right: 7px;
+	max-height: 70px;
 	border: 3px solid $white;
 	-moz-box-shadow: 0 0 12px $light-gray;
 	-webkit-box-shadow: 0 0 12px $light-gray;
 	box-shadow: 0 0 12px $light-gray;
-
 }
 
-#thumbs a:last-of-type {
+#thumbs li {
+	margin: 0 6px 10px 0;
+}
+
+#thumbs li:nth-child(4n) {
 	margin-right: 0px;
 }
 
@@ -526,6 +557,7 @@ single product
 	height: auto !important;
 }
 
+
 #more_button {
 	display: inline-block;
 	background: url('../images/more_deats.png') no-repeat left top;
@@ -535,6 +567,7 @@ single product
 	text-indent: -999px;
 	overflow: hidden;
 	margin-bottom: 50px;
+	
 }
 
 .deets .button {
@@ -542,6 +575,8 @@ single product
   color: $white;
   margin: 40px 0;
   display: inherit;
+  width: 300px;
+  height: 47px;
 }
 
 .deets .button:hover {
@@ -551,23 +586,23 @@ single product
 
 
 .wrapper-dropdown {
-    position: relative;
-    width: 264px;
-    margin-bottom: 20px;
-    padding: 12px 15px;
-  text-align: left;
-  font: bold 0.750em $halisr;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-    border: 3px solid $dark-gray;
-    color: $dark-gray;
-    outline: none;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    cursor: pointer;
+	position: relative;
+	width: 264px;
+	margin-bottom: 20px;
+	padding: 12px 15px;
+	text-align: left;
+	font: bold 0.750em $halisr;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	border: 3px solid $dark-gray;
+	color: $dark-gray;
+	outline: none;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	cursor: pointer;
 
 }
 
@@ -707,10 +742,10 @@ single product
 	-o-transition: all .5s ease;
 	-ms-transition: all .5s ease;
 	transition: all .5s ease;
-	-webkit-filter: blur(1.5px);
-	filter: blur(1.5px);
-	-o-filter: blur(1.5px);
-	-ms-filter: blur(1.5px);
+	-webkit-filter: blur(4px);
+	filter: blur(4px);
+	-o-filter: blur(4px);
+	-ms-filter: blur(4px);
 	filter: url(../blur.svg#blur);
 	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
 }
@@ -728,6 +763,92 @@ single product
   margin-right: 0px;
 }
 
+
+/* ==========================================================================
+cart
+========================================================================== */
+
+
+.wrapper {
+	box-sizing:  border-box;
+	display: block;
+	position: fixed;
+	overflow: scroll;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+	background-color: rgba(255, 255, 255, .9);
+	padding: 50px 0;
+}
+
+
+.cart_box {
+	border-bottom: 3px solid $dark-gray;
+	padding: 40px 0;
+}
+
+.cart_box:first-of-type {
+	border: none;
+	padding: 0;
+}
+
+.cart_box:nth-of-type(2) {
+	padding: 0;
+}
+
+
+.close:first-of-type {
+	float: right;
+	margin-right: 0;
+}
+
+.close a {
+	display: inline-block;
+	background: url('../images/x_outs_sprite.png') no-repeat left top;
+	background-size: 60px;
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	text-indent: -999px;
+	float: right;
+}
+
+.cart_box img {
+	max-width: 145px;
+	height: auto;
+}
+
+.cart_box h1 {
+	margin-bottom: 30px;	
+}
+
+.cart_box h5 {
+	margin-top: 0;
+}
+
+.quantity {
+	border: 2px solid $dark-gray;
+	padding: 5px 0;
+}
+
+.quantity span {
+	padding: 0 10px;
+	font: 0.750em $halisr;
+}
+
+/*.cart_box a:last-child {
+	display: inline-block;
+	background: url('../images/x_outs_sprite.png') no-repeat left top;
+	background-position-y: 20px;
+	background-size: 60px;
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	text-indent: -999px;
+	float: right;
+}*/
 
 
 
