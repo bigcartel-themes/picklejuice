@@ -3,6 +3,84 @@
       <hr />
       <h4>Home / For The Kitchen</h4>
     </div>
+    {% if product.images.size > 1 %}
+    <div class="deets">
+    	<div id="thumbs">
+    		<ul class="unstyled">
+    		{% for image in product.images %}
+    	 <li{% if forloop.first %} class="selected"{% endif %}><a href="{{ image | product_image_url }}"><img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}"></a></li>
+    	  {% endfor %}
+    	</ul>
+    	{% endif %}
+    	</div>
+    	<h1>{{ product.name }}</h1>
+    	  {% case product.status %}
+    	  
+    	        {% when 'sold-out' %}
+    	          <h2>{{ product.default_price | money_with_sign }} <span>Sold Out</span></h2>
+    	  
+    	        {% when 'coming-soon' %}
+    	          <h2>{{ product.default_price | money_with_sign }} <span>Coming Soon</span></h2>
+    	  
+    	        {% when 'active' %}
+    	          <h2>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <span>On Sale{% endif %}</span></h2>
+    	          
+    	  <hr />
+    	  		{% if product.description != blank %}
+    	  	<div id="description" class="less_deets">
+    	  	  <p>{{ product.description | paragraphs }}</p>
+    	  	{% endif %}
+    	  	</div>
+    	  	<a id="more_button" href="#"></a>
+    	  <hr />
+    	  <div id="dd" class="wrapper-dropdown" tabindex="1">Select a size
+    	  	<ul class="dropdown">
+    	  		<li><a href="#">small</a></li>
+    	  		<li><a href="#">medium</a></li>
+    	  		<li><a href="#">large</a></li>
+    	  		<li><a href="#">x-large</a></li>
+    	  	</ul>
+    	  	</div>
+    	  <div id="dd" class="wrapper-dropdown" tabindex="1">Select a color
+    	  	<ul class="dropdown">
+    	  	<li><a href="#">blue</a></li>
+    	  	<li><a href="#">red</a></li>
+    	  	<li><a href="#">green</a></li>
+    	  	</ul>
+    	  </div>
+    	          <ul class="unstyled availability">
+    	            {% for option in product.options %}
+    	            <li>
+    	              {% unless product.has_default_option %} {% endunless %}
+    	              <span>{% if option.sold_out %}Sold Out{% endif %}</span>
+    	              <b>
+    	                <b style="width:{{ option.inventory }}%"></b>
+    	              </b>
+    	            </li>
+    	            {% endfor %}
+    	          </ul>
+    	  
+    	          <form method="post" action="/cart">
+    	            {% if product.has_default_option %}
+    	            {{ product.option | hidden_option_input }}
+    	            {% else %}
+    	            <div>
+    	            {{ product.options_in_stock | options_select }}
+    	            </div>
+    	            {% endif %}
+    	  
+    	            <button class="button" name="submit" type="submit" title="Add to Cart">Add to Cart</button>
+    	          </form>
+    	      {% endcase %}      
+   
+    	
+    	<div id="share_this">
+    		<a href="#">tweet this!</a>
+    		<a href="#">share this!</a>
+    		<a href="#">pin this!</a>
+    	</div>
+    </div>
+    
     <div class="grid_8 single_product">
     	<a href="#" id="next">next</a>
     	<a href="#" id="prev">prev</a>
@@ -15,61 +93,6 @@
 	        <a href="#"><img src="/images/product_test4.jpg" alt="" /></a>
    		</div>
     </div>
-    {% if product.images.size > 1 %}
-	<div class="deets">
-		<div id="thumbs">
-			<ul class="unstyled">
-			{% for image in product.images %}
-		 <li{% if forloop.first %} class="selected"{% endif %}><a href="{{ image | product_image_url }}"><img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}"></a></li>
-		  {% endfor %}
-		</ul>
-		{% endif %}
-		</div>
-		<h1>{{ product.name }}</h1>
-		{% case product.status %}
-		
-		    {% when 'sold-out' %}
-		      <h2>{{ product.default_price | money_with_sign }} <em>Sold Out</em></h2>
-		
-		    {% when 'coming-soon' %}
-		      <h2>{{ product.default_price | money_with_sign }} <em>Coming Soon</em></h2>
-		
-		    {% when 'active' %}
-		      <h2>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <em>On Sale{% endif %}</em></h2>
-		
-		<hr />
-			{% if product.description != blank %}
-		<div id="description" class="less_deets">
-		  <p>{{ product.description | paragraphs }}</p>
-		{% endif %}
-		</div>
-		<a id="more_button" href="#"></a>
-	<hr />
-	<div id="dd" class="wrapper-dropdown" tabindex="1">Select a size
-		<ul class="dropdown">
-			<li><a href="#">small</a></li>
-			<li><a href="#">medium</a></li>
-			<li><a href="#">large</a></li>
-			<li><a href="#">x-large</a></li>
-		</ul>
-		</div>
-	<div id="dd" class="wrapper-dropdown" tabindex="1">Select a color
-		<ul class="dropdown">
-		<li><a href="#">blue</a></li>
-		<li><a href="#">red</a></li>
-		<li><a href="#">green</a></li>
-		</ul>
-	</div>
-	<form method="post" action="/cart">
-		<button class="button" name="submit" type="submit" title="Add to Cart">add to basket</button>
-	</form>
-		{% endcase %}
-		<div id="share_this">
-			<a href="#">tweet this!</a>
-			<a href="#">share this!</a>
-			<a href="#">pin this!</a>
-		</div>
-	</div>
 </div>
 
 
@@ -95,13 +118,13 @@
     {% case product.status %}
 
       {% when 'sold-out' %}
-        <h5>{{ product.default_price | money_with_sign }} <em>Sold Out</em></h5>
+        <h5>{{ product.default_price | money_with_sign }} <span>Sold Out</span></h5>
 
       {% when 'coming-soon' %}
-        <h5>{{ product.default_price | money_with_sign }} <em>Coming Soon</em></h5>
+        <h5>{{ product.default_price | money_with_sign }} <span>Coming Soon</span></h5>
 
       {% when 'active' %}
-        <h5>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <em>On Sale{% endif %}</em></h5>
+        <h5>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <span>On Sale{% endif %}</span></h5>
         <h5>Availability</h5>
 
         <ul class="unstyled availability">

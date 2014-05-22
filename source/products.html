@@ -24,7 +24,7 @@
 
 {% endpaginate %}-->
 
-  {% paginate products from products.current by theme.products_per_page %}
+  {% paginate products from products.current by 20 theme.products_per_page %}
   
   {% if products != blank %}
   <div class="container clearfix">

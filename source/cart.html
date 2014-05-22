@@ -39,73 +39,52 @@
 
 {% endif %}-->
 
-<!DOCTYPE html>
+
 
 	<div class="wrapper">
+	{% if cart.items != blank %}
+	<form method="post" action="/cart">
 		<div class="container clearfix">
-			<div class="grid_1 close">
+			<div class="close">
 				<a href="#">Close</a>
 			</div>
 		</div>
 		<div class="container clearfix cart_box">
-			<div class="">
+			<div>
 				<h1>Shopping basket</h1>	
 			</div>
 			
 		</div>
-		<div class="container clearfix cart_box">
-			<div class="grid_2">
-				<img src="images/product_test4.jpg" alt="" />
-			</div>
-			<div class="grid_4">
-				<h5>old growth ceder salad bowl</h5>
-			</div>
-			<div class="grid_1 quantity push_1">
-				<span>1</span>
-			</div>
-			<div class="grid_2 push_1">
-				<span>$500.00</span>
-			</div>
-			<div class="grid_1">
-				<a href="#">Remove</a>
-			</div>
+		<ul class="container clearfix">
+		{% for item in cart.items %}
+			<li class="cart_box">
+				<div class="grid_2">
+					<a href="{{ item.product.url }}">
+					  <img src="{{ item.product.image | product_image_url }}">
+					</a>
+				</div>
+				<div class="grid_4">
+					<a href="{{ item.product.url }}">
+					  <h5>{{ item.product.name }}</h5>
+					  {% unless item.product.has_default_option %}
+					    <span>{{ item.option.name }}</span>
+					  {% endunless %}
+					</a>
+					
+				</div>
+				<div class="grid_1 quantity push_1">
+					<span>{{ item | item_quantity_input }}</span>
+				</div>
+				<div class="grid_2 push_1">
+					<span>{{ item.price | money_with_sign }}</span>
+				</div>
+				<div class="close">
+					<a href="#" class="remove">&times;</a>
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
 			
-		</div>
-		<div class="container clearfix cart_box">
-			<div class="grid_2">
-				<img src="images/product_test2.jpg" alt="" />
-			</div>
-			<div class="grid_4">
-				<h5>The hg juicer</h5>
-			</div>
-			<div class="grid_1 push_1 quantity">
-				<span>1</span>
-			</div>
-			<div class="grid_2 push_1">
-				<span>$50.00</span>
-			</div>
-			<div class="grid_1">
-				<a href="#">Remove</a>
-			</div>
-			
-		</div>
-		<div class="container clearfix cart_box">
-			<div class="grid_2">
-				<img src="images/product_test3.jpg" alt="" />
-			</div>
-			<div class="grid_4">
-				<h5>Porcelain dessert plate</h5>
-			</div>
-			<div class="grid_1 quantity push_1">
-				<span>1</span>
-			</div>
-			<div class="grid_2 push_1">
-				<span>$25.00</span>
-			</div>
-			<div class="grid_1">
-				<a href="#">Remove</a>
-			</div>
-		</div>
 		<div class="container clearfix cart_box">
 			<div id="dd" class="wrapper-dropdown" tabindex="1">Select your country
 				<ul class="dropdown">
@@ -114,16 +93,30 @@
 				<li><a href="#">Uk</a></li>
 				</ul>
 			</div>
-			<div class="grid_2">
+			<div>
 				<a href="#" class="button">update cart</a>
 			</div>
 			
 		</div>
-		<div class="container clearfix">
-			<div class="grid_4" id="total">
+		<div class="container clearfix cart_box">
+			<div id="total">
 				<h4>Total</h4>
-				<span>$664.00</span>
-				<a href="#" class="button">Checkout</a>
+				<span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>
+				<button class="button" type="submit" name="checkout" title="Checkout">Checkout</button>
 			</div>
 		</div>
+	</form>
+	{% else %}
+		
+		<div class="container clearfix">
+			<div class="message">
+				<hr />
+		 		<h1>Looks like your cart is empty.</h1>
+		 		<a class="button" href="/">Start Shopping</a>
+		 		<hr />
+		 	</div>
+		</div>
+		
+	{% endif %}	
+		
 	</div>

@@ -1,37 +1,40 @@
 {% if contact.sent %}
-
-<p>Your message has been sent and we&#8217;ll get back to you soon.</p>
-
+<div class="container clearfix contact_form">
+	<h1>Your message has been sent and we&#8217;ll get back to you soon.</h1>
+</div>
 {% else %}
 
-<form method="post" action="/contact">
-  <ul class="unstyled">
-    <li>
-      <label for="name">Name</label>
-      {{ contact | contact_input: 'name' }}
-    </li>
-    <li>
-      <label for="email">Email</label>
-      {{ contact | contact_input: 'email' }}
-    </li>
-    <li>
-      <label for="subject">Subject</label>
-      {{ contact | contact_input: 'subject' }}
-    </li>
-    <li>
-      <label for="message">Message</label>
-      {{ contact | contact_input: 'message' }}
-    </li>
-    <li>
-      <label for="captcha">Spam check</label>
-      <p>Please enter the characters from the image.</p>
-      <div>{{ contact.captcha }}</div>
-      {{ contact | contact_input: 'captcha' }}
-    </li>
-    <li>
-      <button type="submit" name="submit" title="Send us an email">Send</button>
-    </li>
-  </ul>
+<form method="post" action="/contact" class="container clearfix">
+	<div class="grid_12" id="breadcrumbs">
+		<hr />
+		<h4>Home / For The Kitchen</h4>
+	</div>
+	<ul class="contact_form">
+		<li class="grid_6 push_3">
+		  <label for="name">Name</label>
+		  {{ contact | contact_input: 'name' }}
+		</li>
+		<li class="grid_6 push_3">
+		  <label for="email">Email</label>
+		  {{ contact | contact_input: 'email' }}
+		</li>
+		<li class="grid_6 push_3">
+		  <label for="subject">Subject</label>
+		  {{ contact | contact_input: 'subject' }}
+		</li>
+		<li class="grid_6 push_3">
+		  <label for="message">Message</label>
+		  {{ contact | contact_input: 'message' }}
+		</li>
+		<li class="grid_4 push_3">
+		  <label for="captcha">Spam check</label>
+		  <div>{{ contact.captcha }}</div>
+		  {{ contact | contact_input: 'captcha' }}
+		</li>
+		<li class="grid_12">
+		  <button class="button" type="submit" name="submit" title="Send us an email">Send Message</button>
+		</li>
+	</ul>
 </form>
 
 {% endif %}

@@ -44,7 +44,6 @@
 	{{ head_content }}
 </head>
 <body> 
-	
   <header>
     <div class="container .clearfix">
     <div class="grid_3 search_bar">
@@ -61,7 +60,7 @@
         	{% endif %}
         </a>
       </div>
-      <div class="grid_2 last_element cart">
+      <div class="grid_2 cart">
         <a href="/cart">
           <img src="/images/cart_icon.png" alt="Shoping Cart" />
           <span>{{ cart.total | money_with_sign }}</span>
@@ -176,10 +175,8 @@
     </div>
   <footer>
     <div class="container clearfix">
-      <div class="grid_2 push_1">
+      <div class="push_1">
         <span>© 2014 PickleJuice</span>
-      </div>
-      <div class="grid_2 last_element pull_1 ">
         <span>Powered by <a href="#">BigCartel</a></span>
       </div>
     </div>

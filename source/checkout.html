@@ -22,12 +22,13 @@
   </head>
   
   <body id="{{ page.permalink }}" class="{{ page.category }}" onload="checkout();">
+    <div class="container clearfix message">
     <h1>One moment&hellip;</h1>
-    
-    {% checkoutform %}
-      <noscript>
-        <button type="submit" name="checkout" title="Checkout">Checkout</button>
-      </noscript>
-    {% endcheckoutform %}
+	    {% checkoutform %}
+	      <noscript>
+	        <button class="button" type="submit" name="checkout" title="Checkout">Checkout</button>
+	      </noscript>
+	    {% endcheckoutform %}
+    </div>
   </body>
 </html>

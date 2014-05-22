@@ -1,40 +1,39 @@
+{% paginate products from products.current by 20 theme.products_per_page %}
 
-  {% paginate products from products.current by theme.products_per_page %}
-  
-  {% if products != blank %}
-  <div class="container clearfix" >
-    <div class="grid_12 product_list">
-      <ul>
-       {% for product in products %}
-        <li>
-          <a href="{{ product.url }}">
-            <figure>
-              <img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}" />
-              <figcaption>
-                <h4>{{ product.name }}</h4>
-                <span>{{ product.default_price | money_with_sign }}</span>
-              </figcaption>
-            </figure>
-        <!--  {% if product.on_sale %}
-               <em>On Sale</em>
-               {% endif %}-->
-             </a>
-           </li>
-           {% endfor %}
-         </ul>
-         
-       <!--  {{ paginate | default_pagination }}-->
-         
-         {% else %}
-         <p>No products found.</p>
-         {% endif %}
-         
-         {% endpaginate %}
+{% if products != blank %}
+<div class="container clearfix">
+  <div class="product_list">
+    <ul>
+     {% for product in products %}
+      <li class="grid_3">
+        <a href="{{ product.url }}">
+          <figure>
+            <img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}" />
+            <figcaption>
+              <h4>{{ product.name }}</h4>
+              <span>{{ product.default_price | money_with_sign }}</span>
+            </figcaption>
+          </figure>
+      <!--  {% if product.on_sale %}
+             <em>On Sale</em>
+             {% endif %}-->
+           </a>
+         </li>
+         {% endfor %}
+       </ul>
+       
+     <!--  {{ paginate | default_pagination }}-->
+       
+       {% else %}
+       <p>No products found.</p>
+       {% endif %}
+       
+       {% endpaginate %}
 	</div>
+</div>
+<div class="container clearfix">
+  <div class="grid_12" id="load_more">
+    <a class="button" href="#">Load More</a>
   </div>
-  <div class="container clearfix">
-    <div class="grid_12" id="load_more">
-      <a class="button" href="#">Load More</a>
-    </div>
-  </div>
+</div>
 
