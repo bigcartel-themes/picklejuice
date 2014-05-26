@@ -91,10 +91,10 @@
 
       <div id="more_products">
 	        <hr /><hr /><h4>more products</h4>
-	        <a href="#"><img src="/images/product_test.jpg" alt="" /></a>
-	        <a href="#"><img src="/images/product_test2.jpg" alt="" /></a>
-	        <a href="#"><img src="/images/product_test3.jpg" alt="" /></a>
-	        <a href="#"><img src="/images/product_test4.jpg" alt="" /></a>
+	        <a href="{{ product.next_product.url }}"><img src="{{ product.next_product.image.url }}" alt="" /></a>
+          <a href="{{ product.next_product.next_product.url }}"><img src="{{ product.next_product.next_product.image.url }}" alt="" /></a>
+          <a href="{{ product.next_product.next_product.next_product.url }}"><img src="{{ product.next_product.next_product.next_product.image.url }}" alt="" /></a>
+          <a href="{{ product.next_product.next_product.next_product.next_product.url }}"><img src="{{ product.next_product.next_product.next_product.next_product.image.url }}" alt="" /></a>
    		</div>
     </div>
 </div>
