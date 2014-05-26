@@ -82,10 +82,14 @@
     </div>
     
     <div class="grid_8 single_product">
-    	<a href="#" id="next">next</a>
-    	<a href="#" id="prev">prev</a>
-      	<img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image" />
-    	<div id="more_products">
+
+      <div class="product_wrapper">
+    	  <a href="#" id="next">next</a>
+    	  <a href="#" id="prev">prev</a>
+        <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image" />
+      </div>
+
+      <div id="more_products">
 	        <hr /><hr /><h4>more products</h4>
 	        <a href="#"><img src="/images/product_test.jpg" alt="" /></a>
 	        <a href="#"><img src="/images/product_test2.jpg" alt="" /></a>

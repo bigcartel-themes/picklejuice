@@ -444,42 +444,58 @@ single product
 ========================================================================== */
 
 
-.single_product {
-	position: relative;
-	float: left;
+.single_product { float: left; }
+
+.product_wrapper {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+#next, #prev {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 100%;
+  top: 0;
+  white-space: nowrap;
+  width: 50%;
+
+  &:hover:after { content: ''; }
+
+  &:after {
+    background: url('../images/arrows_sprite.png') no-repeat;
+    background-size: 33px;
+    display: block;
+    height: 33px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+    width: 33px;
+  }
 }
 
 #next {
-	width: 33px;
-	height: 33px;
-	position: absolute;
-	top: 400px;
-	right: 15px;
-	background: url('../images/arrows_sprite.png') no-repeat left top;
-	background-size: 33px;
-	text-indent: -999px;
-	overflow: hidden;
+  right: 0;
+
+  &:after { right: 15px; }
 }
 
 #prev {
-	width: 33px;
-	height: 33px;
-	position: absolute;
-	top: 400px;
-	left: 15px;
-	background: url('../images/arrows_sprite.png') no-repeat left top;
-	background-position-y: -45px;
-	background-size: 33px;
-	text-indent: -999px;
-	overflow: hidden;
+  left: 0;
+
+  &:after {
+    background-position: 0 -45px;
+    left: 15px;
+  }
 }
 
-.single_product > img {
+.product_wrapper > img {
+  box-sizing: border-box;
 	border: 3px solid $white;
 	-moz-box-shadow: 0 0 12px $light-gray;
 	-webkit-box-shadow: 0 0 12px $light-gray;
 	box-shadow: 0 0 12px $light-gray;
-	margin-bottom: 100px;
 	width: 100%;
 	max-width: 100%;
 	height: auto;
