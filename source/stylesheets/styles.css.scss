@@ -12,6 +12,10 @@ fonts
 global
 ========================================================================== */
 
+html {
+	height: 100%;
+}
+
 
 a {
   color: $dark-gray;
@@ -31,7 +35,8 @@ body {
   border-width: 0 3px;
   color: $dark-gray;
   padding: 3px 0;
-
+	height: 100%;
+ 
   &:after, &:before {
     border-top: 3px solid $dark-gray;
     content: '';
@@ -40,6 +45,7 @@ body {
     position: fixed;
     width: 100%;
     z-index: 100;
+    
   }
 
   &:after { top: 0; }
@@ -109,6 +115,39 @@ ul {
   }
 }
 
+
+
+/* ==========================================================================
+Frontpage image
+========================================================================== */
+
+
+
+#slideshow {
+ 	margin-top: 8%;
+ 	position: relative;
+ 	height: 100%;
+ 	overflow: hidden;
+}
+
+#slideshow img {
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#slideshow a {
+	position: absolute;
+	bottom: 3%;
+	left: 50%;
+	background: url('../images/slide_arrow.png') no-repeat left top;
+	background-size: 33px;
+	text-indent: -999px;
+	overflow: hidden;
+	width: 33px;
+	height: 33px;
+}
+
+
 /* ==========================================================================
 global  buttons attr.
 ========================================================================== */
@@ -146,6 +185,7 @@ header
 
 header {
   padding-top: 60px;
+  box-sizing: border-box;
 }
 
 .search_bar {
@@ -266,7 +306,7 @@ sidebar {
   box-shadow: 0 0 12px $light-gray;
   font: 1.750em $kistt;
   padding: 27px;
-  z-index: 5;
+  z-index: 200;
   -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -923,7 +963,7 @@ div.cart_box:last-of-type {
 
 .message {
 	text-align: center;
-	
+	min-height: 700px;
 }
 
 
@@ -947,6 +987,16 @@ success page and one moment page
 }
 
 .message h1 {
+	margin-top: 15%;
+}
+
+
+.message_tall {
+	text-align: center;
+	min-height: 1200px;
+}
+
+.message_tall h1 {
 	margin-top: 15%;
 }
 

@@ -1,8 +1,22 @@
    <div class="container clearfix">
-    <div class="grid_12" id="breadcrumbs">
-      <hr />
-      <h4>Home / For The Kitchen</h4>
-    </div>
+   	<div class="grid_12 categories">
+   		<ul>
+   		{% for category in categories.active %}
+   			<li>{{ category | link_to }}</li>
+   		{% endfor %}
+   		</ul>
+   	</div>
+   	
+   </div>
+   <div class="container clearfix">
+	   <div  class="grid_12" id="breadcrumbs">
+		   <hr />
+		   <h4>
+		       <a href="/" title="store home">Home</a>
+		       {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
+		       <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
+		   </h4>
+	   </div>
     {% if product.images.size > 1 %}
     <div class="deets">
     	<div id="thumbs">
@@ -75,8 +89,9 @@
    
     	
     	<div id="share_this">
-    		<a href="#">tweet this!</a>
-    		<a href="#">share this!</a>
+    		<a href="https://twitter.com/share" class="twitter-share-button" data-via="beadlerworks" data-count="none">Tweet</a>
+    		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    		<a rel="nofollow" target="_blank" title="facebook" href="http://www.facebook.com/share.php?u=<?php print(urlencode(the_permalink())); ?>&amp;title=<?php print(urlencode(get_the_title())); ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
     		<a href="#">pin this!</a>
     	</div>
     </div>

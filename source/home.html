@@ -1,3 +1,16 @@
+<section id="slideshow">
+  <img src="/images/slideshow_test.jpg" alt="">
+  <a href="#">Down</a>
+</section>
+<div class="container clearfix">
+	<div class="grid_12 categories">
+		<ul>
+		{% for category in categories.active %}
+			<li>{{ category | link_to }}</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
 {% paginate products from products.current by 20 theme.products_per_page %}
 
 {% if products != blank %}

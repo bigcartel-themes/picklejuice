@@ -42,40 +42,30 @@
 	{{ head_content }}
 </head>
 <body> 
-  <header>
-    <div class="container .clearfix">
-    <div class="grid_3 search_bar">
-        <img src="/images/search_icon.png" alt="search flashlight" />
-        <input type="search" name="search" value="Search Products..." />
-        <input type="submit" name="submit" value="GO" />
-      </div>
-      <div class="grid_4 logo">
-        <a href="/" title="{{ store.name | escape }}">
-        	 {% if theme.logo != blank %}
-        	<img src="{{ theme.logo.url }}" alt="{{ store.name }}">
-        	{% else %}
-        	<h1>{{ store.name }}</h1>
-        	{% endif %}
-        </a>
-      </div>
-      <div class="grid_2 cart">
-        <a href="/cart">
-          <img src="/images/cart_icon.png" alt="Shoping Cart" />
-          <span>{{ cart.total | money_with_sign }}</span>
-        </a>
-      </div>
-    </div>
-	<div class="container clearfix">
-		<div class="grid_12 categories">
-			<ul>
-			{% for category in categories.active %}
-				<li>{{ category | link_to }}</li>
-			{% endfor %}
-			</ul>
+	<header>
+		<div class="container .clearfix">
+			<div class="grid_3 search_bar">
+				<img src="/images/search_icon.png" alt="search flashlight" />
+				<input type="search" name="search" value="Search Products..." />
+				<input type="submit" name="submit" value="GO" />
+			</div>
+			<div class="grid_4 logo">
+				<a href="/" title="{{ store.name | escape }}">
+				 {% if theme.logo != blank %}
+				<img src="{{ theme.logo.url }}" alt="{{ store.name }}">
+				{% else %}
+				<h1>{{ store.name }}</h1>
+				{% endif %}
+				</a>
+			</div>
+			<div class="grid_2 cart">
+				<a href="/cart">
+				<img src="/images/cart_icon.png" alt="Shoping Cart" />
+				<span>{{ cart.total | money_with_sign }}</span>
+				</a>
+			</div>
 		</div>
-		
-	</div>
-  </header> <!-- END OF HEADER -->
+	</header> <!-- END OF HEADER -->
   <sidebar>
     <a href="#">Hamburger</a>
     <div class="">
