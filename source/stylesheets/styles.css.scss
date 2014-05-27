@@ -124,8 +124,6 @@ Frontpage image
 
 
 #slideshow {
- 	margin-top: 8%;
- 	position: relative;
  	height: 100%;
  	overflow: hidden;
 }
@@ -133,6 +131,8 @@ Frontpage image
 #slideshow img {
 	min-width: 100%;
 	min-height: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 #slideshow a {
@@ -184,8 +184,13 @@ header
 ========================================================================== */
 
 header {
+  background: $light-green;
   padding-top: 60px;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
   box-sizing: border-box;
+  z-index: 2;
 }
 
 .search_bar {
