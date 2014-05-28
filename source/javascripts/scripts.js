@@ -69,6 +69,18 @@ $(document).ready(function() {
     $('#description').toggleClass('more_deets');
   });
 
+  $(document).on('click', '[data-overlay]', function(e) {
+    e.preventDefault();
+
+    $overlay = $('<div>', { class: 'overlay' });
+    $overlay.load($(this).attr('href') + ' .wrapper');
+    $('body > footer').before($overlay);
+  });
+
+  $(document).on('click', '[data-close-overlay]', function() {
+    $(this).closest('.overlay').remove();
+  });
+
   $(document).on('click', function() {
     // all dropdowns
     $('.wrapper-dropdown').removeClass('active');
