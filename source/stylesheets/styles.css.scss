@@ -726,26 +726,21 @@ single product
 }
 
 .wrapper-dropdown .dropdown li {
-    padding: 0 15px ;
-    display: block;
-}
-
-.wrapper-dropdown .dropdown li a {
     display: block;
     text-decoration: none;
     color: $dark-gray;
-    padding: 12px 0;
+    padding: 12px 15px;
     transition: all 0.3s ease-out;
     border-bottom: 1px solid $white;
 }
 
-.wrapper-dropdown .dropdown li:last-of-type a {
+.wrapper-dropdown .dropdown li:last-of-type {
     border: none;
 }
 
 
 
-.wrapper-dropdown .dropdown li:hover a {
+.wrapper-dropdown .dropdown li:hover {
     color: $dark-green;
 }
 
@@ -943,7 +938,7 @@ div.cart_box:last-of-type {
   color: $white;
 }
 
-.cart_box #dd {
+.cart_box .wrapper-dropdown {
 	float: left;
 	margin-top: 1.55%;
 }
@@ -976,15 +971,15 @@ div.cart_box:last-of-type {
     background-color: $white;
 }
 
-.cart_box .wrapper-dropdown .dropdown li a {
+.cart_box .wrapper-dropdown .dropdown li {
    border-bottom: 1px solid $dark-gray;
 }
 
-.cart_box .wrapper-dropdown .dropdown li a {
+.cart_box .wrapper-dropdown .dropdown li {
    border-bottom: 1px solid $dark-gray;
 }
 
-.cart_box .wrapper-dropdown .dropdown li:last-of-type a {
+.cart_box .wrapper-dropdown .dropdown li:last-of-type {
     border: none;
 }
 

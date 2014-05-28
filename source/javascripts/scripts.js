@@ -10,20 +10,11 @@ function changeImage(index) {
   $('.primary_image').attr('src', $newSelection.find('a').attr('href'));
 }
 
-function DropDown(el) {
-  this.dd = el;
-  this.initEvents();
-}
+function closeDropdowns() {
+  $dropdownWrapper = $('.wrapper-dropdown.active');
 
-DropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-
-    obj.dd.on('click', function(e){
-      $(this).toggleClass('active');
-      e.stopPropagation();
-    });
-  }
+  $dropdownWrapper.removeClass('active');
+  $dropdownWrapper.find('.dropdown').removeAttr('style');
 }
 
 $(window).load(function() {
@@ -37,7 +28,7 @@ $(document).ready(function() {
     , $searchButton = $searchBar.find('input[type="submit"]')
     , $searchField = $searchBar.find('input[type="search"]')
     , $searchImg = $searchBar.find('img')
-    , dd = new DropDown($('#dd'));
+    , $selectBoxes = $('select');
 
   $searchButton.hide();
 
@@ -69,6 +60,61 @@ $(document).ready(function() {
     $('#description').toggleClass('more_deets');
   });
 
+  // Create custom select boxes
+  $selectBoxes.each(function(index, el) {
+    var $select = $(el)
+      , $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
+        $('<div>').text('Choose an option'),
+        $('<ul>', { class: 'dropdown' })
+      );
+
+    $select.find('option').each(function(index, el) {
+      $newSelect.find('ul').append(
+        $('<li>').text($(el).text())
+      );
+    });
+
+    $(el).hide().before($newSelect);
+  });
+
+  // Click outside select box to close it
+  $(document).on('click', function(e) {
+    if ($('.wrapper-dropdown.active').length > 0) {
+      e.stopPropagation()
+
+      if ($(this).closest('.wrapper-dropdown.active').length == 0) {
+        closeDropdowns();
+      }
+    }
+  });
+
+  // Open select box
+  $(document).on('click', '.wrapper-dropdown', function(e) {
+    e.stopPropagation();
+
+    $this = $(this);
+
+    $this.addClass('active');
+    $this.find('.dropdown').css({ maxHeight: 'none' });
+  });
+
+  $(document).on('click', '.dropdown li', function(e) {
+    e.stopPropagation();
+
+    $this = $(this);
+    $dropdownWrapper = $this.closest('.wrapper-dropdown');
+    $selectBox = $dropdownWrapper.next('select');
+    $selectedOption = $selectBox.children().eq($this.index())
+
+    $dropdownWrapper.find('div').text($selectedOption.text())
+    $selectBox.val($selectedOption.attr('value'));
+
+    closeDropdowns();
+  });
+
+
+
+
   $(document).on('click', '[data-overlay]', function(e) {
     e.preventDefault();
 
@@ -80,11 +126,6 @@ $(document).ready(function() {
   $(document).on('click', '.close', function(e) {
     e.preventDefault();
     $(this).closest('.overlay').remove();
-  });
-
-  $(document).on('click', function() {
-    // all dropdowns
-    $('.wrapper-dropdown').removeClass('active');
   });
 
   // Swap out main product image.
