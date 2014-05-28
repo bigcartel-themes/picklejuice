@@ -77,7 +77,8 @@ $(document).ready(function() {
     $('body > footer').before($overlay);
   });
 
-  $(document).on('click', '[data-close-overlay]', function() {
+  $(document).on('click', '.close', function(e) {
+    e.preventDefault();
     $(this).closest('.overlay').remove();
   });
 
