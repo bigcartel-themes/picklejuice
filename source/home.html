@@ -1,9 +1,19 @@
-<section id="slideshow">
-  <img src="/images/slideshow_test.jpg" alt="">
-  <a href="#">Down</a>
+<section class="wmuSlider example1" id="slideshow">
+	<div class="wmuSliderWrapper">
+		<article>
+			<img src="/images/slideshow_test.jpg" alt="">
+		</article>
+		<article>
+			<img src="/images/slideshow_test2.jpg" alt="">
+		</article>
+		<article>
+			<img src="/images/slideshow_test3.jpg" alt="">
+		</article>           
+	</div> 
+  <a href="#minus_buffer">Down</a>
 </section>
 <div class="container clearfix">
-	<div class="grid_12 categories">
+	<div class="grid_12 categories" id="minus_buffer">
 		<ul>
 		{% for category in categories.active %}
 			<li>{{ category | link_to }}</li>
@@ -49,4 +59,5 @@
     <a class="button" href="#">Load More</a>
   </div>
 </div>
+
 

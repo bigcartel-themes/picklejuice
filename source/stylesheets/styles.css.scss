@@ -14,6 +14,17 @@ global
 
 html {
 	height: 100%;
+	
+}
+
+html:before {
+	border-left: 3px solid $dark-gray;
+	content: '';
+	display: inline-block;
+	left: 0;
+	position: fixed;
+	height: 100%;
+	z-index: 100;
 }
 
 
@@ -31,16 +42,17 @@ a {
 
 body {
   background-color: $light-green;
-  border: solid $dark-gray;
-  border-width: 0 3px;
+  
   color: $dark-gray;
   padding: 3px 0;
 	height: 100%;
+ 	box-sizing: border-box;
+ 	
  
   &:after, &:before {
     border-top: 3px solid $dark-gray;
     content: '';
-    display: block;
+    display: inline-block;
     left: 0;
     position: fixed;
     width: 100%;
@@ -116,38 +128,6 @@ ul {
 }
 
 
-
-/* ==========================================================================
-Frontpage image
-========================================================================== */
-
-
-
-#slideshow {
- 	height: 100%;
- 	overflow: hidden;
-}
-
-#slideshow img {
-	min-width: 100%;
-	min-height: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
-#slideshow a {
-	position: absolute;
-	bottom: 3%;
-	left: 50%;
-	background: url('../images/slide_arrow.png') no-repeat left top;
-	background-size: 33px;
-	text-indent: -999px;
-	overflow: hidden;
-	width: 33px;
-	height: 33px;
-}
-
-
 /* ==========================================================================
 global  buttons attr.
 ========================================================================== */
@@ -179,6 +159,44 @@ global  buttons attr.
 }
 
 
+
+/* ==========================================================================
+Frontpage image
+========================================================================== */
+
+
+
+#slideshow {
+ 	height: 100% !important;
+ 	overflow: hidden;
+ 	position: relative;
+}
+
+#slideshow img {
+	min-width: 100%;
+	min-height: 100%;
+  bottom: 0;
+}
+
+
+#slideshow a {
+	position: absolute;
+	bottom: 3%;
+	left: 50%;
+	background: url('../images/slide_arrow.png') no-repeat left top;
+	background-size: 33px;
+	text-indent: -999px;
+	overflow: hidden;
+	width: 33px;
+	height: 33px;
+}
+
+#minus_buffer {
+	margin-top: 40px;
+}
+
+
+
 /* ==========================================================================
 header
 ========================================================================== */
@@ -186,6 +204,7 @@ header
 header {
   background: $light-green;
   padding-top: 60px;
+  padding-bottom: 40px;
   overflow: hidden;
   width: 100%;
   position: absolute;
@@ -270,10 +289,17 @@ header {
 	padding: 20px 0 0 42px;
 }
 
+
+
+/* ==========================================================================
+categories
+========================================================================== */
+
+
 .categories {
   font: 1em $kistt;
   text-align: center;
-  padding-top: 20px;
+  margin-top: 180px;
 }
 
 .categories li {
@@ -287,10 +313,6 @@ header {
 }
 
 /* ========== Change to active ========== */
-
-
-
-
 
 
 

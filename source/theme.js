@@ -16,3 +16,4 @@
 // also including jQuery in our layout.html from Google so that it can be better cached by users.
 //
 //= require javascripts/scripts
+//= require javascripts/slider
