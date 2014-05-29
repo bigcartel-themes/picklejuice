@@ -45,7 +45,7 @@
 	{% if cart.items != blank %}
 	<form method="post" action="/cart">
 		<div class="container clearfix">
-			<div class="close">
+			<div class="close_overlay">
 				<a href="#">Close</a>
 			</div>
 		</div>
@@ -107,7 +107,11 @@
 		</div>
 	</form>
 	{% else %}
-		
+		<div class="container clearfix">
+			<div class="close_overlay">
+				<a href="#">Close</a>
+			</div>
+		</div>
 		<div class="container clearfix">
 			<div class="message">
 				<hr />

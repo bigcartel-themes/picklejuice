@@ -179,6 +179,7 @@ Frontpage image
 }
 
 
+
 #slideshow a {
 	position: absolute;
 	bottom: 3%;
@@ -419,8 +420,16 @@ product list
 ========================================================================== */
 
 
-.product_list li {
-  margin-bottom: 2%;
+.product_list li:nth-child(4n):after {
+	clear: both;
+	content: '';
+	display: inline-block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	
 }
 
 
@@ -505,6 +514,27 @@ figcaption h4 {
 }
 
 
+/* ==========================================================================
+cation rotation
+========================================================================== */
+
+.product_list li:nth-child(even) figcaption:after {
+  content: '';
+  width: 100%;
+  height: 200px;
+  transform: rotate(-15deg);
+  -ms-transform: rotate(-15deg);
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  background-color: $white;
+  position: absolute;
+  bottom: -105px;
+  left: -36px;
+  padding: 20px;
+  z-index: -1;
+}
+
+
 
 /* ==========================================================================
 single product
@@ -556,6 +586,7 @@ single product
     left: 15px;
   }
 }
+
 
 .product_wrapper > img {
   box-sizing: border-box;
@@ -658,7 +689,7 @@ single product
 .deets .button {
   background-color: $dark-gray;
   color: $white;
-  margin: 40px 0;
+  margin: 20px 0 40px 0;
   display: inherit;
   width: 300px;
   height: 47px;
@@ -669,11 +700,15 @@ single product
   color: $white;
 }
 
+.availability h2 {
+	margin: 0;
+}
+
 
 .wrapper-dropdown {
 	position: relative;
 	width: 264px;
-	margin-bottom: 20px;
+	margin-top: 40px;
 	padding: 12px 15px;
 	text-align: left;
 	font: bold 0.750em $halisr;
@@ -840,6 +875,8 @@ single product
 }
 
 
+
+
 /* ==========================================================================
 cart
 ========================================================================== */
@@ -862,6 +899,7 @@ cart
 .cart_box {
 	border-bottom: 3px solid $dark-gray;
 	padding: 40px 0;
+	width: 100%;
 }
 
 div.cart_box:last-of-type {
@@ -870,20 +908,23 @@ div.cart_box:last-of-type {
 }
 
 
-.close:first-of-type {
+.close_overlay {
 	float: right;
 	margin-right: 0;
 }
 
-.close a {
+.close_overlay a {
 	display: inline-block;
 	background: url('../images/x_outs_sprite.png') no-repeat left top;
+	background-color: $white;
+	border-radius: 50%;
 	background-size: 60px;
 	width: 60px;
 	height: 60px;
 	overflow: hidden;
 	text-indent: -999px;
 	float: right;
+	margin: 23px 15px 0 0;
 }
 
 .cart_box img {
@@ -907,6 +948,10 @@ div.cart_box:last-of-type {
 .quantity span {
 	
 	font: 0.750em $halisr;
+}
+
+.cart_box ul li {
+	width: 100%;
 }
 
 .cart_box .close {
@@ -941,6 +986,12 @@ div.cart_box:last-of-type {
 .cart_box .wrapper-dropdown {
 	float: left;
 	margin-top: 1.55%;
+	background-color: $white;
+}
+
+.cart_box .wrapper-dropdown.active {
+	color: $white;
+	background-color: $dark-gray;
 }
 
 #total {
@@ -998,6 +1049,11 @@ div.cart_box:last-of-type {
 .wrapper hr {
 	background: $dark-gray;
 	margin: 100px 0;
+}
+
+.overlay {
+	position: relative;
+	z-index: 200;
 }
 
 /* ==========================================================================

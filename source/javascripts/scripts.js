@@ -117,15 +117,16 @@ $(document).ready(function() {
 
   $(document).on('click', '[data-overlay]', function(e) {
     e.preventDefault();
-
     $overlay = $('<div>', { class: 'overlay' });
-    $overlay.load($(this).attr('href') + ' .wrapper');
+    $overlay.load($(this).attr('href') + ' .wrapper').fadeIn();
     $('body > footer').before($overlay);
+    
+  
   });
 
-  $(document).on('click', '.close', function(e) {
+  $(document).on('click', '.close_overlay', function(e) {
     e.preventDefault();
-    $(this).closest('.overlay').remove();
+    $(this).closest('.overlay').fadeOut();
   });
 
   // Swap out main product image.
@@ -163,4 +164,5 @@ $(document).ready(function() {
 			}
 			});
 		});
+		
 });
