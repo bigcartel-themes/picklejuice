@@ -92,9 +92,9 @@
 			<button class="button" name="submit" type="submit" title="Add to Cart">Add to Cart</button>
 		</form>
 		<div id="share_this">
-			<a href="/" >tweet this!</a>
-			<a href="">share this!</a>
-			<a href="#">pin this!</a>
+			<a href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" >tweet this!</a>
+			<a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}">share this!</a>
+			<a href="http://pinterest.com/pin/create/button/?url={{store.url}}{{product.url}}&media={{product.images.first.url}}">pin this!</a>
 		</div>
 	</div>    
 	<div class="grid_8 single_product">
