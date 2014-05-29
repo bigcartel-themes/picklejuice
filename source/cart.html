@@ -84,19 +84,14 @@
 			</li>
 		{% endfor %}
 		</ul>
-			
+
 		<div class="container clearfix cart_box">
-			<div id="dd" class="wrapper-dropdown" tabindex="1">Select your country
-				<ul class="dropdown">
-				<li><a href="#">us</a></li>
-				<li><a href="#">canada</a></li>
-				<li><a href="#">Uk</a></li>
-				</ul>
-			</div>
+      {{ store.country | country_select }}
+
 			<div>
-				<a href="#" class="button">update cart</a>
+				<button type="submit" class="button">update cart</a>
 			</div>
-			
+
 		</div>
 		<div class="container clearfix cart_box">
 			<div id="total">
@@ -116,7 +111,7 @@
 			<div class="message">
 				<hr />
 		 		<h1>Looks like your cart is empty.</h1>
-		 		<a class="button" href="/">Start Shopping</a>
+		 		<a class="button" href="/products">Start Shopping</a>
 		 		<hr />
 		 	</div>
 		</div>

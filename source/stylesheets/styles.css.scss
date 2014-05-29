@@ -750,13 +750,13 @@ single product
     border-top: none;
     border-bottom: none;
     list-style: none;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: max-height 0.3s ease-out;
+    -moz-transition: max-height 0.3s ease-out;
+    -ms-transition: max-height 0.3s ease-out;
+    -o-transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out;
     max-height: 0;
-    overflow: hidden;
+    overflow: scroll;
     z-index: 1;
 }
 
@@ -782,7 +782,6 @@ single product
 
 .wrapper-dropdown.active {
     background: $dark-gray;
-    border-bottom: none;
     color: $white;
 }
 

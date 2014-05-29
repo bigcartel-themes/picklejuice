@@ -68,7 +68,7 @@ $(document).ready(function() {
         $('<ul>', { class: 'dropdown' })
       );
 
-    $select.find('option').each(function(index, el) {
+    $select.find('option:not([value=""])').each(function(index, el) {
       $newSelect.find('ul').append(
         $('<li>').text($(el).text())
       );
@@ -88,6 +88,34 @@ $(document).ready(function() {
     }
   });
 
+  $(document).on('click', '.more', function(e) {
+    e.preventDefault();
+
+    $button = $(this);
+
+    currentPage = parseInt($button.attr('data-current-page'));
+    nextPage = currentPage + 1;
+
+    $.get($button.attr('href'), function(response) {
+        var products = $(response).find('.product_list li');
+
+        $('.product_list ul').append(products.fadeIn());
+    });
+
+    if (nextPage == parseInt($button.attr('data-total-pages'))) {
+      $button.hide();
+    } else {
+      $button.attr('href', $button.attr('href').replace(/page=\d+/, 'page=' + (nextPage + 1)));
+      $button.attr('data-current-page', nextPage);
+    }
+  });
+
+  $(document).on('click', '.remove', function(e) {
+    e.preventDefault();
+    $(this).closest('li').find('.quantity input').val(0);
+    $(this).closest('form').submit();
+  });
+
   // Open select box
   $(document).on('click', '.wrapper-dropdown', function(e) {
     e.stopPropagation();
@@ -95,7 +123,7 @@ $(document).ready(function() {
     $this = $(this);
 
     $this.addClass('active');
-    $this.find('.dropdown').css({ maxHeight: 'none' });
+    $this.find('.dropdown').css({ maxHeight: '210px' });
   });
 
   $(document).on('click', '.dropdown li', function(e) {
