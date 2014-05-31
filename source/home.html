@@ -1,59 +1,65 @@
 <section class="wmuSlider example1" id="slideshow">
-	<div class="wmuSliderWrapper">
-		<article>
-			<img src="/images/slideshow_test.jpg" alt="">
-		</article>
-		<article>
-			<img src="/images/slideshow_test2.jpg" alt="">
-		</article>
-		<article>
-			<img src="/images/slideshow_test3.jpg" alt="">
-		</article>           
-	</div> 
-	<a href="#minus_buffer">Down</a>
+  <div class="wmuSliderWrapper">
+    <article>
+      <img src="/images/slideshow_test.jpg" alt="">
+    </article>
+
+    <article>
+      <img src="/images/slideshow_test2.jpg" alt="">
+    </article>
+
+    <article>
+      <img src="/images/slideshow_test3.jpg" alt="">
+    </article>
+  </div>
+
+  <a href="#minus_buffer">Down</a>
 </section>
+
 <div class="container clearfix">
-	<div class="grid_12 categories" id="minus_buffer">
-		<ul>
-			{% for category in categories.active %}
-			<li>{{ category | link_to }}</li>
-			{% endfor %}
-		</ul>
-	</div>
+  <div class="grid_12 categories" id="minus_buffer">
+    <ul>
+      {% for category in categories.active %}
+        <li>{{ category | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
+
 {% paginate products from products.current by 20 theme.products_per_page %}
+  <div class="container clearfix">
+    <div class="product_list">
+      {% if products != blank %}
+        <ul>
+          {% for product in products %}
+            <li class="grid_3">
+              <a href="{{ product.url }}">
+                <figure>
+                  <img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}">
 
-{% if products != blank %}
-<div class="container clearfix">
-	<div class="product_list">
-		<ul>
-			{% for product in products %}
-			<li class="grid_3">
-				<a href="{{ product.url }}">
-				<figure>
-					<img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}" />
-					<figcaption>
-						<h4>{{ product.name }}</h4>
-						<span>{{ product.default_price | money_with_sign }} {% if product.on_sale %} | On Sale {% endif %}</span>	
-					</figcaption>
-				</figure>
-				</a>
-			</li>
-			{% endfor %}
-		</ul>
-		{% else %}
-		<p>No products found.</p>
-		{% endif %}
-	</div>
-</div>
-{% if paginate.next %}
-{% if paginate.next.is_link %}
-<div class="container clearfix">
-	<div class="grid_12" id="load_more">
-		<a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
-	</div>
-</div>
-{% endif %}
-{% endif %}
+                  <figcaption>
+                    <h4>{{ product.name }}</h4>
+                    <span>{{ product.default_price | money_with_sign }} {% if product.on_sale %} | On Sale {% endif %}</span>
+                  </figcaption>
+                </figure>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+      {% else %}
+        <p>No products found.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if paginate.next %}
+    {% if paginate.next.is_link %}
+      <div class="container clearfix">
+        <div class="grid_12" id="load_more">
+          <a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
 {% endpaginate %}
-

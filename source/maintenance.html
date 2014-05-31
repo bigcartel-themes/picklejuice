@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head> 
-		<title>{{ store.name }} &mdash; {{ page.name }}</title>  
-		<meta charset="utf-8">
-		<meta name="description" content="{{ page.meta_description }}">
-		<meta name="keywords" content="{{ page.meta_keywords }}">
-		<meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no" />
-		<link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-		{{ head_content }}
-	</head>
-	<body id="{{ page.permalink }}" class="{{ page.category }}">
-		<div class="container clearlfix">
-			<div class="message_tall">
-				<h1>We&#8217;re working our site at the moment.</h1>
-				<span>Please check back soon.</span>
-			</div>
-		</div>
-	</body>
+  <head>
+    <title>{{ store.name }} &mdash; {{ page.name }}</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="{{ page.meta_description }}">
+    <meta name="keywords" content="{{ page.meta_keywords }}">
+    <meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no">
+
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet">
+
+    {{ head_content }}
+  </head>
+
+  <body id="{{ page.permalink }}" class="{{ page.category }}">
+    <div class="container clearlfix">
+      <div class="message_tall">
+        <h1>We&rsquo;re working our site at the moment.</h1>
+        <span>Please check back soon.</span>
+      </div>
+    </div>
+  </body>
 </html>

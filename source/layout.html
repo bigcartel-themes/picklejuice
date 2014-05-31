@@ -1,153 +1,111 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<title>{{ store.name }} &mdash; {{ page.name }}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta name="description" content="{{ page.meta_description }}">
-	<meta name="keywords" content="{{ page.meta_keywords }}">
-	<meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no" />
-	<link href="{{ theme | theme_css_url }}" rel="stylesheet" type="text/css" />
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic' rel='stylesheet' type='text/css'>
-	<!--[if lte IE 9]>
-	<script src="dist/html5shiv.js"></script>
-	<![endif]-->
-	{{ head_content }}
-	</head>
-	<body> 
-		<header>
-			<div class="container .clearfix">
-				<div class="grid_3 search_bar">
-					<img src="/images/search_icon.png" alt="search flashlight" />
-					<input type="search" name="search" value="Search Products..." />
-					<input type="submit" name="submit" value="GO" />
-				</div>
-				<div class="grid_4 logo">
-					<a href="/" title="{{ store.name | escape }}">
-					{% if theme.logo != blank %}
-					<img src="{{ theme.logo.url }}" alt="{{ store.name }}">
-					{% else %}
-					<h1>{{ store.name }}</h1>
-					{% endif %}
-					</a>
-				</div>
-				<div class="cart">
-					<a href="/cart" data-overlay="cart">
-						<img src="/images/cart_icon.png" alt="Shoping Cart" />
-						<span>{{ cart.total | money_with_sign }}</span>
-					</a>
-				</div>
-			</div>
-		</header> <!-- END OF HEADER -->
-		<sidebar>
-			<a href="#">Hamburger</a>
-			<div class="">
-				{% if artists.active != blank %}
-				<ul class="unstyled">
-						<li><a href="/products">All</a></li>
-						{% for artist in artists.active %}
-						<li>{{ artist | link_to }}</li>
-						{% endfor %}
-				</ul>
-				{% endif %}
-				<ul class="unstyled">
-					{% for page in pages.all %}
-					<li>{{ page | link_to }}</li>
-					{% endfor %}
-					<li><a href="/contact">Contact Us</a></li>
-					{% if store.website != blank %}
-					<li><a href="{{ store.website }}">Back to Site</a></li>
-					{% endif %}
-				</ul>
-			</div>
-			<div id="social_icons">
-				<a href="#">Facebook</a>
-				<a href="#">Twitter</a>
-				<a href="#">Instagram</a>
-				<a href="#">Pintress</a>
-			</div>
-		</sidebar>
-	
-	<!--    <div class="wrap">
-	<aside>
-	<section>
-	<a href="/cart">Cart ({{ cart.total | money_with_sign }})</a>
-	</section>
-	
-	{% if theme.show_search %}
-	<section>
-	<form action="/products" method="get">
-	<label>Search: <input type="text" name="search"></label>
-	</form>
-	</section>
-	{% endif %}
-	
-	<nav>
-	<h3>Products</h3>
-	<ul class="unstyled">
-	<li><a href="/products">All</a></li>
-	{% for category in categories.active %}
-	<li>{{ category | link_to }}</li>
-	{% endfor %}
-	</ul>
-	
-	{% if artists.active != blank %}
-	<h3>Artists</h3>
-	<ul class="unstyled">
-	<li><a href="/products">All</a></li>
-	{% for artist in artists.active %}
-	<li>{{ artist | link_to }}</li>
-	{% endfor %}
-	</ul>
-	{% endif %}
-	
-	<h3>Info</h3>
-	<ul class="unstyled">
-	{% for page in pages.all %}
-	<li>{{ page | link_to }}</li>
-	{% endfor %}
-	<li><a href="/contact">Contact Us</a></li>
-	{% if store.website != blank %}
-	<li><a href="{{ store.website }}">Back to Site</a></li>
-	{% endif %}
-	</ul>
-	</nav>-->
-	
+  <head>
+    <title>{{ store.name }} &mdash; {{ page.name }}</title>
 
-		<section class="content">
-			<h1>{{ page.name }}</h1>
-			{% if errors != blank %}
-			<ul class="unstyled errors">
-				{% for error in errors %}
-				<li>{{ error }}</li>
-				{% endfor %}
-			</ul>
-			{% endif %}
-			{% if page.category == 'custom' %}
-			{{ page_content | paragraphs }}
-			{% else %}
-			{{ page_content }}
-			{% endif %}
-		</section>
-		<footer>
-			<div class="container clearfix">
-				<div class="push_1">
-					<span>© 2014 PickleJuice</span>
-					<span><a href="#">{{ bigcartel_credit }}</a></span>
-				</div>
-			</div>
-		</footer> <!--END OF FOOTER -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="{{ theme | theme_js_url }}"></script>
-		<script>
-			$('.example1').wmuSlider({
-				animation: 'slide',
-				slideshow: true,
-				slideshowSpeed: 4000,
-				navigationControl: false,
-				paginationControl: false,
-				touch: true,
-			});   
-		</script>
-	</body>
+    <meta charset="utf-8">
+    <meta name="description" content="{{ page.meta_description }}">
+    <meta name="keywords" content="{{ page.meta_keywords }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic" rel="stylesheet">
+    <link href="{{ theme | theme_css_url }}" rel="stylesheet">
+
+    {{ head_content }}
+  </head>
+
+  <body>
+    <header>
+      <div class="container clearfix">
+        <div class="grid_3 search_bar">
+          <img src="/images/search_icon.png" alt="search flashlight">
+          <input type="search" name="search" value="Search Products...">
+          <input type="submit" name="submit" value="GO">
+        </div>
+
+        <div class="grid_4 logo">
+          <a href="/" title="{{ store.name | escape }}">
+            {% if theme.logo != blank %}
+              <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
+            {% else %}
+              <h1>{{ store.name }}</h1>
+            {% endif %}
+          </a>
+        </div>
+
+        <div class="cart">
+          <a href="/cart" data-overlay="cart">
+            <img src="/images/cart_icon.png" alt="Shoping Cart">
+            <span>{{ cart.total | money_with_sign }}</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <aside>
+      <a href="#">Menu</a>
+
+      <div>
+        {% if artists.active != blank %}
+          <ul class="unstyled">
+            <li><a href="/products">All</a></li>
+
+            {% for artist in artists.active %}
+              <li>{{ artist | link_to }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <ul class="unstyled">
+          {% for page in pages.all %}
+            <li>{{ page | link_to }}</li>
+          {% endfor %}
+
+          <li><a href="/contact">Contact Us</a></li>
+
+          {% if store.website != blank %}
+            <li><a href="{{ store.website }}">Back to Site</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div id="social_icons">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">Pintress</a>
+      </div>
+    </aside>
+
+    <section class="content">
+      <h1>{{ page.name }}</h1>
+
+      {% if errors != blank %}
+        <ul class="unstyled errors">
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if page.category == 'custom' %}
+        {{ page_content | paragraphs }}
+      {% else %}
+        {{ page_content }}
+      {% endif %}
+    </section>
+
+    <footer>
+      <div class="container clearfix">
+        <div class="push_1">
+          <span>&copy; {{ 'Today' | date: "%Y" }} {{ store.name }}</span>
+          <span>{{ bigcartel_credit }}</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{{ theme | theme_js_url }}"></script>
+  </body>
 </html>
