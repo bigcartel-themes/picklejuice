@@ -1,223 +1,11 @@
 @import "mixins";
 
 /* ==========================================================================
-fonts
-========================================================================== */
-
-
-
-
-
-/* ==========================================================================
-global
-========================================================================== */
-
-html {
-	height: 100%;
-
-}
-
-html:before {
-	border-left: 3px solid $dark-gray;
-	content: '';
-	display: inline-block;
-	left: 0;
-	position: fixed;
-	height: 100%;
-	z-index: 100;
-}
-
-
-a {
-  color: $dark-gray;
-  outline: none;
-  text-decoration: none;
-
-  &:hover {
-    filter: alpha(opacity=90); /* For IE8 and earlier */
-    opacity: .9;
-  }
-}
-
-a:hover, a:active, a:focus {
-	outline: none;
-}
-
-
-body {
-  background-color: $light-green;
-
-  color: $dark-gray;
-  padding: 3px 0;
-	height: 100%;
- 	box-sizing: border-box;
-
-
-  &:after, &:before {
-    border-top: 3px solid $dark-gray;
-    content: '';
-    display: inline-block;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-
-  }
-
-  &:after { top: 0; }
-  &:before { bottom: 0; }
-}
-
-body#maintenance {
-	border-right: 3px solid $dark-gray;
-}
-
-body#checkout {
-	border-right: 3px solid $dark-gray;
-}
-
-
-#loading {
-	display: block;
-	height: 100%;
-	width: 100%;
-	background-color: $light-green;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 200;
-}
-
-h1, h4, h5 {
-  font-family: $halisr;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-h2, h3 { font-family: $kistt; }
-
-h1 {
-  font-size: 1.5em;
-  letter-spacing: .3em;
-}
-
-h2 { font-size: 1.75em; }
-
-h3 { font-size: 1em; }
-
-h4 {
-  font-size: .875em;
-  letter-spacing: .2em;
-}
-
-h5 {
-  font-size: 1.125em;
-  letter-spacing: .2em;
-}
-
-hr {
-  background: $white;
-  border: 0;
-  height: 3px;
-  margin-bottom: 28px;
-}
-
-img { vertical-align: bottom; }
-
-p {
-  font: .875em $kistt;
-  line-height: 24px;
-}
-
-span { font: 1em $kistt; }
-
-ul {
-  padding: 0;
-
-  li {
-    display: inline-block;
-    list-style: none;
-  }
-}
-
-
-/* ==========================================================================
-global  buttons attr.
-========================================================================== */
-
-.button {
-  border: 2px solid $dark-gray;
-  font: bold 0.750em $halisr;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.2em;
-  padding: 11px 23px;
-  outline: none;
-}
-
-.button:hover {
-  border-color: $dark-green;
-  color: $dark-green;
-  outline: none;
-}
-
-.button:active {
-  background-color: $dark-green;
-  color: $white;
-  outline: none;
-}
-
-.button:focus {
-	outline: none;
-}
-
-
-
-/* ==========================================================================
-Frontpage image
-========================================================================== */
-
-
-
-#slideshow {
- 	height: 100% !important;
- 	overflow: hidden;
- 	position: relative;
- 	box-sizing: border-box;
-}
-
-#slideshow img {
-	min-width: 100%;
-	min-height: 100%;
-  bottom: 0;
-}
-
-
-
-#slideshow a {
-	position: absolute;
-	bottom: 55px;
-	left: 50%;
-	background: url('../images/slide_arrow.png') no-repeat left top;
-	background-size: 33px;
-	text-indent: -999px;
-	overflow: hidden;
-	width: 33px;
-	height: 33px;
-}
-
-#minus_buffer {
-	margin-top: 40px;
-}
-
-
-
-/* ==========================================================================
 header
 ========================================================================== */
 
 header {
-  background: $light-green;
+  background: $light-green-color;
   padding-top: 60px;
   padding-bottom: 40px;
   overflow: hidden;
@@ -228,7 +16,7 @@ header {
 }
 
 .search_bar {
-  color: $dark-gray;
+  color: $dark-gray-color;
   width: 244px;
   height: 42px;
   margin-top: 20px;
@@ -236,18 +24,10 @@ header {
 }
 
 .search_bar_border {
-  border: 2px solid $dark-gray;
+  border: 2px solid $dark-gray-color;
   width: 240px;
   height: 38px;
   padding-top: 0px;
-}
-
-
-.search_bar img {
-  width: 28px;
-  height: 15px;
-  padding: 2px 8px 0 12px;
-  position: absolute;
 }
 
 .imgAdd {
@@ -256,11 +36,12 @@ header {
 
 
 .search_bar input[type="search"] {
-  background-color: rgba(255, 255, 255, .0);
+  background: rgba(255, 255, 255, .0) url(../images/search_icon.png) 12px 2px no-repeat;
+  background-size: 28px 15px;
   border: none;
   outline: none;
   box-shadow: none;
-  font: 0.875em $kistt;
+  font: 0.875em $serif-font;
   font-style: italic;
   width: 138px;
   padding-left: 50px;
@@ -268,9 +49,9 @@ header {
 
 .search_bar input[type="submit"] {
   border: none;
-  border-left: 2px solid $dark-gray;
+  border-left: 2px solid $dark-gray-color;
   background-color: rgba(255, 255, 255, .0);
-  font: bold 0.750em $halisr;
+  font: bold 0.750em $sans-serif-font;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.2em;
@@ -290,12 +71,14 @@ header {
 .cart {
   text-align: center;
   float: right;
-  width: 66px;
+  width: 60px;
 }
 
-.cart img {
-  width: 60px;
-  padding-bottom: 10px;
+.cart a {
+  background: url(../images/cart_icon.png) top center no-repeat;
+  background-size: contain;
+  display: block;
+  padding-top: 70px;
 }
 
 .cart span span {
@@ -311,7 +94,7 @@ categories
 
 
 .categories {
-  font: 1em $kistt;
+  font: 1em $serif-font;
   text-align: center;
   margin-top: 180px;
 }
@@ -323,7 +106,7 @@ categories
 /* ========== Change to active ========== */
 
 .categories a:hover {
-  color: $dark-green;
+  color: $dark-green-color;
 }
 
 /* ========== Change to active ========== */
@@ -342,10 +125,10 @@ aside {
   top: 0;
   right: -13.666667%;
   background-color: rgba(255, 255, 255, .9);
-  -moz-box-shadow: 0 0 12px $light-gray;
-  -webkit-box-shadow: 0 0 12px $light-gray;
-  box-shadow: 0 0 12px $light-gray;
-  font: 1.750em $kistt;
+  -moz-box-shadow: 0 0 12px $light-gray-color;
+  -webkit-box-shadow: 0 0 12px $light-gray-color;
+  box-shadow: 0 0 12px $light-gray-color;
+  font: 1.750em $serif-font;
   padding: 27px;
   z-index: 200;
   -webkit-transition: all 0.5s ease-in-out;
@@ -370,7 +153,7 @@ aside ul a li {
 
 
 aside a:hover {
-  color: $dark-green;
+  color: $dark-green-color;
 }
 
 aside > a {
@@ -452,10 +235,10 @@ product list
 
 .product_list figure {
   display: block;
-  border: 3px solid $white;
-  -moz-box-shadow: 0 0 12px $light-gray;
-  -webkit-box-shadow: 0 0 12px $light-gray;
-  box-shadow: 0 0 12px $light-gray;
+  border: 3px solid $white-color;
+  -moz-box-shadow: 0 0 12px $light-gray-color;
+  -webkit-box-shadow: 0 0 12px $light-gray-color;
+  box-shadow: 0 0 12px $light-gray-color;
   height: auto;
   overflow: hidden;
   position: relative;
@@ -513,7 +296,7 @@ figcaption:after {
   -ms-transform: rotate(15deg);
   -webkit-transform: rotate(15deg);
   -moz-transform: rotate(15deg);
-  background-color: $white;
+  background-color: $white-color;
   position: absolute;
   bottom: -105px;
   left: -36px;
@@ -545,7 +328,7 @@ cation rotation
   -ms-transform: rotate(-15deg);
   -webkit-transform: rotate(-15deg);
   -moz-transform: rotate(-15deg);
-  background-color: $white;
+  background-color: $white-color;
   position: absolute;
   bottom: -105px;
   left: -36px;
@@ -609,10 +392,10 @@ single product
 
 .product_wrapper > img {
   box-sizing: border-box;
-	border: 3px solid $white;
-	-moz-box-shadow: 0 0 12px $light-gray;
-	-webkit-box-shadow: 0 0 12px $light-gray;
-	box-shadow: 0 0 12px $light-gray;
+	border: 3px solid $white-color;
+	-moz-box-shadow: 0 0 12px $light-gray-color;
+	-webkit-box-shadow: 0 0 12px $light-gray-color;
+	box-shadow: 0 0 12px $light-gray-color;
 	width: 100%;
 	max-width: 100%;
 	height: auto;
@@ -662,10 +445,10 @@ single product
 	display: inline-block;
 	max-height: 70px;
 	max-height: 70px;
-	border: 3px solid $white;
-	-moz-box-shadow: 0 0 12px $light-gray;
-	-webkit-box-shadow: 0 0 12px $light-gray;
-	box-shadow: 0 0 12px $light-gray;
+	border: 3px solid $white-color;
+	-moz-box-shadow: 0 0 12px $light-gray-color;
+	-webkit-box-shadow: 0 0 12px $light-gray-color;
+	box-shadow: 0 0 12px $light-gray-color;
 }
 
 #thumbs li {
@@ -706,8 +489,8 @@ single product
 }
 
 .deets .button {
-  background-color: $dark-gray;
-  color: $white;
+  background-color: $dark-gray-color;
+  color: $white-color;
   margin: 20px 0 40px 0;
   display: inherit;
   width: 300px;
@@ -715,8 +498,8 @@ single product
 }
 
 .deets .button:hover {
-  background-color: $dark-green;
-  color: $white;
+  background-color: $dark-green-color;
+  color: $white-color;
 }
 
 .availability h2 {
@@ -730,11 +513,11 @@ single product
 	margin-top: 40px;
 	padding: 12px 15px;
 	text-align: left;
-	font: bold 0.750em $halisr;
+	font: bold 0.750em $sans-serif-font;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
-	border: 3px solid $dark-gray;
-	color: $dark-gray;
+	border: 3px solid $dark-gray-color;
+	color: $dark-gray-color;
 	outline: none;
 	-webkit-transition: all 0.3s ease-out;
 	-moz-transition: all 0.3s ease-out;
@@ -755,7 +538,7 @@ single product
     margin-top: -3px;
     border-width: 6px 6px 0 6px;
     border-style: solid;
-    border-color: $dark-gray transparent;
+    border-color: $dark-gray-color transparent;
 
 }
 
@@ -764,8 +547,8 @@ single product
     top: 27px;
     left: -3px;
     right: -3px;
-    background: $light-green;
-    border: 3px solid $dark-gray;
+    background: $light-green-color;
+    border: 3px solid $dark-gray-color;
     border-top: none;
     border-bottom: none;
     list-style: none;
@@ -782,10 +565,10 @@ single product
 .wrapper-dropdown .dropdown li {
     display: block;
     text-decoration: none;
-    color: $dark-gray;
+    color: $dark-gray-color;
     padding: 12px 15px;
     transition: all 0.3s ease-out;
-    border-bottom: 1px solid $white;
+    border-bottom: 1px solid $white-color;
 }
 
 .wrapper-dropdown .dropdown li:last-of-type {
@@ -795,41 +578,41 @@ single product
 
 
 .wrapper-dropdown .dropdown li:hover {
-    color: $dark-green;
+    color: $dark-green-color;
 }
 
 
 .wrapper-dropdown.active {
-    background: $dark-gray;
-    color: $white;
+    background: $dark-gray-color;
+    color: $white-color;
 }
 
 .wrapper-dropdown.active:after {
-    border-color: $white transparent;
+    border-color: $white-color transparent;
 }
 
 .wrapper-dropdown.active .dropdown {
-    border-bottom: 3px solid $dark-gray;
+    border-bottom: 3px solid $dark-gray-color;
 
 }
 
 .wrapper-dropdown:focus {
-    background: $dark-gray;
+    background: $dark-gray-color;
     border-bottom: none;
-    color: $white;
+    color: $white-color;
 }
 
 .wrapper-dropdown:focus:after {
-    border-color: $white transparent;
+    border-color: $white-color transparent;
 }
 
 .wrapper-dropdown:focus .dropdown {
-    border-bottom: 3px solid $dark-gray;
+    border-bottom: 3px solid $dark-gray-color;
     max-height: 900px;
 }
 
 #share_this {
-  font: 0.875em $kistt;
+  font: 0.875em $serif-font;
   font-style: italic;
 
 }
@@ -882,10 +665,10 @@ single product
 #more_products a {
 	margin: 20px 17px 0 0;
 	display: inline-block;
-	border: 3px solid $white;
-	-moz-box-shadow: 0 0 12px $light-gray;
-	-webkit-box-shadow: 0 0 12px $light-gray;
-	box-shadow: 0 0 12px $light-gray;
+	border: 3px solid $white-color;
+	-moz-box-shadow: 0 0 12px $light-gray-color;
+	-webkit-box-shadow: 0 0 12px $light-gray-color;
+	box-shadow: 0 0 12px $light-gray-color;
 }
 
 #more_products a:last-of-type {
@@ -915,7 +698,7 @@ cart
 }
 
 .cart_box {
-	border-bottom: 3px solid $dark-gray;
+	border-bottom: 3px solid $dark-gray-color;
 	padding: 40px 0;
 	width: 100%;
 }
@@ -934,7 +717,7 @@ div.cart_box:last-of-type {
 .close_overlay a {
 	display: inline-block;
 	background: url('../images/x_outs_sprite.png') no-repeat left top;
-	background-color: $white;
+	background-color: $white-color;
 	border-radius: 50%;
 	background-size: 60px;
 	width: 60px;
@@ -957,7 +740,7 @@ div.cart_box:last-of-type {
 
 .quantity input {
 	width: 100%;
-	border: 2px solid $dark-gray;
+	border: 2px solid $dark-gray-color;
 	padding: 5px 10px;
 	box-sizing:  border-box;
 	outline: none;
@@ -965,7 +748,7 @@ div.cart_box:last-of-type {
 
 .quantity span {
 
-	font: 0.750em $halisr;
+	font: 0.750em $sans-serif-font;
 }
 
 .cart_box ul li {
@@ -989,26 +772,26 @@ div.cart_box:last-of-type {
 }
 
 .cart_box .button {
-	background-color: $dark-gray;
-	color: $white;
+	background-color: $dark-gray-color;
+	color: $white-color;
 	float: right;
 	margin-top: 1.55%;
 }
 
 .cart_box .button:hover {
-  background-color: $dark-green;
-  color: $white;
+  background-color: $dark-green-color;
+  color: $white-color;
 }
 
 .cart_box .wrapper-dropdown {
 	float: left;
 	margin-top: 1.55%;
-	background-color: $white;
+	background-color: $white-color;
 }
 
 .cart_box .wrapper-dropdown.active {
-	color: $white;
-	background-color: $dark-gray;
+	color: $white-color;
+	background-color: $dark-gray-color;
 }
 
 #total {
@@ -1036,15 +819,15 @@ div.cart_box:last-of-type {
 }
 
 .cart_box .wrapper-dropdown .dropdown {
-    background-color: $white;
+    background-color: $white-color;
 }
 
 .cart_box .wrapper-dropdown .dropdown li {
-   border-bottom: 1px solid $dark-gray;
+   border-bottom: 1px solid $dark-gray-color;
 }
 
 .cart_box .wrapper-dropdown .dropdown li {
-   border-bottom: 1px solid $dark-gray;
+   border-bottom: 1px solid $dark-gray-color;
 }
 
 .cart_box .wrapper-dropdown .dropdown li:last-of-type {
@@ -1064,7 +847,7 @@ div.cart_box:last-of-type {
 }
 
 .wrapper hr {
-	background: $dark-gray;
+	background: $dark-gray-color;
 	margin: 100px 0;
 }
 
@@ -1105,15 +888,15 @@ contact page
 }
 
 .contact_form label {
-	font: bold 0.875em $halisr;
+	font: bold 0.875em $sans-serif-font;
 	text-transform: uppercase;
 	display: block;
 	margin-bottom: 10px;
 }
 
 .contact_form input {
-	background-color: $light-green;
-	border: 2px solid $dark-gray;
+	background-color: $light-green-color;
+	border: 2px solid $dark-gray-color;
 	width: 100%;
 	outline: none;
 	box-sizing:  border-box;
@@ -1122,10 +905,10 @@ contact page
 
 
 .contact_form textarea {
-	font: normal 0.875em $kistt;
+	font: normal 0.875em $serif-font;
 	letter-spacing: .2em;
-	background-color: $light-green;
-	border: 2px solid $dark-gray;
+	background-color: $light-green-color;
+	border: 2px solid $dark-gray-color;
 	width: 100%;
 	max-width: 100%;
 	height: 242px;
@@ -1153,9 +936,9 @@ contact page
 	padding: 14px 59px;
 	margin-top: 50px;
 	display: inline-block;
-	background-color: $dark-gray;
-	color: $white;
-	font: bold 1.125em $halisr;
+	background-color: $dark-gray-color;
+	color: $white-color;
+	font: bold 1.125em $sans-serif-font;
 }
 
 .contact_form li.grid_12 {
@@ -1173,7 +956,7 @@ footer
 
 
 footer {
-  background-color: $white;
+  background-color: $white-color;
   margin-top: 140px;
   padding: 90px 0;
 
@@ -1477,7 +1260,7 @@ Mediaqueries
 	.logo {
 		margin-top: 0;
 		position: fixed;
-		background-color: $light-green;
+		background-color: $light-green-color;
 		border-bottom: 3px solid #333;
 	}
 

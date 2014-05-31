@@ -1,0 +1,132 @@
+@import "mixins";
+
+a {
+  color: $dark-gray-color;
+  outline: none;
+  text-decoration: none;
+
+  &:hover {
+    filter: alpha(opacity=90);
+    opacity: .9;
+  }
+}
+
+body {
+  background-color: $light-green-color;
+  box-sizing: border-box;
+  color: $dark-gray-color;
+  height: 100%;
+  padding: 3px 0;
+
+  &:after, &:before {
+    border-top: 3px solid $dark-gray-color;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &:after { top: 0; }
+  &:before { bottom: 0; }
+
+  &#checkout, &#maintenance {
+    border-right: 3px solid $dark-gray-color;
+  }
+}
+
+h1, h4, h5 {
+  font-family: $sans-serif-font;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2, h3 { font-family: $serif-font; }
+h4, h5 { letter-spacing: .2em; }
+
+h1 {
+  font-size: 1.5em;
+  letter-spacing: .3em;
+}
+
+h2 { font-size: 1.75em; }
+h3 { font-size: 1em; }
+h4 { font-size: .875em; }
+h5 { font-size: 1.125em; }
+
+hr {
+  background: $white-color;
+  border: 0;
+  height: 3px;
+  margin-bottom: 28px;
+}
+
+html {
+  height: 100%;
+
+  &:before {
+    border-left: 3px solid $dark-gray-color;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    z-index: 100;
+  }
+}
+
+img { vertical-align: bottom; }
+
+p {
+  font: .875em $serif-font;
+  line-height: 24px;
+}
+
+span { font: 1em $serif-font; }
+
+ul {
+  padding: 0;
+
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+}
+
+#loading {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: $light-green-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.button {
+  border: 2px solid $dark-gray-color;
+  font: bold 0.750em $sans-serif-font;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.2em;
+  padding: 11px 23px;
+  outline: none;
+
+  &:hover {
+    border-color: $dark-green-color;
+    color: $dark-green-color;
+    outline: none;
+  }
+
+  &:active {
+    background-color: $dark-green-color;
+    color: $white-color;
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

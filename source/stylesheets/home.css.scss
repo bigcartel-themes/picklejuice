@@ -1,0 +1,28 @@
+body.home {
+  #minus_buffer { margin-top: 40px; }
+
+  #slideshow {
+    box-sizing: border-box;
+    height: 100% !important;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      bottom: 0;
+      min-height: 100%;
+      min-width: 100%;
+    }
+
+    a {
+      background: url('../images/slide_arrow.png') no-repeat left top;
+      background-size: 33px;
+      bottom: 55px;
+      height: 33px;
+      left: 50%;
+      overflow: hidden;
+      position: absolute;
+      text-indent: -999px;
+      width: 33px;
+    }
+  }
+}

@@ -21,7 +21,7 @@
   <div class="deets">
     <div id="thumbs">
       {% if product.images.size > 1 %}
-        <ul class="unstyled">
+        <ul>
           {% for image in product.images %}
             <li{% if forloop.first %} class="selected"{% endif %}><a href="{{ image | product_image_url }}"><img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}"></a></li>
           {% endfor %}
@@ -52,7 +52,7 @@
 
     <a id="more_button" href="#"></a>
 
-    <ul class="unstyled availability">
+    <ul class="availability">
       {% for option in product.options %}
         <li>
           {% unless product.has_default_option %} {% endunless %}

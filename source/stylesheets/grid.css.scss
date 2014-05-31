@@ -16,7 +16,7 @@
 
 .clearfix:after{
   clear: both;
-  content: ' ';
+  content: '';
   display: block;
   font-size: 0;
   height: 0;
@@ -44,18 +44,8 @@
 .grid_11 { width: 89.166667%; }  /* 1070px */
 .grid_12 { width: 97.5%; }       /* 1170px */
 
-.grid_1,
-.grid_2,
-.grid_3,
-.grid_4,
-.grid_5,
-.grid_6,
-.grid_7,
-.grid_8,
-.grid_9,
-.grid_10,
-.grid_11,
-.grid_12 {
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6,
+.grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {
   float: left;
   margin: .833333% 1.25%;
 }
