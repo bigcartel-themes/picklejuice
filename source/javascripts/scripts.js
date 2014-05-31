@@ -11,7 +11,7 @@ function changeImage(index) {
 }
 
 function closeDropdowns() {
-  $('.wrapper-dropdown').removeClass('active').find('dropdown').removeAttr('style');
+  $('.wrapper-dropdown').removeClass('active').find('.dropdown').removeAttr('style');
 }
 
 $(window).load(function() {
@@ -155,6 +155,23 @@ $(document).ready(function() {
     , $searchField = $searchBar.find('input[type="search"]')
     , $searchImg = $searchBar.find('img')
     , $selectBoxes = $('select');
+    
+	// Create custom select boxes
+	$selectBoxes.each(function(index, el) {
+		var $select = $(el)
+		, $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
+		$('<div>').text('Choose an option'),
+		$('<ul>', { class: 'dropdown' })
+		);
+	
+	$select.find('option:not([value=""])').each(function(index, el) {
+		$newSelect.find('ul').append(
+		$('<li>').text($(el).text())
+		);
+	});
+	
+	$(el).hide().before($newSelect);
+	});
 
   $searchButton.hide();
 

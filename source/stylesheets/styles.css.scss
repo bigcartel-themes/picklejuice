@@ -984,12 +984,29 @@ Mediaqueries
  		max-width: 1100px;
  	}
 
- 	.cart span {
+ 	
 
- 	}
+
+	/* ================================
+	- product page
+	==========================*/
+	
+	#more_products img {
+		max-width: 154px;
+
+	}
+	
+	.deets .button {
+		width: 275px;
+	
+	}
+	
+	.wrapper-dropdown {
+		width: 275px;
+		box-sizing: border-box;
+	}
 
 }
-
 
 @media screen and (max-width: 1160px) {
 
@@ -1108,6 +1125,26 @@ Mediaqueries
 			 z-index: -1;
 		 	}
 
+		/* ================================
+		- product page
+		==========================*/	
+				 	
+		 	
+	 	.deets .button {
+	 		width: 250px;
+	 	
+	 	}
+	 	
+	 	.wrapper-dropdown {
+	 		width: 250px;
+	 		
+	 	}
+	 	
+	 	#more_products img {
+	 			max-width: 138px;
+	 	
+	 		}
+
 }
 
 
@@ -1119,6 +1156,36 @@ Mediaqueries
 
 	.container {
 		max-width: 900px;
+	}
+	
+	
+	/* ================================
+	- product page
+	==========================*/
+	
+	.deets .button {
+		width: 225px;
+	
+	}
+	
+	.wrapper-dropdown {
+		width: 225px;
+		
+	} 
+	
+	#more_products hr {
+		width: 216px;
+		
+	}
+	
+	#more_products h4 {
+		left: 222px;
+		
+	}
+	
+	#more_products img {
+		max-width: 121px;
+		
 	}
 
 
@@ -1180,6 +1247,51 @@ Mediaqueries
 	.message h1 {
 		margin-top: 0;
 	}
+	
+	/* ================================
+	- product page
+	==========================*/
+	
+	#more_products {
+		display: none;
+	}
+	
+	.single_product {
+			width: 97.5%;
+			
+	}
+	
+	.deets {
+			width: 97.5%;
+		
+		}
+		
+	#thumbs li {
+		margin: 0 20px 40px 0;
+	}
+	
+	h2 {
+	font-size: 2.75em;
+	
+	}
+		
+	.wrapper-dropdown {
+		width: 100%;
+		text-align: center;
+		margin-top: 50px;
+	}
+	
+	.deets .button {
+		display: block;
+		width: 100%;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	
+	#share_this a {
+		font-size: 1.25em;
+		padding: 0 40px;
+	}
 
 }
 
@@ -1222,6 +1334,14 @@ Mediaqueries
 		visibility: hidden;
 		width: 0;
 
+	}
+	
+	/* ================================
+	- footer
+	==========================*/
+	
+	footer {
+		padding: 60px 0;
 	}
 
 }
@@ -1319,7 +1439,40 @@ Mediaqueries
 		padding: 20px 20px;
 
 	}
-
+	
+	
+	/* ================================
+	- product page
+	==========================*/
+	
+	.categories {
+		width: 91%;
+		margin-left: 25px;
+		margin-right: 25px;
+		
+	}
+	
+	#breadcrumbs {
+		width: 91%;
+		margin-left: 25px;
+		margin-right: 25px;
+	}
+	
+	.single_product {
+		width: 91%;
+		margin-left: 25px;
+		margin-right: 25px;
+		
+	}
+	
+	.deets {
+		width: 91%;
+		margin-left: 25px;
+		margin-right: 24px;
+		
+	}
+	
+	
 
 }
 
@@ -1398,6 +1551,18 @@ Mediaqueries
 		width: 100%;
 		margin-top: 40px;
 	}
+	
+	/* ================================
+	- product
+	==========================*/
+	
+	#share_this a {
+		font-size: 1.25em;
+		padding: 0 20px;
+	}
+	
+	
+	
 
 }
 
