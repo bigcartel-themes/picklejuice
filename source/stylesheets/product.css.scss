@@ -1,0 +1,208 @@
+@import "mixins";
+
+#next, #prev {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 100%;
+  top: 0;
+  white-space: nowrap;
+  width: 50%;
+
+  &:hover:after { content: ''; }
+
+  &:after {
+    background: url('../images/arrows_sprite.png') no-repeat;
+    background-size: 33px;
+    display: block;
+    height: 33px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+    width: 33px;
+  }
+}
+
+#breadcrumbs h4 { font-size: .625em; }
+
+#description {
+  height: 160px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: left;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+#more_button {
+  background: url('../images/more_deats.png') no-repeat left top;
+  background-size: 17px;
+  display: inline-block;
+  height: 17px;
+  margin-bottom: 50px;
+  overflow: hidden;
+  text-indent: -999px;
+  width: 17px;
+}
+
+#more_products {
+  position: relative;
+
+  a {
+    border: 3px solid $white-color;
+    -moz-box-shadow: 0 0 12px $light-gray-color;
+    -webkit-box-shadow: 0 0 12px $light-gray-color;
+    box-shadow: 0 0 12px $light-gray-color;
+    display: inline-block;
+    margin: 20px 17px 0 0;
+
+    &:last-of-type { margin-right: 0; }
+  }
+
+  h4 {
+    font-size: .750em;
+    left: 316px;
+    position: absolute;
+    top: -14px;
+  }
+
+  hr {
+    display: inline-block;
+    width: 301px;
+
+    &:last-of-type { float: right; }
+  }
+
+  img {
+    height: auto;
+    max-width: 170px;
+
+    &:hover {
+      -webkit-filter: blur(3px);
+      filter: blur(3px);
+      -o-filter: blur(3px);
+      -ms-filter: blur(3px);
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'3\'/></filter></svg>#svgBlur");
+      filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+      -webkit-transition: all .5s ease;
+      -moz-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+      transition: all .5s ease;
+    }
+  }
+}
+
+#next {
+  right: 0;
+
+  &:after { right: 15px; }
+}
+
+#prev {
+  left: 0;
+
+  &:after {
+    background-position: 0 -45px;
+    left: 15px;
+  }
+}
+
+#share_this {
+  font: .875em $serif-font;
+  font-style: italic;
+
+  a {
+    padding: 0 10px;
+    text-decoration: underline;
+  }
+}
+
+#thumbs {
+  a img:hover {
+    -webkit-filter: blur(1.5px);
+    filter: blur(1.5px);
+    -o-filter: blur(1.5px);
+    -ms-filter: blur(1.5px);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1.5\'/></filter></svg>#svgBlur");
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+
+  img {
+    max-height: 61px;
+    max-width: 61px;
+    min-height: 61px;
+    min-width: 61px;
+  }
+
+  li {
+    margin: 0 6px 10px 0;
+
+  &:nth-child(4n) { margin-right: 0px; }
+
+    a  {
+      border: 3px solid $white-color;
+      -moz-box-shadow: 0 0 12px $light-gray-color;
+      -webkit-box-shadow: 0 0 12px $light-gray-color;
+      box-shadow: 0 0 12px $light-gray-color;
+      display: inline-block;
+      max-height: 70px;
+      max-height: 70px;
+    }
+  }
+
+  ul { margin-top: 0; }
+}
+
+.availability h2 { margin: 0; }
+
+.details {
+  float: right;
+  margin-right: 1.25%;
+  margin-top: 10px;
+  text-align: center;
+  width: 25%;
+
+  .button {
+    background-color: $dark-gray-color;
+    color: $white-color;
+    display: inherit;
+    height: 47px;
+    margin: 20px 0 40px 0;
+    width: 300px;
+
+    &:hover {
+      background-color: $dark-green-color;
+      color: $white-color;
+    }
+  }
+}
+
+.more_details { height: auto !important; }
+
+.product_wrapper {
+  margin-bottom: 100px;
+  position: relative;
+
+  > img {
+    border: 3px solid $white-color;
+    -moz-box-shadow: 0 0 12px $light-gray-color;
+    -webkit-box-shadow: 0 0 12px $light-gray-color;
+    box-shadow: 0 0 12px $light-gray-color;
+    box-sizing: border-box;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.single_product { float: left; }

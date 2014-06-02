@@ -20,7 +20,10 @@
  *
  *= require_directory ./stylesheets/vendor
  *= require stylesheets/grid
- *= require stylesheets/global
+ *= require stylesheets/layout
+ *= require stylesheets/cart
+ *= require stylesheets/contact
  *= require stylesheets/home
- *= require stylesheets/styles
+ *= require stylesheets/product
+ *= require stylesheets/products
  */

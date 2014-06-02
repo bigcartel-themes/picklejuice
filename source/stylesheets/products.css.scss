@@ -1,0 +1,112 @@
+@import "mixins";
+
+.product_list {
+  min-height: 700px;
+
+  figure {
+    border: 3px solid $white-color;
+    -moz-box-shadow: 0 0 12px $light-gray-color;
+    -webkit-box-shadow: 0 0 12px $light-gray-color;
+    box-shadow: 0 0 12px $light-gray-color;
+    display: block;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      figcaption { bottom: 0; }
+
+      img {
+        filter: blur(9px);
+        -o-filter: blur(9px);
+        -ms-filter: blur(9px);
+        -moz-filter: blur(9px);
+        filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='9');
+        -webkit-filter: blur(9px);
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'9\'/></filter></svg>#svgBlur");
+      }
+    }
+
+    img {
+      height: auto;
+      max-width: 100%;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+      transition: all .2s ease;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  figcaption {
+    bottom: -176px;
+    display: inline-block;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+    width: 100%;
+    z-index: 1;
+
+    &:after {
+      background-color: $white-color;
+      bottom: -105px;
+      content: '';
+      height: 200px;
+      left: -36px;
+      padding: 20px;
+      position: absolute;
+      -ms-transform: rotate(15deg);
+      -webkit-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      transform: rotate(15deg);
+      width: 100%;
+      z-index: -1;
+    }
+
+    h4 {
+      margin-bottom: 5px;
+      max-width: 228px;
+    }
+  }
+
+  li {
+    &:nth-child(4n):after {
+      clear: both;
+      content: '';
+      display: inline-block;
+      font-size: 0;
+      height: 0;
+      line-height: 0;
+      visibility: hidden;
+      width: 0;
+    }
+
+    &:nth-child(even) figcaption:after {
+      background-color: $white-color;
+      bottom: -105px;
+      content: '';
+      height: 200px;
+      left: -36px;
+      padding: 20px;
+      position: absolute;
+      -ms-transform: rotate(-15deg);
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+      width: 100%;
+      z-index: -1;
+    }
+  }
+}
+
+#load_more {
+  margin-top: 5%;
+  text-align: center;
+}

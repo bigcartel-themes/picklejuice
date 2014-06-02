@@ -1,5 +1,3 @@
-$('body').append($('<div>', { id: 'loading' }));
-
 function changeImage(index) {
   var $allThumbs = $('#thumbs ul li')
     , $newSelection = $allThumbs.eq(index % $allThumbs.length);
@@ -14,6 +12,28 @@ function closeDropdowns() {
   $('.wrapper-dropdown').removeClass('active').find('.dropdown').removeAttr('style');
 }
 
+function renderCustomDropdowns($element, callback) {
+  var $selectBoxes = $element.find('select:not("[data-rendered]")');
+
+  $selectBoxes.each(function(index, el) {
+    var $select = $(el)
+      , $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
+        $('<div>').text('Choose an option'),
+        $('<ul>', { class: 'dropdown' })
+      );
+
+    $select.find('option:not([value=""])').each(function(index, el) {
+      $newSelect.find('ul').append(
+        $('<li>').text($(el).text())
+      );
+    });
+
+    $select.attr('data-rendered', 'data-rendered').hide().before($newSelect);
+  });
+
+  if (callback) { callback() };
+}
+
 $(window).load(function() {
   $('#loading').fadeOut(1500, function() {
     $(this).remove();
@@ -22,6 +42,8 @@ $(window).load(function() {
 
 $(document).ready(function() {
   var $document = $(this);
+
+  renderCustomDropdowns($('body'));
 
   // Initialize slider on homepage
   $('.example1').wmuSlider({
@@ -43,7 +65,7 @@ $(document).ready(function() {
   }).on('click', '#more_button', function(e) {
     e.preventDefault();
 
-    $('#description').toggleClass('more_deets');
+    $('#description').toggleClass('more-details');
 
   // Show more products
   }).on('click', '.more', function(e) {
@@ -105,8 +127,15 @@ $(document).ready(function() {
 
     var $overlay = $('<div>', { class: 'overlay' });
 
-    $overlay.load($(this).attr('href') + ' .wrapper').fadeIn();
+    $overlay.load($(this).attr('href') + ' .cart-wrapper');
+
     $('body > footer').before($overlay);
+
+    setTimeout(function() {
+      renderCustomDropdowns($overlay, function() {
+        $overlay.fadeIn();
+      });
+    }, 50);
 
   // Close and remove overlays
   }).on('click', '.close_overlay', function(e) {
@@ -153,25 +182,7 @@ $(document).ready(function() {
   var $searchBar = $('.search_bar')
     , $searchButton = $searchBar.find('input[type="submit"]')
     , $searchField = $searchBar.find('input[type="search"]')
-    , $searchImg = $searchBar.find('img')
-    , $selectBoxes = $('select');
-    
-	// Create custom select boxes
-	$selectBoxes.each(function(index, el) {
-		var $select = $(el)
-		, $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
-		$('<div>').text('Choose an option'),
-		$('<ul>', { class: 'dropdown' })
-		);
-	
-	$select.find('option:not([value=""])').each(function(index, el) {
-		$newSelect.find('ul').append(
-		$('<li>').text($(el).text())
-		);
-	});
-	
-	$(el).hide().before($newSelect);
-	});
+    , $searchImg = $searchBar.find('img');
 
   $searchButton.hide();
 

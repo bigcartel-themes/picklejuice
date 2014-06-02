@@ -1,0 +1,64 @@
+@import "mixins";
+
+.contact_form {
+  position: relative;
+
+  div {
+    float: right;
+    max-height: 42px;
+    overflow: hidden;
+
+    + input {
+      display: inline-block;
+      float: left;
+      margin-right: 20px;
+      width: 60%;
+    }
+  }
+
+  h1 {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  input {
+    background-color: $light-green-color;
+    border: 2px solid $dark-gray-color;
+    box-sizing:  border-box;
+    outline: none;
+    padding: 10px 15px;
+    width: 100%;
+  }
+
+  label {
+    display: block;
+    font: bold .875em $sans-serif-font;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  li.grid_12 { text-align: center; }
+
+  textarea {
+    background-color: $light-green-color;
+    border: 2px solid $dark-gray-color;
+    box-sizing:  border-box;
+    font: normal .875em $serif-font;
+    height: 242px;
+    letter-spacing: .2em;
+    max-height: 242px;
+    max-width: 100%;
+    outline: none;
+    padding: 10px 15px;
+    width: 100%;
+  }
+
+  .button {
+    background-color: $dark-gray-color;
+    color: $white-color;
+    display: inline-block;
+    font: bold 1.125em $sans-serif-font;
+    margin-top: 50px;
+    padding: 14px 59px;
+  }
+}

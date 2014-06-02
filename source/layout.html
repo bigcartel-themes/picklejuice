@@ -71,10 +71,21 @@
       </div>
 
       <div id="social_icons">
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-        <a href="#">Instagram</a>
-        <a href="#">Pintress</a>
+        {% if theme.facebook_username %}
+          <a class="facebook" href="https://facebook.com/{{ theme.facebook_username }}">Facebook</a>
+        {% endif %}
+
+        {% if theme.twitter_username %}
+          <a class="twitter" href="https://twitter.com/{{ theme.twitter_username }}">Twitter</a>
+        {% endif %}
+
+        {% if theme.instagram_username %}
+          <a class="instagram" href="https://instagram.com/{{ theme.instagram_username }}">Instagram</a>
+        {% endif %}
+
+        {% if theme.pinterest_username %}
+          <a class="pinterest" href="https://pinterest.com/{{ theme.pinterest_username }}">Pinterest</a>
+        {% endif %}
       </div>
     </aside>
 
@@ -104,6 +115,8 @@
         </div>
       </div>
     </footer>
+
+    <div id="loading"></div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ theme | theme_js_url }}"></script>

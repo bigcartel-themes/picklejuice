@@ -74,10 +74,28 @@
       "description": "The number of products shown per page"
     },
     {
+      "variable": "facebook_username",
+      "label": "Facebook username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
       "variable": "twitter_username",
       "label": "Twitter username",
       "type": "text",
-      "description": "Ex: @bigcartel"
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "instagram_username",
+      "label": "Instagram username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "pinterest_username",
+      "label": "Pinterest username",
+      "type": "text",
+      "description": "Ex: bigcartel"
     }
   ]
 }
