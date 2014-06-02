@@ -46,47 +46,45 @@
     <aside>
       <a href="#">Menu</a>
 
-      <div>
-        {% if artists.active != blank %}
-          <ul>
-            <li><a href="/products">All</a></li>
-
-            {% for artist in artists.active %}
-              <li>{{ artist | link_to }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
+      {% if artists.active != blank %}
         <ul>
-          {% for page in pages.all %}
-            <li>{{ page | link_to }}</li>
+          <li><a href="/products">All</a></li>
+
+          {% for artist in artists.active %}
+            <li>{{ artist | link_to }}</li>
           {% endfor %}
-
-          <li><a href="/contact">Contact Us</a></li>
-
-          {% if store.website != blank %}
-            <li><a href="{{ store.website }}">Back to Site</a></li>
-          {% endif %}
         </ul>
-      </div>
+      {% endif %}
 
-      <div id="social_icons">
+      <ul>
+        {% for page in pages.all %}
+          <li>{{ page | link_to }}</li>
+        {% endfor %}
+
+        <li><a href="/contact">Contact Us</a></li>
+
+        {% if store.website != blank %}
+          <li><a href="{{ store.website }}">Back to Site</a></li>
+        {% endif %}
+      </ul>
+
+      <ul class="social">
         {% if theme.facebook_username %}
-          <a class="facebook" href="https://facebook.com/{{ theme.facebook_username }}">Facebook</a>
+          <li><a class="facebook" href="https://facebook.com/{{ theme.facebook_username }}">Facebook</a></li>
         {% endif %}
 
         {% if theme.twitter_username %}
-          <a class="twitter" href="https://twitter.com/{{ theme.twitter_username }}">Twitter</a>
+          <li><a class="twitter" href="https://twitter.com/{{ theme.twitter_username }}">Twitter</a></li>
         {% endif %}
 
         {% if theme.instagram_username %}
-          <a class="instagram" href="https://instagram.com/{{ theme.instagram_username }}">Instagram</a>
+          <li><a class="instagram" href="https://instagram.com/{{ theme.instagram_username }}">Instagram</a></li>
         {% endif %}
 
         {% if theme.pinterest_username %}
-          <a class="pinterest" href="https://pinterest.com/{{ theme.pinterest_username }}">Pinterest</a>
+          <li><a class="pinterest" href="https://pinterest.com/{{ theme.pinterest_username }}">Pinterest</a></li>
         {% endif %}
-      </div>
+      </ul>
     </aside>
 
     <section class="content">
@@ -101,18 +99,37 @@
       {% endif %}
 
       {% if page.category == 'custom' %}
-        {{ page_content | paragraphs }}
+        <div class="container clearfix">
+          <div class="grid_12 categories">
+            <ul>
+              {% for category in categories.active %}
+                <li>{{ category | link_to }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="container clearfix">
+          <div class="grid_12" id="breadcrumbs">
+            <hr>
+            <h4>
+              <a href="/" title="store home">Home</a>
+              {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
+              <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
+            </h4>
+          </div>
+
+          <div class="grid_12">{{ page_content | paragraphs }}</div>
+        </div>
       {% else %}
         {{ page_content }}
       {% endif %}
     </section>
 
     <footer>
-      <div class="container clearfix">
-        <div class="push_1">
-          <span>&copy; {{ 'Today' | date: "%Y" }} {{ store.name }}</span>
-          <span>{{ bigcartel_credit }}</span>
-        </div>
+      <div class="container">
+        <p>&copy; {{ 'Today' | date: '%Y' }} {{ store.name }}</p>
+        <p>{{ bigcartel_credit}}</p>
       </div>
     </footer>
 

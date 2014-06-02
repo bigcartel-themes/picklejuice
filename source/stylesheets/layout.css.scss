@@ -12,7 +12,7 @@ a {
 }
 
 body {
-  background-color: $light-green-color;
+  background-color: $white-color;
   box-sizing: border-box;
   color: $dark-gray-color;
   height: 100%;
@@ -223,7 +223,7 @@ ul {
 .categories {
   font: 1em $serif-font;
   text-align: center;
-  margin-top: 180px;
+  margin-top: 120px;
 
   a:hover { color: $dark-green-color; }
 
@@ -321,6 +321,11 @@ header {
   }
 }
 
+section.content {
+  background: $light-green-color;
+  padding-bottom: 140px;
+}
+
 aside {
   background-color: rgba(255, 255, 255, .9);
   -moz-box-shadow: 0 0 12px $light-gray-color;
@@ -356,38 +361,43 @@ aside {
 
   a:hover { color: $dark-green-color; }
 
-  ul a {
+  li {
     display: block;
-
-    li {
-      display: block;
-      padding: 5px 0;
-    }
+    padding: 5px 0;
   }
 
-  #social_icons a {
-    background: url('../images/social_sprite.png') no-repeat left top;
-    background-size: 24px;
-    display: inline-block;
-    height: 24px;
-    overflow: hidden;
-    padding: 0 4px;
-    text-indent: -999px;
-    width: 24px;
+  .social {
+    a {
+      @include image-replacement("../images/social-sprite.png", 24px, 24px);
+      background-size: 24px 138px;
 
-    &.twitter { background-position: 0 -38px; }
-    &.instagram { background-position: 0 -76px; }
-    &.pinterest { background-position: 0 -114px; }
+      &.twitter { background-position: 0 -38px; }
+      &.instagram { background-position: 0 -76px; }
+      &.pinterest { background-position: 0 -114px; }
+    }
+
+    li {
+      display: inline-block;
+      padding: 0;
+
+      + li { margin-left: 4px; }
+    }
   }
 }
 
 footer {
-  background-color: $white-color;
-  margin-top: 140px;
+  overflow: hidden;
   padding: 90px 0;
 
-  span:nth-of-type(2) {
-    float: right;
-    margin-right: 8.333333%;
+  .container {
+    box-sizing: border-box;
+    padding: 0 1.25%;
+  }
+
+  p {
+    margin: 0;
+    text-align: right;
+
+    &:first-child { float: left; }
   }
 }

@@ -1,3 +1,13 @@
+<div class="container clearfix">
+  <div class="grid_12 categories">
+    <ul>
+      {% for category in categories.active %}
+        <li>{{ category | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
 {% if contact.sent %}
   <div class="container clearfix contact_form">
     <h1>Your message has been sent and we&rsquo;ll get back to you soon.</h1>
@@ -6,7 +16,11 @@
   <form method="post" action="/contact" class="container clearfix">
     <div class="grid_12" id="breadcrumbs">
       <hr>
-      <h4>Home / For The Kitchen</h4>
+      <h4>
+        <a href="/" title="store home">Home</a>
+        {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
+        <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
+      </h4>
     </div>
 
     <ul class="contact_form">
@@ -30,7 +44,7 @@
         {{ contact | contact_input: 'message' }}
       </li>
 
-      <li class="grid_4 push_3">
+      <li class="grid_6 push_3">
         <label for="captcha">Spam check</label>
         <div>{{ contact.captcha }}</div>
         {{ contact | contact_input: 'captcha' }}

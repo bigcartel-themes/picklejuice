@@ -12,7 +12,7 @@
   <div class="container clearfix">
     <div class="product_list">
       {% if products != blank %}
-        <ul>
+        <ul class="clearfix">
           {% for product in products %}
             <li class="grid_3">
               <a href="{{ product.url }}">

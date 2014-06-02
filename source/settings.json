@@ -39,14 +39,14 @@
   ],
   "colors": [
     {
-      "variable": "background_color",
-      "label": "Background",
-      "default": "#FAFAFA"
+      "variable": "primary_color",
+      "label": "Primary Color",
+      "default": "#dbf1da"
     },
     {
-      "variable": "text_color",
-      "label": "Text Color",
-      "default": "#222222"
+      "variable": "secondary_color",
+      "label": "Secondary Color",
+      "default": "#5fb252"
     }
   ],
   "options": [
