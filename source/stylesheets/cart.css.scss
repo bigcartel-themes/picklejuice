@@ -104,8 +104,8 @@
     float: right;
     margin-right: 0;
 
-    a {
-      background: $white-color url('../images/x_outs_sprite.png') no-repeat left top;
+    a {																	
+      background: $white-color url({{ "x_outs_sprite.png" | theme_image_url }}) no-repeat left top;
       background-size: 60px;
       border-radius: 50%;
       display: inline-block;
@@ -142,7 +142,7 @@
   }
 
   .remove {
-    background: url('../images/x_outs_sprite.png') -20px -66px no-repeat;
+    background: url({{ "x_outs_sprite.png" | theme_image_url }}) -20px -66px no-repeat;
     background-size: 60px;
     display: inline-block;
     height: 20px;

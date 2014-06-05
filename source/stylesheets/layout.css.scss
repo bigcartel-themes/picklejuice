@@ -225,9 +225,11 @@ ul {
   text-align: center;
   margin-top: 120px;
 
-  a:hover { color: $dark-green-color; }
-
   li { padding: 0 8px; }
+}
+
+.current a {
+	color: $dark-green-color;
 }
 
 body {
@@ -261,8 +263,8 @@ header {
     text-align: center;
     width: 60px;
 
-    a {
-      background: url(../images/cart_icon.png) top center no-repeat;
+    a {								
+      background: url({{ "cart_icon.png" | theme_image_url }}) top center no-repeat;
       background-size: contain;
       display: block;
       padding-top: 70px;
@@ -285,8 +287,8 @@ header {
     padding-top: 10px;
     width: 244px;
 
-    input[type="search"] {
-      background: rgba(255, 255, 255, .0) url(../images/search_icon.png) 12px 2px no-repeat;
+    input[type="search"] {												
+      background: rgba(255, 255, 255, .0) url({{ "search_icon.png" | theme_image_url }}) 12px 2px no-repeat;
       background-size: 28px 15px;
       border: none;
       box-shadow: none;
@@ -310,6 +312,7 @@ header {
       text-transform: uppercase;
       text-align: center;
       width: 44px;
+      
     }
   }
 
@@ -318,7 +321,13 @@ header {
     height: 38px;
     padding-top: 0px;
     width: 240px;
+    
+    input[type="search"] {
+    	background-position: 10px 1px;
   }
+ } 
+  
+  
 }
 
 section.content {
@@ -348,7 +357,7 @@ aside {
   &.expand { right: 0; }
 
   > a {
-    background: url('../images/hamburger.png') no-repeat left top;
+    background: url({{ "hamburger.png" | theme_image_url }}) no-repeat left top;
     background-size: 20px;
     height: 14px;
     left: -10px;
@@ -367,8 +376,8 @@ aside {
   }
 
   .social {
-    a {
-      @include image-replacement("../images/social-sprite.png", 24px, 24px);
+    a {									
+      @include image-replacement(url({{ "social-sprite.png" | theme_image_url }}), 24px, 24px);
       background-size: 24px 138px;
 
       &.twitter { background-position: 0 -38px; }

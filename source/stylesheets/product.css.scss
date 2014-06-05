@@ -12,8 +12,8 @@
 
   &:hover:after { content: ''; }
 
-  &:after {
-    background: url('../images/arrows_sprite.png') no-repeat;
+  &:after {			
+    background: url({{ "arrows_sprite.png" | theme_image_url }}) no-repeat;
     background-size: 33px;
     display: block;
     height: 33px;
@@ -27,9 +27,7 @@
 #breadcrumbs h4 { font-size: .625em; }
 
 #description {
-  height: 160px;
   margin-bottom: 20px;
-  overflow: hidden;
   text-align: left;
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
@@ -38,8 +36,12 @@
   transition: all .5s ease;
 }
 
-#more_button {
-  background: url('../images/more_deats.png') no-repeat left top;
+#description a {
+	color: $dark-green-color;
+}
+
+#more_button {  
+  background: url({{ "more_deats.png" | theme_image_url }}) no-repeat left top;
   background-size: 17px;
   display: inline-block;
   height: 17px;

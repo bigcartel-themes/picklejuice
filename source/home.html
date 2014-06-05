@@ -1,15 +1,15 @@
 <section class="wmuSlider example1" id="slideshow">
   <div class="wmuSliderWrapper">
     <article>
-      <img src="/images/slideshow_test.jpg" alt="">
+      <img src="{{ 'slideshow_test.jpg' | theme_image_url }}" alt="">
     </article>
 
     <article>
-      <img src="/images/slideshow_test2.jpg" alt="">
+      <img src="{{ 'slideshow_test2.jpg' | theme_image_url }}" alt="">
     </article>
 
     <article>
-      <img src="/images/slideshow_test3.jpg" alt="">
+      <img src="{{ 'slideshow_test3.jpg' | theme_image_url }}" alt="">
     </article>
   </div>
 
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-{% paginate products from products.current by 20 theme.products_per_page %}
+{% paginate products from products.current by theme.products_per_page %}
   <div class="container clearfix">
     <div class="product_list">
       {% if products != blank %}
@@ -48,8 +48,9 @@
         </ul>
 
       {% else %}
-        <p>No products found.</p>
+        <p class="alert">No products found.</p>
       {% endif %}
+      
     </div>
   </div>
 

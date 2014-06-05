@@ -63,7 +63,7 @@
 
     <div id="description" class="less-details">
       {% if product.description != blank %}
-        <p>{{ product.description | paragraph }}</p>
+        <p class="truncate">{{ product.description | paragraph }}</p>
       {% endif %}
     </div>
 

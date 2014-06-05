@@ -16,4 +16,5 @@
 // also including jQuery in our layout.html from Google so that it can be better cached by users.
 //
 //= require_directory ./javascripts/vendor
+
 //= require javascripts/scripts

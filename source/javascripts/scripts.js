@@ -80,6 +80,7 @@ $(document).ready(function() {
       var products = $(response).find('.product_list li');
 
       $('.product_list ul').append(products.fadeIn());
+      
     });
 
     if (nextPage == totalPages) {
@@ -87,6 +88,10 @@ $(document).ready(function() {
     } else {
       $button.attr('href', $button.attr('href').replace(/page=\d+/, 'page=' + (nextPage + 1)));
       $button.attr('data-current-page', nextPage);
+    }
+    
+    if(('.product_list').html() == '') {
+    	$('#load_more').hide();
     }
 
   // Remove product from cart
@@ -191,16 +196,28 @@ $(document).ready(function() {
     $searchBar.addClass('search_bar_border');
     $searchImg.addClass('imgAdd');
   });
+  
+  $searchField.on('focusout', function() {
+    $searchButton.hide();
+    $searchBar.removeClass('search_bar_border');
+    $searchImg.removeClass('imgAdd');
+  });
 
   $searchButton.on('click', function() {
     $searchButton.hide();
     $searchBar.removeClass('search_bar_border');
     $searchImg.removeClass('imgAdd');
   });
-
+  
   $searchField.on('focus', function() {
     if (this.value == 'Search Products...') {
       this.value = '';
+    }
+  });
+  
+  $searchField.on('focusout', function() {
+    if (this.value == '') {
+      this.value = 'Search Products...';
     }
   });
 
@@ -218,5 +235,14 @@ $(document).ready(function() {
 			}
 			});
 		});
+		
+		
+		$(function() {
+		        $(".categories a").each(function(){
+		            if ($(this).attr("href") == window.location.pathname) {
+		                $(this).parent().addClass("current");
+		            }
+		        });
+		    });
 
 });

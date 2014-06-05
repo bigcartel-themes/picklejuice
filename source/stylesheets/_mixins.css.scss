@@ -2,9 +2,9 @@
 $black-color:       #000;
 $white-color:       #fff;
 $dark-gray-color:   #333;
-$dark-green-color:  {{ theme.secondary_color }};
+$dark-green-color:  #{'{{ theme.secondary_color }}'};
 $light-gray-color:  #ccc;
-$light-green-color: {{ theme.primary_color }};
+$light-green-color: #{'{{ theme.primary_color }}'};
 
 // Fonts
 $fallback-fonts:    "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
