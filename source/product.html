@@ -20,8 +20,11 @@
 
   <div class="grid_8 single_product">
     <div class="product_wrapper">
-      <a href="#" id="next">next</a>
-      <a href="#" id="prev">prev</a>
+      {% if product.images.size > 1 %}
+        <a href="#" id="next">next</a>
+        <a href="#" id="prev">prev</a>
+      {% endif %}
+
       <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image">
     </div>
 
