@@ -109,17 +109,22 @@ $(document).ready(function() {
 
     var $dropdown = $(this);
 
-    $dropdown.addClass('active');
-    $dropdown.find('.dropdown').css({ maxHeight: 210 });
+    if ($dropdown.hasClass('active')) {
+      $dropdown.removeClass('active');
+      $dropdown.find('.dropdown').removeAttr('style');
+    } else {
+      $dropdown.addClass('active');
+      $dropdown.find('.dropdown').css({ maxHeight: 210 });
+    }
 
   // Make a selection in custom select box
   }).on('click', '.dropdown li', function(e) {
     e.stopPropagation();
 
     var $selection = $(this)
-      , $dropdown = $selection.closest('wrapper-dropdown')
+      , $dropdown = $selection.closest('.wrapper-dropdown')
       , $selectBox = $dropdown.next('select')
-      , $selectedOption = $selectBox.children().eq($selection.index());
+      , $selectedOption = $selectBox.children().filter('option:not([value=""])').eq($selection.index());
 
     $dropdown.find('div').text($selectedOption.text());
     $selectBox.val($selectedOption.attr('value'));
