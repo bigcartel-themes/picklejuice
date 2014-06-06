@@ -1,6 +1,6 @@
 <div class="cart-wrapper">
   {% if cart.items != blank %}
-    <form method="post" action="/cart">
+    <form method="post" action="/cart" id="cart_form">
       <div class="container clearfix">
         <div class="close_overlay">
           <a href="#">Close</a>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="close">
-              <a href="#" class="remove">&times;</a>
+              <a href="#" class="remove" data-item-id="{{ item.id }}">&times;</a>
             </div>
           </li>
         {% endfor %}
