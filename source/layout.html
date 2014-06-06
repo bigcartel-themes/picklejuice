@@ -39,7 +39,7 @@
         </div>
 
         <div class="cart">
-          <a href="/cart" data-overlay="cart">
+          <a href="/cart" data-show-cart="data-show-cart">
             <span>{{ cart.total | money_with_sign }}</span>
           </a>
         </div>
@@ -137,8 +137,9 @@
     </footer>
 
     <div id="loading"></div>
-		
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script src="{{ theme | theme_js_url }}"></script>
   </body>
 </html>

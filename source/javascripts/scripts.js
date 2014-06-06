@@ -34,6 +34,20 @@ function renderCustomDropdowns($element, callback) {
   if (callback) { callback() };
 }
 
+function showCart() {
+  var $overlay = $('<div>', { class: 'overlay' });
+
+  $overlay.load('/cart' + ' .cart-wrapper');
+
+  $('body > footer').before($overlay);
+
+  setTimeout(function() {
+    renderCustomDropdowns($overlay, function() {
+      $overlay.fadeIn();
+    });
+  }, 50);
+}
+
 $(window).load(function() {
   $('#loading').fadeOut(1500, function() {
     $(this).remove();
@@ -127,21 +141,11 @@ $(document).ready(function() {
 
     closeDropdowns();
 
-  // Over link in overlay
-  }).on('click', '[data-overlay]', function(e) {
+  // Show cart.
+  }).on('click', '[data-show-cart]', function(e) {
     e.preventDefault();
 
-    var $overlay = $('<div>', { class: 'overlay' });
-
-    $overlay.load($(this).attr('href') + ' .cart-wrapper');
-
-    $('body > footer').before($overlay);
-
-    setTimeout(function() {
-      renderCustomDropdowns($overlay, function() {
-        $overlay.fadeIn();
-      });
-    }, 50);
+    showCart();
 
   // Close and remove overlays
   }).on('click', '.close_overlay', function(e) {
@@ -170,6 +174,18 @@ $(document).ready(function() {
     }
 
     changeImage(currentIndex);
+  }).on('click', '[data-add-to-cart]', function(e) {
+    e.preventDefault();
+
+    var $button = $(this)
+      , $productInput = $(this).prev('input, select');
+
+    Cart.addItem($productInput.val());
+    Cart.refresh(function(cart) {
+      $('.cart a > span').html(Format.money(cart.subtotal, true, true));
+    });
+
+    showCart();
   })
 });
 
