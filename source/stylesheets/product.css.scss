@@ -45,7 +45,16 @@
   background-size: 17px;
   display: inline-block;
   height: 17px;
-  margin-bottom: 50px;
+  overflow: hidden;
+  text-indent: -999px;
+  width: 17px;
+}
+
+#more_button.less_button {  
+  background: url({{ "less_deats.png" | theme_image_url }}) no-repeat left top;
+  background-size: 17px;
+  display: inline-block;
+  height: 17px;
   overflow: hidden;
   text-indent: -999px;
   width: 17px;
@@ -126,12 +135,12 @@
 
 #thumbs {
   a img:hover {
-    -webkit-filter: blur(1.5px);
-    filter: blur(1.5px);
-    -o-filter: blur(1.5px);
-    -ms-filter: blur(1.5px);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1.5\'/></filter></svg>#svgBlur");
-    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1\'/></filter></svg>#svgBlur");
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1');
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
@@ -187,6 +196,10 @@
       color: $white-color;
     }
   }
+}
+
+.details hr {
+	margin-top: 40px;
 }
 
 .more_details { height: auto !important; }

@@ -47,7 +47,6 @@
 
     &:last-of-type {
       border: none;
-      padding: 0;
     }
 
     h5 { margin-top: 0; }
@@ -111,7 +110,7 @@
       display: inline-block;
       float: right;
       height: 60px;
-      margin: 23px 15px 0 0;
+      margin-top: 14px;
       overflow: hidden;
       text-indent: -999px;
       width: 60px;
@@ -121,7 +120,11 @@
   .message {
     min-height: 700px;
     text-align: center;
-
+    
+		hr {
+			margin: 80px 0;
+		}
+		
     .button {
       display: inline-block;
       margin-top: 25px;

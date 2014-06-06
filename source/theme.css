@@ -26,5 +26,6 @@
  *= require stylesheets/home
  *= require stylesheets/product
  *= require stylesheets/products
+ *= require stylesheets/success
  *= require stylesheets/media_queries
  */

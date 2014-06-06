@@ -71,7 +71,7 @@
     </div>
 
     <a id="more_button" href="#"></a>
-
+		<hr>
     {% if product.status == 'active' %}
       {% if cart.discount.enabled %}
         <div id="cart_discount" class="clearfix">
@@ -89,7 +89,7 @@
           {% endif %}
         </div>
       {% endif %}
-
+			
       {% if cart.shipping.enabled %}
         <div id="cart_shipping" class="clearfix">
           <h2>Shipping:</h2>
@@ -99,7 +99,7 @@
         </div>
       {% endif %}
 
-      <hr>
+      
 
       <form method="post" action="/cart">
         {% if product.has_default_option %}
