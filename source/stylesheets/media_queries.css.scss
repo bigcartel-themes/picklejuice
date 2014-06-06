@@ -241,17 +241,18 @@
 
 	.wmuSlider { display: none; }
 
-	.home #minus_buffer { margin-top: 130px; }
+	.home #minus_buffer { margin-top: 20px; }
 
-	.categories { margin-top: 130px; }
+	.categories { margin-top: 20px; }
 
-	header { padding: 0px 0 15px 0; }
+	header { padding: 0px 0 15px 0; position: static; }
 
 	header .logo {
 		margin-top: 0;
 		position: fixed;
 		background-color: $light-green-color;
 		border-bottom: 3px solid #333;
+		z-index: 100;
 	}
 
 	header .logo h1 {
@@ -284,6 +285,7 @@
 		right: 0px;
 		position: fixed
 	}
+	
 
 	.expand {
 	  right: 0;
