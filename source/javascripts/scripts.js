@@ -89,10 +89,6 @@ $(document).ready(function() {
       $button.attr('href', $button.attr('href').replace(/page=\d+/, 'page=' + (nextPage + 1)));
       $button.attr('data-current-page', nextPage);
     }
-    
-    if(('.product_list').html() == '') {
-    	$('#load_more').hide();
-    }
 
   // Remove product from cart
   }).on('click', '.remove', function(e) {
