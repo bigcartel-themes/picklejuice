@@ -172,7 +172,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     var currentIndex = $('#thumbs ul li.selected').index();
-
+    
     if ($(e.target).attr('id') == 'next') {
       currentIndex++;
     } else {
