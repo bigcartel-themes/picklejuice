@@ -40,6 +40,15 @@
 	color: $dark-green-color;
 }
 
+#description ul {
+	list-style: disc !important;
+}
+
+#description ul li {
+	display: block;
+	list-style: disc !important;
+}
+
 #more_button {  
   background: url({{ "more_deats.png" | theme_image_url }}) no-repeat left top;
   background-size: 17px;

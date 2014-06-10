@@ -145,6 +145,7 @@ ul {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   cursor: pointer;
+  
 
   &:after {
     content: "";
@@ -197,7 +198,7 @@ ul {
     -o-transition: max-height 0.3s ease-out;
     transition: max-height 0.3s ease-out;
     max-height: 0;
-    overflow: scroll;
+    overflow: auto;
     z-index: 1;
 
     li {
@@ -223,7 +224,7 @@ ul {
 .categories {
   font: 1em $serif-font;
   text-align: center;
-  margin-top: 180px;
+  margin-top: 225px;
 
   li { padding: 0 8px; }
 }

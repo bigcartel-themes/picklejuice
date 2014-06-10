@@ -180,7 +180,8 @@
 
 	.details { width: 97.5%; }
 
-	#thumbs li { margin: 0 20px 40px 0; }
+	#thumbs li { margin: 1.25%; }
+	#thumbs li:nth-child(4n) { margin: 1.25%; }
 
 	h2 { font-size: 2.75em; }
 
@@ -209,6 +210,15 @@
 	==========================*/
 
 	.container { max-width: 700px; }
+	
+	/* ================================
+	- contact
+	==========================*/
+	
+	.contact_form li.grid_6.push_3 {
+		width: 97.5%;
+		margin-left: 1.25%;
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -222,6 +232,22 @@
 
 	.product_list li:nth-child(2n+1) { clear: both; }
 	.product_list li:nth-child(3n+1) { clear: none; }
+	
+	
+	/* ================================
+	- contact
+	==========================*/
+	
+	.contact_form div {
+		float: none;
+		margin-bottom: 10px;
+		
+	}
+	
+	#captcha {
+		width: 100%;
+	}
+	
 
 	/* ================================
 	- footer
@@ -304,7 +330,7 @@
 
 	.cart-wrapper { padding: 20px 20px; }
 	
-	.cart-wrapper .close_overlay { margin-top: 78px; }
+	.cart-wrapper .close_overlay { margin-top: 83px; }
 	
 	.cart-wrapper .grid_2 { width: 40%; }
 	
@@ -339,8 +365,13 @@
 	
 	.message .grid_12 { padding: 0 20px; width: 91%; }
 	
+	/* ================================
+	- contact
+	==========================*/
 	
+	.contact_form li.grid_6.push_3 { width: 91%; padding: 0 20px; }
 	
+	#captcha { padding-left: 20px; padding-right: 20px;}
 	
 }
 
@@ -380,7 +411,13 @@
 	/* ================================
 	- cart page
 	==========================*/
-
+	a.remove { position: absolute; }
+	
+	
+	
+	.cart-wrapper .grid_1 { width: 20%;}
+	
+	.cart-wrapper .quantity input { font-size: .8em; }
 		
 	/* ================================
 	- product page
