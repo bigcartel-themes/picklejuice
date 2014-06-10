@@ -102,12 +102,12 @@
     max-width: 170px;
 
     &:hover {
-      -webkit-filter: blur(3px);
-      filter: blur(3px);
-      -o-filter: blur(3px);
-      -ms-filter: blur(3px);
-      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'3\'/></filter></svg>#svgBlur");
-      filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+      -webkit-filter: blur(1.5px);
+      filter: blur(1.5px);
+      -o-filter: blur(1.5px);
+      -ms-filter: blur(1.5px);
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1.5\'/></filter></svg>#svgBlur");
+      filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
       -webkit-transition: all .5s ease;
       -moz-transition: all .5s ease;
       -o-transition: all .5s ease;

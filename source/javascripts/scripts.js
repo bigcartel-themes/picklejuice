@@ -197,9 +197,10 @@ $(document).ready(function() {
   	e.preventDefault();
   	var $truncateText = $('.truncate');
   	$('#more_button').toggleClass('less_button');
-		if ($truncateText.text().length > 200) {
+		if ($truncateText.text().length > 250) {
 			$truncateText.succinct({
-			    size: 200
+			    size: 250,
+			    ignore: false
 			});
 
 		}
@@ -268,11 +269,12 @@ $(document).ready(function() {
 
 	var $truncateText = $('.truncate')
 
-	if ($truncateText.text().length > 200) {
+	if ($truncateText.text().length > 250) {
 		window.fullText = $truncateText.text();
 
 		$truncateText.succinct({
-		    size: 200
+		    size: 250,
+		    ignore: false
 		});
 
 	}
