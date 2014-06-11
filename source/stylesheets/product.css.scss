@@ -41,12 +41,15 @@
 }
 
 #description ul {
-	list-style: disc !important;
+	padding-left: 20px;
+	font: .875em $serif-font;
+	line-height: 24px;
 }
 
 #description ul li {
 	display: block;
-	list-style: disc !important;
+	list-style-type: disc !important;
+	display: list-item !important;
 }
 
 #more_button {  
