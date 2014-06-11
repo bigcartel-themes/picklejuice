@@ -82,8 +82,19 @@
     box-shadow: 0 0 12px $light-gray-color;
     display: inline-block;
     margin: 20px 17px 0 0;
+    overflow: hidden;
 
     &:last-of-type { margin-right: 0; }
+
+    &:hover {
+      opacity: 1;
+
+      img {
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/></filter></svg>#svgBlur");
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+      }
+    }
   }
 
   h4 {
@@ -103,20 +114,6 @@
   img {
     height: auto;
     max-width: 170px;
-
-    &:hover {
-      -webkit-filter: blur(1.5px);
-      filter: blur(1.5px);
-      -o-filter: blur(1.5px);
-      -ms-filter: blur(1.5px);
-      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1.5\'/></filter></svg>#svgBlur");
-      filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1.5');
-      -webkit-transition: all .5s ease;
-      -moz-transition: all .5s ease;
-      -o-transition: all .5s ease;
-      -ms-transition: all .5s ease;
-      transition: all .5s ease;
-    }
   }
 }
 
@@ -146,18 +143,14 @@
 }
 
 #thumbs {
-  a img:hover {
-    -webkit-filter: blur(1px);
-    filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1\'/></filter></svg>#svgBlur");
-    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='1');
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    transition: all .5s ease;
+  a:hover {
+    opacity: 1;
+
+    img {
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1\'/></filter></svg>#svgBlur");
+      -webkit-filter: blur(1px);
+      filter: blur(1px);
+    }
   }
 
   img {
@@ -170,7 +163,7 @@
   li {
     margin: 0 6px 10px 0;
 
-  &:nth-child(4n) { margin-right: 0px; }
+    &:nth-child(4n) { margin-right: 0px; }
 
     a  {
       border: 3px solid $white-color;
@@ -180,6 +173,7 @@
       display: inline-block;
       max-height: 70px;
       max-height: 70px;
+      overflow: hidden;
     }
   }
 
