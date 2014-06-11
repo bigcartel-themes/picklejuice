@@ -65,7 +65,18 @@ $(window).load(function() {
   });
 });
 
+$(window).on('resize', function() {
+  $('#slideshow article').each(function() {
+    var $article = $(this)
+      , $image = $article.find('img');
+
+    $image.css({ marginLeft: ($article.width() - $image.width()) / 2 });
+  });
+})
+
 $(document).ready(function() {
+  $(window).trigger('resize');
+
   var $document = $(this);
 
   renderCustomDropdowns($('body'));
