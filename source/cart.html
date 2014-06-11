@@ -8,6 +8,13 @@
       </div>
 
       <div class="container clearfix cart_box">
+	      {% if errors != blank %}
+	      <ul class="errors">
+	        {% for error in errors %}
+	        <li>{{ error }}</li>
+	        {% endfor %}
+	      </ul>
+	      {% endif %}
         <div>
           <h1>Shopping basket</h1>
         </div>

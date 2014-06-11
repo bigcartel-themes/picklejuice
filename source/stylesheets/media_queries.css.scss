@@ -323,6 +323,15 @@
 		margin-top: 40px;
 		padding-left: 20px;
 	}
+	
+	.content > .errors {
+		margin-top: -16px;
+		display: none;
+	}
+	
+	.content > .errors li {
+		display: none;
+	}
 
 	/* ================================
 	- cart page
@@ -385,14 +394,15 @@
 	/* ================================
 	- contact page
 	==========================*/
-  .contact {
-    .push_3 { margin-left: 0; }
+  .contact .push_3 { margin-left: 0; }
 
-    .grid_6 {
-      box-sizing: border-box;
-      padding: 0 20px;
-      width: 100%; }
-  }
+   .contact_form li.grid_6.push_3 {
+       box-sizing: border-box;
+       padding: 0 20px;
+       width: 100%;
+       margin-left: 0; 
+   }
+  
 }
 
 @media screen and (max-width: 480px) {
