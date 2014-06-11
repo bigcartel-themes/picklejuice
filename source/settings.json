@@ -15,14 +15,9 @@
   ],
   "image_sets": [
     {
-      "variable": "slideshow_images",
-      "label": "Slideshow",
-      "description": "This is a slideshow"
-    },
-    {
-      "variable": "lookbook_images",
-      "label": "Lookbook",
-      "description": "This is a lookbook"
+      "variable": "slideshow",
+      "label": "Homepage Slideshow",
+      "description": "900px by 500px images recommended"
     }
   ],
   "fonts": [

@@ -74,8 +74,8 @@ $(document).ready(function() {
     animation: 'slide',
     slideshow: true,
     slideshowSpeed: 4000,
-    navigationControl: false,
-    paginationControl: false,
+    navigationControl: true,
+    paginationControl: true,
     touch: true,
   });
 
