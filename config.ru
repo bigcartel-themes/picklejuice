@@ -6,6 +6,7 @@ options = {}
 # categories, and more. Just give us the subdomain. Default is "dugway" for dugway.bigcartel.com.
   options[:store] = 'herriottgrace'
 
+
 # Simulate the customization done by store owners by passing values to different variables.
 # Default values are based on the "default" for each setting in your settings.json.
 # options[:customization] = {
