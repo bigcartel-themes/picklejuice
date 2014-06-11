@@ -30,6 +30,8 @@ body {
 
   &:after { top: 0; }
   &:before { bottom: 0; }
+
+  &.no-scroll { overflow: hidden; }
 }
 
 h1, h4, h5 {

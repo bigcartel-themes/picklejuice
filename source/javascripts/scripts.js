@@ -39,6 +39,7 @@ function showCart() {
 
   $overlay.load('/cart' + ' .cart-wrapper');
 
+  $('body').addClass('no-scroll');
   $('body > footer').before($overlay);
 
   setTimeout(function() {
@@ -157,9 +158,14 @@ $(document).ready(function() {
   }).on('click', '.close_overlay', function(e) {
     e.preventDefault();
 
-    $(this).closest('.overlay').fadeOut(function() {
-      $(this).remove();
-    });
+    if ($('body').hasClass('cart')) {
+      window.history.back();
+    } else {
+      $(this).closest('.overlay').fadeOut(function() {
+        $(this).remove();
+        $('body').removeClass('no-scroll');
+      });
+    }
 
   // Swap out product images
   }).on('click', '#thumbs a', function(e) {
