@@ -22,8 +22,15 @@
         <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
       </h4>
     </div>
-
+		
     <ul class="contact_form">
+    {% if errors != blank %}
+         <ul class="errors">
+           {% for error in errors %}
+           <li>{{ error }}</li>
+           {% endfor %}
+         </ul>
+         {% endif %}
       <li class="grid_6 push_3">
         <label for="name">Name</label>
         {{ contact | contact_input: 'name' }}

@@ -263,15 +263,38 @@ header {
     float: right;
     text-align: center;
     width: 60px;
+    position: relative;
 
     a {								
       background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat;
       background-size: contain;
       display: block;
       padding-top: 70px;
+     
     }
-
+		
     span span { padding: 0 2px 0 0; }
+  }
+  
+ .light_cart {
+  	border-radius: 50%;
+  	width: 60px;
+  	height: 60px;
+  	position: absolute;
+  	top: 0px;
+   	display: block;
+  	z-index: -1;
+  	overflow: hidden;
+  }
+  
+  .green_cart {
+  	background-color: $dark-green-color;
+  	width: 60px;
+  	height: 0px;
+  	position: absolute;
+  	bottom: 0;
+  	display: block;
+  	z-index: -1;
   }
 
   .imgAdd { margin-top: 8px; }
