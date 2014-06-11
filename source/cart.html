@@ -12,7 +12,7 @@
           <h1>Shopping basket</h1>
         </div>
       </div>
-
+			
       <ul class="container clearfix">
         {% for item in cart.items %}
           <li class="cart_box">
@@ -30,7 +30,7 @@
                 {% endunless %}
               </a>
             </div>
-
+						
             <div class="grid_1 quantity push_1">
               <span>{{ item | item_quantity_input }}</span>
             </div>
@@ -55,6 +55,14 @@
       </div>
 
       <div class="container clearfix cart_box">
+      	<div id="shipping_total">
+      		<h4>Shipping</h4>
+      		<span class="clearfix">{{ cart.shipping.amount | money_with_sign }}</span>
+      		<div id="discount">
+      			<h4>Discount Code:</h4>
+      			{{ cart.discount | discount_code_input }}
+      		</div>
+      	</div>
         <div id="total">
           <h4>Total</h4>
           <span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>
