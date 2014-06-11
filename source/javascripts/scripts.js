@@ -242,12 +242,18 @@ $(document).ready(function() {
     $searchBar.addClass('search_bar_border');
     $searchImg.addClass('imgAdd');
   });
-
+  
   $searchField.on('focusout', function() {
-    $searchButton.hide();
-    $searchBar.removeClass('search_bar_border');
-    $searchImg.removeClass('imgAdd');
-  });
+      setTimeout(function() {
+        $searchButton.hide();
+        $searchBar.removeClass('search_bar_border');
+        $searchImg.removeClass('imgAdd');
+  
+        if (this.value == '') {
+          this.value = 'Search Products...';
+        }
+      }, 200);
+    });
 
   $searchButton.on('click', function() {
     $searchButton.hide();
