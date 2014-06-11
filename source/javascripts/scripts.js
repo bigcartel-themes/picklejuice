@@ -55,7 +55,7 @@ function updateCart() {
 
   setTimeout(function() {
     renderCustomDropdowns($overlay);
-  }, 50);
+  }, 100);
 }
 
 $(window).load(function() {
