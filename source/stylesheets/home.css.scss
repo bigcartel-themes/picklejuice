@@ -14,7 +14,7 @@
     }
 
     a {			
-      background: url({{ "slide_arrow.png" | theme_image_url }}) no-repeat left top;
+      background: url(#{'{{ "slide_arrow.png" | theme_image_url }}'}) no-repeat left top;
       background-size: 33px;
       bottom: 55px;
       height: 33px;

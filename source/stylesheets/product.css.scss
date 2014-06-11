@@ -13,7 +13,7 @@
   &:hover:after { content: ''; }
 
   &:after {			
-    background: url({{ "arrows_sprite.png" | theme_image_url }}) no-repeat;
+    background: url(#{'{{ "arrows_sprite.png" | theme_image_url }}'}) no-repeat;
     background-size: 33px;
     display: block;
     height: 33px;
@@ -50,7 +50,7 @@
 }
 
 #more_button {  
-  background: url({{ "more_deats.png" | theme_image_url }}) no-repeat left top;
+  background: url(#{'{{ "more_deats.png" | theme_image_url }}'}) no-repeat left top;
   background-size: 17px;
   display: inline-block;
   height: 17px;
@@ -60,7 +60,7 @@
 }
 
 #more_button.less_button {  
-  background: url({{ "less_deats.png" | theme_image_url }}) no-repeat left top;
+  background: url(#{'{{ "less_deats.png" | theme_image_url }}'}) no-repeat left top;
   background-size: 17px;
   display: inline-block;
   height: 17px;

@@ -265,7 +265,7 @@ header {
     width: 60px;
 
     a {								
-      background: url({{ "cart_icon.png" | theme_image_url }}) top center no-repeat;
+      background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat;
       background-size: contain;
       display: block;
       padding-top: 70px;
@@ -289,7 +289,7 @@ header {
     width: 244px;
 
     input[type="search"] {												
-      background: rgba(255, 255, 255, .0) url({{ "search_icon.png" | theme_image_url }}) 12px 2px no-repeat;
+      background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 12px 2px no-repeat;
       background-size: 28px 15px;
       border: none;
       box-shadow: none;
@@ -358,7 +358,7 @@ aside {
   &.expand { right: 0; }
 
   > a {
-    background: url({{ "hamburger.png" | theme_image_url }}) no-repeat left top;
+    background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top;
     background-size: 20px;
     height: 14px;
     left: -10px;
@@ -378,7 +378,7 @@ aside {
 
   .social {
     a {									
-      @include image-replacement(url({{ "social-sprite.png" | theme_image_url }}), 24px, 24px);
+      @include image-replacement(url(#{'{{ "social-sprite.png" | theme_image_url }}'}), 24px, 24px);
       background-size: 24px 138px;
 
       &.twitter { background-position: 0 -38px; }
