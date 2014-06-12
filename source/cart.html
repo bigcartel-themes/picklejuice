@@ -62,14 +62,6 @@
       </div>
 
       <div class="container clearfix cart_box">
-      	<div id="shipping_total">
-      		<h4>Shipping</h4>
-      		<span class="clearfix">{{ cart.shipping.amount | money_with_sign }}</span>
-      		<div id="discount">
-      			<h4>Discount Code:</h4>
-      			{{ cart.discount | discount_code_input }}
-      		</div>
-      	</div>
         <div id="total">
           <h4>Total</h4>
           <span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>

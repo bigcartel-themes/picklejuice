@@ -235,7 +235,7 @@ $(document).ready(function() {
 		else {
 			$truncateText.text(window.fullText);
 		}
-  }).on('click', '.cart-wrapper :submit', function(e) {
+  }).on('click', '.cart-wrapper #update', function(e) {
     e.preventDefault();
 
     Cart.updateFromForm('cart_form', function(cart) {
