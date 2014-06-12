@@ -23,6 +23,8 @@
 	#more_products hr { width: 263px; }
 	
 	#more_products h4 { left: 287px; }
+	
+	#thumbs li:nth-child(4n) { margin-right: 6px; }
 }
 
 @media screen and (max-width: 1160px) {
@@ -386,9 +388,12 @@
 
 @media (max-width: 568px) {
 	/* ================================
-	- product page
+	- cart page
 	==========================*/
-		
+		#discount h4 {
+			display: block;
+	
+		}
 	
 	
 	/* ================================

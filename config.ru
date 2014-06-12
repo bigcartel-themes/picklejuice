@@ -20,6 +20,7 @@ options = {}
 #   :twitter_username => 'mytwitter'
 # }
 options[:customization] = {
+	
   slideshow: [
     { url: 'http://placehold.it/900x500/ababab/ffffff&text=Slideshow image one', width: 900, height: 500 },
     { url: 'http://placehold.it/900x500/336699/ffffff&text=Slideshow image two', width: 900, height: 500 },

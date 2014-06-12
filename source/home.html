@@ -22,7 +22,7 @@
 
 {% paginate products from products.current by theme.products_per_page %}
   <div class="container clearfix">
-    <div class="product_list">
+    <div class="product_list" id="container">
       {% if products != blank %}
         <ul class="clearfix">
           {% for product in products %}

@@ -44,6 +44,7 @@
     border-bottom: 3px solid $dark-gray-color;
     padding: 20px 0 20px 0;
     width: 100%;
+    position: relative;
 
     &:last-of-type {
       border: none;
@@ -174,10 +175,8 @@
 }
 
 #shipping_total {
-	text-align: right;
-	border-bottom: 3px solid $dark-gray-color;
+	text-align: left;
 	padding-bottom: 20px;
-	position: relative;
 }
 
 #shipping_total h4 {
@@ -188,20 +187,28 @@
 }
 
 #discount {
-	float: left;
 	position: absolute;
-	top: -6px;
+	top: 20px;
+	right: 0;
 	text-align: left;
+}
+
+#discount h4 {
+	display: inline-block;
+	font-size: .750em;
+	text-align: right;
+	margin: 0;
 }
 
 #discount input {
 	border: 2px solid #333;
 	outline: none;
-	padding: 4px 5px;
+	padding: 0 5px;
 	font: .8em $serif-font;
 	background-color: #ffffff;
 	width: 122px;
 	margin-top: 5px;
+	display: inline;
 }
 
 
