@@ -402,8 +402,8 @@ aside {
   }
 
   .social {
-    a {									
-      @include image-replacement(url(#{'{{ "social-sprite.png" | theme_image_url }}'}), 24px, 24px);
+    a {
+      @include image-replacement(#{'{{ "social-sprite.png" | theme_image_url }}'}, 24px, 24px);
       background-size: 24px 138px;
 
       &.twitter { background-position: 0 -38px; }
