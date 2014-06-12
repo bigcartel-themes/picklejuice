@@ -1,3 +1,4 @@
+{% if theme.slideshow != blank %}
 <section class="wmuSlider example1" id="slideshow">
   <div class="wmuSliderWrapper">
     {% if theme.image_sets.slideshow.size > 0 %}
@@ -9,9 +10,9 @@
 
   <a href="#minus_buffer">Down</a>
 </section>
-
+ {% endif %}
 <div class="container clearfix">
-  <div class="grid_12 categories" id="minus_buffer">
+  <div class="grid_12 categories">
     <ul>
       {% for category in categories.active %}
         <li>{{ category | link_to }}</li>
