@@ -87,8 +87,7 @@ $(document).ready(function() {
     slideshow: true,
     slideshowSpeed: 4000,
     navigationControl: true,
-    paginationControl: true,
-    touch: true,
+    paginationControl: true
   });
 
   // Slide out sidebar
