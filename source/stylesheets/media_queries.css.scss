@@ -360,7 +360,7 @@
 	
 	.cart-wrapper .grid_1 { width: 10%; margin: 1.25%; }
 	
-	.cart-wrapper .quantity input { padding: 10px 10px; font-size: 1.25em; }
+	.cart-wrapper .quantity input { padding: 5px 10px; font-size: 1.25em; }
 	
 	.cart-wrapper .grid_2 > span { font-size: 1.75em; } 
 	
@@ -403,7 +403,16 @@
 			display: block;
 	
 		}
-	
+		.cart-wrapper .grid_2 > span {
+			display: inline-block;
+			margin-left: -20px;
+			padding-top: 25px;
+		}
+		
+		.cart-wrapper .grid_2 > span {
+			display: inline-block;
+			padding-top: 55px;
+		}
 	
 	/* ================================
 	- contact page
@@ -459,10 +468,15 @@
 		padding: 0 10px;
 	}
 	
+	.cart-wrapper .grid_2 > span {
+		display: inline-block;
+		margin-left: -15px;
+		padding-top: 25px;
+	}
 	
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 320px) {
 	/* ================================
 	- front page and categories
 	==========================*/
