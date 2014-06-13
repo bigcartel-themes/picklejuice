@@ -37,26 +37,22 @@ function renderCustomDropdowns($element, callback) {
 function showCart() {
   var $overlay = $('<div>', { class: 'overlay' });
 
-  $overlay.load('/cart' + ' .cart-wrapper');
+  $overlay.load('/cart' + ' .cart-wrapper', function() {
+    $('body').addClass('no-scroll');
+    $('body > footer').before($overlay);
 
-  $('body').addClass('no-scroll');
-  $('body > footer').before($overlay);
-
-  setTimeout(function() {
     renderCustomDropdowns($overlay, function() {
       $overlay.fadeIn();
     });
-  }, 50);
+  });
 }
 
 function updateCart() {
   var $overlay = $('.overlay');
 
-  $overlay.load('/cart' + ' .cart-wrapper');
-
-  setTimeout(function() {
+  $overlay.load('/cart' + ' .cart-wrapper', function() {
     renderCustomDropdowns($overlay);
-  }, 100);
+  });
 }
 
 $(window).load(function() {
