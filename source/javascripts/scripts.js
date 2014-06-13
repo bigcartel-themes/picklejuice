@@ -198,14 +198,19 @@ $(document).ready(function() {
     changeImage(currentIndex);
   }).on('click', '[data-add-to-cart]', function(e) {
     e.preventDefault();
-		
+
     var $button = $(this)
       , $productInput = $(this).prev('input, select');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
       $('.cart a > span').html(Format.money(cart.subtotal, true, true));
     });
-    
+
+    $button.text('Added!');
+    setTimeout(function() {
+      $button.text('Add to cart');
+    }, 1000);
+
     $('.cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
     $('.green_cart').animate({
 		  height: "60px"
