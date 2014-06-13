@@ -12,7 +12,7 @@
 </section>
  {% endif %}
 <div class="container clearfix">
-  <div class="grid_12 categories">
+  <div class="grid_12 categories" id="minus_buffer">
     <ul>
       {% for category in categories.active %}
         <li>{{ category | link_to }}</li>
