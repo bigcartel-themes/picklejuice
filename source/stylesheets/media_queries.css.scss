@@ -134,9 +134,13 @@
 
 	header { padding: 5px 0 15px 0; }
 
+	header .logo {
+		margin-top: -60px;
+	}
+
 	header .cart {
-		margin-top: 10px;
-		padding-top: 70px;
+		margin-top: 70px;
+		
 		float: none;
 		width: 100%;
 
