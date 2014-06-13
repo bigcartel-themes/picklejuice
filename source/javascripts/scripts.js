@@ -18,7 +18,7 @@ function renderCustomDropdowns($element, callback) {
   $selectBoxes.each(function(index, el) {
     var $select = $(el)
       , $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
-        $('<div>').text('Choose an option'),
+        $('<div>').text($select.attr('id') == 'country' ? 'Choose a country' : 'Choose an option'),
         $('<ul>', { class: 'dropdown' })
       );
 
