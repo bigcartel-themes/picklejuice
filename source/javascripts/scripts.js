@@ -161,7 +161,7 @@ $(document).ready(function() {
     showCart();
 
   // Close and remove overlays
-  }).on('click', '.close_overlay', function(e) {
+  }).on('click', '.close_overlay a', function(e) {
     e.preventDefault();
 
     if ($('body').hasClass('cart')) {
