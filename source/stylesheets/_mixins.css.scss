@@ -9,7 +9,7 @@ $light-green-color: #{'{{ theme.primary_color }}'};
 // Fonts
 $fallback-fonts:    "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 $sans-serif-font:   "#{'{{ theme.primary_font }}'}", $fallback-fonts;
-$serif-font:        "#{'{{ theme.secondary_color }}'}", $fallback-fonts;
+$serif-font:        "#{'{{ theme.secondary_font }}'}", $fallback-fonts;
 
 @mixin image-replacement($image, $width, $height) {
   background: transparent url($image) no-repeat;
