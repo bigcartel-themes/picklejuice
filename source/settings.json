@@ -22,14 +22,14 @@
   ],
   "fonts": [
     {
-      "variable": "header_font",
-      "label": "Header Font",
-      "default": "Inconsolata"
+      "variable": "primary_font",
+      "label": "Primary Font",
+      "default": "Open Sans"
     },
     {
-      "variable": "text_font",
-      "label": "Text Font",
-      "default": "Helvetica"
+      "variable": "secondary_font",
+      "label": "Secondary Font",
+      "default": "Sorts Mill Goudy"
     }
   ],
   "colors": [
