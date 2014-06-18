@@ -6,11 +6,6 @@
       "variable": "logo",
       "label": "Logo",
       "description": "Adds your logo to the header"
-    },
-    {
-      "variable": "background_image",
-      "label": "Background Image",
-      "description": "Adds a repeating background image"
     }
   ],
   "image_sets": [
