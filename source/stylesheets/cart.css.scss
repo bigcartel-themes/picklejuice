@@ -35,6 +35,8 @@
     }
 
     .button {
+    	color: #ffffff;
+    	background-color: $dark-gray-color;
       float: none;
       padding: 18px 105px;
     }
@@ -70,6 +72,8 @@
         background-color: $dark-green-color;
         color: $white-color;
       }
+      
+     
       
       .errors {
       	text-align: center;
@@ -213,6 +217,46 @@
 
 .cart-wrapper .cart_box h5 {
 	margin-bottom: 0;
+}
+
+.update-btn {
+	background-color: $dark-gray-color;
+  color: $white-color;
+  border: none;
+  font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.2em;
+  padding: 11px 23px;
+  outline: none;
+  display: block;
+  margin-bottom: 10px;
+  float: right;
+}
+		
+ .update-btn:hover {
+   background-color: $dark-green-color;
+   color: $white-color;
+}
+
+ #cart_options label, #cart_options h3 {
+	display: block;
+}
+
+#discount_option {
+	margin-top: 20px;
+}
+
+input#cart_discount_code {
+	border: 2px solid #333333;
+	box-sizing: border-box;
+	outline: none;
+	padding: 5px 10px;
+	width: 200px;
+}
+
+ #cart_options br + h3 {
+	margin-top: 60px;
 }
 
 

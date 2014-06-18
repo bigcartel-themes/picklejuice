@@ -52,16 +52,64 @@
           </li>
         {% endfor %}
       </ul>
-
       <div class="container clearfix cart_box">
-        {{ store.country | country_select }}
+      
+			{% if cart.shipping.enabled or cart.discount.enabled %}
+			<section id="cart_options">
+				<ul>
+				{% if cart.shipping.enabled %}
+					{% if cart.shipping.strict %}			        
+					<li id="cart-shipping-tax">
+					{% if cart.shipping.pending %}
+						{% if cart.country %}
+							{% else %}
+							<span><label for="country">Shipping</label></span>
+							{% endif %}
+							
+						{% else %}
+							<span><label for="country">Shipping</label></span>
+						{% endif %}	
+						          
+						{{ store.country | country_select }}
+						
+						{% if cart.shipping.pending %}
+							<br />
+							<h3 class="cart_pending">$0</h3>
+							<button class="update-btn" name="update" type="submit" title="Update your cart total">Apply</button>  
+							{% else %}
+							<span class="clearfix">{{ cart.shipping.amount | money_with_sign }}</span>
+						{% endif %}
+						</li>
+							{% endif %}  
+						{% endif %}
+						
+						{% if cart.discount.enabled %}
+						<li id="discount_option" {% unless cart.shipping.strict %}class="solo"{% endunless %}>
+							{% if cart.discount.pending %}
+								<label id="cart_discount_label" for="cart_discount_code">Discount:</label>
+								{{ cart.discount | discount_code_input }}
+								<h3 class="cart_pending">{{ store.currency.sign }}0</h3>
+								<button class="update-btn" name="update" type="submit" title="Update your cart total">Apply</button>    
+								{% elsif cart.discount.free_shipping %}
+								<span><label for="cart_discount_code">Discount</label></span>      
+								<p>{{ cart.discount.name }}</p>         
+								{% else %}
+								<span><label for="cart_discount_code">Discount</label></span>       
+								<p>{{ cart.discount.name }}</p>
+								<h3>-{{ cart.discount.amount | money_with_sign }}</h3>
+						{% endif %}
+						</li>
+					{% endif %}
+				</ul>   
+			</section>
+			{% endif %}
+        
 
         <div>
           <button type="submit" class="button" id="update">update cart</a>
         </div>
       </div>
 
-      <div class="container clearfix cart_box">
         <div id="total">
           <h4>Total</h4>
           <span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>
