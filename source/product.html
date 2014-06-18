@@ -7,7 +7,6 @@
     </ul>
   </div>
 </div>
-
 <div class="container clearfix">
   <div  class="grid_12" id="breadcrumbs">
     <hr>
@@ -17,17 +16,14 @@
       <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
     </h4>
   </div>
-
   <div class="grid_8 single_product">
     <div class="product_wrapper">
       {% if product.images.size > 1 %}
         <a href="#" id="next">next</a>
         <a href="#" id="prev">prev</a>
       {% endif %}
-
       <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image">
     </div>
-
     {% get products from products.all limit:4 order:'views' %}
       <div id="more_products">
         <hr><hr><h4>more products</h4>
@@ -37,7 +33,6 @@
       </div>
     {% endget %}
   </div>
-
   <div class="details">
     <div id="thumbs">
       {% if product.images.size > 1 %}
@@ -48,70 +43,33 @@
         </ul>
       {% endif %}
     </div>
-
     <h1>{{ product.name }}</h1>
-
     {% case product.status %}
     {% when 'sold-out' %}
       <h2>{{ product.default_price | money_with_sign }}<br /><span>Sold Out</span></h2>
-
     {% when 'coming-soon' %}
       <h2>{{ product.default_price | money_with_sign }} <br /><span>Coming Soon</span></h2>
-
     {% when 'active' %}
       <h2>{{ product.default_price | money_with_sign }}{% if product.on_sale %}<br /><span>On Sale{% endif %}</span></h2>
     {% endcase %}
-
     <hr>
-
     <div id="description" class="less-details">
       {% if product.description != blank %}
         <p class="truncate">{{ product.description | paragraph }}</p>
       {% endif %}
     </div>
-
     <a id="more_button" href="#"></a>
 		<hr>
     {% if product.status == 'active' %}
-      {% if cart.discount.enabled %}
-        <div id="cart_discount" class="clearfix">
-          <h2>Discount:</h2>
-
-          {% if cart.discount.pending %}
-            <div id="discount_entry">{{ cart.discount | discount_code_input }}</div>
-            <div id="discount_total">optional</div>
-          {% elsif cart.discount.free_shipping %}
-            <div id="discount_entry" style="display:none"></div>
-            <div id="discount_total" class="shipping">{{ cart.discount.name }}</div>
-          {% else %}
-            <div id="discount_entry">{{ cart.discount.name }}</div>
-            <div id="discount_total">{{ cart.discount.amount | money_with_sign }}</div>
-          {% endif %}
-        </div>
-      {% endif %}
-			
-      {% if cart.shipping.enabled %}
-        <div id="cart_shipping" class="clearfix">
-          <h2>Shipping:</h2>
-
-          {% if cart.shipping.strict %}<div id="shipping_entry">{{ store.country | country_select }}</div>{% endif %}
-          <div id="shipping_total"{% if cart.shipping.pending %} style="display:none"{% endif %}>{{ cart.shipping.amount | money_with_sign }}</div>
-        </div>
-      {% endif %}
-
-      
-
       <form method="post" action="/cart">
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
           {{ product.options_in_stock | options_select }}
         {% endif %}
-
         <button class="button" name="submit" type="submit" title="Add to Cart" data-add-to-cart="data-add-to-cart">Add to Cart</button>
       </form>
     {% endif %}
-
     <div id="share_this">
       <a href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
       <a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
