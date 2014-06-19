@@ -40,7 +40,7 @@ h1, h4, h5 {
   text-transform: uppercase;
 }
 
-h2, h3 { font-family: $serif-font; }
+h2, h3 { font-family: $serif-font; letter-spacing: 1px;}
 h4, h5 { letter-spacing: .2em; }
 
 h1 {
@@ -79,9 +79,10 @@ img { vertical-align: bottom; }
 p {
   font: .875em $serif-font;
   line-height: 24px;
+  letter-spacing: 1px;
 }
 
-span { font: 1em $serif-font; }
+span { font: 1em $serif-font; letter-spacing: 1px;}
 
 ul {
   padding: 0;
@@ -137,7 +138,7 @@ ul {
   text-align: left;
   font: bold 0.750em $sans-serif-font;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   border: 3px solid $dark-gray-color;
   color: $dark-gray-color;
   outline: none;
@@ -225,6 +226,7 @@ ul {
 
 .categories {
   font: 1em $serif-font;
+  letter-spacing: 1px;
   text-align: center;
   margin-top: 225px;
 
@@ -321,6 +323,7 @@ header {
       border: none;
       box-shadow: none;
       font: .875em $serif-font;
+      letter-spacing: 1px;
       font-style: italic;
       outline: none;
       padding-left: 50px;
@@ -369,6 +372,7 @@ aside {
   -webkit-box-shadow: 0 0 12px $light-gray-color;
   box-shadow: 0 0 12px $light-gray-color;
   font: 1.750em $serif-font;
+  letter-spacing: 1px;
   height: 100%;
   padding: 27px;
   position: fixed;

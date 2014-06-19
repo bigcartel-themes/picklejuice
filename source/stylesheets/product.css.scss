@@ -85,6 +85,7 @@
     display: inline-block;
     margin: 20px 17px 0 0;
     overflow: hidden;
+    vertical-align: top;
 
     &:last-of-type { margin-right: 0; }
 
@@ -101,7 +102,7 @@
 
   h4 {
     font-size: .750em;
-    left: 316px;
+    left: 310px;
     position: absolute;
     top: -14px;
   }
@@ -137,6 +138,7 @@
 #share_this {
   font: .875em $serif-font;
   font-style: italic;
+  letter-spacing: 1px;
 
   a {
     padding: 0 10px;

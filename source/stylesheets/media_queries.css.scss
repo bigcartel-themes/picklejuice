@@ -22,7 +22,7 @@
 	
 	#more_products hr { width: 263px; }
 	
-	#more_products h4 { left: 287px; }
+	#more_products h4 { left: 276px; }
 	
 	#thumbs li:nth-child(4n) { margin-right: 6px; }
 }
@@ -79,7 +79,7 @@
 	 	
 	 	#more_products hr { width: 239px; }
 	 	
-	 	#more_products h4 { left: 255px; }
+	 	#more_products h4 { left: 244px; }
 }
 
 
@@ -100,7 +100,7 @@
 
 	#more_products hr { width: 216px; }
 
-	#more_products h4 { left: 222px; }
+	#more_products h4 { left: 218px; font-size: .7em; }
 
 	#more_products img { max-width: 121px; }
 
@@ -123,6 +123,8 @@
 	}
 
 	.product_list li figure figcaption:before { display: none; }
+	
+	#share_this a { padding: 0 3px; }
 }
 
 @media screen and (max-width: 970px) {
@@ -413,6 +415,8 @@
 			display: inline-block;
 			padding-top: 55px;
 		}
+		
+		#share_this a { padding: 0 30px; }
 	
 	/* ================================
 	- contact page

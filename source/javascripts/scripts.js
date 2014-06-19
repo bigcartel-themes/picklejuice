@@ -227,7 +227,7 @@ $(document).ready(function() {
   	$('#more_button').toggleClass('less_button');
 		if ($truncateText.text().length > 250) {
 			$truncateText.succinct({
-			    size: 250,
+			    size: 240,
 			    ignore: false
 			});
 
@@ -307,7 +307,7 @@ $(document).ready(function() {
 		window.fullText = $truncateText.text();
 
 		$truncateText.succinct({
-		    size: 250,
+		    size: 240,
 		    ignore: false
 		});
 
