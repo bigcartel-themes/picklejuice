@@ -40,6 +40,21 @@
       float: none;
       padding: 18px 105px;
     }
+
+    ul {
+      display: inline-block;
+      padding-bottom: 1.5em;
+
+      h4 { font-size: .6em; }
+
+      li + li { margin-left: 3em; }
+
+      span {
+        font-size: 1.5em;
+
+        span { font-size: 1em; }
+      }
+    }
   }
 
   .cart_box {
@@ -59,8 +74,6 @@
       max-width: 100%;
       width: 100%;
     }
-
-    ul li { width: 100%; }
 
     .button {
       background-color: $dark-gray-color;
@@ -101,7 +114,7 @@
     .wrapper-dropdown {
       background-color: $white-color;
       float: left;
-      margin-top: 1.55%;
+      margin-top: 0;
 
       &.active {
         background-color: $dark-gray-color;
@@ -233,25 +246,27 @@
   margin-bottom: 10px;
   float: right;
 }
-		
+
  .update-btn:hover {
    background-color: $dark-green-color;
    color: $white-color;
 }
 
- #cart_options label, #cart_options h3 {
-	display: block;
-}
+#cart_options {
+  h3 { display: block; }
 
-#discount_option {
-	margin-top: 20px;
+  label { margin-right: 1em; }
+
+  li:last-child { float: right; }
 }
 
 input#cart_discount_code {
-	border: 2px solid #333333;
+	border: 3px solid #333333;
 	box-sizing: border-box;
+  height: 47px;
+  line-height: 47px;
 	outline: none;
-	padding: 5px 10px;
+	padding: 0 10px;
 	width: 200px;
 }
 
