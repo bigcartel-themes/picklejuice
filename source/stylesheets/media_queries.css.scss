@@ -417,7 +417,18 @@
 		}
 		
 		#share_this a { padding: 0 30px; }
-	
+
+		.cart_box {
+			ul
+				li {
+					display: block;
+					overflow: hidden;
+
+					+ li { margin-top: 1em; }
+				}
+			}
+		}
+
 	/* ================================
 	- contact page
 	==========================*/
