@@ -306,7 +306,7 @@
 	}
 
 	aside {
-		right: -22%;
+		right: -30%;
 		text-align: center;
 		padding: 0;
 	}
@@ -449,6 +449,11 @@
 	==========================*/
 	
 	aside > a { left: 15px; padding: 5px 15px;}
+	
+	header .logo h1 {
+		font-size: 1em;
+		margin-top: 15px;
+	}
 
 	.container { max-width: 480px; }
 
@@ -497,7 +502,12 @@
 	/* ================================
 	- front page and categories
 	==========================*/
+	aside > a { top: 18px;}
 	
 	
+	
+	.content {
+		padding: 0 10px;
+	}
 
 }
