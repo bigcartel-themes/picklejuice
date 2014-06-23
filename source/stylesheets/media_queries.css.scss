@@ -405,6 +405,9 @@
 			display: block;
 	
 		}
+		
+		.details h1 {font-size: 1em;}
+		
 		.cart-wrapper .grid_2 > span {
 			display: inline-block;
 			margin-left: -20px;
@@ -502,6 +505,8 @@
 	==========================*/
 	
 	aside > a { top: 18px;}
+	
+	.content { padding-left: 21px; }
 	
 	footer { width: 100%; }
 	
