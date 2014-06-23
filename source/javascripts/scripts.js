@@ -22,16 +22,18 @@ function renderCustomDropdowns($element, callback) {
         $('<ul>', { class: 'dropdown' })
       );
 
+    if ($select.attr('id') == 'country') {
+      Cart.refresh(function(cart) {
+        if (cart.country.name) {
+          $newSelect.find('> div').text(cart.country.name);
+        }
+      });
+    }
+
     $select.find('option:not([value=""])').each(function(index, el) {
       $newSelect.find('ul').append(
         $('<li>').text($(el).text())
       );
-    });
-
-    Cart.refresh(function(cart) {
-      if (cart.country.name) {
-        $newSelect.find('> div').text(cart.country.name);
-      }
     });
 
     $select.attr('data-rendered', 'data-rendered').hide().before($newSelect);
@@ -127,7 +129,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     Cart.removeItem($(this).data('item-id'), function(cart) {
-      $('.cart a > span').html(Format.money(cart.subtotal, true, true));
+      $('.cart a > span').html(Format.money(cart.total, true, true));
 
       updateCart();
     });
@@ -205,7 +207,7 @@ $(document).ready(function() {
       , $productInput = $(this).prev('input, select');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
-      $('.cart a > span').html(Format.money(cart.subtotal, true, true));
+      $('.cart a > span').html(Format.money(cart.total, true, true));
     });
 
     $button.text('Added!');

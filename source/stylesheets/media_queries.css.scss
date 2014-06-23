@@ -251,8 +251,8 @@
 
 	.product_list li:nth-child(2n+1) { clear: both; }
 	.product_list li:nth-child(3n+1) { clear: none; }
-	
-		
+
+	li#cart-shipping-tax { width: 45% }
 	/* ================================
 	- contact
 	==========================*/
@@ -533,5 +533,11 @@
 	footer p { font-size: .8em; }
 	
 
+
+	.cart-wrapper #total ul li {
+		display: block;
+
+		+ li { margin-left: 0; }
+	}
 
 }

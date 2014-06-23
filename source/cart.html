@@ -87,28 +87,30 @@
       </div>
 
         <div id="total">
-          {% unless cart.shipping.pending || cart.discount.pending %}
-            <ul>
-              <li>
-                <h4>Subtotal</h4>
-                <span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>
-              </li>
-
-              {% unless cart.shipping.pending %}
+          {% if shipping.enabled and cart.discount.enabled %}
+            {% unless cart.shipping.pending or cart.discount.pending %}
+              <ul>
                 <li>
-                  <h4>Shipping</h4>
-                  <span class="clearfix">{{ cart.shipping.amount | money_with_sign }}</span>
+                  <h4>Subtotal</h4>
+                  <span class="clearfix">{{ cart.subtotal | money_with_sign }}</span>
                 </li>
-              {% endunless %}
 
-              {% unless cart.discount.pending %}
-                <li>
-                  <h4>Discounts</h4>
-                  <span class="clearfix">-{{ cart.discount.amount | money_with_sign }}</span>
-                </li>
-              {% endunless %}
-            </ul>
-          {% endunless %}
+                {% unless cart.shipping.pending %}
+                  <li>
+                    <h4>Shipping</h4>
+                    <span class="clearfix">{{ cart.shipping.amount | money_with_sign }}</span>
+                  </li>
+                {% endunless %}
+
+                {% unless cart.discount.pending %}
+                  <li>
+                    <h4>Discounts</h4>
+                    <span class="clearfix">-{{ cart.discount.amount | money_with_sign }}</span>
+                  </li>
+                {% endunless %}
+              </ul>
+            {% endunless %}
+          {% endif %}
 
           <h4>Total</h4>
           <span class="clearfix">{{ cart.total | money_with_sign }}</span>
