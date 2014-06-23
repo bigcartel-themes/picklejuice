@@ -19,7 +19,7 @@
     {
       "variable": "primary_font",
       "label": "Primary Font",
-      "default": "Open Sans"
+      "default": "Montserrat"
     },
     {
       "variable": "secondary_font",

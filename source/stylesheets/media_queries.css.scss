@@ -522,17 +522,21 @@
 	
 	aside > a { top: 18px;}
 	
-	.content { padding-left: 21px; }
+	.content { width: 112%; }
 	
 	.cart { padding-left: 18px; }
 	
 	.light_cart { margin-left: -20px; }
+	
+	.product_list { padding-left: 44px; }
 	
 	footer { width: 100%; }
 	
 	footer p { font-size: .8em; }
 	
 	#share_this { padding: 0 10px; }
+	
+	#share_this a { padding: 0 20px; }
 
 	.cart-wrapper #total ul li {
 		display: block;
