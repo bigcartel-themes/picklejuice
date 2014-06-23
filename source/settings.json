@@ -41,13 +41,6 @@
   ],
   "options": [
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": false,
-      "description": "Shows a search field"
-    },
-    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
