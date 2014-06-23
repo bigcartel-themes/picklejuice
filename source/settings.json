@@ -48,14 +48,6 @@
       "description": "Shows a search field"
     },
     {
-      "variable": "product_image_size",
-      "label": "Product image size",
-      "type": "select",
-      "options": [["Small", "thumb"], ["Medium", "medium"], ["Large", "large"], ["Huge", ""]],
-      "default": "large",
-      "description": "The size of your product images"
-    },
-    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
