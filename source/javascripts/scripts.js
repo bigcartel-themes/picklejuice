@@ -28,6 +28,12 @@ function renderCustomDropdowns($element, callback) {
       );
     });
 
+    Cart.refresh(function(cart) {
+      if (cart.country.name) {
+        $newSelect.find('> div').text(cart.country.name);
+      }
+    });
+
     $select.attr('data-rendered', 'data-rendered').hide().before($newSelect);
   });
 
