@@ -89,6 +89,8 @@
 	==========================*/
 
 	.container { max-width: 900px; }
+	
+	aside ul li a { font-size: .875em; }
 
 	/* ================================
 	- product page
@@ -316,10 +318,21 @@
 		text-align: center;
 		padding: 0;
 	}
+	
 
-	aside ul { padding: 60px 40px 20px 40px; }
+	aside ul { 
+		margin: 0;
+		padding: 10px 40px 0px 40px; 
+	}
+	
+	aside ul:last-of-type { 
+		padding-bottom: 100px; 
+	}
 
-	aside li { display: block; }
+	aside li { 
+		padding: 0;
+		display: block; 
+	}
 
 	aside > a {
 		width: 25px;
@@ -330,8 +343,7 @@
 		right: 0px;
 		position: fixed
 	}
-	
-
+		
 	.expand {
 	  right: 0;
 	  width: 100%;
@@ -414,6 +426,9 @@
 }
 
 @media (max-width: 568px) {
+
+	aside ul li a { font-size: .7em; }
+		
 	/* ================================
 	- cart page
 	==========================*/
