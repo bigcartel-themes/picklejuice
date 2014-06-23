@@ -152,6 +152,12 @@
 	header .cart span { display: block; }
 
 	header .cart span span { display: inline; }
+	
+	.light_cart {
+		margin-left: -30px;
+		left: 50%;
+	}
+	
 
 	/* ================================
 	- Cart page
@@ -246,7 +252,7 @@
 	.product_list li:nth-child(2n+1) { clear: both; }
 	.product_list li:nth-child(3n+1) { clear: none; }
 	
-	
+		
 	/* ================================
 	- contact
 	==========================*/
@@ -344,6 +350,16 @@
 	
 	.content > .errors li {
 		display: none;
+	}
+	
+	.cart a {
+		position: relative;
+		z-index: 2;
+	}
+	
+	header .light_cart {
+		top: 100px;
+		z-index: 0;
 	}
 
 	/* ================================
@@ -509,6 +525,8 @@
 	.content { padding-left: 21px; }
 	
 	.cart { padding-left: 18px; }
+	
+	.light_cart { margin-left: -20px; }
 	
 	footer { width: 100%; }
 	
