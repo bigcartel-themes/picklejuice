@@ -68,6 +68,7 @@ function updateCart() {
 }
 
 function showErrors(cart, type) {
+  console.log(cart, type);
   $errors = $('<ul>', { class: 'errors'} );
 
   $.each(cart.errors, function(index, error) {
@@ -81,6 +82,8 @@ function showErrors(cart, type) {
     default:
       $parent = $('#product_form');
   }
+
+  console.log($parent, $parent.length);
 
   $parent.prepend($errors);
 }
