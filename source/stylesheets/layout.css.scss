@@ -387,7 +387,10 @@ aside {
   width: 12.666667%;
   z-index: 200;
 
-  &.expand { right: 0; }
+  &.expand {
+    right: 0;
+    overflow: scroll;
+  }
 
   > a {
     background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top;

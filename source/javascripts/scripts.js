@@ -4,7 +4,7 @@ API.onError = function(errors) {
     , $productErrorsLocation = $('#product_form');
 
   $.each(errors, function(index, error) {
-    $errorList.append($('<li>').text(error));
+    $errorList.append($('<li>').html(error));
   });
 
   if ($cartErrorsLocation.length > 0) {
@@ -115,6 +115,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     $('aside').toggleClass('expand');
+    $('body').toggleClass('no-scroll');
 
 
   // Show more products
