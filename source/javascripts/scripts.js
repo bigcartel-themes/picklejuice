@@ -224,6 +224,8 @@ $(document).ready(function() {
       , $productInput = $(this).prev('input, select');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
+      $('#product_form ul').remove();
+
       $('.cart a > span').html(Format.money(cart.total, true, true));
 
       $button.text('Added!');

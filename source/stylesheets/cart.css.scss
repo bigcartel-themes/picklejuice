@@ -87,19 +87,6 @@
       }
     }
 
-    .errors {
-      background-color: $dark-green-color;
-      text-align: center;
-      padding: 20px;
-      margin: 0px 0;
-      color: #fff;
-      font: bold 1em $sans-serif-font;
-      text-transform: uppercase;
-      width: 100%;
-
-      li + li { margin-top: 20px }
-    }
-
     .close {
       float: right;
       padding-top: 10px;
