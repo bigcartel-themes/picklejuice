@@ -1,5 +1,17 @@
 API.onError = function(errors) {
-  // disable default error behavior.
+  var $errorList = $('<ul>', { class: 'errors'} )
+    , $cartErrorsLocation = $('#cart_form .header')
+    , $productErrorsLocation = $('#product_form');
+
+  $.each(errors, function(index, error) {
+    $errorList.append($('<li>').text(error));
+  });
+
+  if ($cartErrorsLocation.length > 0) {
+    $cartErrorsLocation.prepend($errorList);
+  } else if ($productErrorsLocation.length > 0) {
+    $productErrorsLocation.prepend($errorList);
+  }
 }
 
 function changeImage(index) {
@@ -65,27 +77,6 @@ function updateCart() {
   $overlay.load('/cart' + ' .cart-wrapper', function() {
     renderCustomDropdowns($overlay);
   });
-}
-
-function showErrors(cart, type) {
-  console.log(cart, type);
-  $errors = $('<ul>', { class: 'errors'} );
-
-  $.each(cart.errors, function(index, error) {
-    $errors.append($('<li>').text(error));
-  });
-
-  switch(type) {
-    case 'cart':
-      $parent = $('#cart_form .header');
-      break;
-    default:
-      $parent = $('#product_form');
-  }
-
-  console.log($parent, $parent.length);
-
-  $parent.prepend($errors);
 }
 
 $(window).load(function() {
@@ -232,25 +223,21 @@ $(document).ready(function() {
       , $productInput = $(this).prev('input, select');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
-      if (!cart.errors) {
-        $('.cart a > span').html(Format.money(cart.total, true, true));
+      $('.cart a > span').html(Format.money(cart.total, true, true));
 
-        $button.text('Added!');
-        setTimeout(function() {
-          $button.text('Add to cart');
-        }, 1000);
+      $button.text('Added!');
+      setTimeout(function() {
+        $button.text('Add to cart');
+      }, 1000);
 
-        $('.cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
-        $('.green_cart').animate({ height: "60px" }, 'slow');
+      $('.cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
+      $('.green_cart').animate({ height: "60px" }, 'slow');
 
-        setTimeout(function() {
-          $('.green_cart').fadeOut('slow', function() {
-            $(this).parent().remove();
-          })
-        }, 1500);
-      } else {
-        showErrors(cart, 'product');
-      }
+      setTimeout(function() {
+        $('.green_cart').fadeOut('slow', function() {
+          $(this).parent().remove();
+        })
+      }, 1500);
     });
 
   // Add full text back
@@ -272,13 +259,9 @@ $(document).ready(function() {
     e.preventDefault();
 
     Cart.updateFromForm('cart_form', function(cart) {
-      if (!cart.errors) {
-        $('.cart a > span').html(Format.money(cart.subtotal, true, true));
+      $('.cart a > span').html(Format.money(cart.subtotal, true, true));
 
-        updateCart();
-      } else {
-        showErrors(cart, 'cart');
-      }
+      updateCart();
     });
   })
 });
