@@ -67,14 +67,22 @@ function updateCart() {
   });
 }
 
-function showCartErrors(cart) {
+function showErrors(cart, type) {
   $errors = $('<ul>', { class: 'errors'} );
 
   $.each(cart.errors, function(index, error) {
     $errors.append($('<li>').text(error));
   });
 
-  $('#cart_form .header').prepend($errors);
+  switch(type) {
+    case 'cart':
+      $parent = $('#cart_form .header');
+      break;
+    default:
+      $parent = $('#product_form');
+  }
+
+  $parent.prepend($errors);
 }
 
 $(window).load(function() {
@@ -237,6 +245,8 @@ $(document).ready(function() {
             $(this).parent().remove();
           })
         }, 1500);
+      } else {
+        showErrors(cart, 'product');
       }
     });
 
@@ -264,7 +274,7 @@ $(document).ready(function() {
 
         updateCart();
       } else {
-        showCartErrors(cart);
+        showErrors(cart, 'cart');
       }
     });
   })
