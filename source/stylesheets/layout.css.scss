@@ -31,7 +31,11 @@ body {
   &:after { top: 0; }
   &:before { bottom: 0; }
 
-  &.no-scroll { overflow: hidden; }
+  &.no-scroll {
+    overflow-y: scroll;
+    position: fixed;
+    width: 100%;
+  }
 }
 
 h1, h4, h5 {
