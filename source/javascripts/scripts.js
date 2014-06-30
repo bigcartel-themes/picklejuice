@@ -72,7 +72,7 @@ function showCart() {
 }
 
 function updateCart() {
-  var $overlay = $('.overlay');
+  var $overlay = $('.content, .overlay').last();
 
   $overlay.load('/cart' + ' .cart-wrapper', function() {
     renderCustomDropdowns($overlay);
