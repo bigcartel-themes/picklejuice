@@ -96,11 +96,12 @@ ul {
 .cart_box, #product_form {
   .errors {
     background-color: $dark-green-color;
+    box-sizing: border-box;
     text-align: center;
     padding: 20px;
     margin: 0px 0;
     color: #fff;
-    font: bold 1em $sans-serif-font;
+    font: .75em $sans-serif-font;
     text-transform: uppercase;
     width: 100%;
 
