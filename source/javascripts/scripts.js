@@ -146,7 +146,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     Cart.removeItem($(this).data('item-id'), function(cart) {
-      $('.cart a > span').html(Format.money(cart.total, true, true));
+      $('header .cart a > span').html(Format.money(cart.total, true, true));
 
       updateCart();
     });
@@ -226,14 +226,14 @@ $(document).ready(function() {
     Cart.addItem($productInput.val(), 1, function(cart) {
       $('#product_form ul').remove();
 
-      $('.cart a > span').html(Format.money(cart.total, true, true));
+      $('header .cart a > span').html(Format.money(cart.total, true, true));
 
       $button.text('Added!');
       setTimeout(function() {
         $button.text('Add to cart');
       }, 1000);
 
-      $('.cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
+      $('header .cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
       $('.green_cart').animate({ height: "60px" }, 'slow');
 
       setTimeout(function() {
@@ -262,7 +262,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     Cart.updateFromForm('cart_form', function(cart) {
-      $('.cart a > span').html(Format.money(cart.subtotal, true, true));
+      $('header .cart a > span').html(Format.money(cart.total, true, true));
 
       updateCart();
     });
