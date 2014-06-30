@@ -87,8 +87,8 @@
       </div>
 
         <div id="total">
-          {% if shipping.enabled and cart.discount.enabled %}
-            {% unless cart.shipping.pending or cart.discount.pending %}
+          {% if cart.shipping.enabled or cart.discount.enabled %}
+            {% unless cart.shipping.pending and cart.discount.pending %}
               <ul>
                 <li>
                   <h4>Subtotal</h4>
