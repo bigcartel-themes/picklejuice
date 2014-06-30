@@ -12,7 +12,7 @@
     {
       "variable": "slideshow",
       "label": "Homepage Slideshow",
-      "description": "900px by 500px images recommended"
+      "description": "1440px by 800px images recommended"
     }
   ],
   "fonts": [
