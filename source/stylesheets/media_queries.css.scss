@@ -553,6 +553,15 @@
     width: 100%;
   }
 
+  .cart-wrapper {
+    .button, #total .button {
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
 	footer {
     box-sizing: border-box;
     width: 100%;
