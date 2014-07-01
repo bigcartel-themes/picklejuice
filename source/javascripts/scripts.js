@@ -44,6 +44,8 @@ function renderCustomDropdowns($element, callback) {
           $newSelect.find('> div').text(cart.country.name);
         }
       });
+    } else if ($select.attr('id') == 'option') {
+      $select.next('button').attr('disabled', 'disabled').text('Choose an option');
     }
 
     $select.find('option:not([value=""])').each(function(index, el) {
@@ -176,6 +178,7 @@ $(document).ready(function() {
 
     $dropdown.find('div').text($selectedOption.text());
     $selectBox.val($selectedOption.attr('value'));
+    $selectBox.next('button').removeAttr('disabled').text('Add to cart');
 
     closeDropdowns();
 
@@ -224,7 +227,7 @@ $(document).ready(function() {
       , $productInput = $(this).prev('input, select');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
-      $('#product_form ul').remove();
+      $('#product_form .errors').remove();
 
       $('header .cart a > span').html(Format.money(cart.total, true, true));
 
