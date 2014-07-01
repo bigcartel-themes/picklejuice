@@ -162,6 +162,8 @@
 		left: 50%;
 	}
 	
+	
+	
 
 	/* ================================
 	- Cart page
@@ -558,6 +560,11 @@
 		display: block;
 
 		+ li { margin-left: 0; }
+	}
+	
+	body.no-scroll {
+		overflow-y: hidden;
+		position: static;
 	}
 	
 
