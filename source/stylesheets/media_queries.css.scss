@@ -374,6 +374,13 @@
 		z-index: 0;
 	}
 
+  footer p {
+    float: none;
+    text-align: center;
+
+    + p { margin-top: 1em; }
+  }
+
 	/* ================================
 	- cart page
 	==========================*/
