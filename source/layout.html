@@ -117,7 +117,7 @@
             </h4>
           </div>
 
-          <div class="grid_12">{{ page_content | paragraphs }}</div>
+          <div class="grid_12 {{ page.category }}">{{ page_content | paragraphs }}</div>
         </div>
       {% else %}
         {{ page_content }}

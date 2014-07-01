@@ -97,6 +97,22 @@ ul {
   }
 }
 
+.custom {
+	ol, ul {
+		font: .875em $serif-font; letter-spacing: 1px;
+	}
+	
+	ul {
+		padding-left: 2em;
+		
+		li {
+			display: list-item;
+			list-style: disc;
+		
+		}
+	}
+}
+
 .cart_box, #product_form {
   .errors {
     background-color: $dark-green-color;
