@@ -542,14 +542,16 @@
 
 	.content { width: 100%; }
 
-	.cart { padding-left: 18px; }
-	
 	.light_cart { margin-left: -20px; }
 	
 	.product_list { padding-left: 44px; }
 
-  .categories { width: 100%; }
-  .grid_12 { box-sizing: border-box; }
+  [class^="grid_"] {
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 
 	footer {
     box-sizing: border-box;
