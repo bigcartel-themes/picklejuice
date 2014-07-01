@@ -117,8 +117,6 @@ $(document).ready(function() {
     e.preventDefault();
 
     $('aside').toggleClass('expand');
-    $('body').toggleClass('no-scroll');
-
 
   // Show more products
   }).on('click', '.more', function(e) {
