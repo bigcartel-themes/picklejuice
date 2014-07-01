@@ -539,17 +539,23 @@
 	==========================*/
 	
 	aside > a { top: 18px;}
-	
-	.content { width: 112%; }
-	
+
+	.content { width: 100%; }
+
 	.cart { padding-left: 18px; }
 	
 	.light_cart { margin-left: -20px; }
 	
 	.product_list { padding-left: 44px; }
-	
-	footer { width: 100%; }
-	
+
+  .categories { width: 100%; }
+  .grid_12 { box-sizing: border-box; }
+
+	footer {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
 	footer p { font-size: .8em; }
 	
 	#share_this { padding: 0 10px; }
