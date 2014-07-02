@@ -162,7 +162,6 @@
             /* Resize Slider
             ================================================== */ 
             var resize = function() {
-                $(window).trigger('resize');
                 var slide = $(slides[currentIndex]);
                 if (options.animation == 'slide') {
                     slides.css({
