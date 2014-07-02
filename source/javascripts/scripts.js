@@ -91,7 +91,7 @@ $(window).on('resize', function() {
   $('#slideshow:visible article').each(function() {
     var $article = $(this)
       , $image = $article.find('img')
-      , newHeight = $(window).height() - $('body > header').outerHeight();
+      , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
 
     $article.css({height: newHeight});
     $image.css({minHeight: newHeight});
@@ -106,6 +106,12 @@ $(window).on('resize', function() {
 
     $('#slideshow').css({height: newHeight});
   });
+
+  if ($(window).width() <= 690) {
+    $('header .cart').css({paddingTop: $('header .logo').outerHeight() + 20});
+  } else {
+    $('header .cart').removeAttr('style');
+  }
 })
 
 $(document).ready(function() {
