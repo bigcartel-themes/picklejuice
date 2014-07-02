@@ -321,12 +321,11 @@
 		background-color: $light-green-color;
 		border-bottom: 3px solid #333;
 		z-index: 100;
+		padding: 0 70px;
 	}
 
 	header .logo h1 {
 		font-size: 1.25em;
-		margin-left: 55px;
-		margin-right: 55px;
 	}
 
 	header .cart {
@@ -396,10 +395,13 @@
 	}
 
   footer p {
-    float: none;
-    text-align: center;
+  	text-align: center;
 
-    + p { margin-top: 1em; }
+  	&:first-child {
+    	float: none;
+
+    	+ p { margin-top: 1em; }
+    }
   }
 
   #breadcrumbs + .custom {
@@ -577,8 +579,6 @@
 
 	.content { width: 100%; }
 
-	.light_cart { margin-left: -20px; }
-	
 	.product_list { padding-left: 44px; }
 
   [class^="grid_"] {
@@ -618,7 +618,8 @@
 		overflow-y: hidden;
 		position: static;
 	}
-	
+
+	.contact_form .grid_12 { padding: 0 20px; }
 
 }
 
