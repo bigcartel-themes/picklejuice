@@ -108,7 +108,10 @@ $(window).on('resize', function() {
   });
 
   if ($(window).width() <= 690) {
-    $('header .cart').css({paddingTop: $('header .logo').outerHeight() + 20});
+    var newTop = $('header .logo').outerHeight() + 20;
+
+    $('header .cart').css({paddingTop: newTop});
+    $('header .light_cart').css({top: newTop});
   } else {
     $('header .cart').removeAttr('style');
   }
@@ -249,6 +252,7 @@ $(document).ready(function() {
       }, 1000);
 
       $('header .cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
+      $(window).trigger('resize');
       $('.green_cart').animate({ height: "60px" }, 'slow');
 
       setTimeout(function() {

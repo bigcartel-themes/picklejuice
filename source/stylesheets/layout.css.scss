@@ -310,7 +310,8 @@ header {
       background-size: contain;
       display: block;
       padding-top: 70px;
-     
+      position: relative;
+      z-index: 2;
     }
 		
     span span { padding: 0 2px 0 0; }
@@ -323,7 +324,7 @@ header {
   	position: absolute;
   	top: 0px;
    	display: block;
-  	z-index: -1;
+  	z-index: 1;
   	overflow: hidden;
   }
   
@@ -334,7 +335,7 @@ header {
   	position: absolute;
   	bottom: 0;
   	display: block;
-  	z-index: -1;
+  	z-index: 1;
   }
 
   .imgAdd { margin-top: 8px; }

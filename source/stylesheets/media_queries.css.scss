@@ -162,8 +162,8 @@
 	}
 
 	header .cart {
-		position: static;
-
+		position: relative;
+		right: 0;
 		float: none;
 		width: 100%;
 
@@ -391,7 +391,7 @@
 	}
 	
 	header .light_cart {
-		top: 100px;
+		top: 74px;
 		z-index: 0;
 	}
 
