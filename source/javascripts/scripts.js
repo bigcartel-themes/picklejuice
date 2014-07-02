@@ -88,17 +88,27 @@ $(window).load(function() {
 });
 
 $(window).on('resize', function() {
-  $('#slideshow article').each(function() {
+  $('#slideshow:visible article').each(function() {
     var $article = $(this)
-      , $image = $article.find('img');
+      , $image = $article.find('img')
+      , newHeight = $(window).height() - $('body > header').outerHeight();
 
-    $image.css({ marginLeft: ($article.width() - $image.width()) / 2 });
+    $article.css({height: newHeight});
+    $image.css({minHeight: newHeight});
+
+    if ($image.outerHeight() > $article.outerHeight()) {
+      $image.css({marginTop: ($article.outerHeight() - $image.outerHeight()) / 2})
+    }
+
+    if ($image.outerWidth() > $article.outerWidth()) {
+      $image.css({marginLeft: ($article.outerWidth() - $image.outerWidth()) / 2})
+    }
+
+    $('#slideshow').css({height: newHeight});
   });
 })
 
 $(document).ready(function() {
-  $(window).trigger('resize');
-
   var $document = $(this);
 
   renderCustomDropdowns($('body'));
@@ -111,6 +121,8 @@ $(document).ready(function() {
     navigationControl: true,
     paginationControl: true
   });
+
+  $(window).trigger('resize');
 
   // Slide out sidebar
   $document.on('click', 'aside > a', function(e) {

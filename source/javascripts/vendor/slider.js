@@ -52,7 +52,7 @@
                 isAnimating = true;
                 currentIndex = index;
                 var slide = $(slides[index]);
-                $this.animate({ height: slide.innerHeight() });
+                $this.css({ height: slide.innerHeight() });
                 if (options.animation == 'fade') {
                     slides.css({
                         position: 'absolute',
@@ -163,7 +163,6 @@
             ================================================== */ 
             var resize = function() {
                 var slide = $(slides[currentIndex]);
-                $this.animate({ height: slide.innerHeight() });
                 if (options.animation == 'slide') {
                     slides.css({
                         width: $this.width() / options.items
