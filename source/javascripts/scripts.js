@@ -205,17 +205,13 @@ $(document).ready(function() {
     showCart();
 
   // Close and remove overlays
-  }).on('click', '.close_overlay a', function(e) {
+  }).on('click', 'body:not(.cart) .close_overlay a', function(e) {
     e.preventDefault();
 
-    if ($('body').hasClass('cart')) {
-      window.history.back();
-    } else {
-      $(this).closest('.overlay').fadeOut(function() {
-        $(this).remove();
-        $('body').removeClass('no-scroll');
-      });
-    }
+    $(this).closest('.overlay').fadeOut(function() {
+      $(this).remove();
+      $('body').removeClass('no-scroll');
+    });
 
   // Swap out product images
   }).on('click', '#thumbs a', function(e) {
