@@ -410,7 +410,6 @@ aside {
   font: 1.750em $serif-font;
   letter-spacing: 1px;
   height: 100%;
-  padding: 27px;
   position: fixed;
   right: -13.666667%;
   top: 0;
@@ -419,8 +418,14 @@ aside {
   -moz-transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-  width: 12.666667%;
+  width: 16%;
   z-index: 200;
+
+  .wrapper {
+    padding: 0 28px 28px;
+    overflow: scroll;
+    height: 100%;
+  }
 
   &.expand { right: 0; }
 
