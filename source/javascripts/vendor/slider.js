@@ -95,7 +95,9 @@
                 }    
                                                     
                 // Trigger Event
-                $this.trigger('slideLoaded', index);             
+                $this.trigger('slideLoaded', index);
+
+                $(window).trigger('resize');
             };
             
             
