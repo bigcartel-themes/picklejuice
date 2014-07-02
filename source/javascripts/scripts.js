@@ -114,6 +114,7 @@ $(window).on('resize', function() {
     $('header .light_cart').css({top: newTop});
   } else {
     $('header .cart').removeAttr('style');
+    $('header .light_cart').removeAttr('style');
   }
 })
 
