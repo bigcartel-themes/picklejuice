@@ -56,10 +56,11 @@
     <div id="description" class="less-details">
       {% if product.description != blank %}
         <p class="truncate">{{ product.description | paragraph }}</p>
-      {% endif %}
+      
     </div>
     <a id="more_button" href="#"></a>
 		<hr>
+		{% endif %}
     {% if product.status == 'active' %}
       <form method="post" action="/cart" id="product_form">
         {% if product.has_default_option %}
