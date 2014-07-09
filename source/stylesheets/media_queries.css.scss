@@ -336,7 +336,7 @@
 	}
 
 	aside {
-		right: -30%;
+		right: -50%;
 		text-align: center;
 		padding: 0;
 	}
@@ -471,10 +471,12 @@
 	/* ================================
 	- cart page
 	==========================*/
-		#discount h4 {
-			display: block;
 	
-		}
+		.contact_form input { -webkit-appearance: none; border-radius: 0; margin-bottom: 5px; }
+		
+		.contact_form textarea { -webkit-appearance: none; border-radius: 0; }
+		
+		#discount h4 { display: block; }
 		
 		.details h1 {font-size: 1em;}
 		
@@ -557,7 +559,7 @@
 	==========================*/
 	.categories { padding: 0 15px; }
 	
-	#breadcrumbs { padding: 0 15px; }
+	#breadcrumbs { padding: 0 0 0 15px; }
 
 	.single_product { padding: 0 15px; }
 
