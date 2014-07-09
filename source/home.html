@@ -33,7 +33,7 @@
                   <img src="{{ product.image | product_image_url size: theme.product_image_size }}" alt="Image of {{ product.name | escape }}">
 
                   <figcaption>
-                    <h4>{{ product.name | truncatewords: 4 }}</h4>
+                    <h4>{{ product.name | truncate: 28 }}</h4>
                      <span>{{ product.default_price | money_with_sign }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
                      
                   </figcaption>
