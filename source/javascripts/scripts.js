@@ -9,6 +9,7 @@ API.onError = function(errors) {
 
   if ($cartErrorsLocation.length > 0) {
     $cartErrorsLocation.prepend($errorList);
+    $('.cart-wrapper').scrollTop(0);
   } else if ($productErrorsLocation.length > 0) {
     $productErrorsLocation.prepend($errorList);
   }
