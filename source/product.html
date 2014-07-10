@@ -24,16 +24,20 @@
       {% endif %}
       <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image">
     </div>
-    {% get products from products.all limit:4 order:'views' %}
-      <div id="more_products">
-        <hr><hr><h4>more products</h4>
-        {% for product in products %}
-        	{% unless product.url == page.full_path %}
-          <a href="{{ product.url }}" title="{{ product.name | escape }}"><img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}"></a>
-        	{% endunless %}
-        {% endfor %}
-      </div>
-    {% endget %}
+    {% if products.all.size > 1 %}
+      {% get all_products from products.all limit:4 order:'views' %}
+        {% if all_products.size > 0 %}
+          <div id="more_products">
+            <hr><hr><h4>more products</h4>
+            {% for product in all_products %}
+              {% unless product.url == page.full_path %}
+              <a href="{{ product.url }}" title="{{ product.name | escape }}"><img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}"></a>
+              {% endunless %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endget %}
+    {% endif %}
   </div>
   <div class="details">
     <div id="thumbs">
