@@ -124,13 +124,15 @@ $(document).ready(function() {
   renderCustomDropdowns($('body'));
 
   // Initialize slider on homepage
-  $('.example1').wmuSlider({
-    animation: 'slide',
-    slideshow: true,
-    slideshowSpeed: 4000,
-    navigationControl: true,
-    paginationControl: true
-  });
+  if ($('.wmuSliderWrapper').children().length > 1) {
+    $('.example1').wmuSlider({
+      animation: 'slide',
+      slideshow: true,
+      slideshowSpeed: 4000,
+      navigationControl: true,
+      paginationControl: true
+    });
+  }
 
   $(window).trigger('resize');
 
