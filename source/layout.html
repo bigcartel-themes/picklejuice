@@ -88,16 +88,6 @@
     </aside>
 
     <section class="content">
-      
-
-      {% if errors != blank %}
-        <ul class="errors">
-          {% for error in errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-
       {% if page.category == 'custom' %}
         <div class="container clearfix">
           <div class="grid_12 categories">
