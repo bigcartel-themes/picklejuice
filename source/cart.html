@@ -56,7 +56,7 @@
       <div class="container clearfix cart_box">
         {% if cart.shipping.enabled or cart.discount.enabled %}
           <section id="cart_options">
-            <ul>
+            <ul class="clearfix">
               {% if cart.shipping.enabled %}
                 {% if cart.shipping.strict %}
                   <li id="cart-shipping-tax">
