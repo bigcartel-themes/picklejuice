@@ -125,7 +125,11 @@ ul {
     text-transform: uppercase;
     width: 100%;
 
-    li + li { margin-top: 20px }
+    li {
+      display: block;
+
+      + li { margin-top: 20px }
+    }
   }
 }
 
