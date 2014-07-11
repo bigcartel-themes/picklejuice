@@ -47,8 +47,6 @@
       <div class="wrapper">
         {% if artists.active != blank %}
           <ul>
-            <li><a href="/products">All</a></li>
-
             {% for artist in artists.active %}
               <li>{{ artist | link_to }}</li>
             {% endfor %}
@@ -95,6 +93,7 @@
               {% for category in categories.active %}
                 <li>{{ category | link_to }}</li>
               {% endfor %}
+              <li><a href="/products">All Products</a></li>
             </ul>
           </div>
         </div>
