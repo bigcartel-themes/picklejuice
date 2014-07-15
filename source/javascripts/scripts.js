@@ -15,6 +15,27 @@ API.onError = function(errors) {
   }
 }
 
+function resizeSlideshow() {
+  $('#slideshow:visible article').each(function() {
+    var $article = $(this)
+      , $image = $article.find('img')
+      , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
+
+    $article.css({height: newHeight});
+    $image.css({minHeight: newHeight});
+
+    if ($image.outerHeight() > $article.outerHeight()) {
+      $image.css({marginTop: ($article.outerHeight() - $image.outerHeight()) / 2})
+    }
+
+    if ($image.outerWidth() > $article.outerWidth()) {
+      $image.css({marginLeft: ($article.outerWidth() - $image.outerWidth()) / 2})
+    }
+
+    $('#slideshow').css({height: newHeight});
+  });
+}
+
 function changeImage(index) {
   var $allThumbs = $('#thumbs ul li')
     , $newSelection = $allThumbs.eq(index % $allThumbs.length);
@@ -89,24 +110,7 @@ $(window).load(function() {
 });
 
 $(window).on('resize', function() {
-  $('#slideshow:visible article').each(function() {
-    var $article = $(this)
-      , $image = $article.find('img')
-      , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
-
-    $article.css({height: newHeight});
-    $image.css({minHeight: newHeight});
-
-    if ($image.outerHeight() > $article.outerHeight()) {
-      $image.css({marginTop: ($article.outerHeight() - $image.outerHeight()) / 2})
-    }
-
-    if ($image.outerWidth() > $article.outerWidth()) {
-      $image.css({marginLeft: ($article.outerWidth() - $image.outerWidth()) / 2})
-    }
-
-    $('#slideshow').css({height: newHeight});
-  });
+  resizeSlideshow();
 
   if ($(window).width() <= 690) {
     var newTop = $('header .logo').outerHeight() + 20;
@@ -132,10 +136,12 @@ $(document).ready(function() {
       slideshowSpeed: 4000,
       navigationControl: true,
       paginationControl: true
+    }).on('slideLoaded', function() {
+      resizeSlideshow();
     });
   }
 
-  $(window).trigger('resize');
+  resizeSlideshow();
 
   // Slide out sidebar
   $document.on('click', 'aside > a', function(e) {
