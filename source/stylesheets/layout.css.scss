@@ -98,6 +98,10 @@ ul {
 }
 
 .custom {
+	a { 
+		color: $dark-green-color;
+	}
+	
 	ol, ul {
 		font: .875em $serif-font; letter-spacing: 1px;
 	}
