@@ -273,20 +273,6 @@ $(document).ready(function() {
     });
 
   // Add full text back
-  }).on('click', '#more_button', function(e) {
-  	e.preventDefault();
-  	var $truncateText = $('.truncate');
-  	$('#more_button').toggleClass('less_button');
-		if ($truncateText.text().length > 250) {
-			$truncateText.succinct({
-			    size: 240,
-			    ignore: false
-			});
-
-		}
-		else {
-			$truncateText.text(window.fullText);
-		}
   }).on('click', '.cart-wrapper #update', function(e) {
     e.preventDefault();
 
@@ -352,21 +338,6 @@ $(document).ready(function() {
       this.value = 'Search Products...';
     }
   });
-
-	var $truncateText = $('.truncate')
-
-	if ($truncateText.text().length > 250) {
-		window.fullText = $truncateText.text();
-
-		$truncateText.succinct({
-		    size: 240,
-		    ignore: false
-		});
-
-	}
-  else {
-  	$('#more_button').hide();
-  }
 
   $(function() {
 		$('a[href*=#]:not([href=#])').click(function() {
