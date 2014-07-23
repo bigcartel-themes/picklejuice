@@ -54,24 +54,8 @@
 	display: list-item !important;
 }
 
-#more_button {  
-  background: url(#{'{{ "more_deats.png" | theme_image_url }}'}) no-repeat left top;
-  background-size: 17px;
-  display: inline-block;
-  height: 17px;
-  overflow: hidden;
-  text-indent: -999px;
-  width: 17px;
-}
-
-#more_button.less_button {  
-  background: url(#{'{{ "less_deats.png" | theme_image_url }}'}) no-repeat left top;
-  background-size: 17px;
-  display: inline-block;
-  height: 17px;
-  overflow: hidden;
-  text-indent: -999px;
-  width: 17px;
+#more_button, #more_button.less_button {
+  display:none;
 }
 
 #more_products {
