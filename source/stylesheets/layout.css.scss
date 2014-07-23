@@ -102,6 +102,10 @@ ul {
 		color: $dark-green-color;
 	}
 	
+	img { 
+		max-width:100%;
+	}
+	
 	ol, ul {
 		font: .875em $serif-font; letter-spacing: 1px;
 	}
