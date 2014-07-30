@@ -9,3 +9,6 @@ log
 *.tmproj
 *.esproj
 *.sublime*
+
+.ruby-version
+Gemfile*
