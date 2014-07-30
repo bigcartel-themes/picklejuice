@@ -25,7 +25,7 @@
           <li class="cart_box">
             <div class="grid_2">
               <a href="{{ item.product.url }}">
-                <img src="{{ item.product.image | product_image_url }}">
+                <img src="{{ item.product.image | product_image_url | constrain: '600' }}">
               </a>
             </div>
 
