@@ -62,9 +62,9 @@
     <hr>
     {% if product.description != blank %}
     <div id="description" class="less-details">
-      
-        <p class="truncate">{{ product.description | paragraph }}</p>
-      
+
+        <p class="truncate">{{ product.description | paragraphs }}</p>
+
     </div>
 		<hr>
 		{% endif %}
