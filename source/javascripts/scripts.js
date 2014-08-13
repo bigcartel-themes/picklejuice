@@ -18,19 +18,9 @@ API.onError = function(errors) {
 function resizeSlideshow() {
   $('#slideshow:visible article').each(function() {
     var $article = $(this)
-      , $image = $article.find('img')
       , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
 
     $article.css({height: newHeight});
-    $image.css({minHeight: newHeight});
-
-    if ($image.outerHeight() > $article.outerHeight()) {
-      $image.css({marginTop: ($article.outerHeight() - $image.outerHeight()) / 2})
-    }
-
-    if ($image.outerWidth() > $article.outerWidth()) {
-      $image.css({marginLeft: ($article.outerWidth() - $image.outerWidth()) / 2})
-    }
 
     $('#slideshow').css({height: newHeight});
   });

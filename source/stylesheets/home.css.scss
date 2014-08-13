@@ -10,7 +10,10 @@
       text-align: center;
     }
 
-    img { min-width: 100%; }
+    img {
+      height: 100%;
+      width: 100%;
+    }
 
     > a:first-of-type {
       background: url(#{'{{ "slide_arrow.png" | theme_image_url }}'}) no-repeat left top;
