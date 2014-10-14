@@ -18,10 +18,16 @@ API.onError = function(errors) {
 function resizeSlideshow() {
   $('#slideshow:visible article').each(function() {
     var $article = $(this)
+      , $image = $article.find('img')
       , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
 
     $article.css({height: newHeight});
-
+    if ($image.outerWidth() > $(window).outerWidth()) {
+      $image.css({marginLeft: ($(window).outerWidth() - $image.outerWidth()) / 2})
+    }
+    else { 
+	    $image.css({marginLeft: 0})
+    }
     $('#slideshow').css({height: newHeight});
   });
 }
@@ -100,8 +106,6 @@ $(window).load(function() {
 });
 
 $(window).on('resize', function() {
-  resizeSlideshow();
-
   if ($(window).width() <= 690) {
     var newTop = $('header .logo').outerHeight() + 20;
 
@@ -111,11 +115,12 @@ $(window).on('resize', function() {
     $('header .cart').removeAttr('style');
     $('header .light_cart').removeAttr('style');
   }
+  resizeSlideshow();
 })
 
 $(document).ready(function() {
   var $document = $(this);
-
+  resizeSlideshow();
   renderCustomDropdowns($('body'));
 
   // Initialize slider on homepage
@@ -126,12 +131,10 @@ $(document).ready(function() {
       slideshowSpeed: 4000,
       navigationControl: true,
       paginationControl: true
-    }).on('slideLoaded', function() {
-      resizeSlideshow();
-    });
+    })
   }
 
-  resizeSlideshow();
+  
 
   // Slide out sidebar
   $document.on('click', 'aside > a', function(e) {
@@ -353,10 +356,3 @@ $(document).ready(function() {
     });
     
 });
-
-
-
-
-
-
-
