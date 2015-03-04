@@ -91,30 +91,15 @@
       float: right;
       padding-top: 10px;
     }
-
-    .wrapper-dropdown {
-      background-color: $white-color;
-      float: left;
-      margin-top: 0;
-
-      &.active {
-        background-color: $dark-gray-color;
-        color: $white-color;
-      }
-
-      .dropdown {
-        background-color: $white-color;
-
-        li {
-          border-bottom: 1px solid $dark-gray-color;
-
-          &:last-of-type { border: none; }
-        }
-      }
-    }
+    
   }
 
-
+  .select {
+    background: $white-color;
+    height: 46px;
+    width: 100%;
+  }
+  
   .close_overlay {
     float: right;
     margin-right: 0;
