@@ -171,7 +171,7 @@ $(document).ready(function() {
       , $productInput = $('#option')
       , $quantityInput = $('#product_qty');
 
-    Cart.addItem($productInput.val(), 1, function(cart) {
+    Cart.addItem($productInput.val(), $quantityInput.val(), function(cart) {
       $('#product_form .errors').remove();
 
       $('header .cart a > span').html(Format.money(cart.total, true, true));
