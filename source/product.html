@@ -70,6 +70,7 @@
 		{% endif %}
     {% if product.status == 'active' %}
       <form method="post" action="/cart" id="product_form">
+        {{ product | product_quantity_input, '1', 'product_qty' }}
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}

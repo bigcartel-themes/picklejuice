@@ -8,9 +8,11 @@ API.onError = function(errors) {
   });
 
   if ($cartErrorsLocation.length > 0) {
+    $cartErrorsLocation.find('.errors').hide();
     $cartErrorsLocation.prepend($errorList);
     $('.cart-wrapper').scrollTop(0);
   } else if ($productErrorsLocation.length > 0) {
+    $productErrorsLocation.find('.errors').hide();
     $productErrorsLocation.prepend($errorList);
   }
 }
@@ -166,7 +168,8 @@ $(document).ready(function() {
     e.preventDefault();
 
     var $button = $(this)
-      , $productInput = $(this).prev('input, select');
+      , $productInput = $('#option')
+      , $quantityInput = $('#product_qty');
 
     Cart.addItem($productInput.val(), 1, function(cart) {
       $('#product_form .errors').remove();
