@@ -232,7 +232,15 @@ ul {
   &:hover svg {
     fill: $dark-green-color
   }
-} 
+}
+
+.ie select { 
+  appearance: normal;
+  padding: 0px
+}
+.ie .select svg { 
+  display: none
+}
 
 .overlay {
   display: none;
