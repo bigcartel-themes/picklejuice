@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<!--[if lte IE 9 ]><html class="ie"><![endif]-->
+<!--[if gt IE 9 ]><html><![endif]-->
+<!--[if !IE]>--><html><!--<![endif]-->
   <head>
     <title>{{ store.name }} &mdash; {{ page.name }}</title>
 
@@ -121,8 +123,6 @@
         <p>{{ bigcartel_credit}}</p>
       </div>
     </footer>
-
-    <div id="loading"></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>

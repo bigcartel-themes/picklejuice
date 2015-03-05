@@ -37,7 +37,20 @@ body {
     width: 100%;
   }
 }
-
+a, button, submit, select, input, .select { 
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
 h1, h4, h5 {
   font-family: $sans-serif-font;
   font-weight: bold;
@@ -140,17 +153,6 @@ ul {
   }
 }
 
-#loading {
-  display: block;
-  height: 100%;
-  width: 100%;
-  background-color: $light-green-color;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
-}
-
 .button {
   border: 2px solid $dark-gray-color;
   font: bold 0.750em $sans-serif-font;
@@ -177,93 +179,67 @@ ul {
   }
 }
 
-.wrapper-dropdown {
-  position: relative;
-  width: 264px;
-  margin-top: 40px;
-  padding: 12px 15px;
-  text-align: left;
-  font: bold 0.750em $sans-serif-font;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.select {
   border: 3px solid $dark-gray-color;
+  box-sizing: border-box;
   color: $dark-gray-color;
-  outline: none;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  cursor: pointer;
+  width: 264px;
+  position: relative;
   
-
-  &:after {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    margin-top: -3px;
-    border-width: 6px 6px 0 6px;
-    border-style: solid;
-    border-color: $dark-gray-color transparent;
-  }
-
-  &.active {
-    background: $dark-gray-color;
-    color: $white-color;
-
-    &:after { border-color: $white-color transparent; }
-
-    .dropdown { border-bottom: 3px solid $dark-gray-color; }
-  }
-
-  &:focus {
-    background: $dark-gray-color;
-    border-bottom: none;
-    color: $white-color;
-
-    &:after { border-color: $white-color transparent; }
-
-    .dropdown {
-      border-bottom: 3px solid $dark-gray-color;
-      max-height: 900px;
+  select {
+    background: none;
+    border: 0px;
+    color: $dark-gray-color;
+    cursor: pointer;
+    font: bold 0.750em $sans-serif-font;
+    height: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0 38px 0 12px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    
+    option { 
+      color: #000;
+      background: #FFF;
+    }
+    
+    &:focus {
+      outline: none
+    }
+      
+    &::-ms-expand {
+      display: none 
     }
   }
-
-  .dropdown {
+    
+  svg {
+    fill: $dark-gray-color;
     position: absolute;
-    top: 100%;
-    margin-top: 0;
-    left: -3px;
-    right: -3px;
-    background: $light-green-color;
-    border: 3px solid $dark-gray-color;
-    border-top: none;
-    border-bottom: none;
-    list-style: none;
-    -webkit-transition: max-height 0.3s ease-out;
-    -moz-transition: max-height 0.3s ease-out;
-    -ms-transition: max-height 0.3s ease-out;
-    -o-transition: max-height 0.3s ease-out;
-    transition: max-height 0.3s ease-out;
-    max-height: 0;
-    overflow: auto;
+    right: 17px;
+    top: 18px;
     z-index: 1;
-
-    li {
-      display: block;
-      text-decoration: none;
-      color: $dark-gray-color;
-      padding: 12px 15px;
-      transition: all 0.3s ease-out;
-      border-bottom: 1px solid $white-color;
-
-      &:last-of-type { border: none; }
-      &:hover { color: $dark-green-color; }
-    }
   }
+  
+  &:hover { 
+    border: 3px solid $dark-green-color;
+  }
+  
+  &:hover svg {
+    fill: $dark-green-color
+  }
+}
+
+.ie select { 
+  appearance: normal;
+  padding: 0px
+}
+.ie .select svg { 
+  display: none
 }
 
 .overlay {

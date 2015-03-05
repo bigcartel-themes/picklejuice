@@ -1,5 +1,9 @@
 @import "mixins";
 
+.product_list ul { 
+  padding: 16px 0;
+  margin: 0;
+}
 .product_list li {
   border: 3px solid $white-color;
   -moz-box-shadow: 0 0 12px $light-gray-color;

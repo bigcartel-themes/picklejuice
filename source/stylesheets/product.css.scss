@@ -58,6 +58,8 @@
   display:none;
 }
 
+#product_qty { display: none }
+
 #more_products {
   position: relative;
 
@@ -192,6 +194,11 @@
       background-color: $dark-green-color;
       color: $white-color;
     }
+  }
+  .select {
+    height: 46px;
+    margin-top: 10px;
+    width: 100%;
   }
 }
 

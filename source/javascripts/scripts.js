@@ -8,9 +8,11 @@ API.onError = function(errors) {
   });
 
   if ($cartErrorsLocation.length > 0) {
+    $cartErrorsLocation.find('.errors').hide();
     $cartErrorsLocation.prepend($errorList);
     $('.cart-wrapper').scrollTop(0);
   } else if ($productErrorsLocation.length > 0) {
+    $productErrorsLocation.find('.errors').hide();
     $productErrorsLocation.prepend($errorList);
   }
 }
@@ -42,42 +44,6 @@ function changeImage(index) {
   $('.primary_image').attr('src', $newSelection.find('a').attr('href'));
 }
 
-function closeDropdowns() {
-  $('.wrapper-dropdown').removeClass('active').find('.dropdown').removeAttr('style');
-}
-
-function renderCustomDropdowns($element, callback) {
-  var $selectBoxes = $element.find('select:not("[data-rendered]")');
-
-  $selectBoxes.each(function(index, el) {
-    var $select = $(el)
-      , $newSelect = $('<div>', { id: 'dd', class: 'wrapper-dropdown' }).append(
-        $('<div>').text($select.attr('id') == 'country' ? 'Choose a country' : 'Choose an option'),
-        $('<ul>', { class: 'dropdown' })
-      );
-
-    if ($select.attr('id') == 'country') {
-      Cart.refresh(function(cart) {
-        if (cart.country.name) {
-          $newSelect.find('> div').text(cart.country.name);
-        }
-      });
-    } else if ($select.attr('id') == 'option') {
-      $select.next('button').attr('disabled', 'disabled').text('Choose an option');
-    }
-
-    $select.find('option:not([value=""])').each(function(index, el) {
-      $newSelect.find('ul').append(
-        $('<li>').text($(el).text())
-      );
-    });
-
-    $select.attr('data-rendered', 'data-rendered').hide().before($newSelect);
-  });
-
-  if (callback) { callback() };
-}
-
 function showCart() {
   var $overlay = $('<div>', { class: 'overlay' });
 
@@ -85,25 +51,16 @@ function showCart() {
     $('body').addClass('no-scroll');
     $('body > footer').before($overlay);
 
-    renderCustomDropdowns($overlay, function() {
-      $overlay.fadeIn();
-    });
+    $overlay.fadeIn();
+
   });
 }
 
 function updateCart() {
   var $overlay = $('.content, .overlay').last();
 
-  $overlay.load('/cart' + ' .cart-wrapper', function() {
-    renderCustomDropdowns($overlay);
-  });
+  $overlay.load('/cart' + ' .cart-wrapper');
 }
-
-$(window).load(function() {
-  $('#loading').fadeOut(1500, function() {
-    $(this).remove();
-  });
-});
 
 $(window).on('resize', function() {
   if ($(window).width() <= 690) {
@@ -121,7 +78,6 @@ $(window).on('resize', function() {
 $(document).ready(function() {
   var $document = $(this);
   resizeSlideshow();
-  renderCustomDropdowns($('body'));
 
   // Initialize slider on homepage
   if ($('.wmuSliderWrapper').children().length > 1) {
@@ -175,36 +131,6 @@ $(document).ready(function() {
       updateCart();
     });
 
-  // Open custom select box
-  }).on('click', '.wrapper-dropdown', function(e) {
-    e.stopPropagation();
-
-    var $dropdown = $(this);
-
-    if ($dropdown.hasClass('active')) {
-      $dropdown.removeClass('active');
-      $dropdown.find('.dropdown').removeAttr('style');
-    } else {
-      $dropdown.addClass('active');
-      $dropdown.find('.dropdown').css({ maxHeight: 210 });
-    }
-
-  // Make a selection in custom select box
-  }).on('click', '.dropdown li', function(e) {
-    e.stopPropagation();
-
-    var $selection = $(this)
-      , $dropdown = $selection.closest('.wrapper-dropdown')
-      , $selectBox = $dropdown.next('select')
-      , $selectedOption = $selectBox.children().filter('option:not([value=""])').eq($selection.index());
-
-    $dropdown.find('div').text($selectedOption.text());
-    $selectBox.val($selectedOption.attr('value'));
-    $selectBox.next('button').removeAttr('disabled').text('Add to cart');
-
-    closeDropdowns();
-
-  // Show cart.
   }).on('click', '[data-show-cart]', function(e) {
     e.preventDefault();
 
@@ -242,9 +168,10 @@ $(document).ready(function() {
     e.preventDefault();
 
     var $button = $(this)
-      , $productInput = $(this).prev('input, select');
+      , $productInput = $('#option')
+      , $quantityInput = $('#product_qty');
 
-    Cart.addItem($productInput.val(), 1, function(cart) {
+    Cart.addItem($productInput.val(), $quantityInput.val(), function(cart) {
       $('#product_form .errors').remove();
 
       $('header .cart a > span').html(Format.money(cart.total, true, true));
@@ -278,17 +205,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  // Click outside select box to close it
-  $(document).on('click', function(e) {
-    if ($('.wrapper-dropdown.active').length > 0) {
-      e.stopPropagation()
-
-      if ($(this).closest('.wrapper-dropdown.active').length == 0) {
-        closeDropdowns();
-      }
-    }
-  });
-
+  
   var $searchBar = $('.search_bar')
     , $searchButton = $searchBar.find('input[type="submit"]')
     , $searchField = $searchBar.find('input[type="search"]')
