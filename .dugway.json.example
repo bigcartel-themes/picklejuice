@@ -1,0 +1,10 @@
+{
+  "store": {
+    "subdomain": "beeteeth"
+  },
+  "customization": {
+    "primary_color": "#336699",
+    "products_per_page": 10,
+    "twitter_username": bigcartel
+  }
+}
