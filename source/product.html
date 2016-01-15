@@ -85,7 +85,7 @@
     <div id="share_this">
       <a href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
       <a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
-      <a href="http://pinterest.com/pin/create/button/?url={{store.url}}{{product.url}}&media={{product.images.first.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">pin this!</a>
+      <a target="_blank" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape }}">pin this!</a>
     </div>
   </div>
 </div>

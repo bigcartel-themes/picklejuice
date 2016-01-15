@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "images": [
     {
       "variable": "logo",
@@ -40,7 +40,7 @@
     }
   ],
   "checkout": {
-    "logo": "{{ logo }}",
+    "header_image": "{{ logo }}",
     "title_background_color": "{{ primary_color }}",
     "title_font": "{{ primary_font }}",
     "step_header_font": "{{ primary_font }}",
