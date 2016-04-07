@@ -2,14 +2,9 @@
 <html>
   <head>
     <title>{{ store.name }} &mdash; {{ page.name }}</title>
-
     <meta charset="utf-8">
-    <meta name="description" content="{{ page.meta_description }}">
-    <meta name="keywords" content="{{ page.meta_keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no">
-
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet">
-
     <script>
       function checkout() {
         if(top != self) {
@@ -19,10 +14,8 @@
         }
       }
     </script>
-
     {{ head_content }}
   </head>
-
   <body class="{{ page.permalink }}" onload="checkout();">
     <div class="container clearfix message">
       <h1>One moment&hellip;</h1>
