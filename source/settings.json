@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "images": [
     {
       "variable": "logo",
@@ -54,6 +54,14 @@
   },
   "options": [
     {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 12,
+      "description": "The number of products displayed on the home page"
+    },
+    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
@@ -62,28 +70,34 @@
       "description": "The number of products shown per page"
     },
     {
-      "variable": "facebook_username",
-      "label": "Facebook username",
+      "variable": "twitter_url",
+      "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
-      "variable": "twitter_username",
-      "label": "Twitter username",
+      "variable": "facebook_url",
+      "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel"
     },
     {
-      "variable": "instagram_username",
-      "label": "Instagram username",
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://bigcartel.tumblr.com"
     },
     {
-      "variable": "pinterest_username",
-      "label": "Pinterest username",
+      "variable": "instagram_url",
+      "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
     }
   ]
 }

@@ -394,7 +394,7 @@ aside {
   -moz-box-shadow: 0 0 12px $light-gray-color;
   -webkit-box-shadow: 0 0 12px $light-gray-color;
   box-shadow: 0 0 12px $light-gray-color;
-  font: 1.750em $serif-font;
+  font: 1.350em $serif-font;
   letter-spacing: 1px;
   height: 100%;
   position: fixed;
@@ -405,11 +405,11 @@ aside {
   -moz-transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-  width: 16%;
+  width: 18%;
   z-index: 200;
 
   .wrapper {
-    padding: 0 28px 28px;
+    padding: 0 20px 28px 28px;
     overflow: scroll;
     height: 100%;
   }
@@ -436,13 +436,20 @@ aside {
   }
 
   .social {
+    margin-top: -10px;
+    
     a {
-      @include image-replacement(#{'{{ "social-sprite.png" | theme_image_url }}'}, 24px, 24px);
-      background-size: 24px 138px;
-
-      &.twitter { background-position: 0 -38px; }
-      &.instagram { background-position: 0 -76px; }
-      &.pinterest { background-position: 0 -114px; }
+      display: block;
+      
+      svg { 
+        fill: $dark-gray-color;
+        height: 18px;
+        width: 18px;
+        
+        &:hover { 
+          fill: $dark-green-color;
+        }
+      }
     }
 
     li {
