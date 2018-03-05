@@ -128,6 +128,7 @@
 	#more_products img { max-width: 121px; }
 
 	.product_list li figure figcaption {
+  	@include transition(all .3s ease);
 	  display: inline-block;
 	  width: 100%;
 	  height: 120px;
@@ -137,11 +138,6 @@
 	  bottom: 0px;
 	  padding: 20px 20px 10px 20px;
 	  z-index: 1;
-	  -webkit-transition: all .3s ease;
-	  -moz-transition: all .3s ease;
-	  -o-transition: all .3s ease;
-	  -ms-transition: all .3s ease;
-	  transition: all .3s ease;
 	  box-sizing: border-box;
 	}
 

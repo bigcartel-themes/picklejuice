@@ -11,13 +11,7 @@ $fallback-fonts:    "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 $sans-serif-font:   "#{'{{ theme.primary_font }}'}", $fallback-fonts;
 $serif-font:        "#{'{{ theme.secondary_font }}'}", $fallback-fonts;
 
-@mixin image-replacement($image, $width, $height) {
-  background: transparent url($image) no-repeat;
-  background-size: $width $height;
-  display: inline-block;
-  height: $height;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  width: $width;
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  transition: $args;
 }

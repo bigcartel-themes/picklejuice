@@ -37,19 +37,8 @@ body {
     width: 100%;
   }
 }
-a, button, submit, select, input, .select { 
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.1s;
-  -moz-transition-duration: 0.1s;
-  -o-transition-duration: 0.1s;
-  transition-duration: 0.1s;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
+a, button, submit, select, input, .select {
+  @include transition(all .1s ease-in-out);
 }
 h1, h4, h5 {
   font-family: $sans-serif-font;
@@ -334,6 +323,7 @@ header {
   }
 
   .search_bar {
+    @include transition(all .1s ease-in-out);
     border: 2px solid transparent;
     color: $dark-gray-color;
     height: 38px;
@@ -388,6 +378,7 @@ section.content {
 }
 
 aside {
+  @include transition(all .5s ease-in-out);
   background-color: rgba(255, 255, 255, .9);
   -moz-box-shadow: 0 0 12px $light-gray-color;
   -webkit-box-shadow: 0 0 12px $light-gray-color;
@@ -398,11 +389,6 @@ aside {
   position: fixed;
   right: -13.666667%;
   top: 0;
-  -o-transition: all .5s ease-in-out;
-  -ms-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
   width: 18%;
   z-index: 200;
 
