@@ -35,7 +35,7 @@
   
                     <figcaption>
                       <h4>{{ product.name | truncate: 28 }}</h4>
-                       <span>{{ product.default_price | money_with_sign }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
+                       <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
                        
                     </figcaption>
                   </figure>

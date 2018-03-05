@@ -43,7 +43,7 @@
             </div>
 
             <div class="grid_2 push_1">
-              <span>{{ item.price | money_with_sign }}</span>
+              <span>{{ item.price | money: theme.money_format }}</span>
             </div>
 
             <div class="close">
@@ -61,7 +61,7 @@
 
         <div id="total">
           <h4>Total</h4>
-          <span class="clearfix">{{ cart.total | money_with_sign }}</span>
+          <span class="clearfix">{{ cart.total | money: theme.money_format }}</span>
           <button class="button" type="submit" name="checkout" title="Checkout">Checkout</button>
         </div>
       </div>

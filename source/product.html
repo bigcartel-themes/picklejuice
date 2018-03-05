@@ -53,11 +53,11 @@
     <h1>{{ product.name }}</h1>
     {% case product.status %}
     {% when 'sold-out' %}
-      <h2>{{ product.default_price | money_with_sign }}<br /><span>Sold Out</span></h2>
+      <h2>{{ product.default_price | money: theme.money_format }}<br /><span>Sold Out</span></h2>
     {% when 'coming-soon' %}
-      <h2>{{ product.default_price | money_with_sign }} <br /><span>Coming Soon</span></h2>
+      <h2>{{ product.default_price | money: theme.money_format }} <br /><span>Coming Soon</span></h2>
     {% when 'active' %}
-      <h2>{{ product.default_price | money_with_sign }}{% if product.on_sale %}<br /><span>On Sale{% endif %}</span></h2>
+      <h2>{{ product.default_price | money: theme.money_format }}{% if product.on_sale %}<br /><span>On Sale{% endif %}</span></h2>
     {% endcase %}
     <hr>
     {% if product.description != blank %}

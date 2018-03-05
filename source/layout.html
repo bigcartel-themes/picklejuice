@@ -31,7 +31,7 @@
 
         <div class="cart">
           <a href="/cart" data-show-cart="data-show-cart">
-            <span>{{ cart.total | money_with_sign }}</span>
+            <span>{{ cart.total | money: theme.money_format }}</span>
           </a>
         </div>
         
