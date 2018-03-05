@@ -206,48 +206,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   
-  var $searchBar = $('.search_bar')
-    , $searchButton = $searchBar.find('input[type="submit"]')
-    , $searchField = $searchBar.find('input[type="search"]')
-    , $searchImg = $searchBar.find('img');
-
-  $searchButton.hide();
-
-  $searchField.on('click', function() {
-    $searchButton.show();
-    $searchBar.addClass('search_bar_border');
-    $searchImg.addClass('imgAdd');
-  });
-  
-  $searchField.on('focusout', function() {
-      setTimeout(function() {
-        $searchButton.hide();
-        $searchBar.removeClass('search_bar_border');
-        $searchImg.removeClass('imgAdd');
-  
-        if (this.value == '') {
-          this.value = 'Search Products...';
-        }
-      }, 200);
-    });
-
-  $searchButton.on('click', function() {
-    $searchButton.hide();
-    $searchBar.removeClass('search_bar_border');
-    $searchImg.removeClass('imgAdd');
-  });
-
-  $searchField.on('focus', function() {
-    if (this.value == 'Search Products...') {
-      this.value = '';
-    }
-  });
-
-  $searchField.on('focusout', function() {
-    if (this.value == '') {
-      this.value = 'Search Products...';
-    }
-  });
+  $('.search_input').bind('blur', function(){ $('.search_bar').removeClass('search_bar_active'); });
+  $('.search_input').bind('focus', function(){ $('.search_bar').addClass('search_bar_active'); });
 
   $(function() {
 		$('a[href*=#]:not([href=#])').click(function() {

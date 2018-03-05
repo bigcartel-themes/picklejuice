@@ -334,11 +334,20 @@ header {
   }
 
   .search_bar {
+    border: 2px solid transparent;
     color: $dark-gray-color;
-    height: 42px;
+    height: 38px;
     margin-top: 20px;
-    padding-top: 10px;
     width: 244px;
+    
+    &.search_bar_active {
+      border: 2px solid $dark-gray-color;
+    
+      input[type="submit"] {
+        border-left: 2px solid $dark-gray-color;
+        opacity: 1;
+      }
+    }
 
     input[type="search"] {												
       background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 12px 2px no-repeat;
@@ -356,12 +365,13 @@ header {
     input[type="submit"] {
       background-color: rgba(255, 255, 255, .0);
       border: none;
-      border-left: 2px solid $dark-gray-color;
+      border-left: 2px solid transparent;
       font: bold .750em $sans-serif-font;
       height: 40px;
       letter-spacing: .2em;
       line-height: 2px;
       outline: none;
+      opacity: 0;
       padding-left: 11px;
       text-transform: uppercase;
       text-align: center;
@@ -369,18 +379,6 @@ header {
       
     }
   }
-
-  .search_bar_border {
-    border: 2px solid $dark-gray-color;
-    height: 38px;
-    padding-top: 0px;
-    width: 240px;
-    
-    input[type="search"] {
-    	background-position: 10px 1px;
-  }
- } 
-  
   
 }
 
