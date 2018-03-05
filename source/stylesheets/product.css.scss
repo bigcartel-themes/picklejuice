@@ -79,7 +79,6 @@
       opacity: 1;
 
       img {
-        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/></filter></svg>#svgBlur");
         -webkit-filter: blur(2px);
         filter: blur(2px);
       }
@@ -141,17 +140,15 @@
     opacity: 1;
 
     img {
-      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'1\'/></filter></svg>#svgBlur");
       -webkit-filter: blur(1px);
       filter: blur(1px);
     }
   }
 
   img {
-    max-height: 61px;
-    max-width: 61px;
-    min-height: 61px;
-    min-width: 61px;
+    height: 61px;
+    object-fit: cover;
+    width: 61px;
   }
 
   li {
