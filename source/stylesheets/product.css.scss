@@ -36,6 +36,10 @@
   -o-transition: all .5s ease;
   -ms-transition: all .5s ease;
   transition: all .5s ease;
+  
+  img, iframe, embed, object, video { 
+    max-width: 100%;
+  }
 }
 
 #description a {
