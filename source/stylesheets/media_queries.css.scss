@@ -167,7 +167,10 @@
 		float: none;
 		width: 100%;
 
-		a { background-size: 60px; }
+		a {
+  		background-size: 60px; 
+  		margin: 0 auto;
+		}
 	}
 
 	header .cart span { display: block; }
