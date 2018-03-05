@@ -156,44 +156,6 @@
     width: 20px;
   }
 }
-
-#shipping_total {
-	text-align: left;
-	padding-bottom: 20px;
-}
-
-#shipping_total h4 {
-	margin-top: 0;
-	margin-bottom: 2px;
-	font-size: .750em;
-	
-}
-
-#discount {
-	position: absolute;
-	top: 20px;
-	right: 0;
-	text-align: left;
-}
-
-#discount h4 {
-	display: inline-block;
-	font-size: .750em;
-	text-align: right;
-	margin: 0;
-}
-
-#discount input {
-	border: 2px solid #333;
-	outline: none;
-	padding: 0 5px;
-	font: .8em $serif-font;
-	background-color: #ffffff;
-	width: 122px;
-	margin-top: 5px;
-	display: inline;
-}
-
 .cart-wrapper .cart_box h5 {
 	margin-bottom: 0;
 }
@@ -217,32 +179,4 @@
    background-color: $dark-green-color;
    color: $white-color;
 }
-
-#cart_options {
-  h3 { display: block; }
-
-  label {
-    font-family: $sans-serif-font;
-    margin-right: 1em;
-  }
-
-  #cart-shipping-tax { float: left; }
-  #discount_option { float: right; }
-}
-
-input#cart_discount_code {
-	border: 3px solid #333333;
-	box-sizing: border-box;
-  height: 47px;
-  line-height: 47px;
-	outline: none;
-	padding: 0 10px;
-	width: 200px;
-}
-
- #cart_options br + h3 {
-	margin-top: 60px;
-}
-
-
 
