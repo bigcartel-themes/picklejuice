@@ -9,7 +9,7 @@
     <link href="{{ theme | theme_css_url }}" rel="stylesheet">
     {{ head_content }}
   </head>
-  
+
   <body class="{{ page.permalink }}">
     <header>
       <div class="container clearfix">
@@ -34,7 +34,7 @@
             <span>{{ cart.total | money: theme.money_format }}</span>
           </a>
         </div>
-        
+
       </div>
     </header>
 
@@ -118,7 +118,6 @@
 
     <footer>
       <div class="container">
-        <p>&copy; {{ 'Today' | date: '%Y' }} {{ store.name }}</p>
         <p>{{ bigcartel_credit}}</p>
       </div>
     </footer>

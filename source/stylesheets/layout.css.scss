@@ -100,25 +100,25 @@ ul {
 }
 
 .custom {
-	a { 
+	a {
 		color: $dark-green-color;
 	}
-	
-	img, iframe, embed, object, video { 
+
+	img, iframe, embed, object, video {
 		max-width:100%;
 	}
-	
+
 	ol, ul {
 		font: .875em $serif-font; letter-spacing: 1px;
 	}
-	
+
 	ul {
 		padding-left: 2em;
-		
+
 		li {
 			display: list-item;
 			list-style: disc;
-		
+
 		}
 	}
 }
@@ -175,7 +175,7 @@ ul {
   color: $dark-gray-color;
   width: 264px;
   position: relative;
-  
+
   select {
     background: none;
     border: 0px;
@@ -192,21 +192,21 @@ ul {
     -webkit-appearance: none;
     -moz-appearance:    none;
     appearance:         none;
-    
-    option { 
+
+    option {
       color: #000;
       background: #FFF;
     }
-    
+
     &:focus {
       outline: none
     }
-      
+
     &::-ms-expand {
-      display: none 
+      display: none
     }
   }
-    
+
   svg {
     fill: $dark-gray-color;
     position: absolute;
@@ -214,21 +214,21 @@ ul {
     top: 18px;
     z-index: 1;
   }
-  
-  &:hover { 
+
+  &:hover {
     border: 3px solid $dark-green-color;
   }
-  
+
   &:hover svg {
     fill: $dark-green-color
   }
 }
 
-.ie select { 
+.ie select {
   appearance: normal;
   padding: 0px
 }
-.ie .select svg { 
+.ie .select svg {
   display: none
 }
 
@@ -281,7 +281,7 @@ header {
     text-align: center;
     position: relative;
 
-    a {								
+    a {
       background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat;
       background-size: 60px 60px;
       display: block;
@@ -290,10 +290,10 @@ header {
       width: 60px;
       z-index: 2;
     }
-		
+
     span span { padding: 0 2px 0 0; }
   }
-  
+
  .light_cart {
   	border-radius: 50%;
   	width: 60px;
@@ -306,7 +306,7 @@ header {
   	left: 50%;
   	transform: translateX(-50%);
   }
-  
+
   .green_cart {
   	background-color: $dark-green-color;
   	height: 0px;
@@ -333,17 +333,17 @@ header {
     height: 38px;
     margin-top: 20px;
     width: 244px;
-    
+
     &.search_bar_active {
       border: 2px solid $dark-gray-color;
-    
+
       input[type="submit"] {
         border-left: 2px solid $dark-gray-color;
         opacity: 1;
       }
     }
 
-    input[type="search"] {												
+    input[type="search"] {
       background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 12px 2px no-repeat;
       background-size: 28px 15px;
       border: none;
@@ -370,10 +370,10 @@ header {
       text-transform: uppercase;
       text-align: center;
       width: 44px;
-      
+
     }
   }
-  
+
 }
 
 section.content {
@@ -425,16 +425,16 @@ aside {
 
   .social {
     margin-top: -10px;
-    
+
     a {
       display: block;
-      
-      svg { 
+
+      svg {
         fill: $dark-gray-color;
         height: 18px;
         width: 18px;
-        
-        &:hover { 
+
+        &:hover {
           fill: $dark-green-color;
         }
       }
@@ -461,9 +461,8 @@ footer {
 
   p {
     margin: 0;
-    text-align: right;
+    text-align: left;
 
-    &:first-child { float: left; }
   }
 }
 
