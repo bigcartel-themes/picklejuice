@@ -1,5 +1,9 @@
 @import "mixins";
 
+* {
+  box-sizing: border-box
+}
+
 a {
   color: $dark-gray-color;
   text-decoration: none;
@@ -12,7 +16,6 @@ a {
 
 body {
   background-color: $white-color;
-  box-sizing: border-box;
   color: $dark-gray-color;
   height: 100%;
   padding: 3px 0;
@@ -125,7 +128,6 @@ ul {
 .cart_box, #product_form {
   .errors {
     background-color: $dark-green-color;
-    box-sizing: border-box;
     text-align: center;
     padding: 20px;
     margin: 0px 0;
@@ -168,7 +170,6 @@ ul {
 
 .select {
   border: 3px solid $dark-gray-color;
-  box-sizing: border-box;
   color: $dark-gray-color;
   width: 264px;
   position: relative;
@@ -265,7 +266,6 @@ body {
 
 header {
   background: $light-green-color;
-  box-sizing: border-box;
   overflow: hidden;
   padding-top: 60px;
   padding-bottom: 40px;
@@ -455,7 +455,6 @@ footer {
   background-color: $white-color;
 
   .container {
-    box-sizing: border-box;
     padding: 0 1.25%;
   }
 

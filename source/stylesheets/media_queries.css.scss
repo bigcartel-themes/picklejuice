@@ -17,13 +17,12 @@
 
 	.wrapper-dropdown {
 		width: 275px;
-		box-sizing: border-box;
 	}
-	
+
 	#more_products hr { width: 263px; }
-	
+
 	#more_products h4 { left: 276px; }
-	
+
 	#thumbs li:nth-child(4n) { margin-right: 6px; }
 }
 
@@ -45,13 +44,12 @@
 
 	header {
 		.logo {
-			box-sizing: border-box;
 			margin-left: 0;
 			margin-right: 0;
 			width: 100%;
 			padding: 0 110px;
+			margin-top: 0
 
-			h1 { margin-top: 0; }
 		}
 
 		.cart {
@@ -91,11 +89,11 @@
 	 	.wrapper-dropdown { width: 250px; }
 
 	 	#more_products img { max-width: 138px; }
-	 	
+
 	 	#more_products hr { width: 239px; }
-	 	
+
 	 	#more_products h4 { left: 244px; }
-	 	
+
 	 	#share_this a { padding: 0 5px; }
 }
 
@@ -106,11 +104,11 @@
 	==========================*/
 
 	.container { max-width: 900px; }
-	
+
 	aside { width: 35%; right: -31.5%;}
-	
+
 	aside ul li a { font-size: .875em; }
-	
+
 	aside .social a svg { height: 18px; width: 18px; }
 
 	/* ================================
@@ -138,11 +136,10 @@
 	  bottom: 0px;
 	  padding: 20px 20px 10px 20px;
 	  z-index: 1;
-	  box-sizing: border-box;
 	}
 
 	.product_list li figure figcaption:before { display: none; }
-	
+
 	#share_this a { padding: 0 3px; }
 }
 
@@ -168,7 +165,7 @@
 		width: 100%;
 
 		a {
-  		background-size: 60px; 
+  		background-size: 60px;
   		margin: 0 auto;
 		}
 	}
@@ -198,7 +195,7 @@
 	.cart-wrapper hr { margin: 75px 0; }
 
 	.message h1 { margin-top: 0; }
-	
+
 	.cart-wrapper .cart_box .button { width: 100%; margin-top: 30px; }
 
 	/* ================================
@@ -208,7 +205,7 @@
 	#more_products { display: none; }
 
 	.single_product { width: 97.5%; }
-	
+
 	#description { text-align: center; }
 
 	.details { width: 97.5%; }
@@ -243,19 +240,19 @@
 	==========================*/
 
 	.container { max-width: 700px; }
-	
+
 	/* ================================
 	- contact
 	==========================*/
-	
+
 	.contact_form li.grid_6.push_3 {
 		width: 97.5%;
 		margin-left: 1.25%;
 	}
-	
+
 	.details {
 		margin-top: -40px;
-	
+
 		}
 }
 
@@ -275,17 +272,17 @@
 	/* ================================
 	- contact
 	==========================*/
-	
+
 	.contact_form div {
-		
+
 		margin-bottom: 10px;
-		
+
 	}
-	
+
 	#captcha {
 		width: 46%;
 	}
-	
+
 	aside .social li { padding: 0 5px; }
 
 	/* ================================
@@ -335,16 +332,16 @@
 		text-align: center;
 		padding: 0;
 	}
-	
 
-	aside ul { 
+
+	aside ul {
 		margin: 0;
 		padding: 10px 40px 0px 40px;
 	}
 
-	aside li { 
+	aside li {
 		padding: 0;
-		display: block; 
+		display: block;
 	}
 
 	aside > a {
@@ -356,13 +353,13 @@
 		right: 0px;
 		position: fixed
 	}
-		
+
 	.expand {
 	  right: 0;
 	  width: 100%;
 	  text-align: center;
 	}
-	
+
 	div.grid_12.custom {
 		padding: 0 20px;
 	}
@@ -371,21 +368,21 @@
 		margin-top: 40px;
 		padding-left: 20px;
 	}
-	
+
 	.content > .errors {
 		margin-top: -16px;
 		display: none;
 	}
-	
+
 	.content > .errors li {
 		display: none;
 	}
-	
+
 	.cart a {
 		position: relative;
 		z-index: 2;
 	}
-	
+
 	header .light_cart {
 		top: 74px;
 		z-index: 0;
@@ -402,7 +399,6 @@
   }
 
   #breadcrumbs + .custom {
-    box-sizing: border-box;
     padding: 0 20px;
   }
 
@@ -411,23 +407,23 @@
 	==========================*/
 
 	.cart-wrapper { padding: 20px 20px; }
-	
+
 	.cart-wrapper .close_overlay { margin-top: 83px; }
-	
+
 	.cart-wrapper .grid_2 { width: 40%; }
-	
+
 	.cart-wrapper .grid_2:nth-of-type(even) { margin-left: 1.25%; }
-	
+
 	.cart-wrapper .grid_4 { width: 50%; }
-	
+
 	.cart-wrapper .grid_1 { width: 10%; margin: 1.25%; }
-	
+
 	.cart-wrapper .quantity input { padding: 5px 10px; font-size: 1.25em; }
-	
-	.cart-wrapper .grid_2 > span { font-size: 1.75em; } 
-	
+
+	.cart-wrapper .grid_2 > span { font-size: 1.75em; }
+
 	.cart-wrapper .cart_box .close { float: none; }
-	
+
 	li#cart-shipping-tax { width: 100%; margin-bottom: 10px; }
 
 	/* ================================
@@ -441,65 +437,65 @@
 	.single_product { width: 91%; padding: 0 20px; }
 
 	.details { width: 91%; padding: 0 20px; }
-	
-	
+
+
 	/* ================================
 	- success page
 	==========================*/
-	
+
 	.message .grid_12 { padding: 0 20px; width: 91%; }
-	
+
 	/* ================================
 	- contact
 	==========================*/
-	
+
 	.contact_form li.grid_6.push_3 { width: 91%; padding: 0 20px; }
-	
+
 	#captcha { padding-left: 20px; padding-right: 20px;}
-	
+
 }
 
 @media (max-width: 568px) {
 
 	aside ul li a { font-size: .7em; }
-		
+
 	/* ================================
 	- cart page
 	==========================*/
-	
+
 		.contact_form input { -webkit-appearance: none; border-radius: 0; margin-bottom: 5px; }
-		
+
 		.contact_form textarea { -webkit-appearance: none; border-radius: 0; }
-		
+
 		#discount h4 { display: block; }
-		
+
 		.details h1 {font-size: 1em;}
-		
+
 		a.remove { position: absolute; right: 0; }
-		
+
 		.cart-wrapper .grid_2 { width: 40%; }
-		
+
 		.cart-wrapper .grid_4 { width: 100%; margin-top: 10px;}
-		
+
 		.cart-wrapper .grid_1 { width: 20%; margin-top: 30px; }
-		
+
 		.cart-wrapper .cart_box h5 { margin-bottom: 5px; }
-		
+
 		.cart-wrapper .quantity input { font-size: .8em; }
-		
-		.cart-wrapper div.grid_2.push_1 { 
-			float: right; 
+
+		.cart-wrapper div.grid_2.push_1 {
+			float: right;
 			margin-right: 0;
-			margin-top: 20px; 
-			text-align: right;	
+			margin-top: 20px;
+			text-align: right;
 		}
-		
+
 		.cart-wrapper .grid_2 > span {
-			padding-top: 0; 
-			margin-left: 0; 
+			padding-top: 0;
+			margin-left: 0;
 			display: inline-block;
 			}
-				
+
 		#share_this a { padding: 0 30px; }
 
 		.cart_box {
@@ -512,7 +508,7 @@
 				}
 			}
 		}
-		#cart-shipping-tax { 
+		#cart-shipping-tax {
 			overflow:visible;
 		}
 
@@ -522,21 +518,20 @@
   .contact .push_3 { margin-left: 0; }
 
    .contact_form li.grid_6.push_3 {
-       box-sizing: border-box;
        padding: 0 20px;
        width: 100%;
-       margin-left: 0; 
+       margin-left: 0;
    }
-  
+
 }
 
 @media screen and (max-width: 480px) {
 	/* ================================
 	- front page and categories
 	==========================*/
-	
+
 	aside > a { left: 15px; padding: 5px 15px;}
-	
+
 	header .logo h1 {
 		font-size: 1em;
 		margin-top: 15px;
@@ -551,32 +546,32 @@
 	#load_more { margin-left: -25px; }
 
 
-		
+
 	/* ================================
 	- product page
 	==========================*/
 	.categories { padding: 0 15px; }
-	
+
 	#breadcrumbs { padding: 0 0 0 15px; }
 
 	.single_product { padding: 0 15px; }
 
 	.details { padding: 0 15px; }
-	
+
 	#share_this a {
 		font-size: 1.25em;
 		padding: 0 10px;
 	}
-	
 
-	
+
+
 }
 
 @media screen and (max-width: 320px) {
 	/* ================================
 	- front page and categories
 	==========================*/
-	
+
 	aside > a { top: 18px;}
 
   aside.expand { overflow: scroll; }
@@ -586,7 +581,6 @@
 	.product_list { padding-left: 44px; }
 
   [class^="grid_"] {
-    box-sizing: border-box;
     margin-left: 0;
     margin-right: 0;
     width: 100%;
@@ -595,25 +589,23 @@
   .cart-wrapper {
     .button, #total .button {
       width: 100%;
-      box-sizing: border-box;
       padding-left: 0;
       padding-right: 0;
     }
-    
+
     .message .button {
     	padding: 18px 10px;
     }
   }
 
 	footer {
-    box-sizing: border-box;
     width: 100%;
   }
 
 	footer p { font-size: .8em; }
-	
+
 	#share_this { padding: 0 10px; }
-	
+
 	#share_this a { padding: 0 20px; }
 
 	.cart-wrapper #total ul li {
@@ -621,7 +613,7 @@
 
 		+ li { margin-left: 0; }
 	}
-	
+
 	body.no-scroll {
 		overflow-y: hidden;
 		position: static;
