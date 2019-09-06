@@ -1,10 +1,10 @@
 <div class="container clearfix">
   <div class="grid_12 categories">
     <ul>
+      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
       {% for category in categories.active %}
-        <li>{{ category | link_to }}</li>
+      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
       {% endfor %}
-      <li><a href="/products">All Products</a></li>
     </ul>
   </div>
 </div>
@@ -23,7 +23,7 @@
         <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
       </h4>
     </div>
-		
+
     <ul class="contact_form">
    		 {% if errors != blank %}
        <ul class="errors">
@@ -59,7 +59,7 @@
       </li>
 
       <li class="grid_12">
-        <button class="button" type="submit" name="submit" title="Send us an email">Send Message</button>
+        <button class="button" type="submit" name="submit" title="Send us an email" tabindex="6">Send Message</button>
       </li>
     </ul>
   </form>
