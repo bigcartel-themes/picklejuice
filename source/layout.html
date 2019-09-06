@@ -24,7 +24,7 @@
             {% if theme.logo != blank %}
               <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
             {% else %}
-              <h1>{{ store.name }}</h1>
+              {{ store.name }}
             {% endif %}
           </a>
         </div>
@@ -39,7 +39,7 @@
     </header>
 
     <aside>
-      <a href="#">Menu</a>
+      <a class="open-menu" href="#" title="Open menu">Menu</a>
 
       <div class="wrapper">
         {% if artists.active != blank %}
@@ -122,7 +122,7 @@
       </div>
     </footer>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script>
       var formatMoney = Format.money;
@@ -140,6 +140,10 @@
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
       <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+      <script>
+        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+        Product.find('{{ product.permalink }}', processProduct)
+      </script>
     {% endif %}
   </body>
 </html>
