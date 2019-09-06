@@ -2,7 +2,6 @@
 
 a {
   color: $dark-gray-color;
-  outline: none;
   text-decoration: none;
 
   &:hover {
@@ -152,20 +151,18 @@ ul {
   padding: 11px 23px;
   outline: none;
 
-  &:hover {
+  &:hover, &:active, &:focus {
     border-color: $dark-green-color;
     color: $dark-green-color;
     outline: none;
   }
 
-  &:active {
-    background-color: $dark-green-color;
+  &.disabled, &:disabled {
+    opacity: .25;
+    cursor: not-allowed;
+    background-color: $dark-gray-color;
     color: $white-color;
-    outline: none;
-  }
-
-  &:focus {
-    outline: none;
+    border-color: $dark-gray-color;
   }
 }
 
@@ -215,12 +212,12 @@ ul {
     z-index: 1;
   }
 
-  &:hover {
+  &:hover, &:active, &:focus {
     border: 3px solid $dark-green-color;
-  }
 
-  &:hover svg {
-    fill: $dark-green-color
+    svg {
+      fill: $dark-green-color
+    }
   }
 }
 
@@ -322,7 +319,10 @@ header {
   .logo {
     margin-left: 11.833333%;
     text-align: center;
-
+    font-size: 1.5em;
+    letter-spacing: .3em;
+    font-weight: bold;
+    text-transform: uppercase;
     img { max-width: 100%; }
   }
 
@@ -391,9 +391,9 @@ aside {
   letter-spacing: 1px;
   height: 100%;
   position: fixed;
-  right: -13.666667%;
+  right: -220px;
   top: 0;
-  width: 18%;
+  width: 300px;
   z-index: 200;
 
   .wrapper {
@@ -404,7 +404,7 @@ aside {
 
   &.expand { right: 0; }
 
-  > a {
+  .open-menu {
     background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top;
     background-size: 20px;
     height: 14px;
@@ -416,7 +416,7 @@ aside {
     width: 20px;
   }
 
-  a:hover { color: $dark-green-color; }
+  .open-menu:hover, .open-menu:active { color: $dark-green-color; }
 
   li {
     display: block;
@@ -461,7 +461,7 @@ footer {
 
   p {
     margin: 0;
-    text-align: left;
+    text-align: center;
 
   }
 }
