@@ -12,7 +12,7 @@
 
   &:hover:after { content: ''; }
 
-  &:after {			
+  &:after {
     background: url(#{'{{ "arrows_sprite.png" | theme_image_url }}'}) no-repeat;
     background-size: 33px;
     display: block;
@@ -36,8 +36,8 @@
   -o-transition: all .5s ease;
   -ms-transition: all .5s ease;
   transition: all .5s ease;
-  
-  img, iframe, embed, object, video { 
+
+  img, iframe, embed, object, video {
     max-width: 100%;
   }
 }
@@ -185,20 +185,12 @@
   width: 25%;
 
   .button {
-    background-color: $dark-gray-color;
-    color: $white-color;
-    display: inherit;
-    height: 47px;
-    margin: 20px 0 40px 0;
-    width: 300px;
-
-    &:hover {
-      background-color: $dark-green-color;
-      color: $white-color;
-    }
+    height: 50px;
+    margin: 20px 0 40px;
+    width: 100%;
   }
   .select {
-    height: 46px;
+    height: 50px;
     margin-top: 10px;
     width: 100%;
   }
