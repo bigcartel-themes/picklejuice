@@ -1,10 +1,10 @@
 <div class="container clearfix">
   <div class="grid_12 categories">
     <ul>
+      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
       {% for category in categories.active %}
-        <li>{{ category | link_to }}</li>
+      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
       {% endfor %}
-      <li><a href="/products">All Products</a></li>
     </ul>
   </div>
 </div>
@@ -69,21 +69,43 @@
 		<hr>
 		{% endif %}
     {% if product.status == 'active' %}
-      <form method="post" action="/cart" id="product_form">
-        {{ product | product_quantity_input, '1', 'product_qty' }}
+      <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
+        <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
-  	      <div class="select clearfix">
-  	        {{ product.options_in_stock | options_select }}
-  	        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
-  	      </div>
+          {% if product.has_option_groups %}
+            <div class="product_option_groups">
+              <input id="option" name="cart[add][id]" type="hidden" value="0">
+              {% for option_group in product.option_groups %}
+                <div class="select">
+                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                    <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    {% for value in option_group.values %}
+                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                    {% endfor %}
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="select">
+              <select class="product_option_select" id="option" name="[cart][add][id]" aria-label="Select option">
+                <option value="0" disabled="disabled" selected>Select option</option>
+                {% for option in product.options %}
+                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                {% endfor %}
+              </select>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
+            </div>
+          {% endif %}
         {% endif %}
-        <button class="button" name="submit" type="submit" title="Add to Cart" data-add-to-cart="data-add-to-cart">Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
       </form>
     {% endif %}
     <div id="share_this">
-      <a href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
+      <a href="https://twitter.com/intent/tweet?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
       <a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
       <a target="_blank" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape }}">pin this!</a>
     </div>
