@@ -1,0 +1,161 @@
+@import "mixins"
+
+.cart-wrapper
+  background-color: rgba(255, 255, 255, .95)
+  box-sizing:  border-box
+  display: block
+  height: 100%
+  left: 0
+  overflow: scroll
+  padding: 50px 0
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 200
+
+  hr
+    background: $dark-gray-color
+    margin: 100px 0
+
+  #total
+    margin-bottom: 10%
+    padding-top: 40px
+    text-align: center
+
+    h4
+      font-size: .750em
+      margin-bottom: 5px
+
+    span
+      font-size: 3.375em
+
+      span
+        font-size: 1em
+
+    .button
+      color: #ffffff
+      background-color: $dark-gray-color
+      float: none
+      padding: 18px 105px
+
+
+    ul
+      display: inline-block
+      padding-bottom: 1.5em
+
+      h4
+        font-size: .6em
+
+      li + li
+        margin-left: 3em
+
+      span
+        font-size: 1.5em
+
+        span
+          font-size: 1em
+
+  .cart_box
+    border-bottom: 3px solid $dark-gray-color
+    padding: 20px 0 20px 0
+    width: 100%
+    position: relative
+
+    &:last-of-type
+      border: none
+
+    h5
+      margin-top: 0
+
+    img
+      height: auto
+      max-width: 100%
+      width: 100%
+
+    .button
+      background-color: $dark-gray-color
+      color: $white-color
+      float: right
+      margin-top: 1.55%
+
+      &:hover, &:focus
+        background-color: $dark-green-color
+        color: $white-color
+
+    .close
+      float: right
+      padding-top: 10px
+
+  .select
+    background: $white-color
+    height: 46px
+    width: 100%
+
+  .close_overlay
+    float: right
+    margin-right: 1.25%
+
+    a
+      background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
+      background-size: 60px
+      border-radius: 50%
+      display: inline-block
+      float: right
+      height: 60px
+      margin-top: 14px
+      overflow: hidden
+      text-indent: -999px
+      width: 60px
+
+  .message
+    min-height: 700px
+    text-align: center
+
+    hr
+      margin: 80px 0
+
+    .button
+      display: inline-block
+      margin-top: 25px
+      padding: 18px 105px
+
+  .quantity
+    input
+      border: 2px solid $dark-gray-color
+      box-sizing:  border-box
+      outline: none
+      padding: 5px 10px
+      width: 100%
+
+    span
+      font: .750em $sans-serif-font
+
+  .remove
+    background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
+    background-size: 60px
+    display: inline-block
+    height: 20px
+    overflow: hidden
+    text-indent: -999px
+    width: 20px
+
+.cart-wrapper .cart_box h5
+  margin-bottom: 0
+
+.update-btn
+  background-color: $dark-gray-color
+  color: $white-color
+  border: none
+  font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
+  text-transform: uppercase
+  text-align: center
+  letter-spacing: 0.2em
+  padding: 11px 23px
+  outline: none
+  display: block
+  margin-bottom: 10px
+  float: right
+
+  &:hover, &:focus
+    background-color: $dark-green-color
+    color: $white-color
