@@ -14,10 +14,10 @@
 <div class="container clearfix">
   <div class="grid_12 categories" id="minus_buffer">
     <ul>
+      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
       {% for category in categories.active %}
-        <li>{{ category | link_to }}</li>
+      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
       {% endfor %}
-      <li><a href="/products">All Products</a></li>
     </ul>
   </div>
 </div>
@@ -32,18 +32,15 @@
                 <a href="{{ product.url }}">
                   <figure>
                     <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
-  
                     <figcaption>
                       <h4>{{ product.name | truncate: 28 }}</h4>
                        <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
-                       
                     </figcaption>
                   </figure>
                 </a>
               </li>
             {% endfor %}
           </ul>
-  
           {% if paginate.next %}
             {% if paginate.next.is_link %}
               <div class="container clearfix">
