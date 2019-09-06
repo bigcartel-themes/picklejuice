@@ -1,0 +1,43 @@
+// Colors
+$black-color:       #000
+$white-color:       #fff
+$dark-gray-color:   #333
+$dark-green-color:  #{'{{ theme.secondary_color }}'}
+$light-gray-color:  #ccc
+$light-green-color: #{'{{ theme.primary_color }}'}
+
+// Fonts
+$fallback-fonts:    "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
+$sans-serif-font:   "#{'{{ theme.primary_font }}'}", $fallback-fonts
+$serif-font:        "#{'{{ theme.secondary_font }}'}", $fallback-fonts
+
+@mixin all-transitions
+  +transition(.2s linear)
+
+@mixin transition($transition...)
+  -webkit-transition: #{$transition}
+  transition: #{$transition}
+
+@mixin transform($str...)
+  -webkit-transform: $str
+  transform: $str
+
+@mixin transform-origin($str...)
+  -webkit-transform-origin: $str
+  transform-origin: $str
+
+@mixin appearance($str...)
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+
+@mixin keyframes($animation...)
+  @-webkit-keyframes #{$animation}
+    @content
+
+  @keyframes #{$animation}
+    @content
+
+@mixin animation($str...)
+  -webkit-animation: $str
+  animation: $str
