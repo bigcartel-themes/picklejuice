@@ -1,5 +1,5 @@
-<div class="container clearfix">
-  <div class="grid_12 categories">
+<div class="container">
+  <div class="categories">
     <ul>
       <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
       {% for category in categories.active %}
@@ -8,48 +8,66 @@
     </ul>
   </div>
 </div>
-<div class="container clearfix">
-  <div  class="grid_12" id="breadcrumbs">
+<div class="container">
+  <div class="breadcrumb">
     <hr>
-    <h4>
-      <a href="/" title="store home">Home</a>
+      <a href="/" title="Home">Home</a>
       {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
-      <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
-    </h4>
+      <a href="{{ page.url }}" title="{{ page.name | escape }}">{{ page.name }}</a>
   </div>
-  <div class="grid_8 single_product">
+</div>
+<div class="container product-container">
+  <div class="product-images-panel">
     <div class="product_wrapper">
       {% if product.images.size > 1 %}
-        <a href="#" id="next">next</a>
-        <a href="#" id="prev">prev</a>
+        <a href="#" class="image-arrow next-image">next</a>
+        <a href="#" class="image-arrow prev-image">prev</a>
       {% endif %}
       <img src="{{ product.image | product_image_url | constrain: 1540 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
     </div>
-    {% if products.all.size > 1 %}
-      {% get all_products from products.all limit:4 order:'views' %}
-        {% if all_products.size > 0 %}
-          <div id="more_products">
-            <hr><h4>more products</h4><hr>
-            {% for product in all_products %}
-              {% unless product.url == page.full_path %}
-              <a href="{{ product.url }}" title="{{ product.name | escape }}"><img src="{{ product.image | product_image_url | constrain: 340 }}" alt="Image of {{ product.name | escape }}"></a>
-              {% endunless %}
-            {% endfor %}
-          </div>
-        {% endif %}
-      {% endget %}
-    {% endif %}
-  </div>
-  <div class="details">
-    <div id="thumbs">
-      {% if product.images.size > 1 %}
-        <ul>
-          {% for image in product.images %}
-            <li{% if forloop.first %} class="selected"{% endif %}><a href="{{ image | product_image_url | constrain: 1540 }}"><img src="{{ image | product_image_url | constrain: 130 }}" alt="Image of {{ product.name | escape }}"></a></li>
+
+
+    {% if product.categories != blank %}
+      {% for category in product.categories %}
+        {% capture product_divs %}
+          {% for category_product in category.products %}
+            {% assign product_status = '' %}
+            {% case category_product.status %}
+              {% when 'active' %}
+                {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+              {% when 'sold-out' %}
+                {% assign product_status = 'Sold out' %}
+              {% when 'coming-soon' %}
+                {% assign product_status = 'Coming soon' %}
+            {% endcase %}
+            {% if product.id != category_product.id %}
+              <a href="{{ category_product.url }}" title="{{ category_product.name | escape }}"><img src="{{ category_product.image | product_image_url | constrain: 340 }}" alt="Image of {{ category_product.name | escape }}"></a>
+            {% endif %}
           {% endfor %}
-        </ul>
+        {% endcapture %}
+      {% endfor %}
+    {% endif %}
+
+    <div class="container">
+      {% if product_divs != blank %}
+        <div class="all-similar-products">{{ product_divs }}</div>
+        <div class="similar-products">
+          <div class="similar-products-header">
+            <div class="similar-products-title">Related products</div>
+          </div>
+          <div class="similar-product-list"></div>
+        </div>
       {% endif %}
     </div>
+  </div>
+  <div class="product-details">
+    {% if product.images.size > 1 %}
+      <div class="product-thumbs">
+        {% for image in product.images %}
+          <a href="{{ image | product_image_url | constrain: 1540 }}" {% if forloop.first %} class="selected"{% endif %}><img src="{{ image | product_image_url | constrain: 130 }}" alt="Image {{ forloop.index }} of {{ product.name | escape }}"></a>
+        {% endfor %}
+      </div>
+    {% endif %}
     <h1>{{ product.name }}</h1>
     {% case product.status %}
     {% when 'sold-out' %}
@@ -61,10 +79,8 @@
     {% endcase %}
     <hr>
     {% if product.description != blank %}
-    <div id="description" class="less-details">
-
-        <p class="truncate">{{ product.description | paragraphs }}</p>
-
+    <div class="product-description">
+      {{ product.description | paragraphs }}
     </div>
 		<hr>
 		{% endif %}
@@ -101,6 +117,7 @@
             </div>
           {% endif %}
         {% endif %}
+        {{ product | product_quantity_input, 1, 'product-quantity', 'product-quantity' }}
         <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
       </form>
     {% endif %}
