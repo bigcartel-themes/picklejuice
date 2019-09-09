@@ -1,3 +1,4 @@
+@import "mixins";
 // Max Width:    1200px
 // Columns:      12
 // Column Width: 70px
@@ -28,7 +29,10 @@
 .container {
   margin: auto;
   max-width: 1200px;
+  padding: 0 20px;
   width: 100%;
+  @include flexbox;
+  @include flex-direction(column);
 }
 
 .grid_1  { width: 5.833333%; }   /*   70px */

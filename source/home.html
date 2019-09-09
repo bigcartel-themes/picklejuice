@@ -23,37 +23,34 @@
 </div>
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products %}
-    <div class="container clearfix ">
-      <div class="product_list" id="container">
-        {% if products != blank %}
-          <ul class="clearfix">
-            {% for product in products %}
-              <li class="grid_3">
-                <a href="{{ product.url }}">
-                  <figure>
-                    <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
-                    <figcaption>
-                      <h4>{{ product.name | truncate: 28 }}</h4>
-                       <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
-                    </figcaption>
-                  </figure>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-          {% if paginate.next %}
-            {% if paginate.next.is_link %}
-              <div class="container clearfix">
-                <div class="grid_12" id="load_more">
-                  <a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
-                </div>
+    <div class="container">
+      {% if products != blank %}
+        <div class="product-list">
+          {% for product in products %}
+            <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <figure>
+                <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
+                <figcaption>
+                  <h4>{{ product.name | truncate: 28 }}</h4>
+                  <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
+                </figcaption>
+              </figure>
+            </a>
+          {% endfor %}
+        </div>
+
+        {% if paginate.next %}
+          {% if paginate.next.is_link %}
+            <div class="container clearfix">
+              <div class="grid_12" id="load_more">
+                <a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
               </div>
-            {% endif %}
+            </div>
           {% endif %}
-        {% else %}
-          <p class="alert">No products found.</p>
         {% endif %}
-      </div>
+      {% else %}
+        <p>No products found.</p>
+      {% endif %}
     </div>
   {% endpaginate %}
 {% endif %}

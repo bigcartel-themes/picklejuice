@@ -1,76 +1,93 @@
 @import "mixins"
 
-.product_list
+.categories ul
+  +flexbox
+  +flex-wrap(wrap)
+  +align-items(center)
+  +justify-content(center)
+  font-family: $serif-font
+  margin-bottom: 40px
+  text-align: center
 
-  ul
-    padding: 16px 0
-    margin: 0
+  li
+    padding: 3px 8px
 
-    li
+    &.current a
+      color: $dark-green-color
+
+
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  font-size: 20px
+  margin: 0 -10px
+
+  .product-list-item
+    padding: 0 10px 20px
+    width: 25%
+
+    &:hover, &:focus
+      outline: none
+
+      figcaption
+        bottom: 0
+
+      img
+        filter: blur(3px)
+
+    a
+      display: block
+
+      &:hover
+        opacity: 1
+
+    figure
       border: 3px solid $white-color
       -moz-box-shadow: 0 0 12px $light-gray-color
       -webkit-box-shadow: 0 0 12px $light-gray-color
       box-shadow: 0 0 12px $light-gray-color
       position: relative
+      margin: 0
       overflow: hidden
 
-      &:hover, &:focus
-        figcaption
-          bottom: 0
+      figcaption
+        +transition(bottom .4s)
+        background-color: $white-color
+        bottom: -200px
+        padding: 0 20px 20px
+        position: absolute
+        width: 100%
+        z-index: 1
 
-        img
-          filter: blur(3px)
+        span
+          font-family: $serif-font
+          font-size: 1em
+          letter-spacing: 1px
 
-      a
-        display: block
-
-        &:hover
-          opacity: 1
-
-      figure
-        overflow: hidden
-
-        figcaption
-          +transition(bottom .4s)
-          background-color: white
-          bottom: -200px
-          padding: 0 20px 20px
+        &:before
+          background-color: $white-color
+          bottom: -105px
+          content: ''
+          display: block
+          height: 200px
+          left: -36px
           position: absolute
+          padding: 20px
+          -ms-transform: rotate(15deg)
+          -moz-transform: rotate(15deg)
+          -webkit-transform: rotate(15deg)
+          transform: rotate(15deg)
           width: 100%
-          z-index: 1
+          z-index: -1
 
-          &:before
-            background-color: $white-color
-            bottom: -105px
-            content: ''
-            display: block
-            height: 200px
-            left: -36px
-            position: absolute
-            padding: 20px
-            -ms-transform: rotate(15deg)
-            -moz-transform: rotate(15deg)
-            -webkit-transform: rotate(15deg)
-            transform: rotate(15deg)
-            width: 100%
-            z-index: -1
+      img
+        display: block
+        max-width: 100%
+        width: 100%
 
-        img
-          width: 100%
-
-    h4
-      margin: 0 0 5px
-
-    &:nth-child(4n+1)
-      clear: both
-
-    &:nth-child(even)
-      figcaption:before
-        left: 0
-        -ms-transform: rotate(-15deg)
-        -moz-transform: rotate(-15deg)
-        -webkit-transform: rotate(-15deg)
-        transform: rotate(-15deg)
+  h4
+    margin: 0 0 5px
 
 #load_more
   margin-top: 5%

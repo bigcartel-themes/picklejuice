@@ -1,0 +1,181 @@
+@import "mixins"
+
+.breadcrumb
+  margin-bottom: 20px
+
+  h4
+    font-size: .625em
+
+.product-container
+  +flex-direction(row)
+
+.product-images-panel
+  padding-right: 60px
+  width: 74%
+
+.image-arrow
+  display: block
+  height: 100%
+  overflow: hidden
+  position: absolute
+  text-indent: 100%
+  top: 0
+  white-space: nowrap
+  width: 50%
+
+  &:hover:after
+    content: ''
+
+  &.next-image
+    right: 0
+
+    &:after
+      right: 15px
+
+  &.prev-image
+    left: 0
+
+    &:after
+      background-position: 0 -45px
+      left: 15px
+
+  &:after
+    background: url(#{'{{ "arrows_sprite.png" | theme_image_url }}'}) no-repeat
+    background-size: 33px
+    display: block
+    height: 33px
+    margin-top: -16px
+    position: absolute
+    top: 50%
+    width: 33px
+
+.product-thumbs
+  +flexbox
+  margin: 0 -5px
+
+  a
+    border: 3px solid $white-color
+    -moz-box-shadow: 0 0 12px $light-gray-color
+    -webkit-box-shadow: 0 0 12px $light-gray-color
+    box-shadow: 0 0 12px $light-gray-color
+    object-fit: cover
+    overflow: hidden
+    margin: 0 5px
+    width: 20%
+
+    &:hover img
+      filter: blur(3px)
+
+    img
+      display: block
+      width: 100%
+
+.product-description
+  margin-bottom: 20px
+  text-align: left
+
+  img, iframe, embed, object, video
+    max-width: 100%
+
+  ol, ul
+    font: .875em $serif-font
+    letter-spacing: 1px
+    padding-left: 1em
+
+  ol
+    list-style: decimal
+
+
+  ul
+    list-style: disc
+
+#more_products
+  position: relative
+
+  a
+    border: 3px solid $white-color
+    -moz-box-shadow: 0 0 12px $light-gray-color
+    -webkit-box-shadow: 0 0 12px $light-gray-color
+    box-shadow: 0 0 12px $light-gray-color
+    display: inline-block
+    margin: 55px 17px 0 0
+    overflow: hidden
+    vertical-align: top
+
+    &:last-of-type
+      margin-right: 0
+
+    &:hover
+      opacity: 1
+
+      img
+        filter: blur(2px)
+
+  h4
+    font-size: .750em
+    left: 310px
+    position: absolute
+    top: -14px
+
+  hr
+    position: absolute
+    top: 0
+    float: none
+    left: 0
+    width: 301px
+
+    &:last-of-type
+      left: auto
+      right: 0
+
+  img
+    height: auto
+    max-width: 170px
+
+#share_this
+  font: .875em $serif-font
+  font-style: italic
+  letter-spacing: 1px
+
+  a
+    cursor: pointer
+    padding: 0 10px
+    text-decoration: underline
+
+.availability h2
+  margin: 0
+
+.product-details
+  text-align: center
+  width: 26%
+
+  h1
+    margin-top: 0
+
+  .button
+    height: 50px
+    margin: 20px 0 40px
+    width: 100%
+
+  .select
+    height: 50px
+    margin-top: 10px
+    width: 100%
+
+.details hr
+  margin-top: 40px
+
+.product_wrapper
+  position: relative
+
+  > img
+    border: 3px solid $white-color
+    -moz-box-shadow: 0 0 12px $light-gray-color
+    -webkit-box-shadow: 0 0 12px $light-gray-color
+    box-shadow: 0 0 12px $light-gray-color
+    height: auto
+    max-width: 100%
+    width: 100%
+
+.product-quantity
+  display: none

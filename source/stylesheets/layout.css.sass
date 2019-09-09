@@ -1,0 +1,395 @@
+@import "mixins"
+
+*
+  box-sizing: border-box
+
+a
+  color: $dark-gray-color
+  text-decoration: none
+
+  &:hover
+    filter: alpha(opacity=90)
+    opacity: .9
+
+html
+  height: 100%
+
+  &:before
+    border-left: 3px solid $dark-gray-color
+    display: inline-block
+    left: 0
+    position: fixed
+    height: 100%
+    z-index: 100
+
+body
+  background-color: $light-green-color
+  color: $dark-gray-color
+  height: 100%
+  padding: 3px 0
+
+  &:after, &:before
+    border-top: 3px solid $dark-gray-color
+    content: ''
+    display: inline-block
+    left: 0
+    position: fixed
+    width: 100%
+    z-index: 100
+
+  &:after
+    top: 0
+
+  &:before
+    bottom: 0
+
+  &.no-scroll
+    overflow-y: scroll
+    position: fixed
+    width: 100%
+
+a, button, submit, select, input, .select
+  +transition(all .1s ease-in-out)
+
+h1, h4, h5
+  font-family: $sans-serif-font
+  font-weight: bold
+  text-transform: uppercase
+
+h2, h3
+  font-family: $serif-font
+  letter-spacing: 1px
+
+h4, h5
+  letter-spacing: .2em
+
+h1
+  font-size: 1.5em
+  letter-spacing: .3em
+
+h2
+  font-size: 1.75em
+
+h3
+  font-size: 1em
+
+h4
+  font-size: .875em
+
+h5
+  font-size: 1.125em
+
+hr
+  background: $white-color
+  border: 0
+  height: 3px
+  margin-bottom: 28px
+
+p
+  font: .875em $serif-font
+  line-height: 24px
+  letter-spacing: 1px
+
+ul, ol
+  list-style: none
+  margin: 0
+  padding: 0
+
+.custom
+  a
+    color: $dark-green-color
+
+  img, iframe, embed, object, video
+    max-width: 100%
+
+  ol, ul
+    font: .875em $serif-font
+    letter-spacing: 1px
+    padding-left: 1em
+
+  ol
+    list-style: decimal
+
+  ul
+    list-style: disc
+
+.cart_box, #product_form
+  .errors
+    background-color: $dark-green-color
+    text-align: center
+    padding: 20px
+    margin: 0px 0
+    color: $white-color
+    font: .75em $sans-serif-font
+    text-transform: uppercase
+    width: 100%
+
+    li
+      display: block
+
+      + li
+        margin-top: 20px
+
+.button
+  +appearance(none)
+  background: $dark-gray-color
+  border: none
+  color: $white-color
+  font: bold 0.750em $sans-serif-font
+  text-transform: uppercase
+  text-align: center
+  letter-spacing: 0.2em
+  padding: 11px 23px
+  outline: none
+
+  &:hover, &:active, &:focus
+    background: $dark-green-color
+    outline: none
+
+  &.disabled, &:disabled
+    opacity: .25
+    cursor: not-allowed
+    background-color: $dark-gray-color
+    color: $white-color
+    border-color: $dark-gray-color
+
+.select
+  border: 3px solid $dark-gray-color
+  color: $dark-gray-color
+  width: 264px
+  position: relative
+
+  select
+    background: none
+    border: 0px
+    color: $dark-gray-color
+    cursor: pointer
+    font: bold 0.750em $sans-serif-font
+    height: 100%
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    padding: 0 38px 0 12px
+    position: relative
+    width: 100%
+    z-index: 2
+    -webkit-appearance: none
+    -moz-appearance:    none
+    appearance:         none
+
+    option
+      color: #000
+      background: #FFF
+
+      &:disabled
+        color: graytext
+
+    &:focus
+      outline: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    fill: $dark-gray-color
+    position: absolute
+    right: 17px
+    top: 18px
+    z-index: 1
+
+  &:hover, &:active, &:focus
+    border: 3px solid $dark-green-color
+
+    option:disabled
+      color: graytext
+
+    svg
+      fill: $dark-green-color
+
+.overlay
+  display: none
+  position: relative
+  z-index: 200
+
+body
+  &.maintenance
+    border-right: 3px solid $dark-gray-color
+
+  &.maintenance .message_tall
+    min-height: 1200px
+    text-align: center
+
+    h1
+      margin-top: 15%
+
+header
+  background: $light-green-color
+  padding-top: 60px
+  padding-bottom: 40px
+  width: 100%
+  z-index: 2
+
+  .header-container
+    +flexbox
+    +justify-content(space-between)
+    +align-items(center)
+    +flex-direction(row)
+
+    > div
+      +flex-basis(33.33%)
+
+  .header-search
+    color: $dark-gray-color
+
+    .search-form
+      +flexbox
+      +transition(all .1s ease-in-out)
+      border: 2px solid transparent
+      display: inline-block
+      width: auto
+
+      .search-input
+        +appearance(none)
+        background: transparent
+        border: none
+
+      .search-button
+        +appearance(none)
+        background: transparent
+        border: none
+        opacity: 0
+
+    &.active
+      border: 2px solid $dark-gray-color
+
+      .search-button
+        opacity: 1
+
+  .header-store-title
+    font-family: $sans-serif-font
+    text-align: center
+    font-size: 1.5em
+    letter-spacing: .3em
+    font-weight: bold
+    text-transform: uppercase
+
+    &:hover, &:focus
+      a
+        color: $dark-green-color
+
+    img
+      max-width: 100%
+
+  .header-cart
+    +flexbox
+    +justify-content(flex-end)
+    font-family: $serif-font
+    text-align: center
+    position: relative
+
+    a
+      background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat
+      background-size: 60px 60px
+      display: block
+      padding-top: 70px
+      position: relative
+      width: 60px
+      z-index: 2
+
+    span span
+      padding: 0 2px 0 0
+
+.light_cart
+  +transform(translateX(-50%))
+  border-radius: 50%
+  width: 60px
+  height: 60px
+  position: absolute
+  top: 0px
+  display: block
+  z-index: 1
+  overflow: hidden
+  right: 0
+
+
+  .green_cart
+    background-color: $dark-green-color
+    height: 0px
+    width: 60px
+    position: absolute
+    bottom: 0
+    right: 0
+    display: block
+    z-index: 1
+
+  .imgAdd
+    margin-top: 8px
+
+section.content
+  padding-bottom: 140px
+
+aside
+  +transition(all .5s ease-in-out)
+  background-color: rgba(255, 255, 255, .9)
+  -moz-box-shadow: 0 0 12px $light-gray-color
+  -webkit-box-shadow: 0 0 12px $light-gray-color
+  box-shadow: 0 0 12px $light-gray-color
+  font: 1.350em $serif-font
+  letter-spacing: 1px
+  height: 100%
+  padding-top: 20px
+  position: fixed
+  right: -220px
+  top: 0
+  width: 300px
+  z-index: 200
+
+  .wrapper
+    padding: 0 20px 28px 28px
+    overflow: scroll
+    height: 100%
+
+  &.expand
+    right: 0
+
+  .open-menu
+    background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top
+    background-size: 20px
+    height: 14px
+    left: -10px
+    overflow: hidden
+    position: absolute
+    text-indent: -999px
+    top: 50px
+    width: 20px
+
+  .open-menu:hover, .open-menu:active
+    color: $dark-green-color
+
+  li
+    display: block
+    padding: 5px 0
+
+  .social
+    margin-top: -10px
+
+    a
+      display: block
+
+      svg
+        fill: $dark-gray-color
+        height: 18px
+        width: 18px
+
+        &:hover
+          fill: $dark-green-color
+
+    li
+      display: inline-block
+      padding: 0
+
+      + li
+        margin-left: 4px
+
+  .bigcartel-credit
+    margin-top: 20px
+    font-size: .625em
