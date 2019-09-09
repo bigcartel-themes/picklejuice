@@ -53,9 +53,13 @@
         span
           font-size: 1em
 
+  .cart-items
+    border-top: 3px solid $dark-gray-color
+
   .cart_box
+    +flexbox
     border-bottom: 3px solid $dark-gray-color
-    padding: 20px 0 20px 0
+    padding: 20px
     width: 100%
     position: relative
 
@@ -81,7 +85,7 @@
         color: $white-color
 
     .close
-      float: right
+      margin-left: auto
       padding-top: 10px
 
   .select
@@ -91,7 +95,6 @@
 
   .close_overlay
     float: right
-    margin-right: 1.25%
 
     a
       background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
