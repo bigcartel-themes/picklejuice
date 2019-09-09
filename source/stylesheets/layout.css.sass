@@ -83,10 +83,11 @@ hr
   background: $white-color
   border: 0
   height: 3px
-  margin-bottom: 28px
+  margin: 0 0 25px
+  width: 100%
 
 p
-  font: .875em $serif-font
+  font: .975em $serif-font
   line-height: 24px
   letter-spacing: 1px
 
@@ -130,51 +131,65 @@ ul, ol
       + li
         margin-top: 20px
 
-.button
-  +appearance(none)
+button, a.button
+  +all-transitions
   background: $dark-gray-color
   border: none
   color: $white-color
+  cursor: pointer
+  display: block
   font: bold 0.750em $sans-serif-font
-  text-transform: uppercase
-  text-align: center
+  height: 58px
   letter-spacing: 0.2em
-  padding: 11px 23px
+  line-height: 58px
+  max-width: 100%
   outline: none
+  padding: 0 16px
+  text-align: center
+  text-transform: uppercase
+  width: 100%
+
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
+
+  &.no-border
+    border: none
 
   &:hover, &:active, &:focus
     background: $dark-green-color
-    outline: none
-
-  &.disabled, &:disabled
-    opacity: .25
-    cursor: not-allowed
-    background-color: $dark-gray-color
-    color: $white-color
-    border-color: $dark-gray-color
 
 .select
+  +all-transitions
   border: 3px solid $dark-gray-color
   color: $dark-gray-color
-  width: 264px
+  font: bold 0.875em $sans-serif-font
+  height: 58px
+  letter-spacing: 0.2em
+  margin-bottom: 20px
+  max-width: 100%
+  padding: 0
   position: relative
+  text-transform: uppercase
+  width: 100%
 
   select
+    +all-transitions
+    appearance: none
+    -webkit-appearance: none
     background: none
-    border: 0px
+    border: 0
+    border-radius: 0
     color: $dark-gray-color
-    cursor: pointer
-    font: bold 0.750em $sans-serif-font
+    font: bold 0.875em $sans-serif-font
     height: 100%
-    text-transform: uppercase
-    letter-spacing: 0.1em
-    padding: 0 38px 0 12px
+    letter-spacing: 1px
+    line-height: 58px
+    padding: 0 66px 0 16px
     position: relative
+    text-transform: uppercase
     width: 100%
     z-index: 2
-    -webkit-appearance: none
-    -moz-appearance:    none
-    appearance:         none
 
     option
       color: #000
@@ -193,7 +208,7 @@ ul, ol
     fill: $dark-gray-color
     position: absolute
     right: 17px
-    top: 18px
+    top: 50%
     z-index: 1
 
   &:hover, &:active, &:focus
@@ -252,6 +267,9 @@ header
         background: transparent
         border: none
 
+        &:focus
+          outline: none
+
       .search-button
         +appearance(none)
         background: transparent
@@ -272,9 +290,8 @@ header
     font-weight: bold
     text-transform: uppercase
 
-    &:hover, &:focus
-      a
-        color: $dark-green-color
+    a:hover, a:focus
+      color: $dark-green-color
 
     img
       max-width: 100%
@@ -299,7 +316,6 @@ header
       padding: 0 2px 0 0
 
 .light_cart
-  +transform(translateX(-50%))
   border-radius: 50%
   width: 60px
   height: 60px
