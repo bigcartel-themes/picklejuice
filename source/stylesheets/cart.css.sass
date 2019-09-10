@@ -12,101 +12,17 @@
   width: 100%
   z-index: 200
 
-  hr
-    background: $dark-gray-color
-    margin: 100px 0
-
-  #total
-    margin-bottom: 10%
-    padding-top: 40px
-    text-align: center
-
-    h4
-      font-size: .750em
-      margin-bottom: 5px
-
-    span
-      font-size: 3.375em
-
-      span
-        font-size: 1em
-
-    .button
-      color: #ffffff
-      background-color: $dark-gray-color
-      float: none
-      padding: 18px 105px
-
-    ul
-      display: inline-block
-      padding-bottom: 1.5em
-
-      h4
-        font-size: .6em
-
-      li + li
-        margin-left: 3em
-
-      span
-        font-size: 1.5em
-
-        span
-          font-size: 1em
-
-  .cart-items
-    border-top: 3px solid $dark-gray-color
-
-  .cart_box
-    +flexbox
-    border-bottom: 3px solid $dark-gray-color
-    padding: 20px
-    width: 100%
-    position: relative
-
-    &:last-of-type
-      border: none
-
-    h5
-      margin-top: 0
-
-    img
-      height: auto
-      max-width: 100%
-      width: 100%
-
-    .button
-      background-color: $dark-gray-color
-      color: $white-color
-      float: right
-      margin-top: 1.55%
-
-      &:hover, &:focus
-        background-color: $dark-green-color
-        color: $white-color
-
-    .close
-      margin-left: auto
-      padding-top: 10px
-
-  .select
-    background: $white-color
-    height: 46px
-    width: 100%
-
-  .close_overlay
+  .close_overlay a
+    background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
+    background-size: 60px
+    border-radius: 50%
+    display: inline-block
     float: right
-
-    a
-      background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
-      background-size: 60px
-      border-radius: 50%
-      display: inline-block
-      float: right
-      height: 60px
-      margin-top: 14px
-      overflow: hidden
-      text-indent: -999px
-      width: 60px
+    height: 60px
+    margin-top: 14px
+    overflow: hidden
+    text-indent: -999px
+    width: 60px
 
   .message
     min-height: 700px
@@ -116,46 +32,113 @@
       margin: 80px 0
 
     .button
+      display: block
+      margin: 40px auto 0
+      width: 300px
+
+      &:hover, &:focus
+        background-color: $dark-green-color
+        color: $white-color
+
+  hr
+    background: $dark-gray-color
+    margin: 100px 0
+
+  .cart-items
+    border-top: 3px solid $dark-gray-color
+
+  .cart_box
+    +flexbox
+    border-bottom: 3px solid $dark-gray-color
+    padding: 20px 0
+    width: 100%
+    position: relative
+
+    &:last-of-type
+      border: none
+
+    .cart_image_holder
+      margin-left: 0
+
+      img
+        height: auto
+        max-width: 100%
+        width: 100%
+
+    .cart-item-name
+      margin-bottom: 0
+      margin-top: 0
+
+    .cart-item-option-name
       display: inline-block
-      margin-top: 25px
-      padding: 18px 105px
+      font-family: $serif-font
+      margin-top: 15px
 
-  .quantity
-    input
-      border: 2px solid $dark-gray-color
+    .quantity
+      input
+        border: 2px solid $dark-gray-color
+        font: bold 0.875em $sans-serif-font
+        letter-spacing: 0.2em
+        outline: none
+        padding: 10px
+        width: 100%
+
+    .cart-item-price
+      font: 1.25em $serif-font
+
+    .update-btn
+      background-color: $dark-gray-color
+      color: $white-color
+      border: none
+      font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
+      text-transform: uppercase
+      text-align: center
+      letter-spacing: 0.2em
+      padding: 11px 23px
       outline: none
-      padding: 5px 10px
-      width: 100%
+      display: block
+      margin-bottom: 10px
+      margin-left: auto
+      width: auto
 
-    span
-      font: .750em $sans-serif-font
+      &:hover, &:focus
+        background-color: $dark-green-color
+        color: $white-color
 
-  .remove
-    background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
-    background-size: 60px
-    display: inline-block
-    height: 20px
-    overflow: hidden
-    text-indent: -999px
-    width: 20px
+    .remove
+      background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
+      background-size: 60px
+      display: inline-block
+      height: 20px
+      overflow: hidden
+      text-indent: -999px
+      width: 20px
 
-.cart-wrapper .cart_box h5
-  margin-bottom: 0
+    .close
+      margin-left: auto
+      padding-top: 10px
 
-.update-btn
-  background-color: $dark-gray-color
-  color: $white-color
-  border: none
-  font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
-  text-transform: uppercase
+.cart-total
+  margin-bottom: 10%
+  padding-top: 40px
   text-align: center
-  letter-spacing: 0.2em
-  padding: 11px 23px
-  outline: none
-  display: block
-  margin-bottom: 10px
-  float: right
 
-  &:hover, &:focus
-    background-color: $dark-green-color
+  .cart-total-title
+    font-size: .750em
+    margin-bottom: 5px
+
+  .cart-total-amount
+    font-family: $serif-font
+    font-size: 3.375em
+    margin-bottom: 25px
+
+  .checkout-button
     color: $white-color
+    background-color: $dark-gray-color
+    float: none
+    width: 300px
+    margin: 0 auto
+
+    &:hover, &:focus
+      background-color: $dark-green-color
+      color: $white-color

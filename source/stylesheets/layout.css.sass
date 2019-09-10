@@ -149,15 +149,16 @@ button, a.button
   text-transform: uppercase
   width: 100%
 
-  &:disabled, &.disabled
-    cursor: not-allowed
-    opacity: .3
-
   &.no-border
     border: none
 
   &:hover, &:active, &:focus
     background: $dark-green-color
+
+  &:disabled, &.disabled
+    background: $dark-gray-color
+    cursor: not-allowed
+    opacity: .3
 
 .select
   +all-transitions
@@ -211,7 +212,7 @@ button, a.button
     top: 50%
     z-index: 1
 
-  &:hover, &:active, &:focus
+  &:hover, &:active, &:focus, &:focus-within
     border: 3px solid $dark-green-color
 
     option:disabled
@@ -220,7 +221,7 @@ button, a.button
     svg
       fill: $dark-green-color
 
-.overlay
+.cart-overlay
   display: none
   position: relative
   z-index: 200

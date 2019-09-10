@@ -18,7 +18,7 @@ API.onError = function(errors) {
 }
 $(document).keydown(function(event) {
   if (event.keyCode == 27) {
-    $('.overlay').fadeOut(function() {
+    $('.cart-overlay').fadeOut(function() {
       $('body').removeClass('no-scroll');
     });
   }
@@ -52,7 +52,7 @@ function changeImage(index) {
 }
 
 function showCart() {
-  var $overlay = $('<div>', { class: 'overlay' });
+  var $overlay = $('<div>', { class: 'cart-overlay' });
   $overlay.load('/cart' + ' .cart-wrapper', function() {
     $('body').addClass('no-scroll');
     $('body > .content').before($overlay);
@@ -61,7 +61,7 @@ function showCart() {
 }
 
 function updateCart() {
-  var $overlay = $('.content, .overlay').last();
+  var $overlay = $('.cart-overlay');
   $overlay.load('/cart' + ' .cart-wrapper');
 }
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
   }).on('click', 'body:not(.cart) .close_overlay a', function(e) {
     e.preventDefault();
 
-    $(this).closest('.overlay').fadeOut(function() {
+    $(this).closest('.cart-overlay').fadeOut(function() {
       $(this).remove();
       $('body').removeClass('no-scroll');
     });
@@ -186,7 +186,7 @@ $(document).ready(function() {
     });
 
   // Add full text back
-  }).on('click', '.cart-wrapper #update', function(e) {
+  }).on('click', '.cart-wrapper .update-btn', function(e) {
     e.preventDefault();
 
     Cart.updateFromForm('cart_form', function(cart) {
