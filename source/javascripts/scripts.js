@@ -149,11 +149,6 @@ $(document).ready(function() {
   })
 });
 
-$(document).ready(function() {
-  $('.search-input').bind('blur', function(){ $('.header-search').removeClass('active'); });
-  $('.search-input').bind('focus', function(){ $('.header-search').addClass('active'); });
-});
-
 var isGreaterThanZero = function(currentValue) {
   return currentValue > 0;
 }
