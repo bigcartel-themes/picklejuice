@@ -24,23 +24,6 @@ $(document).keydown(function(event) {
   }
 });
 
-function resizeSlideshow() {
-  $('#slideshow:visible article').each(function() {
-    var $article = $(this)
-      , $image = $article.find('img')
-      , newHeight = Math.max($(window).height() - $('body > header').outerHeight(), 450);
-
-    $article.css({height: newHeight});
-    if ($image.outerWidth() > $(window).outerWidth()) {
-      $image.css({marginLeft: ($(window).outerWidth() - $image.outerWidth()) / 2})
-    }
-    else {
-	    $image.css({marginLeft: 0})
-    }
-    $('#slideshow').css({height: newHeight});
-  });
-}
-
 function changeImage(index) {
   var $allThumbs = $('.product-thumbs > a')
     , $newSelection = $allThumbs.eq(index % $allThumbs.length);
@@ -65,30 +48,21 @@ function updateCart() {
   $overlay.load('/cart' + ' .cart-wrapper');
 }
 
-$(window).on('resize', function() {
-  resizeSlideshow();
-})
 function getRandomIndex(elements) {
   return Math.floor(Math.random() * elements.length);
 }
+
+$('.home-slideshow').flexslider({
+  animation: "slide"
+});
+$('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
+var width = $(window).width();
+
 $(document).ready(function() {
   var $document = $(this);
-  resizeSlideshow();
-
-  // Initialize slider on homepage
-  if ($('.wmuSliderWrapper').children().length > 1) {
-    $('.example1').wmuSlider({
-      animation: 'slide',
-      slideshow: true,
-      slideshowSpeed: 4000,
-      navigationControl: true,
-      paginationControl: true
-    })
-  }
-
 
   // Slide out sidebar
-  $document.on('click', 'aside > a', function(e) {
+  $document.on('click', '.open-menu', function(e) {
     e.preventDefault();
     $('aside').toggleClass('expand');
 
@@ -351,7 +325,7 @@ if ($('.next-button').length) {
     checkLastPage: true,
     history: false,
     prefill: false,
-    debug: true,
+    debug: false,
     loadOnScroll: false
   });
 

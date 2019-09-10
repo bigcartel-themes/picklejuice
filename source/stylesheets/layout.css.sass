@@ -342,15 +342,37 @@ header
       +flex-basis(100%)
       border-bottom: 3px solid $dark-gray-color
       margin-bottom: 20px
-      padding: 20px 60px
+      min-height: 80px
+      padding: 20px
+      position: relative
       font-size: 1em
       width: 100%
 
-    a:hover, a:focus
-      color: $dark-green-color
+    .store-link
+      display: block
+
+      @media screen and (max-width: $break-small)
+        +transform(translateY(-50%) translateX(-50%))
+        padding-left: 10px
+        padding-right: 10px
+        position: absolute
+        top: 50%
+        left: 50%
+        width: calc(100% - 120px)
+
+      &:hover, &:focus
+        color: $dark-green-color
 
     img
-      max-width: 100%
+      display: block
+      height: auto
+      margin: 0 auto
+      max-width: 300px
+      max-height: 200px
+      width: auto
+
+      @media screen and (max-width: $break-small)
+        max-height: 50px
 
   .header-cart
     +flexbox
@@ -426,12 +448,13 @@ section.content
     display: none
 
     @media screen and (max-width: $break-small)
+      +transform(translateY(-50%))
       background-size: 26px
       display: block
-      height: 26px
-      left: 14px
+      height: 18px
+      left: 20px
       position: absolute
-      top: 22px
+      top: 50%
       width: 26px
 
 .open-menu:hover, .open-menu:active

@@ -20,9 +20,10 @@
           {% endif %}
         </div>
         <div class="header-store-title">
-          <a href="/" title="{{ store.name | escape }}">
+          <a class="open-menu mobile-open-menu" href="#" title="Open menu">Menu</a>
+          <a href="/" title="{{ store.name | escape }}" class="store-link">
             {% if theme.logo != blank %}
-              <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
+              <img class="store-logo" src="{{ theme.logo.url | constrain: 600, 200 }}" alt="{{ store.name }}">
             {% else %}
               {{ store.name }}
             {% endif %}
@@ -35,12 +36,10 @@
           </a>
         </div>
       </div>
-      <a class="open-menu mobile-open-menu" href="#" title="Open menu">Menu</a>
     </header>
 
     <aside>
       <a class="open-menu desktop-open-menu" href="#" title="Open menu">Menu</a>
-
       <div class="wrapper">
         {% if artists.active != blank %}
           <ul>
@@ -49,13 +48,12 @@
             {% endfor %}
           </ul>
         {% endif %}
-
         <ul>
           {% for page in pages.all %}
             <li>{{ page | link_to }}</li>
           {% endfor %}
 
-          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/contact">Contact</a></li>
 
           {% if store.website != blank %}
             <li><a href="{{ store.website }}">Back to Site</a></li>
@@ -102,16 +100,14 @@
         </div>
 
         <div class="container">
-          <div class="grid_12" id="breadcrumbs">
+          <div class="breadcrumb">
             <hr>
-            <h4>
-              <a href="/" title="store home">Home</a>
-              {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
-              <a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a>
-            </h4>
+              <a href="/" title="Home">Home</a> /
+              <a href="{{ page.url }}" title="{{ page.name | escape }}">{{ page.name }}</a>
           </div>
-
-          <div class="grid_12 {{ page.category }}">{{ page_content | paragraphs }}</div>
+        </div>
+        <div class="container">
+          <div class="{{ page.category }}">{{ page_content | paragraphs }}</div>
         </div>
       {% else %}
         {{ page_content }}
