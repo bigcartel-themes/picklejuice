@@ -87,13 +87,13 @@
 
     <section class="content">
       {% if page.category == 'custom' %}
-        <div class="container clearfix">
-          <div class="grid_12 categories">
+        <div class="container">
+          <div class="categories">
             <ul>
+              <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
               {% for category in categories.active %}
-                <li>{{ category | link_to }}</li>
+              <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
               {% endfor %}
-              <li><a href="/products">All Products</a></li>
             </ul>
           </div>
         </div>

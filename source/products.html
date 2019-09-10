@@ -12,7 +12,7 @@
 {% paginate products from products.current by theme.products_per_page %}
   <div class="container">
     {% if products != blank %}
-      <div class="product-list">
+      <div class="product-list products-page-list">
         {% for product in products %}
           <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
             <figure>
@@ -26,14 +26,16 @@
         {% endfor %}
       </div>
 
-      {% if paginate.next %}
-        {% if paginate.next.is_link %}
-          <div class="container clearfix">
-            <div class="grid_12" id="load_more">
-              <a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
-            </div>
+      {% if paginate.pages > 1 %}
+        <a class="button shop-all-products view-more-button">Load More</a>
+        <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
+        <div class="page-load-status" style="display: none;">
+          <div class="infinite-scroll-request">
+            <div class="loading-more">Loading More</div>
           </div>
-        {% endif %}
+          <div class="infinite-scroll-last"><p>You've reached the end!</p></div>
+          <div class="infinite-scroll-error">No more pages to load</div>
+        </div>
       {% endif %}
     {% else %}
       <p>No products found.</p>
