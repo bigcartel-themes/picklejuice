@@ -12,12 +12,14 @@
   li
     padding: 3px 8px
 
+    a
+      padding: 4px 2px
+
+      &:hover, &:focus
+        color: $dark-green-color
+
     &.current a
       color: $dark-green-color
-
-    a:hover, a:focus
-      color: $dark-green-color
-
 
 .product-list
   +flexbox
@@ -47,8 +49,6 @@
 
     figure
       border: 3px solid $white-color
-      -moz-box-shadow: 0 0 12px $light-gray-color
-      -webkit-box-shadow: 0 0 12px $light-gray-color
       box-shadow: 0 0 12px $light-gray-color
       position: relative
       margin: 0
@@ -77,14 +77,12 @@
           left: -36px
           position: absolute
           padding: 20px
-          -ms-transform: rotate(15deg)
-          -moz-transform: rotate(15deg)
-          -webkit-transform: rotate(15deg)
-          transform: rotate(15deg)
+          +transform(rotate(15deg))
           width: 100%
           z-index: -1
 
       img
+        +all-transitions
         display: block
         max-width: 100%
         width: 100%
@@ -95,7 +93,3 @@
 #load_more
   margin-top: 5%
   text-align: center
-
-.product_list h1:last-of-type
-  text-align: center
-  margin-top: 80px
