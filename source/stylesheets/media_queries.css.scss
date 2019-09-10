@@ -422,8 +422,6 @@
 
 	.cart-wrapper .cart_box .close { float: none; }
 
-	li#cart-shipping-tax { width: 100%; margin-bottom: 10px; }
-
 	/* ================================
 	- product page
 	==========================*/
@@ -434,12 +432,6 @@
 
 	.details { width: 91%; padding: 0 20px; }
 
-
-	/* ================================
-	- success page
-	==========================*/
-
-	.message .grid_12 { padding: 0 20px; width: 91%; }
 
 	/* ================================
 	- contact
@@ -493,20 +485,6 @@
 			}
 
 		#share_this a { padding: 0 30px; }
-
-		.cart_box {
-			ul {
-				li {
-					display: block;
-					overflow: hidden;
-
-					+ li { margin-top: 1em; }
-				}
-			}
-		}
-		#cart-shipping-tax {
-			overflow:visible;
-		}
 
 	/* ================================
 	- contact page
@@ -594,12 +572,6 @@
     }
   }
 
-	footer {
-    width: 100%;
-  }
-
-	footer p { font-size: .8em; }
-
 	#share_this { padding: 0 10px; }
 
 	#share_this a { padding: 0 20px; }
@@ -618,9 +590,5 @@
 	.contact_form .grid_12 { padding: 0 20px; }
 
 }
-
-
-
-
 
 
