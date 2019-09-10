@@ -8,7 +8,6 @@
     </ul>
   </div>
 </div>
-
 {% paginate products from products.current by theme.products_per_page %}
   <div class="container">
     {% if products != blank %}
@@ -25,7 +24,6 @@
           </a>
         {% endfor %}
       </div>
-
       {% if paginate.pages > 1 %}
         <a class="button shop-all-products view-more-button">Load More</a>
         <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>

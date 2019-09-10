@@ -6,9 +6,7 @@
     <link href="{{ theme | theme_css_url }}" rel="stylesheet">
     {{ head_content }}
   </head>
-
   <body class="{{ page.permalink }}">
-
     <header>
       <div class="container header-container">
         <div class="header-search">
@@ -29,7 +27,6 @@
             {% endif %}
           </a>
         </div>
-
         <div class="header-cart">
           <a href="/cart" data-show-cart="data-show-cart">
             <span>{{ cart.total | money: theme.money_format }}</span>
@@ -37,7 +34,6 @@
         </div>
       </div>
     </header>
-
     <aside>
       <a class="open-menu desktop-open-menu" href="#" title="Open menu">Menu</a>
       <div class="wrapper">
@@ -52,9 +48,7 @@
           {% for page in pages.all %}
             <li>{{ page | link_to }}</li>
           {% endfor %}
-
           <li><a href="/contact">Contact</a></li>
-
           {% if store.website != blank %}
             <li><a href="{{ store.website }}">Back to Site</a></li>
           {% endif %}
@@ -85,7 +79,6 @@
         <p class="bigcartel-credit">{{ bigcartel_credit}}</p>
       </div>
     </aside>
-
     <section class="content">
       {% if page.category == 'custom' %}
         <div class="container">
@@ -98,7 +91,6 @@
             </ul>
           </div>
         </div>
-
         <div class="container">
           <div class="breadcrumb">
             <hr>
@@ -113,7 +105,6 @@
         {{ page_content }}
       {% endif %}
     </section>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script>
