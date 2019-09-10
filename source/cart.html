@@ -18,30 +18,30 @@
         <ul class="cart-items">
           {% for item in cart.items %}
             <li class="cart_box">
-              <div class="grid_2 cart_image_holder">
+              <div class="cart-image-holder">
                 <a href="{{ item.product.url }}" title="View {{ item.product.name }}">
                   <img src="{{ item.product.image | product_image_url | constrain: '600' }}">
                 </a>
               </div>
 
-              <div class="grid_4">
+              <div class="cart-item-name">
                 <a href="{{ item.product.url }}">
-                  <h5 class="cart-item-name">{{ item.product.name }}</h5>
+                  <h5 class="cart-item-product-name">{{ item.product.name }}</h5>
                   {% unless item.product.has_default_option %}
                     <span class="cart-item-option-name">{{ item.option.name }}</span>
                   {% endunless %}
                 </a>
               </div>
 
-              <div class="grid_1 quantity push_1">
+              <div class="cart-item-quantity">
                 {{ item | item_quantity_input }}
               </div>
 
-              <div class="grid_2 push_1 cart-item-price">
+              <div class="cart-item-price">
                 <span>{{ item.price | money: theme.money_format }}</span>
               </div>
 
-              <div class="close">
+              <div class="cart-item-remove">
                 <a href="#" class="remove" data-item-id="{{ item.id }}">&times;</a>
               </div>
             </li>

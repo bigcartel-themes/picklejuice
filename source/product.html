@@ -25,38 +25,6 @@
       {% endif %}
       <img src="{{ product.image | product_image_url | constrain: 1540 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
     </div>
-
-
-    {% if product.categories != blank %}
-      {% for category in product.categories %}
-        {% capture product_divs %}
-          {% for category_product in category.products %}
-            {% assign product_status = '' %}
-            {% case category_product.status %}
-              {% when 'active' %}
-                {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
-              {% when 'sold-out' %}
-                {% assign product_status = 'Sold out' %}
-              {% when 'coming-soon' %}
-                {% assign product_status = 'Coming soon' %}
-            {% endcase %}
-            {% if product.id != category_product.id %}
-              <a href="{{ category_product.url }}" title="{{ category_product.name | escape }}"><img src="{{ category_product.image | product_image_url | constrain: 340 }}" alt="Image of {{ category_product.name | escape }}"></a>
-            {% endif %}
-          {% endfor %}
-        {% endcapture %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_divs != blank %}
-      <div class="all-similar-products">{{ product_divs }}</div>
-      <div class="similar-products">
-        <div class="similar-products-header">
-          <h4 class="similar-products-title">Related products</h4>
-        </div>
-        <div class="similar-product-list"></div>
-      </div>
-    {% endif %}
   </div>
   <div class="product-details">
     {% if product.images.size > 1 %}
@@ -126,3 +94,43 @@
     </div>
   </div>
 </div>
+{% if product.categories != blank %}
+  {% for category in product.categories %}
+    {% capture product_divs %}
+      {% for category_product in category.products %}
+        {% assign product_status = '' %}
+        {% case category_product.status %}
+          {% when 'active' %}
+            {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+          {% when 'sold-out' %}
+            {% assign product_status = 'Sold out' %}
+          {% when 'coming-soon' %}
+            {% assign product_status = 'Coming soon' %}
+        {% endcase %}
+        {% if product.id != category_product.id %}
+          <a class="product-list-item" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
+            <figure>
+              <img src="{{ category_product.image | product_image_url | constrain: '600' }}" alt="Image of {{ category_product.name | escape }}">
+              <figcaption>
+                <h4>{{ category_product.name | truncate: 28 }}</h4>
+                <span>{{ category_product.default_price | money: theme.money_format }} {% if category_product.on_sale %} | On Sale {% endif %} {% case category_product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
+              </figcaption>
+            </figure>
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+  {% endfor %}
+{% endif %}
+
+{% if product_divs != blank %}
+<div class="container">
+  <div class="all-similar-products">{{ product_divs }}</div>
+  <div class="similar-products">
+    <div class="similar-products-header">
+      <h4 class="similar-products-title">Related products</h4>
+    </div>
+    <div class="product-list similar-product-list"></div>
+  </div>
+</div>
+{% endif %}

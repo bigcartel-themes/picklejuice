@@ -12,10 +12,12 @@
     <header>
       <div class="container header-container">
         <div class="header-search">
-          <form class="search-form" name="search" action="/products" method="get" autocomplete="off">
-            <input class="search-input" type="search" name="search" placeholder="Search Products...">
-            <input class="search-button" type="submit" name="submit" value="Go">
-          </form>
+          {% if theme.show_search %}
+            <form class="search-form" name="search" action="/products" method="get" autocomplete="off">
+              <input class="search-input" type="search" name="search" placeholder="Search Products...">
+              <input class="search-button" type="submit" name="submit" value="Go">
+            </form>
+          {% endif %}
         </div>
         <div class="header-store-title">
           <a href="/" title="{{ store.name | escape }}">
@@ -33,10 +35,11 @@
           </a>
         </div>
       </div>
+      <a class="open-menu mobile-open-menu" href="#" title="Open menu">Menu</a>
     </header>
 
     <aside>
-      <a class="open-menu" href="#" title="Open menu">Menu</a>
+      <a class="open-menu desktop-open-menu" href="#" title="Open menu">Menu</a>
 
       <div class="wrapper">
         {% if artists.active != blank %}
@@ -98,7 +101,7 @@
           </div>
         </div>
 
-        <div class="container clearfix">
+        <div class="container">
           <div class="grid_12" id="breadcrumbs">
             <hr>
             <h4>
