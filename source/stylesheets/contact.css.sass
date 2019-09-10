@@ -1,23 +1,20 @@
 @import "mixins"
 
-.contact_form
-  position: relative
+.contact-container
+  max-width: 600px
+  width: 100%
 
-  div
-    float: right
-    max-height: 42px
-    overflow: hidden
+  .contact-form-block
+    margin-bottom: 20px
 
-    + input
-      display: inline-block
-      float: left
-      width: 60%
-
-  h1
-    margin-top: 100px
-    text-align: center
+  label
+    display: block
+    font: bold .875em $sans-serif-font
+    margin-bottom: 10px
+    text-transform: uppercase
 
   input
+    +appearance(none)
     background-color: $light-green-color
     border: 2px solid $dark-gray-color
     font: normal 1em $serif-font
@@ -28,16 +25,8 @@
     &:focus, &:active
       border-color: $dark-green-color
 
-  label
-    display: block
-    font: bold .875em $sans-serif-font
-    margin-bottom: 10px
-    text-transform: uppercase
-
-  li.grid_12
-    text-align: center
-
   textarea
+    +appearance(none)
     background-color: $light-green-color
     border: 2px solid $dark-gray-color
     font: normal .875em $serif-font
@@ -52,23 +41,31 @@
     &:focus, &:active
       border-color: $dark-green-color
 
+  .captcha-holder
+    +flexbox
+
+  #captcha
+    margin-right: 20px
+
+  .captcha-instructions
+    font-family: $serif-font
+    margin-top: 10px
+
   .button
-    background-color: $dark-gray-color
-    color: $white-color
-    display: inline-block
-    font: bold 1.125em $sans-serif-font
-    margin-top: 50px
-    padding: 14px 59px
+    font: bold 1em $sans-serif-font
+    max-width: 300px
+    width: 100%
+    margin: 40px auto 0
 
   .errors
     text-align: center
-    padding: 0 20px
-    margin: 0px 0
-    color: #fff
+    color: $white-color
+    background-color: $dark-green-color
     font: bold 1em $sans-serif-font
     text-transform: uppercase
+    width: 100%
+    margin-bottom: 30px
 
     li
-      width: 100%
-      background-color: $dark-green-color
-      padding: 20px 0
+      display: block
+      padding: 20px

@@ -347,8 +347,6 @@ section.content
 aside
   +transition(all .5s ease-in-out)
   background-color: rgba(255, 255, 255, .9)
-  -moz-box-shadow: 0 0 12px $light-gray-color
-  -webkit-box-shadow: 0 0 12px $light-gray-color
   box-shadow: 0 0 12px $light-gray-color
   font: 1.350em $serif-font
   letter-spacing: 1px
@@ -387,25 +385,25 @@ aside
     padding: 5px 0
 
   .social
-    margin-top: -10px
+    margin: 1em 0
 
     a
       display: block
 
       svg
         fill: $dark-gray-color
-        height: 18px
-        width: 18px
+        height: 22px
+        width: 22px
 
-        &:hover
-          fill: $dark-green-color
+      &:hover svg
+        fill: $dark-green-color
 
     li
       display: inline-block
       padding: 0
 
       + li
-        margin-left: 4px
+        margin-left: 6px
 
   .bigcartel-credit
     margin-top: 20px

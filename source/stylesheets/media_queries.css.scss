@@ -5,8 +5,6 @@
 	- front page and categories
 	==========================*/
 
- 	.container { max-width: 1100px; }
-
 	/* ================================
 	 product page
 	==========================*/
@@ -31,11 +29,6 @@
 	- front page and categories
 	==========================*/
 
-	.container {
-		max-width: 1000px;
-		position: relative;
-	}
-
 	.search_bar { display: none; }
 
 	.search_bar_border { display: none; }
@@ -58,12 +51,12 @@
 		}
 	}
 
-	.product_list ul li { width: 30%; }
+	.product-list ul li { width: 30%; }
 
-	.product_list li:nth-child(3n+1) { clear: both; }
-	.product_list li:nth-child(4n+1) { clear: none; }
+	.product-list li:nth-child(3n+1) { clear: both; }
+	.product-list li:nth-child(4n+1) { clear: none; }
 
-	.product_list figure:hover img {
+	.product-list figure:hover img {
 		  -o-filter: none;
 		  -ms-filter: none;
 		  -moz-filter: none;
@@ -101,8 +94,6 @@
 	- front page and categories
 	==========================*/
 
-	.container { max-width: 900px; }
-
 	aside { width: 35%; right: -31.5%;}
 
 	aside ul li a { font-size: .875em; }
@@ -123,7 +114,7 @@
 
 	#more_products img { max-width: 121px; }
 
-	.product_list li figure figcaption {
+	.product-list li figure figcaption {
   	@include transition(all .3s ease);
 	  display: inline-block;
 	  width: 100%;
@@ -136,7 +127,7 @@
 	  z-index: 1;
 	}
 
-	.product_list li figure figcaption:before { display: none; }
+	.product-list li figure figcaption:before { display: none; }
 
 	#share_this a { padding: 0 3px; }
 }
@@ -145,8 +136,6 @@
 	/* ================================
 	- front page and categories
 	==========================*/
-
-	.container { max-width: 800px; }
 
 	header { padding: 5px 0 15px 0; }
 
@@ -232,62 +221,16 @@
 	}
 }
 
-@media screen and (max-width: 870px) {
-	/* ================================
-	- front page and categories
-	==========================*/
-
-	.container { max-width: 700px; }
-
-	/* ================================
-	- contact
-	==========================*/
-
-	.contact_form li.grid_6.push_3 {
-		width: 97.5%;
-		margin-left: 1.25%;
-	}
-
-	.details {
-		margin-top: -40px;
-
-		}
-}
-
 @media screen and (max-width: 768px) {
 	/* ================================
 	- front page and categories
 	==========================*/
 
-	.container { max-width: 650px; }
+	.product-list ul li { width: 46%; }
 
-	.product_list ul li { width: 46%; }
-
-	.product_list li:nth-child(2n+1) { clear: both; }
-	.product_list li:nth-child(3n+1) { clear: none; }
-
-	li#cart-shipping-tax { width: 45% }
-	/* ================================
-	- contact
-	==========================*/
-
-	.contact_form div {
-
-		margin-bottom: 10px;
-
-	}
-
-	#captcha {
-		width: 46%;
-	}
 
 	aside .social li { padding: 0 5px; }
 
-	/* ================================
-	- footer
-	==========================*/
-
-	footer { padding: 60px 20px; }
 }
 
 @media screen and (max-width: 690px) {
@@ -296,8 +239,6 @@
 	==========================*/
 
 	html:before { border-left: none; }
-
-	.container { max-width: 690px; }
 
 	.wmuSlider { display: none; }
 
@@ -362,7 +303,7 @@
 		padding: 0 20px;
 	}
 
-	.product_list {
+	.product-list {
 		margin-top: 40px;
 		padding-left: 20px;
 	}
@@ -432,15 +373,6 @@
 
 	.details { width: 91%; padding: 0 20px; }
 
-
-	/* ================================
-	- contact
-	==========================*/
-
-	.contact_form li.grid_6.push_3 { width: 91%; padding: 0 20px; }
-
-	#captcha { padding-left: 20px; padding-right: 20px;}
-
 }
 
 @media (max-width: 568px) {
@@ -450,12 +382,6 @@
 	/* ================================
 	- cart page
 	==========================*/
-
-		.contact_form input { -webkit-appearance: none; border-radius: 0; margin-bottom: 5px; }
-
-		.contact_form textarea { -webkit-appearance: none; border-radius: 0; }
-
-		#discount h4 { display: block; }
 
 		.details h1 {font-size: 1em;}
 
@@ -486,16 +412,6 @@
 
 		#share_this a { padding: 0 30px; }
 
-	/* ================================
-	- contact page
-	==========================*/
-  .contact .push_3 { margin-left: 0; }
-
-   .contact_form li.grid_6.push_3 {
-       padding: 0 20px;
-       width: 100%;
-       margin-left: 0;
-   }
 
 }
 
@@ -586,8 +502,6 @@
 		overflow-y: hidden;
 		position: static;
 	}
-
-	.contact_form .grid_12 { padding: 0 20px; }
 
 }
 
