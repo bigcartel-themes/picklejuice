@@ -92,28 +92,6 @@ $(document).ready(function() {
     e.preventDefault();
     $('aside').toggleClass('expand');
 
-  }).on('click', '.more', function(e) {
-    e.preventDefault();
-
-    var $button = $(this)
-      , currentPage = parseInt($button.attr('data-current-page'))
-      , nextPage = currentPage + 1
-      , totalPages = parseInt($button.attr('data-total-pages'));
-
-    $.get($button.attr('href'), function(response) {
-      var products = $(response).find('.product_list li');
-
-      $('.product_list ul').append(products.fadeIn());
-
-    });
-
-    if (nextPage == totalPages) {
-      $button.hide();
-    } else {
-      $button.attr('href', $button.attr('href').replace(/page=\d+/, 'page=' + (nextPage + 1)));
-      $button.attr('data-current-page', nextPage);
-    }
-
   // Remove product from cart
   }).on('click', '.remove', function(e) {
     e.preventDefault();
@@ -198,10 +176,8 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-
   $('.search-input').bind('blur', function(){ $('.header-search').removeClass('active'); });
   $('.search-input').bind('focus', function(){ $('.header-search').addClass('active'); });
-
 });
 
 var isGreaterThanZero = function(currentValue) {
@@ -284,7 +260,6 @@ Array.prototype.count = function(filterMethod) {
   return this.reduce((count, item) => filterMethod(item)? count + 1 : count, 0);
 }
 
-
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
@@ -364,4 +339,28 @@ if ($('.all-similar-products').length) {
     })
   }
   $('.all-similar-products').remove();
+}
+
+
+if ($('.next-button').length) {
+  var $container = $('.products-page-list').infiniteScroll({
+    path: '.next-button',
+    append: '.product-list-item',
+    status: '.page-load-status',
+    hideNav: '.pagination',
+    checkLastPage: true,
+    history: false,
+    prefill: false,
+    debug: true,
+    loadOnScroll: false
+  });
+
+  var $loadMoreButton = $('.view-more-button');
+  $loadMoreButton.on( 'click', function() {
+    $container.infiniteScroll('loadNextPage');
+    $container.infiniteScroll( 'option', {
+      loadOnScroll: true,
+    });
+    $loadMoreButton.hide();
+  });
 }

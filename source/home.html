@@ -38,16 +38,6 @@
             </a>
           {% endfor %}
         </div>
-
-        {% if paginate.next %}
-          {% if paginate.next.is_link %}
-            <div class="container clearfix">
-              <div class="grid_12" id="load_more">
-                <a class="button more" href="{{paginate.next.url}}" data-total-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">Load More</a>
-              </div>
-            </div>
-          {% endif %}
-        {% endif %}
       {% else %}
         <p>No products found.</p>
       {% endif %}
