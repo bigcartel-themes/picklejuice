@@ -96,46 +96,46 @@
   ul
     list-style: disc
 
-.similar-product-list
-  position: relative
+.similar-products
+  margin-top: 75px
 
-  a
-    border: 3px solid $white-color
-    box-shadow: 0 0 12px $light-gray-color
-    display: inline-block
-    margin: 55px 17px 0 0
-    overflow: hidden
-    vertical-align: top
+  .similar-product-list
+    +flexbox
+    position: relative
+    margin: 30px -10px 0
 
-    &:last-of-type
-      margin-right: 0
-
-    &:hover
-      opacity: 1
+    a
+      border: 3px solid $white-color
+      box-shadow: 0 0 12px $light-gray-color
+      margin: 10px 10px
+      width: 25%
 
       img
-        filter: blur(2px)
+        display: block
+        width: 100%
 
-  h4
+      &:hover
+        opacity: 1
+
+        img
+          filter: blur(2px)
+
+  .similar-products-title
+    +flexbox
+    +justify-content(center)
+    +align-items(center)
+    text-align: center
+    width: 100%
     font-size: .750em
-    left: 310px
-    position: absolute
-    top: -14px
 
-  hr
-    position: absolute
-    top: 0
-    float: none
-    left: 0
-    width: 301px
+    &:before, &:after
+      +flex(1 0 20px)
+      content: ''
+      border-top: 3px solid $white-color
+      margin: 0 20px 0 0
 
-    &:last-of-type
-      left: auto
-      right: 0
-
-  img
-    height: auto
-    max-width: 170px
+    &:after
+      margin: 0 0 0 20px
 
 #share_this
   font: .875em $serif-font

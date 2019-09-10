@@ -48,17 +48,15 @@
       {% endfor %}
     {% endif %}
 
-    <div class="container">
-      {% if product_divs != blank %}
-        <div class="all-similar-products">{{ product_divs }}</div>
-        <div class="similar-products">
-          <div class="similar-products-header">
-            <div class="similar-products-title">Related products</div>
-          </div>
-          <div class="similar-product-list"></div>
+    {% if product_divs != blank %}
+      <div class="all-similar-products">{{ product_divs }}</div>
+      <div class="similar-products">
+        <div class="similar-products-header">
+          <h4 class="similar-products-title">Related products</h4>
         </div>
-      {% endif %}
-    </div>
+        <div class="similar-product-list"></div>
+      </div>
+    {% endif %}
   </div>
   <div class="product-details">
     {% if product.images.size > 1 %}
