@@ -23,8 +23,6 @@
  *= require stylesheets/layout
  *= require stylesheets/cart
  *= require stylesheets/contact
- *= require stylesheets/home
  *= require stylesheets/product
  *= require stylesheets/products
- *= require stylesheets/media_queries
  */
