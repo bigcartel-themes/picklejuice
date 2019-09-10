@@ -1,18 +1,18 @@
 {% if theme.slideshow != blank %}
-<section class="wmuSlider example1" id="slideshow">
-  <div class="wmuSliderWrapper">
-    {% if theme.image_sets.slideshow.size > 0 %}
-      {% for image in theme.image_sets.slideshow %}
-        <article><img src="{{ image.url | constrain: '2000' }}"></article>
-      {% endfor %}
-    {% endif %}
-  </div>
+  <section class="wmuSlider example1" id="slideshow">
+    <div class="wmuSliderWrapper">
+      {% if theme.image_sets.slideshow.size > 0 %}
+        {% for image in theme.image_sets.slideshow %}
+          <article><img src="{{ image.url | constrain: '2000' }}"></article>
+        {% endfor %}
+      {% endif %}
+    </div>
 
-  <a href="#minus_buffer">Down</a>
-</section>
- {% endif %}
-<div class="container clearfix">
-  <div class="grid_12 categories" id="minus_buffer">
+    <a href="#minus_buffer">Down</a>
+  </section>
+{% endif %}
+<div class="container">
+  <div class="categories">
     <ul>
       <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
       {% for category in categories.active %}
