@@ -6,14 +6,22 @@
   font-weight: bold
   text-transform: uppercase
   letter-spacing: .2em
+  line-height: 1.75em
   margin-bottom: 30px
 
 .product-container
   +flex-direction(row)
 
+  @media screen and (max-width: $break-medium)
+    +flex-direction(column)
+
 .product-images-panel
   padding-right: 60px
   width: 72%
+
+  @media screen and (max-width: $break-medium)
+    padding-right: 0
+    width: 100%
 
 .image-arrow
   display: block
@@ -53,7 +61,7 @@
 
 .product-thumbs
   +flexbox
-  +align-items(center)
+  +align-items(flex-start)
   +justify-content(center)
   margin: 0 -5px 40px
 
@@ -99,34 +107,14 @@
 .similar-products
   margin-top: 75px
 
-  .similar-product-list
-    +flexbox
-    position: relative
-    margin: 30px -10px 0
-
-    a
-      border: 3px solid $white-color
-      box-shadow: 0 0 12px $light-gray-color
-      margin: 10px 10px
-      width: 25%
-
-      img
-        display: block
-        width: 100%
-
-      &:hover
-        opacity: 1
-
-        img
-          filter: blur(2px)
-
   .similar-products-title
     +flexbox
     +justify-content(center)
     +align-items(center)
     text-align: center
+    margin-bottom: 50px
     width: 100%
-    font-size: .750em
+    font-size: .950em
 
     &:before, &:after
       +flex(1 0 20px)
@@ -153,6 +141,10 @@
 .product-details
   text-align: center
   width: 28%
+
+  @media screen and (max-width: $break-medium)
+    margin-top: 20px
+    width: 100%
 
   h1
     margin-top: 0

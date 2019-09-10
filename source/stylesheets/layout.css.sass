@@ -11,6 +11,20 @@ a
     filter: alpha(opacity=90)
     opacity: .9
 
+.container
+  +flexbox
+  +flex-direction(column)
+  margin: auto
+  max-width: 1300px
+  padding: 0 80px
+  width: 100%
+
+  @media screen and (max-width: $break-medium)
+    padding: 0 60px
+
+  @media screen and (max-width: $break-small)
+    padding: 0 20px
+
 html
   height: 100%
 
@@ -67,8 +81,14 @@ h1
   font-size: 1.5em
   letter-spacing: .3em
 
+  @media screen and (max-width: $break-small)
+    font-size: 1.2em
+
 h2
   font-size: 1.75em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.1em
 
 h3
   font-size: 1em
@@ -244,52 +264,87 @@ header
   width: 100%
   z-index: 2
 
+  @media screen and (max-width: $break-small)
+    padding: 0
+
   .header-container
     +flexbox
     +justify-content(space-between)
     +align-items(center)
     +flex-direction(row)
 
-    > div
-      +flex-basis(33.33%)
+    @media screen and (max-width: $break-small)
+      +flex-direction(column)
+      padding: 0
+      margin-bottom: 30px
 
   .header-search
+    +flex-basis(30%)
     color: $dark-gray-color
 
     .search-form
       +flexbox
-      +transition(all .1s ease-in-out)
       border: 2px solid transparent
       display: inline-block
       width: auto
 
-      .search-input
-        +appearance(none)
-        background: transparent
-        border: none
+      @media screen and (max-width: $break-medium)
+        display: none
 
-        &:focus
+      &:focus-within
+        +all-transitions
+        border: 2px solid $dark-gray-color
+
+        .search-input
           outline: none
 
-      .search-button
+        .search-button
+          border-left: 2px solid $dark-gray-color
+          opacity: 1
+
+      .search-input, .search-button
         +appearance(none)
         background: transparent
         border: none
-        opacity: 0
-
-    &.active
-      border: 2px solid $dark-gray-color
+        height: 40px
+        margin: 0
+        padding: 0
 
       .search-button
-        opacity: 1
+        border-left: 2px solid transparent
+        font-family: $sans-serif-font
+        font-weight: 700
+        font-size: .85em
+        opacity: 0
+        text-transform: uppercase
+        width: 48px
+
+        &:hover, &:focus
+          background: $dark-green-color
+          outline: none
+
+      .search-input
+        background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 8px 12px no-repeat
+        background-size: 28px 15px
+        font-family: $serif-font
+        padding: 4px 8px 4px 44px
 
   .header-store-title
+    +flex-basis(40%)
     font-family: $sans-serif-font
     text-align: center
     font-size: 1.5em
     letter-spacing: .3em
     font-weight: bold
     text-transform: uppercase
+
+    @media screen and (max-width: $break-small)
+      +flex-basis(100%)
+      border-bottom: 3px solid $dark-gray-color
+      margin-bottom: 20px
+      padding: 20px 60px
+      font-size: 1em
+      width: 100%
 
     a:hover, a:focus
       color: $dark-green-color
@@ -300,9 +355,13 @@ header
   .header-cart
     +flexbox
     +justify-content(flex-end)
+    +flex-basis(30%)
     font-family: $serif-font
     text-align: center
     position: relative
+
+    @media screen and (max-width: $break-small)
+      +flex-basis(100%)
 
     a
       background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat
@@ -312,6 +371,9 @@ header
       position: relative
       width: 60px
       z-index: 2
+
+      &:hover, &:focus
+        opacity: .8
 
     span span
       padding: 0 2px 0 0
@@ -327,7 +389,6 @@ header
   overflow: hidden
   right: 0
 
-
   .green_cart
     background-color: $dark-green-color
     height: 0px
@@ -342,7 +403,39 @@ header
     margin-top: 8px
 
 section.content
-  padding-bottom: 140px
+  padding-bottom: 100px
+
+.open-menu
+  background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top
+  background-size: 20px
+  height: 14px
+  left: -10px
+  overflow: hidden
+  position: absolute
+  text-indent: -999px
+  top: 50px
+  width: 20px
+
+  &.desktop-open-menu
+    display: block
+
+    @media screen and (max-width: $break-small)
+      display: none
+
+  &.mobile-open-menu
+    display: none
+
+    @media screen and (max-width: $break-small)
+      background-size: 26px
+      display: block
+      height: 26px
+      left: 14px
+      position: absolute
+      top: 22px
+      width: 26px
+
+.open-menu:hover, .open-menu:active
+  color: $dark-green-color
 
 aside
   +transition(all .5s ease-in-out)
@@ -353,10 +446,16 @@ aside
   height: 100%
   padding-top: 20px
   position: fixed
-  right: -220px
+  right: -260px
   top: 0
   width: 300px
   z-index: 200
+
+  @media screen and (max-width: $break-medium)
+    right: -275px
+
+  @media screen and (max-width: $break-small)
+    right: -100%
 
   .wrapper
     padding: 0 20px 28px 28px
@@ -365,20 +464,6 @@ aside
 
   &.expand
     right: 0
-
-  .open-menu
-    background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top
-    background-size: 20px
-    height: 14px
-    left: -10px
-    overflow: hidden
-    position: absolute
-    text-indent: -999px
-    top: 50px
-    width: 20px
-
-  .open-menu:hover, .open-menu:active
-    color: $dark-green-color
 
   li
     display: block

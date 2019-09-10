@@ -12,6 +12,9 @@
   width: 100%
   z-index: 200
 
+  @media screen and (max-width: $break-small)
+    padding-top: 0
+
   .close_overlay a
     background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
     background-size: 60px
@@ -23,6 +26,11 @@
     overflow: hidden
     text-indent: -999px
     width: 60px
+
+    @media screen and (max-width: $break-small)
+      height: 40px
+      width: 40px
+      background-size: 40px
 
   .message
     min-height: 700px
@@ -57,8 +65,10 @@
     &:last-of-type
       border: none
 
-    .cart_image_holder
+    .cart-image-holder
       margin-left: 0
+      margin-right: 30px
+      width: 15%
 
       img
         height: auto
@@ -66,15 +76,20 @@
         width: 100%
 
     .cart-item-name
-      margin-bottom: 0
-      margin-top: 0
+      width: 30%
 
-    .cart-item-option-name
-      display: inline-block
-      font-family: $serif-font
-      margin-top: 15px
+      .cart-item-product-name
+        margin: 0
 
-    .quantity
+      .cart-item-option-name
+        display: inline-block
+        font-family: $serif-font
+        margin-top: 15px
+
+    .cart-item-quantity
+      margin-left: auto
+      width: 100px
+
       input
         border: 2px solid $dark-gray-color
         font: bold 0.875em $sans-serif-font
@@ -85,6 +100,8 @@
 
     .cart-item-price
       font: 1.25em $serif-font
+      margin-left: auto
+      width: 10%
 
     .update-btn
       background-color: $dark-gray-color
@@ -105,18 +122,18 @@
         background-color: $dark-green-color
         color: $white-color
 
-    .remove
-      background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
-      background-size: 60px
-      display: inline-block
-      height: 20px
-      overflow: hidden
-      text-indent: -999px
-      width: 20px
-
-    .close
+    .cart-item-remove
       margin-left: auto
       padding-top: 10px
+
+      .remove
+        background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
+        background-size: 60px
+        display: inline-block
+        height: 20px
+        overflow: hidden
+        text-indent: -999px
+        width: 20px
 
 .cart-total
   margin-bottom: 10%
