@@ -71,7 +71,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     Cart.removeItem($(this).data('item-id'), function(cart) {
-      $('header .cart a > span').html(Format.money(cart.total, true, true));
+      $('.header-cart a > span').html(Format.money(cart.total, true, true));
 
       updateCart();
     });
