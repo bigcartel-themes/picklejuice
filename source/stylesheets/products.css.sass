@@ -1,0 +1,141 @@
+@import "mixins"
+
+.categories ul
+  +flexbox
+  +flex-wrap(wrap)
+  +align-items(center)
+  +justify-content(center)
+  font-family: $serif-font
+  line-height: 24px
+  margin: 40px 0 60px
+  text-align: center
+
+  @media screen and (max-width: $break-small)
+    margin: 0 auto 30px
+
+  li
+    margin: 1px
+
+    a
+      display: block
+      padding: 4px 8px
+
+      &:hover, &:focus
+        color: $dark-green-color
+
+    &.current a
+      color: $dark-green-color
+
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  font-size: 20px
+  margin: 0 -10px
+
+  .product-list-item
+    padding: 0 10px 20px
+    width: 25%
+
+    @media screen and (max-width: $break-medium)
+      width: 50%
+
+    @media screen and (max-width: $break-extra-small)
+      width: 100%
+
+    &:hover, &:focus
+      outline: none
+
+      @media only screen and (min-width: 768px) and (hover: hover), (-moz-touch-enabled: 0)
+        figcaption
+          bottom: 0
+
+      img
+        filter: blur(3px)
+
+    a
+      display: block
+
+      &:hover
+        opacity: 1
+
+    figure
+      border: 3px solid $white-color
+      box-shadow: 0 0 12px $light-gray-color
+      position: relative
+      margin: 0
+      overflow: hidden
+
+      figcaption
+        +transition(bottom .4s)
+        background-color: $white-color
+        bottom: -200px
+        padding: 0 20px 20px
+        position: absolute
+        width: 100%
+        z-index: 1
+
+        @media screen and (max-width: $break-medium)
+          bottom: 0
+          display: inline-block
+          width: 100%
+          height: 110px
+          background-color: rgba(255, 255, 255, 0.7)
+          position: absolute
+          left: 0
+          padding: 20px 20px 10px 20px
+          z-index: 1
+
+        span
+          font-family: $serif-font
+          font-size: 1em
+          letter-spacing: 1px
+
+        &:before
+          background-color: $white-color
+          bottom: -105px
+          content: ''
+          display: block
+          height: 200px
+          left: -36px
+          position: absolute
+          padding: 20px
+          +transform(rotate(15deg))
+          width: 100%
+          z-index: -1
+
+          @media screen and (max-width: $break-medium)
+            display: none
+
+      img
+        +all-transitions
+        display: block
+        max-width: 100%
+        width: 100%
+
+  h4
+    margin: 0 0 5px
+
+a.view-more-button
+  margin: 25px auto 0
+  max-width: 300px
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+.product-card
+  &:hover, &:focus
+    opacity: .85
+
+.page-load-status
+  font-size: 1em
+  letter-spacing: 1px
+  margin-top: 25px
+  text-align: center
+
+.no-products
+  font-family: $sans-serif-font
+  font-weight: bold
+  text-align: center
+  text-transform: uppercase

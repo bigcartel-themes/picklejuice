@@ -1,0 +1,185 @@
+@import "mixins"
+
+.cart-wrapper
+  background-color: rgba(255, 255, 255, .95)
+  display: block
+  height: 100%
+  left: 0
+  overflow: scroll
+  padding: 50px 0
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 200
+
+  @media screen and (max-width: $break-small)
+    padding-top: 0
+
+  .close_overlay a
+    background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
+    background-size: 60px
+    border-radius: 50%
+    display: inline-block
+    float: right
+    height: 60px
+    margin-top: 14px
+    overflow: hidden
+    text-indent: -999px
+    width: 60px
+
+    @media screen and (max-width: $break-small)
+      height: 40px
+      width: 40px
+      background-size: 40px
+
+  .message
+    min-height: 700px
+    text-align: center
+
+    hr
+      margin: 80px 0
+
+    .button
+      display: block
+      margin: 40px auto 0
+      width: 300px
+
+      &:hover, &:focus
+        background-color: $dark-green-color
+        color: $white-color
+
+  hr
+    background: $dark-gray-color
+    margin: 100px 0
+
+  .cart-items
+    border-top: 3px solid $dark-gray-color
+
+  .cart_box
+    +flexbox
+    +flex-wrap(wrap)
+    border-bottom: 3px solid $dark-gray-color
+    padding: 20px 0
+    width: 100%
+    position: relative
+
+    &:last-of-type
+      border: none
+
+    .cart-image-holder
+      margin-left: 0
+      width: 15%
+
+      @media screen and (max-width: $break-small)
+        +flex-basis(20%)
+        margin-bottom: 20px
+        order: 1
+
+      img
+        height: auto
+        max-width: 100%
+        width: 100%
+
+    .cart-item-name
+      padding-left: 30px
+      width: 30%
+
+      @media screen and (max-width: $break-small)
+        +flex-basis(67%)
+        margin-bottom: 20px
+        order: 2
+
+      .cart-item-product-name
+        margin: 0
+
+      .cart-item-option-name
+        display: inline-block
+        font-family: $serif-font
+        margin-top: 15px
+
+    .cart-item-quantity
+      margin-left: auto
+      width: 100px
+
+      @media screen and (max-width: $break-small)
+        margin-left: 0
+        order: 4
+
+      input
+        border: 2px solid $dark-gray-color
+        font: bold 0.875em $sans-serif-font
+        letter-spacing: 0.2em
+        outline: none
+        padding: 10px
+        width: 100%
+
+    .cart-item-price
+      font: 1.25em $serif-font
+      margin-left: auto
+      width: 10%
+
+      @media screen and (max-width: $break-small)
+        order: 5
+        width: auto
+
+    .update-btn
+      background-color: $dark-gray-color
+      color: $white-color
+      border: none
+      font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
+      text-transform: uppercase
+      text-align: center
+      letter-spacing: 0.2em
+      padding: 11px 23px
+      outline: none
+      display: block
+      margin-bottom: 10px
+      margin-left: auto
+      width: auto
+
+      &:hover, &:focus
+        background-color: $dark-green-color
+        color: $white-color
+
+    .cart-item-remove
+      margin-left: auto
+      padding-top: 10px
+
+      @media screen and (max-width: $break-small)
+        +flex-basis(10%)
+        order: 3
+        text-align: right
+
+      .remove
+        background: url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) -20px -66px no-repeat
+        background-size: 60px
+        display: inline-block
+        height: 20px
+        overflow: hidden
+        text-indent: -999px
+        width: 20px
+
+.cart-total
+  margin-bottom: 10%
+  padding-top: 40px
+  text-align: center
+
+  .cart-total-title
+    font-size: .750em
+    margin-bottom: 5px
+
+  .cart-total-amount
+    font-family: $serif-font
+    font-size: 3.375em
+    margin-bottom: 25px
+
+  .checkout-button
+    color: $white-color
+    background-color: $dark-gray-color
+    float: none
+    width: 300px
+    margin: 0 auto
+
+    &:hover, &:focus
+      background-color: $dark-green-color
+      color: $white-color

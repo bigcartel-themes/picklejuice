@@ -1,0 +1,518 @@
+@import "mixins"
+
+*
+  box-sizing: border-box
+
+a
+  color: $dark-gray-color
+  text-decoration: none
+
+  &:hover
+    filter: alpha(opacity=90)
+    opacity: .9
+
+.container
+  +flexbox
+  +flex-direction(column)
+  margin: auto
+  max-width: 1300px
+  padding: 0 80px
+  width: 100%
+
+  @media screen and (max-width: $break-medium)
+    padding: 0 60px
+
+  @media screen and (max-width: $break-small)
+    padding: 0 20px
+
+html
+  height: 100%
+
+  &:before
+    border-left: 3px solid $dark-gray-color
+    display: inline-block
+    left: 0
+    position: fixed
+    height: 100%
+    z-index: 100
+
+body
+  background-color: $light-green-color
+  color: $dark-gray-color
+  height: 100%
+  padding: 3px 0
+
+  &:after, &:before
+    border-top: 3px solid $dark-gray-color
+    content: ''
+    display: inline-block
+    left: 0
+    position: fixed
+    width: 100%
+    z-index: 100
+
+  &:after
+    top: 0
+
+  &:before
+    bottom: 0
+
+  &.no-scroll
+    overflow-y: scroll
+    position: fixed
+    width: 100%
+
+a, button, submit, select, input, .select
+  +transition(all .1s ease-in-out)
+
+h1, h4, h5
+  font-family: $sans-serif-font
+  font-weight: bold
+  text-transform: uppercase
+
+h2, h3
+  font-family: $serif-font
+  letter-spacing: 1px
+
+h4, h5
+  letter-spacing: .2em
+
+h1
+  font-size: 1.5em
+  letter-spacing: .3em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.2em
+
+h2
+  font-size: 1.75em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.1em
+
+h3
+  font-size: 1em
+
+h4
+  font-size: .875em
+
+h5
+  font-size: 1.125em
+
+hr
+  background: $white-color
+  border: 0
+  height: 3px
+  margin: 0 0 25px
+  width: 100%
+
+p
+  font: .975em $serif-font
+  line-height: 24px
+  letter-spacing: 1px
+
+ul, ol
+  list-style: none
+  margin: 0
+  padding: 0
+
+.custom
+  a
+    color: $dark-green-color
+
+  img, iframe, embed, object, video
+    max-width: 100%
+
+  ol, ul
+    font: .875em $serif-font
+    letter-spacing: 1px
+    padding-left: 1em
+
+  ol
+    list-style: decimal
+
+  ul
+    list-style: disc
+
+.cart_box, #product_form
+  .errors
+    background-color: $dark-green-color
+    text-align: center
+    padding: 20px
+    margin: 0px 0
+    color: $white-color
+    font: .75em $sans-serif-font
+    text-transform: uppercase
+    width: 100%
+
+    li
+      display: block
+
+      + li
+        margin-top: 20px
+
+button, a.button
+  +all-transitions
+  background: $dark-gray-color
+  border: none
+  color: $white-color
+  cursor: pointer
+  display: block
+  font: bold 0.750em $sans-serif-font
+  height: 58px
+  letter-spacing: 0.2em
+  line-height: 58px
+  max-width: 100%
+  outline: none
+  padding: 0 16px
+  text-align: center
+  text-transform: uppercase
+  width: 100%
+
+  &.no-border
+    border: none
+
+  &:hover, &:active, &:focus
+    background: $dark-green-color
+
+  &:disabled, &.disabled
+    background: $dark-gray-color
+    cursor: not-allowed
+    opacity: .3
+
+.select
+  +all-transitions
+  border: 3px solid $dark-gray-color
+  color: $dark-gray-color
+  font: bold 0.875em $sans-serif-font
+  height: 58px
+  letter-spacing: 0.2em
+  margin-bottom: 20px
+  max-width: 100%
+  padding: 0
+  position: relative
+  text-transform: uppercase
+  width: 100%
+
+  select
+    +all-transitions
+    appearance: none
+    -webkit-appearance: none
+    background: none
+    border: 0
+    border-radius: 0
+    color: $dark-gray-color
+    font: bold 0.875em $sans-serif-font
+    height: 100%
+    letter-spacing: 1px
+    line-height: 58px
+    padding: 0 66px 0 16px
+    position: relative
+    text-transform: uppercase
+    width: 100%
+    z-index: 2
+
+    option
+      color: #000
+      background: #FFF
+
+      &:disabled
+        color: graytext
+
+    &:focus
+      outline: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    fill: $dark-gray-color
+    position: absolute
+    right: 17px
+    top: 50%
+    z-index: 1
+
+  &:hover, &:active, &:focus, &:focus-within
+    border: 3px solid $dark-green-color
+
+    option:disabled
+      color: graytext
+
+    svg
+      fill: $dark-green-color
+
+.cart-overlay
+  display: none
+  position: relative
+  z-index: 200
+
+body
+  &.maintenance
+    border-right: 3px solid $dark-gray-color
+
+  &.maintenance .message_tall
+    min-height: 1200px
+    text-align: center
+
+    h1
+      margin-top: 15%
+
+header
+  background: $light-green-color
+  padding-top: 60px
+  padding-bottom: 40px
+  width: 100%
+  z-index: 2
+
+  @media screen and (max-width: $break-small)
+    padding: 0
+
+  .header-container
+    +flexbox
+    +justify-content(space-between)
+    +align-items(center)
+    +flex-direction(row)
+
+    @media screen and (max-width: $break-small)
+      +flex-direction(column)
+      padding: 0
+      margin-bottom: 30px
+
+  .header-search
+    +flex-basis(30%)
+    color: $dark-gray-color
+
+    .search-form
+      +flexbox
+      border: 2px solid transparent
+      display: inline-block
+      width: auto
+
+      @media screen and (max-width: $break-medium)
+        display: none
+
+      &:focus-within
+        +all-transitions
+        border: 2px solid $dark-gray-color
+
+        .search-input
+          outline: none
+
+        .search-button
+          border-left: 2px solid $dark-gray-color
+          opacity: 1
+
+      .search-input, .search-button
+        +appearance(none)
+        background: transparent
+        border: none
+        height: 40px
+        margin: 0
+        padding: 0
+
+      .search-button
+        border-left: 2px solid transparent
+        font-family: $sans-serif-font
+        font-weight: 700
+        font-size: .85em
+        opacity: 0
+        text-transform: uppercase
+        width: 48px
+
+        &:hover, &:focus
+          background: $dark-green-color
+          outline: none
+
+      .search-input
+        background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 8px 12px no-repeat
+        background-size: 28px 15px
+        font-family: $serif-font
+        padding: 4px 8px 4px 44px
+
+  .header-store-title
+    +flex-basis(40%)
+    font-family: $sans-serif-font
+    text-align: center
+    font-size: 1.5em
+    letter-spacing: .3em
+    font-weight: bold
+    text-transform: uppercase
+
+    @media screen and (max-width: $break-small)
+      +flex-basis(100%)
+      border-bottom: 3px solid $dark-gray-color
+      margin-bottom: 20px
+      min-height: 80px
+      padding: 20px
+      position: relative
+      font-size: 1em
+      width: 100%
+
+    .store-link
+      display: block
+
+      @media screen and (max-width: $break-small)
+        +transform(translateY(-50%) translateX(-50%))
+        padding-left: 10px
+        padding-right: 10px
+        position: absolute
+        top: 50%
+        left: 50%
+        width: calc(100% - 120px)
+
+      &:hover, &:focus
+        color: $dark-green-color
+
+    img
+      display: block
+      height: auto
+      margin: 0 auto
+      max-width: 300px
+      max-height: 200px
+      width: auto
+
+      @media screen and (max-width: $break-small)
+        max-height: 50px
+
+  .header-cart
+    +flexbox
+    +justify-content(flex-end)
+    +flex-basis(30%)
+    font-family: $serif-font
+    text-align: center
+    position: relative
+
+    @media screen and (max-width: $break-small)
+      +flex-basis(100%)
+
+    a
+      background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat
+      background-size: 60px 60px
+      display: block
+      padding-top: 70px
+      position: relative
+      width: 60px
+      z-index: 2
+
+      &:hover, &:focus
+        opacity: .8
+
+    span span
+      padding: 0 2px 0 0
+
+.light_cart
+  border-radius: 50%
+  width: 60px
+  height: 60px
+  position: absolute
+  top: 0px
+  display: block
+  z-index: 1
+  overflow: hidden
+  right: 0
+
+  .green_cart
+    background-color: $dark-green-color
+    height: 0px
+    width: 60px
+    position: absolute
+    bottom: 0
+    right: 0
+    display: block
+    z-index: 1
+
+  .imgAdd
+    margin-top: 8px
+
+section.content
+  padding-bottom: 100px
+
+.open-menu
+  background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top
+  background-size: 20px
+  height: 14px
+  left: -10px
+  overflow: hidden
+  position: absolute
+  text-indent: -999px
+  top: 50px
+  width: 20px
+
+  &.desktop-open-menu
+    display: block
+
+    @media screen and (max-width: $break-small)
+      display: none
+
+  &.mobile-open-menu
+    display: none
+
+    @media screen and (max-width: $break-small)
+      +transform(translateY(-50%))
+      background-size: 26px
+      display: block
+      height: 18px
+      left: 20px
+      position: absolute
+      top: 50%
+      width: 26px
+
+.open-menu:hover, .open-menu:active
+  color: $dark-green-color
+
+aside
+  +transition(all .5s ease-in-out)
+  background-color: rgba(255, 255, 255, .9)
+  box-shadow: 0 0 12px $light-gray-color
+  font: 1.350em $serif-font
+  letter-spacing: 1px
+  height: 100%
+  padding-top: 20px
+  position: fixed
+  right: -260px
+  top: 0
+  width: 300px
+  z-index: 200
+
+  @media screen and (max-width: $break-medium)
+    right: -275px
+
+  @media screen and (max-width: $break-small)
+    right: -100%
+
+  .wrapper
+    padding: 0 20px 28px 28px
+    overflow: scroll
+    height: 100%
+
+  &.expand
+    right: 0
+
+  li
+    display: block
+    padding: 5px 0
+
+  .social
+    margin: 1em 0
+
+    a
+      display: block
+
+      svg
+        fill: $dark-gray-color
+        height: 22px
+        width: 22px
+
+      &:hover svg
+        fill: $dark-green-color
+
+    li
+      display: inline-block
+      padding: 0
+
+      + li
+        margin-left: 6px
+
+  .bigcartel-credit
+    margin-top: 20px
+    font-size: .625em
