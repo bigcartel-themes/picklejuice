@@ -169,10 +169,21 @@ button, a.button
   text-transform: uppercase
   width: 100%
 
+  &.minimal-button
+    background: none
+    color: $dark-gray-color
+    border: none
+    font-size: 13px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      background: none
+      text-decoration: underline
+
   &.no-border
     border: none
 
-  &:hover, &:active, &:focus
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
     background: $dark-green-color
 
   &:disabled, &.disabled
