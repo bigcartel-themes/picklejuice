@@ -43,6 +43,7 @@
     "header_image": "{{ logo }}",
     "header_width": "300px",
     "title_background_color": "{{ primary_color }}",
+    "title_color": "#333333",
     "title_font": "{{ primary_font }}",
     "step_header_font": "{{ primary_font }}",
     "background_color": "{{ primary_color }}",
