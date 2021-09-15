@@ -101,7 +101,9 @@
       </form>
     {% endif %}
     <div id="share_this">
-      <a href="https://twitter.com/intent/tweet?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
+      {% capture tweet_string %}{{ product.name }} - {{ store.name }} {{ page.full_url }}{% endcapture %}
+      {% assign tweet_string = tweet_string | url_encode %}
+      <a href="https://twitter.com/intent/tweet?text={{ tweet_string }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
       <a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
       <a target="_blank" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape }}">pin this!</a>
     </div>
