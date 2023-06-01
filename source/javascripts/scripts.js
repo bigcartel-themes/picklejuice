@@ -109,21 +109,24 @@ $(document).ready(function() {
     }
 
     changeImage(currentIndex);
-  }).on('click', '.add-to-cart-button', function(e) {
+  }).on('submit', '.product-form', function(e) {
     e.preventDefault();
 
-    var $button = $(this)
+    var $button = $('.add-to-cart-button')
       , $productInput = $('#option')
+      , $currentText = $button.text()
+      , $addingText = $button.data('adding-title')
+      , $addedText = $button.data('added-title')
       , $quantityInput = $('#product-quantity');
-
+    $button.text($addingText);
     Cart.addItem($productInput.val(), $quantityInput.val(), function(cart) {
       $('.product-form .errors').remove();
 
       $('.header-cart a > span').html(Format.money(cart.total, true, true));
 
-      $button.text('Added!');
+      $button.text($addedText);
       setTimeout(function() {
-        $button.text('Add to cart');
+        $button.text($currentText);
       }, 1000);
 
       $('.header-cart').append($("<div class='light_cart'></div>").append($("<div class='green_cart'></div>")));
