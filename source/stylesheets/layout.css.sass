@@ -39,6 +39,7 @@ html
 body
   background-color: $light-green-color
   color: $dark-gray-color
+  font-size: 16px
   height: 100%
   padding: 3px 0
 
@@ -158,10 +159,9 @@ button, a.button
   color: $white-color
   cursor: pointer
   display: block
-  font: bold 0.750em $sans-serif-font
+  font: bold 1em $sans-serif-font
   height: 58px
-  letter-spacing: 0.2em
-  line-height: 58px
+  letter-spacing: 1px
   max-width: 100%
   outline: none
   padding: 0 16px
@@ -195,9 +195,8 @@ button, a.button
   +all-transitions
   border: 3px solid $dark-gray-color
   color: $dark-gray-color
-  font: bold 0.875em $sans-serif-font
+  font: bold 1em $sans-serif-font
   height: 58px
-  letter-spacing: 0.2em
   margin-bottom: 20px
   max-width: 100%
   padding: 0
@@ -213,10 +212,9 @@ button, a.button
     border: 0
     border-radius: 0
     color: $dark-gray-color
-    font: bold 0.875em $sans-serif-font
+    font: bold 1em $sans-serif-font
     height: 100%
     letter-spacing: 1px
-    line-height: 58px
     padding: 0 66px 0 16px
     position: relative
     text-transform: uppercase
@@ -241,6 +239,7 @@ button, a.button
     position: absolute
     right: 17px
     top: 50%
+    transform: translateY(-50%)
     z-index: 1
 
   &:hover, &:active, &:focus, &:focus-within
@@ -525,5 +524,21 @@ aside
         margin-left: 6px
 
   .bigcartel-credit
-    margin-top: 20px
-    font-size: .625em
+    font-size: 16px
+    line-height: 1em
+    display: flex
+    align-items: center
+    gap: 8px
+    outline-offset: 4px
+    padding: 2px 0
+    order: 1
+    margin-top: 40px
+
+    &__text
+      position: relative
+
+    &__lockup
+      display: block
+      fill: currentColor
+      padding-top: 1px
+      width: 80px

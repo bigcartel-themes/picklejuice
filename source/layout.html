@@ -2,7 +2,7 @@
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" rel="stylesheet">
     {{ head_content }}
   </head>
@@ -76,7 +76,7 @@
             {% endif %}
           </ul>
         {% endif %}
-        <p class="bigcartel-credit">{{ bigcartel_credit}}</p>
+        {{ powered_by_big_cartel }}
       </div>
     </aside>
     <section class="content">
