@@ -9,9 +9,8 @@ $light-gray-color:  #ccc
 $light-green-color: #{'{{ theme.primary_color }}'}
 
 // Fonts
-$fallback-fonts:    "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
-$sans-serif-font:   "#{'{{ theme.primary_font }}'}", $fallback-fonts
-$serif-font:        "#{'{{ theme.secondary_font }}'}", $fallback-fonts
+$sans-serif-font:   #{'{{ theme.primary_font | font_family }}'}
+$serif-font:        #{'{{ theme.secondary_font | font_family }}'}
 
 $break-extra-large: 1500px
 $break-large: 1200px
