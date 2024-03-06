@@ -1,11 +1,9 @@
-@import "mixins"
-
 .categories ul
   +flexbox
   +flex-wrap(wrap)
   +align-items(center)
   +justify-content(center)
-  font-family: $serif-font
+  font-family: var(--serif-font)
   line-height: 24px
   margin: 40px 0 60px
   text-align: center
@@ -21,10 +19,10 @@
       padding: 4px 8px
 
       &:hover, &:focus
-        color: $dark-green-color
+        color: var(--link-hover-color)
 
     &.current a
-      color: $dark-green-color
+      color: var(--link-hover-color)
 
 .product-list
   +flexbox
@@ -60,15 +58,15 @@
         opacity: 1
 
     figure
-      border: 3px solid $white-color
-      box-shadow: 0 0 12px $light-gray-color
+      border: 3px solid var(--accent-background-color)
+      box-shadow: 0 0 12px var(--light-gray-color)
       position: relative
       margin: 0
       overflow: hidden
 
       figcaption
         +transition(bottom .4s)
-        background-color: $white-color
+        background-color: var(--accent-background-color)
         bottom: -200px
         padding: 0 20px 20px
         position: absolute
@@ -87,12 +85,12 @@
           z-index: 1
 
         span
-          font-family: $serif-font
+          font-family: var(--serif-font)
           font-size: 1em
           letter-spacing: 1px
 
         &:before
-          background-color: $white-color
+          background-color: var(--accent-background-color)
           bottom: -105px
           content: ''
           display: block
@@ -135,7 +133,7 @@ a.view-more-button
   text-align: center
 
 .no-products
-  font-family: $sans-serif-font
+  font-family: var(--sans-serif-font)
   font-weight: bold
   text-align: center
   text-transform: uppercase

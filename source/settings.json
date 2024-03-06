@@ -15,6 +15,101 @@
       "description": "1440px by 800px images recommended"
     }
   ],
+  "preset_styles": {
+    "preview": {
+      "title_font": "primary_font",
+      "body_font": "secondary_font",
+      "text_color": "text_color",
+      "background_color": "background_color"
+    },
+    "presets": [
+      {
+        "group_name": "Pastel",
+        "styles": [
+          {
+            "style_name": "Pastel #1",
+            "fonts": {
+              "primary_font": "Montserrat",
+              "secondary_font": "Goudy Bookletter 1911"
+            },
+            "colors": {
+              "background_color": "#DBF1DA",
+              "link_hover_color": "#5FB252",
+              "text_color": "#000000",
+              "accent_background_color": "#FFFFFF",
+              "border_color": "#333333"
+            }
+          },
+          {
+            "style_name": "Pastel #2",
+            "fonts": {
+              "primary_font": "Cabin",
+              "secondary_font": "Cabin"
+            },
+            "colors": {
+              "background_color": "#E6F3FF",
+              "link_hover_color": "#1028B7",
+              "text_color": "#000000",
+              "accent_background_color": "#FFFFFF",
+              "border_color": "#333333"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Classic",
+        "styles": [
+          {
+            "style_name": "Classic #1",
+            "fonts": {
+              "primary_font": "DM Sans",
+              "secondary_font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "link_hover_color": "#5900FF",
+              "text_color": "#000000",
+              "accent_background_color": "#FFFFFF",
+              "border_color": "#333333"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Natural",
+        "styles": [
+          {
+            "style_name": "Natural #1",
+            "fonts": {
+              "primary_font": "Cutive",
+              "secondary_font": "Cutive Mono"
+            },
+            "colors": {
+              "background_color": "#FEF5EF",
+              "link_hover_color": "#584B53",
+              "text_color": "#000000",
+              "accent_background_color": "#FFFFFF",
+              "border_color": "#333333"
+            }
+          },
+          {
+            "style_name": "Natural #2",
+            "fonts": {
+              "primary_font": "Prata",
+              "secondary_font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F1F1F1",
+              "link_hover_color": "#8A5A5A",
+              "text_color": "#000000",
+              "accent_background_color": "#FFFFFF",
+              "border_color": "#333333"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "fonts": [
     {
       "variable": "primary_font",
@@ -29,24 +124,39 @@
   ],
   "colors": [
     {
-      "variable": "primary_color",
-      "label": "Primary Color",
+      "variable": "background_color",
+      "label": "Background Color",
       "default": "#dbf1da"
     },
     {
-      "variable": "secondary_color",
-      "label": "Secondary Color",
+      "variable": "accent_background_color",
+      "label": "Accent background",
+      "default": "#ffffff"
+    },
+    {
+      "variable": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "variable": "link_hover_color",
+      "label": "Link hover",
       "default": "#5fb252"
+    },
+    {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#333333"
     }
   ],
   "checkout": {
     "header_image": "{{ logo }}",
     "header_width": "300px",
-    "title_background_color": "{{ primary_color }}",
+    "title_background_color": "{{ background_color }}",
     "title_color": "#333333",
     "title_font": "{{ primary_font }}",
     "step_header_font": "{{ primary_font }}",
-    "background_color": "{{ primary_color }}",
+    "background_color": "{{ background_color }}",
     "body_font": "{{ primary_font }}",
     "input_border_radius": "0px",
     "button_background_color": "#333",

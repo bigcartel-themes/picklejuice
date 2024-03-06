@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" rel="stylesheet">
     {{ head_content }}
+    <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
-  <body class="{{ page.permalink }}">
+  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader">
     <header>
       <div class="container header-container">
         <div class="header-search">
@@ -105,7 +106,14 @@
         {{ page_content }}
       {% endif %}
     </section>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      const themeColors = {
+        backgroundColor: '{{ theme.background_color }}',
+        textColor: '{{ theme.text_color }}',
+        borderColor: '{{ theme.border_color }}',
+      }
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script>
       var formatMoney = Format.money;

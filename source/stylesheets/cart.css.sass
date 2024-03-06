@@ -1,5 +1,3 @@
-@import "mixins"
-
 .cart-wrapper
   background-color: rgba(255, 255, 255, .95)
   display: block
@@ -16,7 +14,7 @@
     padding-top: 0
 
   .close_overlay a
-    background: $white-color url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
+    background: var(--accent-background-color) url(#{'{{ "x_outs_sprite.png" | theme_image_url }}'}) no-repeat left top
     background-size: 60px
     border-radius: 50%
     display: inline-block
@@ -45,20 +43,20 @@
       width: 300px
 
       &:hover, &:focus
-        background-color: $dark-green-color
-        color: $white-color
+        background-color: var(--link-hover-color)
+        color: var(--accent-background-color)
 
   hr
-    background: $dark-gray-color
+    background: var(--border-color)
     margin: 100px 0
 
   .cart-items
-    border-top: 3px solid $dark-gray-color
+    border-top: 3px solid var(--border-color)
 
   .cart_box
     +flexbox
     +flex-wrap(wrap)
-    border-bottom: 3px solid $dark-gray-color
+    border-bottom: 3px solid var(--border-color)
     padding: 20px 0
     width: 100%
     position: relative
@@ -94,7 +92,7 @@
 
       .cart-item-option-name
         display: inline-block
-        font-family: $serif-font
+        font-family: var(--serif-font)
         margin-top: 15px
 
     .cart-item-quantity
@@ -106,15 +104,15 @@
         order: 4
 
       input
-        border: 2px solid $dark-gray-color
-        font: bold 1em $sans-serif-font
+        border: 2px solid var(--border-color)
+        font: bold 1em var(--sans-serif-font)
         letter-spacing: 1px
         outline: none
         padding: 10px
         width: 100%
 
     .cart-item-price
-      font: 1.25em $serif-font
+      font: 1.25em var(--serif-font)
       margin-left: auto
       width: 10%
 
@@ -123,8 +121,8 @@
         width: auto
 
     .update-btn
-      background-color: $dark-gray-color
-      color: $white-color
+      background-color: var(--border-color)
+      color: var(--accent-background-color)
       border: none
       font: bold 0.75em "Open Sans", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif
       text-transform: uppercase
@@ -138,8 +136,8 @@
       width: auto
 
       &:hover, &:focus
-        background-color: $dark-green-color
-        color: $white-color
+        background-color: var(--link-hover-color)
+        color: var(--accent-background-color)
 
     .cart-item-remove
       margin-left: auto
@@ -169,17 +167,17 @@
     margin-bottom: 5px
 
   .cart-total-amount
-    font-family: $serif-font
+    font-family: var(--serif-font)
     font-size: 3.375em
     margin-bottom: 25px
 
   .checkout-button
-    color: $white-color
-    background-color: $dark-gray-color
+    color: var(--accent-background-color)
+    background-color: var(--border-color)
     float: none
     width: 300px
     margin: 0 auto
 
     &:hover, &:focus
-      background-color: $dark-green-color
-      color: $white-color
+      background-color: var(--link-hover-color)
+      color: var(--accent-background-color)

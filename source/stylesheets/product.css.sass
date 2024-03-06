@@ -1,8 +1,6 @@
-@import "mixins"
-
 .breadcrumb
   font-size: .675em
-  font-family: $sans-serif-font
+  font-family: var(--sans-serif-font)
   font-weight: bold
   text-transform: uppercase
   letter-spacing: .2em
@@ -69,8 +67,8 @@
   margin: 0 -5px 40px
 
   a
-    border: 3px solid $white-color
-    box-shadow: 0 0 12px $light-gray-color
+    border: 3px solid var(--accent-background-color)
+    box-shadow: 0 0 12px var(--light-gray-color)
     object-fit: cover
     overflow: hidden
     margin: 0 5px
@@ -88,7 +86,7 @@
   text-align: left
 
   a
-    color: $dark-green-color
+    color: var(--link-hover-color)
 
     &:hover
       text-decoration: underline
@@ -97,7 +95,7 @@
     max-width: 100%
 
   ol, ul
-    font: .875em $serif-font
+    font: .875em var(--serif-font)
     letter-spacing: 1px
     padding-left: 1em
 
@@ -122,14 +120,14 @@
     &:before, &:after
       +flex(1 0 20px)
       content: ''
-      border-top: 3px solid $white-color
+      border-top: 3px solid var(--accent-background-color)
       margin: 0 20px 0 0
 
     &:after
       margin: 0 0 0 20px
 
 #share_this
-  font: .875em $serif-font
+  font: .875em var(--serif-font)
   font-style: italic
   letter-spacing: 1px
 
@@ -178,10 +176,10 @@ button.reset-selection-button
   position: relative
 
   > img
-    border: 3px solid $white-color
-    -moz-box-shadow: 0 0 12px $light-gray-color
-    -webkit-box-shadow: 0 0 12px $light-gray-color
-    box-shadow: 0 0 12px $light-gray-color
+    border: 3px solid var(--accent-background-color)
+    -moz-box-shadow: 0 0 12px var(--light-gray-color)
+    -webkit-box-shadow: 0 0 12px var(--light-gray-color)
+    box-shadow: 0 0 12px var(--light-gray-color)
     height: auto
     max-width: 100%
     width: 100%

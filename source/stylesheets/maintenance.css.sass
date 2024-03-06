@@ -1,10 +1,8 @@
-@import 'mixins'
-
 #maintenance
   +align-items(center)
   +justify-content(center)
   +flexbox
-  font-family: $serif-font
+  font-family: var(--serif-font)
   font-size: 20px
   height: auto
   padding: 100px 20px
@@ -26,12 +24,12 @@
       +align-items(center)
       +justify-content(center)
       +flexbox
-      color: $dark-gray-color
+      color: var(--text-color)
       height: 32px
       width: 32px
 
       &:hover
-        color: $dark-green-color
+        color: var(--link-hover-color)
 
     svg
       fill: currentColor
