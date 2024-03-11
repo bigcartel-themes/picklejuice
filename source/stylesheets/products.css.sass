@@ -1,139 +1,173 @@
-.categories ul
-  +flexbox
-  +flex-wrap(wrap)
-  +align-items(center)
-  +justify-content(center)
-  font-family: var(--serif-font)
-  line-height: 24px
-  margin: 40px 0 60px
-  text-align: center
+.product-list
+  --gap: calc(var(--spacing-unit) * 4)
+  --row-gap: 48px
+  --columns: #{"{{ theme.max_products_per_row }}"}
+  --spacing-unit: 10px
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  margin: var(--spacing-unit) 0 0
+  gap: var(--gap)
+  row-gap: var(--row-gap)
+  margin-top: 0
+
+  &--center
+    justify-content: center
+
+  @media screen and (max-width: $break-large)
+    --columns: calc(#{"{{ theme.max_products_per_row }}"} - 1)
+
+  @media screen and (max-width: $break-large)
+    --columns: #{"{{ theme.max_products_per_row_mobile }}"}
+    --gap: calc(var(--spacing-unit) * 2)
+    justify-content: flex-start
 
   @media screen and (max-width: $break-small)
-    margin: 0 auto 30px
+    --row-gap: 24px
 
-  li
-    margin: 1px
+.product-list-thumb
+  border: 3px solid var(--accent-background-color)
+  box-shadow: 0 0 12px var(--light-gray-color)
+  position: relative
+  text-decoration: none
+  width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
 
-    a
-      display: block
-      padding: 4px 8px
+a.product-list-link
+  text-decoration: none
+  outline-offset: 4px
+  position: relative
 
-      &:hover, &:focus
-        color: var(--link-hover-color)
+  @media (hover: hover)
+    &:hover
+      .product-list-thumb-name
+        text-decoration: underline
 
-    &.current a
-      color: var(--link-hover-color)
-
-.product-list
-  +flexbox
-  +flex-wrap(wrap)
-  +justify-content(flex-start)
-  font-size: 20px
-  margin: 0 -10px
-
-  .product-list-item
-    padding: 0 10px 20px
-    width: 25%
-
-    @media screen and (max-width: $break-medium)
-      width: 50%
-
-    @media screen and (max-width: $break-extra-small)
-      width: 100%
-
-    &:hover, &:focus
-      outline: none
-
-      @media only screen and (min-width: 768px) and (hover: hover), (-moz-touch-enabled: 0)
-        figcaption
-          bottom: 0
-
-      img
-        filter: blur(3px)
-
-    a
-      display: block
+    &--show-secondary
+      .product-list-image
+        transition: opacity .2s linear, visibility .2s linear
 
       &:hover
-        opacity: 1
+        .product-list-image--primary
+          opacity: 0
+          visibility: hidden
 
-    figure
-      border: 3px solid var(--accent-background-color)
-      box-shadow: 0 0 12px var(--light-gray-color)
-      position: relative
-      margin: 0
-      overflow: hidden
+        .product-list-image--secondary
+          opacity: 1
+          visibility: visible
 
-      figcaption
-        +transition(bottom .4s)
-        background-color: var(--accent-background-color)
-        bottom: -200px
-        padding: 0 20px 20px
-        position: absolute
-        width: 100%
-        z-index: 1
+  .product-list-image--secondary
+    opacity: 0
+    visibility: hidden
 
-        @media screen and (max-width: $break-medium)
-          bottom: 0
-          display: inline-block
-          width: 100%
-          height: 110px
-          background-color: rgba(255, 255, 255, 0.7)
-          position: absolute
-          left: 0
-          padding: 20px 20px 10px 20px
-          z-index: 1
-
-        span
-          font-family: var(--serif-font)
-          font-size: 1em
-          letter-spacing: 1px
-
-        &:before
-          background-color: var(--accent-background-color)
-          bottom: -105px
-          content: ''
-          display: block
-          height: 200px
-          left: -36px
-          position: absolute
-          padding: 20px
-          +transform(rotate(15deg))
-          width: 100%
-          z-index: -1
-
-          @media screen and (max-width: $break-medium)
-            display: none
-
-      img
-        +all-transitions
-        display: block
-        max-width: 100%
-        width: 100%
-
-  h4
-    margin: 0 0 5px
-
-a.view-more-button
-  margin: 25px auto 0
-  max-width: 300px
+.product-list-image-container
+  border-radius: var(--border-radius)
+  margin: 0
+  overflow: hidden
+  padding-bottom: 100%
+  position: relative
   width: 100%
 
-  @media screen and (max-width: $break-small)
-    max-width: 100%
+  &-default
+    padding-bottom: 0
 
-.product-card
-  &:hover, &:focus
-    opacity: .85
+.product-list-image
+  border-radius: var(--border-radius)
+  transform: translate3d(0, 0, 0)
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  transition: transform 0.3s ease-in-out
+  z-index: 1
 
-.page-load-status
-  font-size: 1em
-  letter-spacing: 1px
-  margin-top: 25px
+  &.grid-default
+    position: relative
+
+  &.grid-cover
+    object-fit: cover
+
+  &.grid-contain
+    object-fit: contain
+
+.product-list-thumb-status
+  top: 12px
+  right: 12px
+  position: absolute
+  z-index: 2
+  font-size: .925rem
+  line-height: normal
+  display: inline-block
+  padding: 6px 8px
+  color: var(--product-status-text-color)
+  background: var(--product-status-background-color)
+  border-radius: var(--border-radius-sm)
+
+.product-list-thumb-info
+  background: var(--accent-background-color)
+  line-height: normal
+  padding: 16px
+  position: relative
+  text-align: left
+  display: grid
+  gap: 0px
+
+.product-list-thumb-name
+  font-weight: normal
+  word-break: break-word
+  font: bold 1em var(--sans-serif-font)
+
+.product-list-thumb-price
+  font-family: var(--serif-font)
+  font-size: 1.25em
+
+.pagination
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
   text-align: center
+  width: 100%
+  gap: 16px
+  line-height: 2em
+  padding-top: 80px
 
-.no-products
-  font-family: var(--sans-serif-font)
-  font-weight: bold
-  text-align: center
-  text-transform: uppercase
+  .page-link
+    display: flex
+    flex-shrink: 0
+    align-items: center
+    gap: 12px
+    padding: 0 8px
+
+    &.disabled
+      display: none
+
+    svg
+      width: 10px
+      height: 16px
+
+  .previous, .next
+    display: none
+
+.page-numbers
+  display: flex
+  gap: 16px
+
+  .current
+    text-underline-offset: 4px
+    text-decoration: underline
+
+  > a, span
+    padding: 0 8px
+
+.pagination-arrow
+  display: block
+  fill: currentColor
+  height: 17px
+  width: 17px
+
+  &.prev-arrow
+    margin-right: auto
+
+  &.next-arrow
+    margin-left: auto

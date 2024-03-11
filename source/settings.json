@@ -173,6 +173,21 @@
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a search field in the Shop dropdown menu"
+    },
+    {
+      "variable": "nav_items",
+      "label": "Navigation items",
+      "type": "select",
+      "options": "0..4",
+      "default": 2,
+      "description": "The number of custom page links show in the main navigation"
+    },
+    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
@@ -180,20 +195,72 @@
       "default": 12,
       "description": "The number of products displayed on the home page"
     },
+{
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
+      "type": "select",
+      "options": "1..4",
+      "default": 4,
+      "description": "The maximum number of products displayed per row on larger screens"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Normal", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of images in the product grid"
+    },
     {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 12,
-      "description": "The number of products shown per page"
+      "default": 48,
+      "description": "The number of products displayed per page"
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
+      "variable": "product_image_zoom",
+      "label": "Enable product image zoom",
       "type": "boolean",
       "default": true,
-      "description": "Displays a search field in the footer"
+      "description": "Click to open a larger version of the Product page image"
+    },
+    {
+      "variable": "desktop_product_page_images",
+      "label": "Desktop product page images",
+      "type": "select",
+      "options": [
+        ["Thumbnails", "thumbnails"],
+        ["Carousel", "carousel"],
+        ["Stacked 2 column", "two-column"],
+        ["Stacked full width", "stacked"]
+      ],
+      "default": "carousel",
+      "description": "Sets the display of the Product page gallery"
+    },
+    {
+      "variable": "mobile_product_page_images",
+      "label": "Mobile product page image carousel",
+      "type": "select",
+      "options": [
+        ["Show thumbnails", "show-thumbnails"],
+        ["Hide thumbnails", "hide-thumbnails"]
+      ],
+      "default": "show-thumbnails",
+      "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
       "variable": "money_format",
@@ -215,34 +282,58 @@
       "requires": "inventory"
     },
     {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: https://instagram.com/bigcartel"
+    },
+    {
+      "variable": "tiktok_url",
+      "label": "TikTok URL",
+      "type": "text",
+      "description": "Ex: https://tiktok.com/@bigcartelofficial"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel"
+      "description": "Ex: https://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel"
+      "description": "Ex: https://facebook.com/bigcartel"
     },
     {
-      "variable": "tumblr_url",
-      "label": "Tumblr URL",
+      "variable": "snapchat_url",
+      "label": "Snapchat URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com"
-    },
-    {
-      "variable": "instagram_url",
-      "label": "Instagram URL",
-      "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
+      "description": "Ex: https://snapchat.com/add/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
+      "description": "Ex: https://pinterest.com/big_cartel"
+    },
+    {
+      "variable": "youtube_url",
+      "label": "YouTube URL",
+      "type": "text",
+      "description": "Ex: https://youtube.com/@BigCartelDotCom"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: https://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "bandcamp_url",
+      "label": "Bandcamp URL",
+      "type": "text",
+      "description": "Ex: https://bigcartel.bandcamp.com"
     }
   ]
 }

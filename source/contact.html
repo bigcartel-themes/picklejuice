@@ -1,21 +1,5 @@
-<div class="container">
-  <div class="categories">
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
-      {% for category in categories.active %}
-      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-<div class="container">
-  <div class="breadcrumb">
-    <hr>
-      <a href="/" title="Home">Home</a> /
-      <a href="{{ page.url }}" title="{{ page.name | escape }}">{{ page.name }}</a>
-  </div>
-</div>
-<div class="container contact-container">
+<h1 class="page-title">{{ page.name }}</h1>
+<div class="contact-container">
   {% if contact.sent %}
     <h1>Your message has been sent and we&rsquo;ll get back to you soon.</h1>
   {% else %}
@@ -26,37 +10,37 @@
         {% endfor %}
       </ul>
     {% endif %}
-      <form method="post" action="/contact" class="contact-form">
-        <div class="contact-form-block contact-name">
-          <label class="contact-label" for="name-input">Name</label>
-          <div class="input-holder">
-            {{ contact | contact_input: 'name' }}
-          </div>
+    <form method="post" action="/contact" class="contact-form">
+      <div class="contact-form-block contact-name">
+        <label class="contact-label" for="name">Name</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'name' }}
         </div>
-        <div class="contact-form-block contact-email">
-          <label class="contact-label" for="email-input">Email</label>
-          <div class="input-holder">
-            {{ contact | contact_input: 'email' }}
-          </div>
+      </div>
+      <div class="contact-form-block contact-email">
+        <label class="contact-label" for="email">Email</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'email' }}
         </div>
-        <div class="contact-form-block contact-subject">
-          <label class="contact-label" for="subject-input">Subject</label>
-          <div class="input-holder">
-            {{ contact | contact_input: 'subject' }}
-          </div>
+      </div>
+      <div class="contact-form-block contact-subject">
+        <label class="contact-label" for="subject">Subject</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'subject' }}
         </div>
-        <div class="contact-form-block contact-message">
-          <label class="contact-label" for="message-textarea">Message</label>
-          <div class="input-holder">
-            {{ contact | contact_input: 'message' }}
-          </div>
+      </div>
+      <div class="contact-form-block contact-message">
+        <label class="contact-label" for="message">Message</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'message' }}
         </div>
-        <div class="contact-form-block contact-recaptcha">
-          <div class="recaptcha-note">{{ contact.recaptcha }}</div>
-        </div>
-        <div class="contact-form-block contact-send">
-          <button class="send-message-button button" type="submit" name="submit">Send message</button>
-        </div>
+      </div>
+      <div class="contact-form-block contact-send">
+        <button class="send-message-button button" type="submit" name="submit">Send message</button>
+      </div>
+      <div class="contact-form-block contact-recaptcha">
+        <div class="recaptcha-note">{{ contact.recaptcha }}</div>
+      </div>
     </form>
   {% endif %}
 </div>

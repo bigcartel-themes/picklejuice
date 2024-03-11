@@ -1,191 +1,112 @@
-.breadcrumb
-  font-size: .675em
-  font-family: var(--sans-serif-font)
-  font-weight: bold
-  text-transform: uppercase
-  letter-spacing: .2em
-  line-height: 1.75em
-  margin-bottom: 30px
-
-.product-form
-  margin-bottom: 40px
-
 .product-container
-  +flex-direction(row)
+  display: grid
+  grid-template-columns: 1fr 360px
+  column-gap: 40px
+  row-gap: 40px
 
   @media screen and (max-width: $break-medium)
-    +flex-direction(column)
+    grid-template-columns: 1fr
 
-.product-images-panel
-  padding-right: 40px
-  width: 68%
-
-  @media screen and (max-width: $break-medium)
-    padding-right: 0
-    width: 100%
-
-.image-arrow
-  display: block
-  height: 100%
-  overflow: hidden
-  position: absolute
-  text-indent: 100%
-  top: 0
-  white-space: nowrap
-  width: 50%
-
-  &:hover:after
-    content: ''
-
-  &.next-image
-    right: 0
-
-    &:after
-      right: 15px
-
-  &.prev-image
-    left: 0
-
-    &:after
-      background-position: 0 -45px
-      left: 15px
-
-  &:after
-    background: url(#{'{{ "arrows_sprite.png" | theme_image_url }}'}) no-repeat
-    background-size: 33px
-    display: block
-    height: 33px
-    margin-top: -16px
-    position: absolute
-    top: 50%
-    width: 33px
-
-.product-thumbs
-  +flexbox
-  +align-items(flex-start)
-  +justify-content(center)
-  margin: 0 -5px 40px
+.product-breadcrumb
+  margin-bottom: 24px
 
   a
-    border: 3px solid var(--accent-background-color)
-    box-shadow: 0 0 12px var(--light-gray-color)
-    object-fit: cover
-    overflow: hidden
-    margin: 0 5px
-    width: 20%
-
-    &:hover img
-      filter: blur(2px)
-
-    img
-      display: block
-      width: 100%
-
-.product-description
-  margin-bottom: 25px
-  text-align: left
-
-  a
-    color: var(--link-hover-color)
-
-    &:hover
-      text-decoration: underline
-
-  img, iframe, embed, object, video
-    max-width: 100%
-
-  ol, ul
-    font: .875em var(--serif-font)
-    letter-spacing: 1px
-    padding-left: 1em
-
-  ol
-    list-style: decimal
-
-  ul
-    list-style: disc
-
-.similar-products
-  margin-top: 75px
-
-  .similar-products-title
-    +flexbox
-    +justify-content(center)
-    +align-items(center)
-    text-align: center
-    margin-bottom: 50px
-    width: 100%
-    font-size: .950em
-
-    &:before, &:after
-      +flex(1 0 20px)
-      content: ''
-      border-top: 3px solid var(--accent-background-color)
-      margin: 0 20px 0 0
-
-    &:after
-      margin: 0 0 0 20px
-
-#share_this
-  font: .875em var(--serif-font)
-  font-style: italic
-  letter-spacing: 1px
-
-  a
-    cursor: pointer
-    padding: 0 10px
     text-decoration: underline
-
-.availability h2
-  margin: 0
-
-.product-details
-  text-align: center
-  width: 32%
-
-  @media screen and (max-width: $break-medium)
-    margin-top: 20px
-    width: 100%
-
-  h1
-    margin-top: 0
-
-  .add-to-cart-button
-    margin: 20px 0 0
-
-  .select
-    margin-top: 10px
 
 .reset-selection-button-container
   text-align: center
   width: 100%
 
-button.reset-selection-button
-  display: none
-  height: auto
-  max-width: 100%
-  line-height: normal
-  margin: 20px auto 0
-  padding: 4px
-  width: auto
+  button.reset-selection-button
+    display: none
 
-.details hr
-  margin-top: 40px
-
-.product_wrapper
-  position: relative
-
-  > img
-    border: 3px solid var(--accent-background-color)
-    -moz-box-shadow: 0 0 12px var(--light-gray-color)
-    -webkit-box-shadow: 0 0 12px var(--light-gray-color)
-    box-shadow: 0 0 12px var(--light-gray-color)
-    height: auto
+.product-form
+  button
     max-width: 100%
-    width: 100%
 
-.product-quantity
-  display: none
+  .select
+    margin: 0
+
+.product_option_groups
+  display: flex
+  flex-direction: column
+  gap: 16px
+
+.product-selects
+  margin-bottom: 36px
+
+.product-detail
+  display: flex
+  flex-direction: column
+  row-gap: 36px
+
+  &__header
+    display: flex
+    flex-direction: column
+    row-gap: 0
+    align-items: flex-start
+
+  &__status
+    border-radius: var(--border-radius-sm)
+    color: var(--product-status-text-color)
+    background-color: var(--product-status-background-color)
+    text-transform: uppercase
+    font-size: .875rem
+    line-height: normal
+    font-weight: 500
+    display: inline-block
+    padding: 6px
+    letter-spacing: 1.1px
+
+  &__pricing
+    font-family: var(--serif-font)
+    font-size: 1.5em
+
+  &__description
+    p
+      margin: revert
+
+    &>:first-child
+      margin-top: 0
+
+    &>:last-child
+      margin-bottom: 0
+
+    ol, ul
+      margin: 1em
+
+    ul
+      list-style: disc
+
+    ol
+      list-style: decimal
+
+    a
+      text-decoration: underline
+
+  h1
+    margin-bottom: 0 !important
 
 #instant-checkout-button
   margin-top: 12px
+
+.related-products-container
+  margin-top: var(--margin-size)
+
+  @media screen and (max-width: $break-medium)
+    margin-top: 48px
+
+.related-products-header
+  display: flex
+  align-items: center
+
+  .related-products-view-all-link
+    margin-left: auto
+    font-weight: 700
+    text-decoration: underline
+
+.related-product-list
+  --columns: 4
+
+  @media screen and (max-width: $break-medium)
+    --columns: 2

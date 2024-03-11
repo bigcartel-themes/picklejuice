@@ -1,151 +1,265 @@
-{% capture product_pricing %}
-  {% if product.variable_pricing %}
-    {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-  {% else %}
-    {{ product.default_price | money: theme.money_format }}
-  {% endif %}
-{% endcapture %}
-<div class="container">
-  <div class="categories">
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
-      {% for category in categories.active %}
-      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
+{% assign product_status = '' %}
+{% case product.status %}
+	{% when 'active' %}
+		{% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+	{% when 'sold-out' %}
+		{% assign product_status = 'Sold out' %}
+	{% when 'coming-soon' %}
+		{% assign product_status = 'Coming soon' %}
+{% endcase %}
+
+{% if product.categories != blank %}
+  <div class="product-breadcrumb">
+    <a href="/products">{{ pages.products.name }}</a> / {{ product.categories.first | link_to }}
   </div>
-</div>
-<div class="container">
-  <div class="breadcrumb">
-    <hr>
-      <a href="/" title="Home">Home</a>
-      {% for category in product.categories limit:1 %} / {{ category | link_to }}{% endfor %} /
-      <a href="{{ page.url }}" title="{{ page.name | escape }}">{{ page.name }}</a>
-  </div>
-</div>
-<div class="container product-container">
-  <div class="product-images-panel">
-    <div class="product_wrapper">
-      {% if product.images.size > 1 %}
-        <a href="#" class="image-arrow next-image">next</a>
-        <a href="#" class="image-arrow prev-image">prev</a>
-      {% endif %}
-      <img src="{{ product.image | product_image_url | constrain: 1540 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
-    </div>
-  </div>
-  <div class="product-details">
+{% endif %}
+
+<div class="product-container">
+  <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">
     {% if product.images.size > 1 %}
-      <div class="product-thumbs">
-        {% for image in product.images %}
-          <a href="{{ image | product_image_url | constrain: 1540 }}" {% if forloop.first %} class="selected"{% endif %}><img src="{{ image | product_image_url | constrain: 130 }}" alt="Image {{ forloop.index }} of {{ product.name | escape }}"></a>
-        {% endfor %}
+      <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
+        <div class="splide__track">
+          <div class="splide__list">
+            {% for image in product.images %}
+              {% assign image_width = image.width | times: 1.0 %}
+              {% assign image_height = image.height | times: 1.0 %}
+              {% assign aspect_ratio = image_width | divided_by: image_height %}
+              <div class="splide__slide">
+                {% if theme.product_image_zoom %}
+                  <a aria-label="Open image {{ forloop.index }} in image viewer" class="zoom-image-container gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                {% else %}
+                  <div class="zoom-image-container">
+                {% endif %}
+                  <img
+                    alt="Image {{ forloop.index }} of {{ product.name | escape }}"
+                    class="product-image lazyload"
+                    {% if forloop.index == 1 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                    src="{{ image | product_image_url | constrain: 200 }}"
+                    data-srcset="
+                      {{ image | product_image_url | constrain: 400 }} 400w,
+                      {{ image | product_image_url | constrain: 700 }} 700w,
+                      {{ image | product_image_url | constrain: 1000 }} 1000w,
+                      {{ image | product_image_url | constrain: 1400 }} 1400w,
+                      {{ image | product_image_url | constrain: 2000 }} 2000w,
+                    "
+                    width="{{ image.height | times: aspect_ratio }}"
+                    height="{{ image.height }}"
+                    data-sizes="auto"
+                  >
+                {% if theme.product_image_zoom %}</a>{% else %}</div>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% if product.images.size > 5 %}
+          <div class="overlay-image-counter">
+            <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
+          </div>
+        {% endif %}
       </div>
+      <div class="product-thumbnails-buttons-container">
+        <button aria-label="Slide left" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--left" disabled data-direction="left">
+          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
+        <ul class="product-thumbnails--list{% if product.images.size == 5 %} mobile-overflow{% endif %}{% if product.images.size > 5 %} is-overflow{% endif %}" id="carousel-thumbnail">
+          {% for image in product.images %}
+            <li class="product-thumbnails--item">
+              <button class="product-thumbnails--change-slide" type="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.images.size }}">
+                <img
+                  alt=""
+                  class="lazyload"
+                  src="{{ image | product_image_url | constrain: 150 }}"
+                  data-srcset="
+                    {{ image | product_image_url | constrain: 250 }} 250w,
+                    {{ image | product_image_url | constrain: 300 }} 300w
+                  "
+                  data-sizes="auto"
+                >
+              </button>
+            </li>
+          {% endfor %}
+        </ul>
+        <button aria-label="Slide right" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--right" data-direction="right">
+          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
+      </div>
+      <div class="mobile-buttons-indicator">
+        <button aria-label="View previous image" class="change-slide change-slide--left previous-slide">
+          <svg fill="currentColor" aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
+        <div><span class="current-slide-number">1</span> of {{ product.images.size }}</div>
+        <button aria-label="View next image" class="change-slide change-slide--right next-slide">
+          <svg fill="currentColor" aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
+      </div>
+    {% else %}
+      {% assign image_width = product.image.width | times: 1.0 %}
+      {% assign image_height = product.image.height | times: 1.0 %}
+      {% if theme.product_image_zoom %}
+        <a aria-label="Open image of {{ product.name | escape }} in image viewer" class="zoom-image-container gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+      {% else %}
+        <div class="zoom-image-container">
+      {% endif %}
+        <img
+          alt="{{ product.name | escape }}"
+          class="blur-up product-image lazyload"
+          fetchpriority="high"
+          src="{{ product.image | product_image_url | constrain: 200 }}"
+          data-srcset="
+            {{ product.image | product_image_url | constrain: 400 }} 400w,
+            {{ product.image | product_image_url | constrain: 700 }} 700w,
+            {{ product.image | product_image_url | constrain: 1000 }} 1000w,
+            {{ product.image | product_image_url | constrain: 1400 }} 1400w,
+            {{ product.image | product_image_url | constrain: 2000 }} 2000w,
+          "
+          data-sizes="auto"
+        >
+      {% if theme.product_image_zoom %}</a>{% else %}</div>{% endif %}
     {% endif %}
-    <h1>{{ product.name }}</h1>
-    {% case product.status %}
-    {% when 'sold-out' %}
-      <h2>{{ product_pricing }}<br /><span>Sold Out</span></h2>
-    {% when 'coming-soon' %}
-      <h2>{{ product_pricing }} <br /><span>Coming Soon</span></h2>
-    {% when 'active' %}
-      <h2>{{ product_pricing }}{% if product.on_sale %}<br /><span>On Sale{% endif %}</span></h2>
-    {% endcase %}
-    <hr>
-    {% if product.description != blank %}
-    <div class="product-description">
-      {{ product.description | paragraphs }}
+  </div>
+
+  <section class="product-detail">
+    <div class="product-detail__header">
+      {% capture product_pricing %}
+        {% if product.variable_pricing %}
+          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+        {% else %}
+          {{ product.default_price | money: theme.money_format }}
+        {% endif %}
+      {% endcapture %}
+      {% if product_status != blank %}<div class="product-detail__status">{{ product_status }}</div>{% endif %}
+      <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>
+      <div class="product-detail__pricing">{{ product_pricing }}</div>
     </div>
-		<hr>
-		{% endif %}
     {% if product.status == 'active' %}
       <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
-          {% if product.has_option_groups %}
-            <div class="product_option_groups">
-              <input id="option" name="cart[add][id]" type="hidden" value="0">
-              {% for option_group in product.option_groups %}
-                <div class="select">
-                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" title="Select {{ option_group.name | escape }}" required>
-                    <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
-                    {% for value in option_group.values %}
-                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
-                    {% endfor %}
-                  </select>
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
-                </div>
-              {% endfor %}
-            </div>
-          {% else %}
-            <div class="select">
-              <select class="product_option_select" id="option" name="cart[add][id]" title="Select variant" required>
-                <option value="" disabled="disabled" selected>Select variant</option>
-                {% for option in product.options %}
-                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+          <div class="product-selects">
+            {% if product.has_option_groups %}
+              <div class="product_option_groups">
+                <input id="option" name="cart[add][id]" type="hidden" value="0">
+                {% for option_group in product.option_groups %}
+                  <div class="select">
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                      <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                      {% for value in option_group.values %}
+                        <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                      {% endfor %}
+                    </select>
+                    <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.98 1.01 14.02 8.02"> <path d="M7.28125 8.71875L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L8 6.59375L13.2812 1.3125C13.6562 0.90625 14.3125 0.90625 14.6875 1.3125C15.0938 1.6875 15.0938 2.34375 14.6875 2.71875L8.6875 8.71875C8.3125 9.125 7.65625 9.125 7.28125 8.71875Z"></path> </svg>
+                  </div>
                 {% endfor %}
-              </select>
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
-            </div>
-          {% endif %}
+              </div>
+            {% else %}
+              <div class="select">
+                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
+                  <option value="" disabled="disabled" selected>Select variant</option>
+                  {% for option in product.options %}
+                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                  {% endfor %}
+                </select>
+                <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.98 1.01 14.02 8.02"> <path d="M7.28125 8.71875L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L8 6.59375L13.2812 1.3125C13.6562 0.90625 14.3125 0.90625 14.6875 1.3125C15.0938 1.6875 15.0938 2.34375 14.6875 2.71875L8.6875 8.71875C8.3125 9.125 7.65625 9.125 7.28125 8.71875Z"></path> </svg>
+              </div>
+            {% endif %}
+          </div>
         {% endif %}
-        {{ product | product_quantity_input, 1, 'product-quantity', 'product-quantity' }}
-        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-adding-title="Adding..." data-added-title="Added!" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
-            <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
+            <button class="button button--minimal reset-selection-button" type="reset">Reset selection</button>
           </div>
         {% endif %}
       </form>
     {% endif %}
-    <div id="share_this">
-      {% capture tweet_string %}{{ product.name }} - {{ store.name }} {{ page.full_url }}{% endcapture %}
-      {% assign tweet_string = tweet_string | url_encode %}
-      <a href="https://twitter.com/intent/tweet?text={{ tweet_string }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">tweet this!</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;">share this!</a>
-      <a target="_blank" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape }}">pin this!</a>
-    </div>
-  </div>
-</div>
-{% if product.categories != blank %}
-  {% for category in product.categories %}
-    {% capture product_divs %}
-      {% for category_product in category.products %}
-        {% assign product_status = '' %}
-        {% case category_product.status %}
-          {% when 'active' %}
-            {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
-          {% when 'sold-out' %}
-            {% assign product_status = 'Sold out' %}
-          {% when 'coming-soon' %}
-            {% assign product_status = 'Coming soon' %}
-        {% endcase %}
-        {% if product.id != category_product.id %}
-          <a class="product-list-item" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
-            <figure>
-              <img src="{{ category_product.image | product_image_url | constrain: '600' }}" alt="Image of {{ category_product.name | escape }}">
-              <figcaption>
-                <h4>{{ category_product.name | truncate: 28 }}</h4>
-                <span>{{ category_product.default_price | money: theme.money_format }} {% if category_product.on_sale %} | On Sale {% endif %} {% case category_product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
-              </figcaption>
-            </figure>
-          </a>
-        {% endif %}
-      {% endfor %}
-    {% endcapture %}
-  {% endfor %}
-{% endif %}
+    {% if product.description != blank %}
+      <div class="product-detail__description">{{ product.description | paragraphs }}</div>
+    {% endif %}
 
-{% if product_divs != blank %}
-<div class="container">
-  <div class="all-similar-products">{{ product_divs }}</div>
-  <div class="similar-products">
-    <div class="similar-products-header">
-      <h4 class="similar-products-title">Related products</h4>
-    </div>
-    <div class="product-list similar-product-list"></div>
-  </div>
+  </section>
 </div>
+
+{% assign current_id = product.id %}
+{% if page.full_url contains '/product/' %}
+  {% if theme.show_related_products %}
+    {% if product.categories != blank %}
+      {% for category in product.categories limit: 2 %}
+        {% capture product_divs %}
+          {% for product in category.products limit: 10 %}
+            {% if product.id != current_id %}
+              {% assign image_width = product.image.width | times: 1.0 %}
+              {% assign image_height = product.image.height | times: 1.0 %}
+              {% assign aspect_ratio = image_width | divided_by: image_height %}
+              {% assign product_status = '' %}
+              {% case product.status %}
+                {% when 'active' %}
+                  {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                {% when 'sold-out' %}
+                  {% assign product_status = 'Sold out' %}
+                {% when 'coming-soon' %}
+                  {% assign product_status = 'Coming soon' %}
+              {% endcase %}
+              {% capture image_class %}
+                {% if product.image.height > product.image.width %}
+                  image-tall
+                {% elsif product.image.height < product.image.width %}
+                  image-wide
+                {% else %}
+                  image-square
+                {% endif %}
+              {% endcapture %}
+              <div class="product-list-thumb {{ product.css_class }}">
+                <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+                  <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                    <img
+                      alt=""
+                      class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                      src="{{ product.image | product_image_url | constrain: 20 }}"
+                      {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                      data-srcset="
+                        {{ product.image | product_image_url | constrain: 240 }} 240w,
+                        {{ product.image | product_image_url | constrain: 320 }} 320w,
+                        {{ product.image | product_image_url | constrain: 400 }} 400w,
+                        {{ product.image | product_image_url | constrain: 540 }} 540w,
+                        {{ product.image | product_image_url | constrain: 600 }} 600w,
+                        {{ product.image | product_image_url | constrain: 800 }} 800w,
+                        {{ product.image | product_image_url | constrain: 960 }} 960w
+                      "
+                      data-sizes="auto"
+                    >
+                    {% if product_status != blank %}<div class="product-list-thumb-status">{{ product_status }}</div>{% endif %}
+                  </div>
+                  <div class="product-list-thumb-info">
+                    <div class="product-list-thumb-name">{{ product.name }}</div>
+                    <div class="product-list-thumb-price">
+                      {% if product.variable_pricing %}
+                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                      {% else %}
+                        {{ product.default_price | money: theme.money_format }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% if product_divs != blank %}
+  <aside class="related-products-container" data-num-products="4" role="complementary" aria-label="Related Products">
+    <div class="all-related-products" style="display: none">{{ product_divs }}</div>
+    <div class="related-products-header">
+      <h2 class="related-products-title">Related Products</h2>
+      <a class="related-products-view-all-link" href="/products">View All Products</a>
+    </div>
+    <div class="product-list-container">
+      <div class="related-product-list product-list"></div>
+    </div>
+  </aside>
 {% endif %}

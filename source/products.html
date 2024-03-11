@@ -1,42 +1,106 @@
-<div class="container">
-  <div class="categories">
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
-      {% for category in categories.active %}
-      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+<h1 class="page-title">{% if page.full_url contains 'search=' %}Search Results{% else %}{{ page.name }}{% endif %}</h1>
+
 {% paginate products from products.current by theme.products_per_page %}
-  <div class="container">
-    {% if products != blank %}
-      <div class="product-list products-page-list">
+  {% if products != blank %}
+    <div class="product-list-container">
+      <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}">
         {% for product in products %}
-          <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
-            <figure>
-              <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
-              <figcaption>
-                <h4>{{ product.name | truncate: 28 }}</h4>
-                <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
-              </figcaption>
-            </figure>
-          </a>
+          {% assign image_width = product.image.width | times: 1.0 %}
+          {% assign image_height = product.image.height | times: 1.0 %}
+          {% assign aspect_ratio = image_width | divided_by: image_height %}
+          {% assign product_status = '' %}
+          {% case product.status %}
+            {% when 'active' %}
+              {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+            {% when 'sold-out' %}
+              {% assign product_status = 'Sold out' %}
+            {% when 'coming-soon' %}
+              {% assign product_status = 'Coming soon' %}
+          {% endcase %}
+          <div class="product-list-thumb {{ product.css_class }}">
+            <a class="product-list-link{% if product.images[1] != blank and theme.secondary_image_on_hover == true %} product-list-link--show-secondary{% endif %}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                <img
+                  alt=""
+                  class="blur-up product-list-image product-list-image--primary lazyload grid-{{ theme.grid_image_style }}"
+                  src="{{ product.image | product_image_url | constrain: 20 }}"
+                  {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                  data-srcset="
+                    {{ product.image | product_image_url | constrain: 240 }} 240w,
+                    {{ product.image | product_image_url | constrain: 400 }} 400w,
+                    {{ product.image | product_image_url | constrain: 600 }} 600w,
+                    {{ product.image | product_image_url | constrain: 800 }} 800w,
+                    {{ product.image | product_image_url | constrain: 960 }} 960w,
+                    {{ product.image | product_image_url | constrain: 1200 }} 1200w
+                  "
+                  data-sizes="auto"
+                >
+                {% if product.images[1] != blank and theme.secondary_image_on_hover == true %}
+                  {% assign image_width = product.image.width | times: 1.0 %}
+                  {% assign image_height = product.image.height | times: 1.0 %}
+                  {% assign aspect_ratio = image_width | divided_by: image_height %}
+                  <img
+                    alt=""
+                    class="blur-up product-list-image product-list-image--secondary lazyload grid-{{ theme.grid_image_style }}"
+                    src="{{ product.images[1] | product_image_url | constrain: 20 }}"
+                    {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                    data-srcset="
+                      {{ product.images[1] | product_image_url | constrain: 240 }} 240w,
+                      {{ product.images[1] | product_image_url | constrain: 400 }} 400w,
+                      {{ product.images[1] | product_image_url | constrain: 600 }} 600w,
+                      {{ product.images[1] | product_image_url | constrain: 800 }} 800w,
+                      {{ product.images[1] | product_image_url | constrain: 960 }} 960w,
+                      {{ product.images[1] | product_image_url | constrain: 1200 }} 1200w
+                    "
+                    data-sizes="auto"
+                  >
+                {% endif %}
+                {% if product_status != blank %}<div class="product-list-thumb-status">{{ product_status }}</div>{% endif %}
+              </div>
+              <div class="product-list-thumb-info">
+                <div class="product-list-thumb-name">{{ product.name }}</div>
+                <div class="product-list-thumb-price">
+                  {% if product.variable_pricing %}
+                    {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                  {% else %}
+                    {{ product.default_price | money: theme.money_format }}
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
         {% endfor %}
       </div>
-      {% if paginate.pages > 1 %}
-        <a class="button shop-all-products view-more-button">Load More</a>
-        <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
-        <div class="page-load-status" style="display: none;">
-          <div class="infinite-scroll-request">
-            <div class="loading-more">Loading More</div>
-          </div>
-          <div class="infinite-scroll-last"><p>You've reached the end!</p></div>
-          <div class="infinite-scroll-error">No more pages to load</div>
-        </div>
-      {% endif %}
-    {% else %}
-      <p class="no-products">No products found.</p>
+    </div>
+    {% if paginate.pages > 1 %}
+      <nav class="pagination" aria-label="Pagination">
+        {% if paginate.previous.is_link %}
+          <a aria-label="Go to previous page" class="page-link previous-page-link" href="{{ paginate.previous.url }}">
+            <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M0.46875 6.96875L6.46875 1C6.75 0.6875 7.21875 0.6875 7.53125 1C7.8125 1.28125 7.8125 1.75 7.53125 2.03125L2.03125 7.5L7.5 13C7.8125 13.2812 7.8125 13.75 7.5 14.0312C7.21875 14.3438 6.75 14.3438 6.46875 14.0312L0.46875 8.03125C0.15625 7.75 0.15625 7.28125 0.46875 6.96875Z"></path></svg>
+            <span>Previous</span>
+          </a>
+        {% else %}
+          <span class="page-link previous-page-link disabled">
+            <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M0.46875 6.96875L6.46875 1C6.75 0.6875 7.21875 0.6875 7.53125 1C7.8125 1.28125 7.8125 1.75 7.53125 2.03125L2.03125 7.5L7.5 13C7.8125 13.2812 7.8125 13.75 7.5 14.0312C7.21875 14.3438 6.75 14.3438 6.46875 14.0312L0.46875 8.03125C0.15625 7.75 0.15625 7.28125 0.46875 6.96875Z"></path></svg>
+            <span>Previous</span>
+          </span>
+        {% endif %}
+        {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
+
+        {% if paginate.next.is_link %}
+          <a aria-label="Go to next page" class="page-link next-page-link" href="{{ paginate.next.url }}">
+            <span>Next</span>
+            <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
+          </a>
+        {% else %}
+          <span class="page-link next-page-link disabled">
+            <span>Next</span>
+            <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
+          </span>
+        {% endif %}
+      </nav>
     {% endif %}
-  </div>
+  {% else %}
+    <div class="message-banner message-banner--centered message-banner--no-bg">No products found.</div>
+  {% endif %}
 {% endpaginate %}

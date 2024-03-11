@@ -6,22 +6,15 @@ a
   text-decoration: none
 
   &:hover
-    filter: alpha(opacity=90)
-    opacity: .9
+    color: var(--link-hover-color)
 
 .container
   +flexbox
   +flex-direction(column)
   margin: auto
-  max-width: 1300px
-  padding: 0 80px
+  max-width: 1200px
+  padding: 0 16px
   width: 100%
-
-  @media screen and (max-width: $break-medium)
-    padding: 0 60px
-
-  @media screen and (max-width: $break-small)
-    padding: 0 20px
 
 html
   height: 100%
@@ -35,10 +28,14 @@ html
     z-index: 100
 
 body
+  +flexbox
+  +flex-direction(column)
   background-color: var(--background-color)
   color: var(--text-color)
   font-size: 16px
+  font-family: var(--sans-serif-font)
   height: 100%
+  min-height: 100vh
   padding: 3px 0
 
   &:after, &:before
@@ -67,18 +64,14 @@ a, button, submit, select, input, .select
 h1, h4, h5
   font-family: var(--sans-serif-font)
   font-weight: bold
-  text-transform: uppercase
 
 h2, h3
   font-family: var(--serif-font)
-  letter-spacing: 1px
-
-h4, h5
-  letter-spacing: .2em
 
 h1
-  font-size: 1.5em
-  letter-spacing: .3em
+  font-size: 1.75em
+  margin-bottom: 32px
+  text-align: center
 
   @media screen and (max-width: $break-small)
     font-size: 1.2em
@@ -98,41 +91,6 @@ h4
 h5
   font-size: 1.125em
 
-hr
-  background: var(--accent-background-color)
-  border: 0
-  height: 3px
-  margin: 0 0 25px
-  width: 100%
-
-p
-  font: .975em var(--serif-font)
-  line-height: 24px
-  letter-spacing: 1px
-
-ul, ol
-  list-style: none
-  margin: 0
-  padding: 0
-
-.custom
-  a
-    color: var(--link-hover-color)
-
-  img, iframe, embed, object, video
-    max-width: 100%
-
-  ol, ul
-    font: .875em var(--serif-font)
-    letter-spacing: 1px
-    padding-left: 1em
-
-  ol
-    list-style: decimal
-
-  ul
-    list-style: disc
-
 .cart_box, #product_form
   .errors
     background-color: var(--link-hover-color)
@@ -150,7 +108,7 @@ ul, ol
       + li
         margin-top: 20px
 
-button, a.button
+button.button, a.button
   +all-transitions
   background: var(--border-color)
   border: none
@@ -190,353 +148,164 @@ button, a.button
     opacity: .3
 
 .select
-  +all-transitions
   border: 3px solid var(--border-color)
+  border-radius: var(--border-radius)
+  position: relative
   color: var(--text-color)
-  font: bold 1em var(--sans-serif-font)
-  height: 58px
-  margin-bottom: 20px
-  max-width: 100%
+  height: 56px
   padding: 0
   position: relative
-  text-transform: uppercase
   width: 100%
 
   select
-    +all-transitions
-    appearance: none
-    -webkit-appearance: none
-    background: none
-    border: 0
-    border-radius: 0
-    color: var(--text-color)
-    font: bold 1em var(--sans-serif-font)
     height: 100%
-    letter-spacing: 1px
-    padding: 0 66px 0 16px
+    padding: 0 40px 0 12px
     position: relative
-    text-transform: uppercase
     width: 100%
     z-index: 2
 
     option
+      background-color: #FFF
       color: #000
-      background: #FFF
-
-      &:disabled
-        color: graytext
 
     &:focus
-      outline: none
+      box-shadow: none
 
     &::-ms-expand
       display: none
 
   svg
     fill: currentColor
+    height: 8px
     position: absolute
-    right: 17px
+    pointer-events: none
+    right: 14px
     top: 50%
     transform: translateY(-50%)
+    width: 14px
     z-index: 1
 
-  &:hover, &:active, &:focus, &:focus-within
-    border: 3px solid var(--link-hover-color)
+.header
+  padding: 60px 0
 
-    option:disabled
-      color: graytext
+  .container
+    display: flex
+    flex-direction: column
+    gap: 60px
 
-    svg
-      fill: var(--link-hover-color)
+.header-columns
 
-.cart-overlay
-  display: none
-  position: relative
-  z-index: 200
-
-body
-  &.maintenance
-    border-right: 3px solid var(--border-color)
-
-  &.maintenance .message_tall
-    min-height: 1200px
-    text-align: center
-
-    h1
-      margin-top: 15%
-
-header
-  background: var(--background-color)
-  padding-top: 60px
-  padding-bottom: 40px
+a.store-link
+  display: block
+  font-size: 1.75em
+  font-family: var(--sans-serif-font)
+  font-weight: 700
+  line-height: 1.3
+  margin: 0 auto
+  padding: 0 24px
+  text-align: center
+  overflow-wrap: break-word
+  word-break: break-word
   width: 100%
-  z-index: 2
 
   @media screen and (max-width: $break-small)
-    padding: 0
-
-  .header-container
-    +flexbox
-    +justify-content(space-between)
-    +align-items(center)
-    +flex-direction(row)
-
-    @media screen and (max-width: $break-small)
-      +flex-direction(column)
-      padding: 0
-      margin-bottom: 30px
-
-  .header-search
-    +flex-basis(30%)
-    color: var(--text-color)
-
-    .search-form
-      +flexbox
-      border: 2px solid transparent
-      display: inline-block
-      width: auto
-
-      @media screen and (max-width: $break-medium)
-        display: none
-
-      &:focus-within
-        +all-transitions
-        border: 2px solid var(--border-color)
-
-        .search-input
-          outline: none
-
-        .search-button
-          border-left: 2px solid var(--border-color)
-          opacity: 1
-
-      .search-input, .search-button
-        +appearance(none)
-        background: transparent
-        border: none
-        height: 40px
-        margin: 0
-        padding: 0
-
-      .search-button
-        border-left: 2px solid transparent
-        font-family: var(--sans-serif-font)
-        font-weight: 700
-        font-size: .85em
-        opacity: 0
-        text-transform: uppercase
-        width: 48px
-
-        &:hover, &:focus
-          background: var(--link-hover-color)
-          outline: none
-
-      .search-input
-        background: rgba(255, 255, 255, .0) url(#{'{{ "search_icon.png" | theme_image_url }}'}) 8px 12px no-repeat
-        background-size: 28px 15px
-        font-family: var(--serif-font)
-        padding: 4px 8px 4px 44px
-
-  .header-store-title
-    +flex-basis(40%)
-    font-family: var(--sans-serif-font)
-    text-align: center
     font-size: 1.5em
-    letter-spacing: .3em
-    font-weight: bold
-    text-transform: uppercase
 
-    @media screen and (max-width: $break-small)
-      +flex-basis(100%)
-      border-bottom: 3px solid var(--border-color)
-      margin-bottom: 20px
-      min-height: 80px
-      padding: 20px
-      position: relative
-      font-size: 1em
-      width: 100%
-
-    .store-link
-      display: block
-
-      @media screen and (max-width: $break-small)
-        +transform(translateY(-50%) translateX(-50%))
-        padding-left: 10px
-        padding-right: 10px
-        position: absolute
-        top: 50%
-        left: 50%
-        width: calc(100% - 120px)
-
-      &:hover, &:focus
-        color: var(--link-hover-color)
-
-    img
-      display: block
-      height: auto
-      margin: 0 auto
-      max-width: 300px
-      max-height: 200px
-      width: auto
-
-      @media screen and (max-width: $break-small)
-        max-height: 50px
-
-  .header-cart
-    +flexbox
-    +justify-content(flex-end)
-    +flex-basis(30%)
-    font-family: var(--serif-font)
-    text-align: center
-    position: relative
-
-    @media screen and (max-width: $break-small)
-      +flex-basis(100%)
-
-    a
-      background: url(#{'{{ "cart_icon.png" | theme_image_url }}'}) top center no-repeat
-      background-size: 60px 60px
-      display: block
-      padding-top: 70px
-      position: relative
-      width: 60px
-      z-index: 2
-
-      &:hover, &:focus
-        opacity: .8
-
-    span span
-      padding: 0 2px 0 0
-
-.light_cart
-  border-radius: 50%
-  width: 60px
-  height: 60px
-  position: absolute
-  top: 0px
+.store-logo
   display: block
-  z-index: 1
-  overflow: hidden
-  right: 0
+  margin: 0 auto
+  max-width: 100%
+  max-height: 90px
 
-  .green_cart
-    background-color: var(--link-hover-color)
-    height: 0px
-    width: 60px
-    position: absolute
-    bottom: 0
-    right: 0
-    display: block
-    z-index: 1
+  @media screen and (max-width: $break-small)
+    max-height: 72px
 
-  .imgAdd
-    margin-top: 8px
-
-section.content
+.content
+  flex: 1
   padding-bottom: 100px
 
-.open-menu
-  background: url(#{'{{ "hamburger.png" | theme_image_url }}'}) no-repeat left top
-  background-size: 20px
-  height: 14px
-  left: -10px
-  overflow: hidden
-  position: absolute
-  text-indent: -999px
-  top: 50px
-  width: 20px
+.border
+  height: 3px
+  width: 100%
+  background: var(--accent-background-color)
+  margin-bottom: 40px
 
-  &.desktop-open-menu
-    display: block
+footer
+  font-family: var(--serif-font)
+  padding: 60px 0
 
-    @media screen and (max-width: $break-small)
-      display: none
+  .container
+    display: flex
+    flex-direction: column
+    gap: 40px
+    margin-bottom: 30px
+    align-items: center
 
-  &.mobile-open-menu
-    display: none
-
-    @media screen and (max-width: $break-small)
-      +transform(translateY(-50%))
-      background-size: 26px
-      display: block
-      height: 18px
-      left: 20px
-      position: absolute
-      top: 50%
-      width: 26px
-
-.open-menu:hover, .open-menu:active
-  color: var(--link-hover-color)
-
-aside
-  +transition(all .5s ease-in-out)
-  background-color: rgba(255, 255, 255, .9)
-  box-shadow: 0 0 12px var(--light-gray-color)
-  font: 1.350em var(--serif-font)
-  letter-spacing: 1px
-  height: 100%
-  padding-top: 20px
-  position: fixed
-  right: -260px
-  top: 0
-  width: 300px
-  z-index: 200
-
-  @media screen and (max-width: $break-medium)
-    right: -275px
+.footer__pages
+  display: flex
+  column-gap: 30px
+  max-width: 800px
+  flex-wrap: wrap
+  margin: 0 auto
+  justify-content: center
+  row-gap: 12px
 
   @media screen and (max-width: $break-small)
-    right: -100%
+    flex-direction: column
 
-  .wrapper
-    padding: 0 20px 28px 28px
-    overflow: scroll
-    height: 100%
-
-  &.expand
-    right: 0
-
-  li
+  a
     display: block
-    padding: 5px 0
+    padding: 2px
 
-  .social
-    margin: 1em 0
+    &:hover
+      text-decoration: underline
 
-    a
-      display: block
+.social-icons
+  display: flex
+  gap: 20px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
 
-      svg
-        fill: var(--text-color)
-        height: 22px
-        width: 22px
+  @media screen and (max-width: $break-small)
+    gap: 16px
 
-      &:hover svg
-        fill: var(--link-hover-color)
-
-    li
-      display: inline-block
-      padding: 0
-
-      + li
-        margin-left: 6px
-
-  .bigcartel-credit
-    font-size: 16px
-    line-height: 1em
+  a
     display: flex
     align-items: center
-    gap: 8px
-    outline-offset: 4px
-    padding: 2px 0
-    order: 1
-    margin-top: 40px
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
 
-    &__text
-      position: relative
-
-    &__lockup
-      display: block
+    svg
       fill: currentColor
-      padding-top: 1px
-      width: 80px
+      height: 22px
+      width: 22px
+
+      &.tumblr-icon
+        width: 14px
+
+.bigcartel-credit
+  line-height: 1em
+  font-size: 15px
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+  text-decoration: none
+
+  &:hover
+    text-decoration: none
+
+  &__text
+    position: relative
+
+  &__lockup
+    display: block
+    fill: currentColor
+    padding-top: 1px
+    width: 80px

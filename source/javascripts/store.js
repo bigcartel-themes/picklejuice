@@ -35,7 +35,3 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", () => {
   document.body.classList.remove("transition-preloader");
 });
-
-function camelCaseToDash(string) {
-  return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-}

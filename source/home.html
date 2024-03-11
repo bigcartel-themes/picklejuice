@@ -1,46 +1,32 @@
 
 {% if theme.image_sets.slideshow.size > 0 %}
-  <div class="container">
-    <div class="flexslider home-slideshow">
-      <ul class="slides">
-        {% for image in theme.image_sets.slideshow %}
-          <li><img alt="Slideshow image" src="{{ image.url | constrain: 1800 }}"></li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-{% endif %}
-
-<div class="container">
-  <div class="categories">
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}current{% endif %}"><a href="/products">All Products</a></li>
-      {% for category in categories.active %}
-      <li class="{% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
+  <div class="flexslider home-slideshow">
+    <ul class="slides">
+      {% for image in theme.image_sets.slideshow %}
+        <li><img alt="Slideshow image" src="{{ image.url | constrain: 1800 }}"></li>
       {% endfor %}
     </ul>
   </div>
-</div>
+{% endif %}
+
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products %}
-    <div class="container">
-      {% if products != blank %}
-        <div class="product-list">
-          {% for product in products %}
-            <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
-              <figure>
-                <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
-                <figcaption>
-                  <h4>{{ product.name | truncate: 28 }}</h4>
-                  <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
-                </figcaption>
-              </figure>
-            </a>
-          {% endfor %}
-        </div>
-      {% else %}
-        <p class="no-products">No products found.</p>
-      {% endif %}
-    </div>
+    {% if products != blank %}
+      <div class="product-list">
+        {% for product in products %}
+          <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
+            <figure>
+              <img src="{{ product.image | product_image_url | constrain: '600' }}" alt="Image of {{ product.name | escape }}">
+              <figcaption>
+                <h4>{{ product.name | truncate: 28 }}</h4>
+                <span>{{ product.default_price | money: theme.money_format }} {% if product.on_sale %} | On Sale {% endif %} {% case product.status %} {% when 'sold-out' %} | Sold Out {% when 'coming-soon' %} | Coming Soon {% endcase %}</span>
+              </figcaption>
+            </figure>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-products">No products found.</p>
+    {% endif %}
   {% endpaginate %}
 {% endif %}
