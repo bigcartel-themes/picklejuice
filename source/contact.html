@@ -1,14 +1,16 @@
 <h1 class="page-title">{{ page.name }}</h1>
 <div class="contact-container">
   {% if contact.sent %}
-    <h1>Your message has been sent and we&rsquo;ll get back to you soon.</h1>
+    <div class="message-banner message-banner--centered message-banner--no-bg">
+      Thanks! Your message has been sent and we'll get back to you soon.
+    </div>
   {% else %}
     {% if errors != blank %}
-      <ul class="errors">
+      <div class="message-banner message-banner--errors message-banner--centered">
         {% for error in errors %}
-          <li>{{ error }}</li>
+          <div>{{ error }}</div>
         {% endfor %}
-      </ul>
+      </div>
     {% endif %}
     <form method="post" action="/contact" class="contact-form">
       <div class="contact-form-block contact-name">

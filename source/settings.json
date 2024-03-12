@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "2.6.0",
+  "version": "2.6.14",
   "images": [
     {
       "variable": "logo",
@@ -188,14 +188,40 @@
       "description": "The number of custom page links show in the main navigation"
     },
     {
+      "variable": "featured_header",
+      "label": "Featured header",
+      "type": "text",
+      "description": "Featured products header on the Home page",
+      "default": "Featured"
+    },
+    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
       "default": 12,
-      "description": "The number of products displayed on the home page"
+      "description": "The number of products displayed on the Home page"
     },
-{
+    {
+      "variable": "featured_order",
+      "label": "Featured products order",
+      "type": "select",
+      "options": [
+        ["Regular", "regular"],
+        ["Top Selling", "sales"],
+        ["Newest", "newest"]
+      ],
+      "default": "regular",
+      "description": "The order of products on the Home page"
+    },
+    {
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "type": "text",
+      "description": "Displays underneath featured products, links to your Products page",
+      "default": "All Products"
+    },
+    {
       "variable": "max_products_per_row",
       "label": "Maximum products per row",
       "type": "select",
@@ -263,6 +289,28 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
+      "variable": "share_buttons",
+      "label": "Show product share button",
+      "type": "boolean",
+      "default": true,
+      "description": "Adds a Share button to your Product page after the description"
+    },
+    {
+      "variable": "show_related_products",
+      "label": "Show related products",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays related products on the Product page"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
+    },
+    {
       "variable": "money_format",
       "label": "Price display",
       "type": "select",
@@ -272,14 +320,6 @@
       ],
       "default": "sign",
       "description": "Sets the display of prices in your shop"
-    },
-    {
-      "variable": "show_sold_out_product_options",
-      "label": "Show sold out product options",
-      "type": "boolean",
-      "default": true,
-      "description": "Shows sold out product options in the Product page dropdowns",
-      "requires": "inventory"
     },
     {
       "variable": "instagram_url",

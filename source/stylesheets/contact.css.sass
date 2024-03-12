@@ -14,14 +14,12 @@
   input
     background-color: var(--background-color)
     border: 2px solid var(--border-color)
-    font: normal 1em var(--serif-font)
     padding: 10px 15px
     width: 100%
 
   textarea
     background-color: var(--background-color)
     border: 2px solid var(--border-color)
-    font: normal .875em var(--serif-font)
     height: 242px
     max-height: 242px
     max-width: 100%
@@ -31,6 +29,7 @@
   .recaptcha-note
     font-family: var(--serif-font)
     margin-top: 10px
+    text-align: center
 
     a
       text-decoration: underline
@@ -43,16 +42,3 @@
 
     @media screen and (max-width: $break-small)
       max-width: 100%
-
-  .errors
-    text-align: center
-    color: var(--accent-background-color)
-    background-color: var(--link-hover-color)
-    font: bold 1em var(--sans-serif-font)
-    text-transform: uppercase
-    width: 100%
-    margin-bottom: 30px
-
-    li
-      display: block
-      padding: 20px

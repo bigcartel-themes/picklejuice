@@ -1,6 +1,9 @@
+.product-list-container
+  margin-bottom: 64px
+
 .product-list
-  --gap: calc(var(--spacing-unit) * 4)
-  --row-gap: 48px
+  --gap: calc(var(--spacing-unit) * 3)
+  --row-gap: calc(var(--spacing-unit) * 3)
   --columns: #{"{{ theme.max_products_per_row }}"}
   --spacing-unit: 10px
   display: flex
@@ -26,6 +29,7 @@
     --row-gap: 24px
 
 .product-list-thumb
+  background: var(--accent-background-color)
   border: 3px solid var(--accent-background-color)
   box-shadow: 0 0 12px var(--light-gray-color)
   position: relative
@@ -39,25 +43,10 @@ a.product-list-link
 
   @media (hover: hover)
     &:hover
+      .product-list-image
+        transform: scale(1.05)
       .product-list-thumb-name
         text-decoration: underline
-
-    &--show-secondary
-      .product-list-image
-        transition: opacity .2s linear, visibility .2s linear
-
-      &:hover
-        .product-list-image--primary
-          opacity: 0
-          visibility: hidden
-
-        .product-list-image--secondary
-          opacity: 1
-          visibility: visible
-
-  .product-list-image--secondary
-    opacity: 0
-    visibility: hidden
 
 .product-list-image-container
   border-radius: var(--border-radius)
@@ -91,14 +80,17 @@ a.product-list-link
     object-fit: contain
 
 .product-list-thumb-status
-  top: 12px
-  right: 12px
+  bottom: 12px
+  left: 12px
   position: absolute
   z-index: 2
-  font-size: .925rem
+  font-weight: 500
+  letter-spacing: .05em
+  font-size: .75rem
   line-height: normal
   display: inline-block
   padding: 6px 8px
+  text-transform: uppercase
   color: var(--product-status-text-color)
   background: var(--product-status-background-color)
   border-radius: var(--border-radius-sm)
@@ -106,11 +98,14 @@ a.product-list-link
 .product-list-thumb-info
   background: var(--accent-background-color)
   line-height: normal
-  padding: 16px
+  padding: 12px 16px
   position: relative
   text-align: left
   display: grid
-  gap: 0px
+  gap: 4px
+
+  @media screen and (max-width: $break-small)
+    padding: 12px
 
 .product-list-thumb-name
   font-weight: normal

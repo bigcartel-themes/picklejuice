@@ -61,23 +61,23 @@ body
 a, button, submit, select, input, .select
   +transition(all .1s ease-in-out)
 
-h1, h4, h5
+h1, h2, h3, h4, h5
   font-family: var(--sans-serif-font)
   font-weight: bold
-
-h2, h3
-  font-family: var(--serif-font)
 
 h1
   font-size: 1.75em
   margin-bottom: 32px
   text-align: center
 
+  @media screen and (max-width: $break-medium)
+    font-size: 1.5em
+
   @media screen and (max-width: $break-small)
-    font-size: 1.2em
+    font-size: 1.3em
 
 h2
-  font-size: 1.75em
+  font-size: 1.5em
 
   @media screen and (max-width: $break-small)
     font-size: 1.1em
@@ -91,68 +91,54 @@ h4
 h5
   font-size: 1.125em
 
-.cart_box, #product_form
-  .errors
-    background-color: var(--link-hover-color)
-    text-align: center
-    padding: 20px
-    margin: 0px 0
-    color: var(--accent-background-color)
-    font: .75em var(--sans-serif-font)
-    text-transform: uppercase
-    width: 100%
-
-    li
-      display: block
-
-      + li
-        margin-top: 20px
-
-button.button, a.button
-  +all-transitions
-  background: var(--border-color)
-  border: none
-  color: var(--accent-background-color)
-  cursor: pointer
-  display: block
-  font: bold 1em var(--sans-serif-font)
-  height: 58px
-  letter-spacing: 1px
-  max-width: 100%
-  outline: none
-  padding: 0 16px
+.button, a.button
+  transition: background .1s linear
+  background: var(--button-background-color)
+  border-radius: var(--border-radius)
+  color: var(--button-text-color)
+  min-height: 60px
+  font-weight: bold
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 20px
   text-align: center
-  text-transform: uppercase
+  white-space: pre-wrap
   width: 100%
 
   &.minimal-button
     background: none
-    color: var(--text-color)
+    color: var(--secondary-text-color)
     border: none
-    font-size: 13px
-    padding: 0
+    font-weight: 500
+    height: auto
+    min-height: 0
+    text-decoration: underline
+    transition: color .1s linear
+    text-underline-offset: 4px
 
-    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+    &:not(:disabled):hover, &:not(:disabled):active
+      box-shadow: none
       background: none
-      text-decoration: underline
-
-  &.no-border
-    border: none
-
-  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-    background: var(--link-hover-color)
+      color: var(--link-hover-color)
+      opacity: 1
 
   &:disabled, &.disabled
-    background: var(--border-color)
     cursor: not-allowed
-    opacity: .3
+
+  &.centered-button
+    margin: 60px auto
+
+  &:not(:disabled):hover, &:not(:disabled):active
+    background: var(--button-hover-background-color)
+    color: var(--button-text-color)
 
 .select
   border: 3px solid var(--border-color)
   border-radius: var(--border-radius)
   position: relative
   color: var(--text-color)
-  height: 56px
+  height: 60px
   padding: 0
   position: relative
   width: 100%
@@ -188,41 +174,64 @@ button.button, a.button
 .header
   padding: 60px 0
 
+  @media screen and (max-width: $break-small)
+    padding: 16px 0
+
   .container
     display: flex
     flex-direction: column
     gap: 60px
 
-.header-columns
+  .header-left
+    @media screen and (max-width: $break-small)
+      position: relative
+      left: -6px
 
-a.store-link
-  display: block
-  font-size: 1.75em
-  font-family: var(--sans-serif-font)
-  font-weight: 700
-  line-height: 1.3
-  margin: 0 auto
-  padding: 0 24px
+.store-name
+  font-size: 2em
+  display: flex
+  font-weight: bold
+  align-items: center
   text-align: center
-  overflow-wrap: break-word
-  word-break: break-word
-  width: 100%
-
-  @media screen and (max-width: $break-small)
-    font-size: 1.5em
-
-.store-logo
-  display: block
+  justify-content: center
+  padding: 0 8px
+  max-width: 600px
   margin: 0 auto
-  max-width: 100%
-  max-height: 90px
+
+  @media screen and (max-width: $break-medium)
+    font-size: 1.4em
 
   @media screen and (max-width: $break-small)
-    max-height: 72px
+    font-size: 1.2em
+
+  a
+    display: flex
+    line-height: 1.25em
+    align-items: center
+    width: auto
+    outline-offset: 4px
+
+  &.image
+    height: var(--header-height)
+
+    @media screen and (max-width: $break-medium)
+      height: var(--header-height-tablet)
+
+    @media screen and (max-width: $break-small)
+      height: var(--header-height-mobile)
+
+    img
+      height: 100%
+      object-fit: contain
+      width: 100%
+
+    a
+      height: 100%
+
 
 .content
   flex: 1
-  padding-bottom: 100px
+  padding-bottom: 24px
 
 .border
   height: 3px
@@ -230,9 +239,18 @@ a.store-link
   background: var(--accent-background-color)
   margin-bottom: 40px
 
+  @media screen and (max-width: $break-small)
+    margin-bottom: 24px
+
 footer
   font-family: var(--serif-font)
-  padding: 60px 0
+  padding: 48px 0
+
+  @media screen and (max-width: $break-small)
+    padding: 24px 0
+
+    .border
+      margin-bottom: 0
 
   .container
     display: flex
@@ -243,6 +261,7 @@ footer
 
 .footer__pages
   display: flex
+  align-items: center
   column-gap: 30px
   max-width: 800px
   flex-wrap: wrap
@@ -309,3 +328,34 @@ footer
     fill: currentColor
     padding-top: 1px
     width: 80px
+
+.visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+.message-banner
+  border-radius: var(--border-radius)
+  background-color: var(--announcement-background-color)
+  color: var(--announcement-text-color)
+  padding: 16px
+  margin-bottom: 32px
+  text-align: left
+  width: 100%
+
+  &--centered
+    text-align: center
+
+  &--no-bg
+    color: var(--text-color)
+    background: none
+    padding: 0
+
+  &--errors
+    background-color: var(--error-background-color)
+    color: var(--error-text-color)

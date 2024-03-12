@@ -28,7 +28,7 @@
       display: none
 
     @media screen and (max-width: $break-small)
-      gap: 4px
+      gap: 6px
 
       .open-nav-menu
         display: none
@@ -68,12 +68,14 @@
     display: flex
     align-items: center
     justify-content: center
-    width: 40px
-    height: 40px
+    width: 36px
+    height: 36px
     outline-offset: 4px
 
     svg
       height: 22px
+      top: 2px
+      position: relative
       width: 22px
 
   .header-cart
@@ -85,13 +87,18 @@
       display: flex
       align-items: center
       justify-content: center
-      width: 40px
-      height: 40px
+      width: 36px
+      height: 36px
       position: relative
 
       svg
-        height: 24px
-        width: 24px
+        fill: currentColor
+        height: 32px
+        width: 32px
+
+        @media screen and (max-width: $break-small)
+          height: 30px
+          width: 30px
 
 .open-search, .open-nav-menu
   transition: color .2s linear
@@ -99,19 +106,19 @@
   &:hover
     color: var(--link-hover-color)
 
-.cart-count
+.cart-value
   position: absolute
-  top: 0
-  right: -2px
+  right: -4px
   border-radius: 50%
-  background: var(--button-background-color)
-  color: var(--button-text-color)
+  background: var(--text-color)
+  color: var(--background-color)
   display: flex
   font-weight: 500
   align-items: center
   justify-content: center
-  font-size: 13px
+  font-size: 12px
   padding: 2px
+  top: 6px
   height: 18px
   width: 18px
 
