@@ -17,7 +17,7 @@
             {% when 'coming-soon' %}
               {% assign product_status = 'Coming soon' %}
           {% endcase %}
-          <div class="product-list-thumb {{ product.css_class }}">
+          <div class="product-list-thumb product-list-thumb--{{ theme.grid_image_style }} {{ product.css_class }}">
             <a class="product-list-link{% if product.images[1] != blank and theme.secondary_image_on_hover == true %} product-list-link--show-secondary{% endif %}" href="{{ product.url }}" title="View {{ product.name | escape }}">
               <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                 <img

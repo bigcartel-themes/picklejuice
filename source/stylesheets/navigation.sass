@@ -9,14 +9,14 @@
     gap: 12px
 
   .header-left
-    .open-nav-menu
+    .open-mobile-navigation
       display: none
 
     @media screen and (max-width: $break-small)
       .open-search
         display: none
 
-      .open-nav-menu
+      .open-mobile-navigation
         display: flex
 
   .header-right
@@ -30,14 +30,14 @@
     @media screen and (max-width: $break-small)
       gap: 6px
 
-      .open-nav-menu
+      .open-mobile-navigation
         display: none
 
       .open-search
         display: flex
         margin-left: auto
 
-  .open-nav-menu
+  .open-mobile-navigation
     display: flex
     align-items: center
     justify-content: center
@@ -78,6 +78,10 @@
       position: relative
       width: 22px
 
+      @media screen and (max-width: $break-small)
+        height: 20px
+        width: 20px
+
   .header-cart
     display: flex
     align-items: center
@@ -97,10 +101,10 @@
         width: 32px
 
         @media screen and (max-width: $break-small)
-          height: 30px
-          width: 30px
+          height: 28px
+          width: 28px
 
-.open-search, .open-nav-menu
+.open-search, .open-mobile-navigation
   transition: color .2s linear
 
   &:hover
@@ -228,3 +232,54 @@
 
       &:hover
         text-decoration: underline
+
+#mobile-navigation
+  background: #{'rgba(var(--background-color-rgb), .8)'}
+  opacity: 0
+  visibility: hidden
+  width: 100%
+  height: calc(100vh - var(--header-bottom-position))
+  height: calc(100svh - var(--header-bottom-position))
+  z-index: 10
+  top: var(--header-bottom-position)
+  left: 0
+  position: fixed
+  transition: opacity .1s ease, visibility .1s ease
+  overscroll-behavior: contain
+
+  @media screen and (max-width: $break-medium)
+    &[aria-hidden="false"]
+      opacity: 1
+      visibility: visible
+
+      .mobile-navigation__wrapper
+        transform: translateX(0)
+
+.mobile-navigation
+  &__wrapper
+    background: var(--background-color)
+    border-top: 3px solid var(--border-color)
+    padding: 16px
+    height: 100%
+    width: 100%
+    transform: translateX(-100%)
+    transition: transform .1s linear
+    overflow-y: scroll
+    padding-bottom: var(--header-bottom-position)
+
+  &__body
+    display: grid
+    gap: 30px
+
+  &__links
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+    li a
+      padding: 4px 0
+      font-size: 1.1em
+
+  &__icons
+    column-gap: 16px
+    justify-content: flex-start

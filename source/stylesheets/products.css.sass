@@ -30,13 +30,18 @@
 
 .product-list-thumb
   box-shadow: 0 0 6px var(--light-gray-color)
+  border: 3px solid var(--accent-background-color)
   background: var(--accent-background-color)
   position: relative
   text-decoration: none
   width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)))
 
+  &--default
+    align-self: flex-start
+
 a.product-list-link
   display: block
+  height: 100%
   text-decoration: none
   outline-offset: 4px
   position: relative
@@ -59,6 +64,7 @@ a.product-list-link
   width: 100%
 
   &-default
+    align-self: flex-start
     padding-bottom: 0
 
 .product-list-image
@@ -105,6 +111,7 @@ a.product-list-link
   gap: 4px
 
   @media screen and (max-width: $break-small)
+    font-size: .925em
     padding: 12px
 
 .product-list-thumb-name
