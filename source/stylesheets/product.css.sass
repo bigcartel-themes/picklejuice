@@ -54,7 +54,7 @@
 .product-detail
   display: flex
   flex-direction: column
-  row-gap: 24px
+  row-gap: 32px
 
   &__header
     display: flex
@@ -64,21 +64,23 @@
     padding-bottom: 24px
     border-bottom: 3px solid var(--accent-background-color)
 
-  &__status
-    border-radius: var(--border-radius-sm)
-    color: var(--product-status-text-color)
-    background-color: var(--product-status-background-color)
-    text-transform: uppercase
-    font-size: .875rem
-    line-height: normal
-    font-weight: 500
-    display: inline-block
-    padding: 6px
-    letter-spacing: 1.1px
-
   &__pricing
+    display: flex
+    align-items: center
+    justify-content: center
     font-family: var(--serif-font)
     font-size: 1.5em
+    gap: 12px
+
+  &__status
+    font-weight: 500
+    font-size: .75rem
+    line-height: normal
+    padding: 6px 10px
+    color: var(--product-status-text-color)
+    background: var(--product-status-background-color)
+    border-radius: var(--product-status-border-radius)
+    font-family: var(--sans-serif-font)
 
   &__description
     margin-top: 16px
@@ -113,6 +115,7 @@
 
 .product-detail__share
   color: var(--text-color)
+  font-weight: 500
   position: relative
 
   .product-share-launch
@@ -143,6 +146,7 @@
     padding: 12px
     font-size: .925em
     flex-direction: column
+    z-index: 3
 
     li a
       color: var(--text-color)
@@ -160,7 +164,6 @@
       fill: currentColor
       height: 16px
       width: 16px
-
 
 .related-products-container
   margin-top: 64px

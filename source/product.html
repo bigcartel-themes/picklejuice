@@ -135,9 +135,11 @@
           {{ product.default_price | money: theme.money_format }}
         {% endif %}
       {% endcapture %}
-      {% if product_status != blank %}<div class="product-detail__status">{{ product_status }}</div>{% endif %}
       <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>
-      <div class="product-detail__pricing">{{ product_pricing }}</div>
+      <div class="product-detail__pricing">
+        <div class="product-detail__price"> {{ product_pricing }}</div>
+        {% if product_status != blank %}<div class="product-detail__status">{{ product_status }}</div>{% endif %}
+      </div>
     </div>
     {% if product.status == 'active' %}
       <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">

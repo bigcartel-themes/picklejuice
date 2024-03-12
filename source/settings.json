@@ -34,7 +34,7 @@
             },
             "colors": {
               "background_color": "#DBF1DA",
-              "link_hover_color": "#5FB252",
+              "link_hover_color": "#227e13",
               "text_color": "#000000",
               "accent_background_color": "#FFFFFF",
               "border_color": "#333333"
@@ -141,7 +141,7 @@
     {
       "variable": "link_hover_color",
       "label": "Link hover",
-      "default": "#5fb252"
+      "default": "#227e13"
     },
     {
       "variable": "border_color",
