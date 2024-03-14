@@ -1,0 +1,360 @@
+*
+  box-sizing: border-box
+
+a
+  color: var(--text-color)
+  text-decoration: none
+
+  &:hover
+    color: var(--link-hover-color)
+
+.container
+  +flexbox
+  +flex-direction(column)
+  margin: auto
+  max-width: 1200px
+  padding: 0 16px
+  width: 100%
+
+html
+  height: 100%
+
+  &:before
+    border-left: 3px solid var(--border-color)
+    display: inline-block
+    left: 0
+    position: fixed
+    height: 100%
+    z-index: 100
+
+body
+  +flexbox
+  +flex-direction(column)
+  background-color: var(--background-color)
+  color: var(--text-color)
+  font-size: 16px
+  font-family: var(--sans-serif-font)
+  height: 100%
+  min-height: 100vh
+  padding: 3px 0
+
+  &:after, &:before
+    border-top: 3px solid var(--border-color)
+    content: ''
+    display: inline-block
+    left: 0
+    position: fixed
+    width: 100%
+    z-index: 100
+
+  &:after
+    top: 0
+
+  &:before
+    bottom: 0
+
+  &.no-scroll
+    overflow-y: scroll
+    position: fixed
+    width: 100%
+
+a, button, submit, select, input, .select
+  +transition(all .1s ease-in-out)
+
+h1, h2, h3, h4, h5
+  font-family: var(--sans-serif-font)
+  font-weight: bold
+
+h1
+  font-size: 1.8em
+  margin-bottom: 32px
+  text-align: center
+
+  @media screen and (max-width: $break-medium)
+    font-size: 1.6em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.4em
+
+h2
+  font-size: 1.5em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.1em
+
+.button, a.button
+  transition: background .1s linear
+  background: var(--button-background-color)
+  border-radius: var(--border-radius)
+  color: var(--button-text-color)
+  min-height: 60px
+  font-weight: bold
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 20px
+  text-align: center
+  white-space: pre-wrap
+  width: 100%
+
+  &.minimal-button
+    background: none
+    color: var(--secondary-text-color)
+    border: none
+    font-weight: 500
+    height: auto
+    min-height: 0
+    text-decoration: underline
+    transition: color .1s linear
+    text-underline-offset: 4px
+
+    &:not(:disabled):hover, &:not(:disabled):active
+      box-shadow: none
+      background: none
+      color: var(--link-hover-color)
+      opacity: 1
+
+  &:disabled, &.disabled
+    cursor: not-allowed
+
+  &.centered-button
+    margin: 60px auto
+
+  &:not(:disabled):hover, &:not(:disabled):active
+    background: var(--button-background-hover-color)
+    color: var(--button-text-color)
+
+.select
+  border: 3px solid var(--border-color)
+  border-radius: var(--border-radius)
+  position: relative
+  color: var(--text-color)
+  height: 60px
+  padding: 0
+  position: relative
+  width: 100%
+
+  select
+    height: 100%
+    padding: 0 40px 0 12px
+    position: relative
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFF
+      color: #000
+
+    &:focus
+      box-shadow: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    fill: currentColor
+    height: 8px
+    position: absolute
+    pointer-events: none
+    right: 14px
+    top: 50%
+    transform: translateY(-50%)
+    width: 14px
+    z-index: 1
+
+.header
+  padding: 60px 0
+
+  @media screen and (max-width: $break-small)
+    padding: 16px 0
+
+  .container
+    display: flex
+    flex-direction: column
+    gap: 60px
+
+  .header-left
+    @media screen and (max-width: $break-small)
+      position: relative
+      left: -6px
+
+.store-name
+  font-size: 2em
+  display: flex
+  font-weight: bold
+  align-items: center
+  text-align: center
+  justify-content: center
+  padding: 0 8px
+  max-width: 600px
+  margin: 0 auto
+
+  @media screen and (max-width: $break-medium)
+    font-size: 1.4em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.2em
+
+  a
+    display: flex
+    line-height: 1.25em
+    align-items: center
+    width: auto
+    outline-offset: 4px
+
+  &.image
+    height: var(--header-height)
+
+    @media screen and (max-width: $break-medium)
+      height: var(--header-height-tablet)
+
+    @media screen and (max-width: $break-small)
+      height: var(--header-height-mobile)
+
+    img
+      height: 100%
+      object-fit: contain
+      width: 100%
+
+    a
+      height: 100%
+
+
+.content
+  flex: 1
+  padding-bottom: 24px
+
+.border
+  height: 3px
+  width: 100%
+  background: var(--accent-background-color)
+  margin-bottom: 40px
+
+  @media screen and (max-width: $break-small)
+    margin-bottom: 24px
+
+footer
+  font-family: var(--serif-font)
+  padding: 48px 0
+
+  @media screen and (max-width: $break-small)
+    padding: 24px 0
+
+    .border
+      margin-bottom: 0
+
+  .container
+    display: flex
+    flex-direction: column
+    gap: 40px
+    margin-bottom: 30px
+    align-items: center
+
+.footer__pages
+  display: flex
+  align-items: center
+  column-gap: 30px
+  max-width: 800px
+  flex-wrap: wrap
+  margin: 0 auto
+  justify-content: center
+  row-gap: 12px
+
+  @media screen and (max-width: $break-small)
+    flex-direction: column
+
+  a
+    display: block
+    padding: 2px
+
+    &:hover
+      text-decoration: underline
+
+.social-icons
+  display: flex
+  gap: 20px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 16px
+
+  a
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    svg
+      fill: currentColor
+      height: 22px
+      width: 22px
+
+      &.tumblr-icon
+        width: 14px
+
+.bigcartel-credit
+  line-height: 1em
+  font-size: 15px
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+  text-decoration: none
+
+  &:hover
+    text-decoration: none
+
+  &__text
+    position: relative
+
+  &__lockup
+    display: block
+    fill: currentColor
+    padding-top: 1px
+    width: 80px
+
+.visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+.message-banner
+  border-radius: var(--border-radius)
+  background-color: var(--announcement-background-color)
+  color: var(--announcement-text-color)
+  padding: 16px
+  margin-bottom: 32px
+  text-align: left
+  width: 100%
+
+  &--centered
+    text-align: center
+
+  &--no-bg
+    color: var(--text-color)
+    background: none
+    padding: 0
+
+  &--errors
+    background-color: var(--error-background-color)
+    color: var(--error-text-color)
+
+.blur-up
+  transition: filter .2s
+  filter: blur(5px)
+  transform: translate3d(0, 0, 0)
+
+  &.lazyloaded
+    filter: blur(0)

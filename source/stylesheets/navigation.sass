@@ -1,0 +1,285 @@
+.header-columns
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr
+  align-items: center
+  justify-content: space-between
+  gap: 24px
+
+  @media screen and (max-width: $break-small)
+    gap: 12px
+
+  .header-left
+    .open-mobile-navigation
+      display: none
+
+    @media screen and (max-width: $break-small)
+      .open-search
+        display: none
+
+      .open-mobile-navigation
+        display: flex
+
+  .header-right
+    justify-content: flex-end
+    display: flex
+    gap: 12px
+
+    .open-search
+      display: none
+
+    @media screen and (max-width: $break-small)
+      gap: 6px
+
+      .open-mobile-navigation
+        display: none
+
+      .open-search
+        display: flex
+        margin-left: auto
+
+  .open-mobile-navigation
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 40px
+    width: 40px
+    position: relative
+
+    span
+      border-radius: 2px
+      transform: rotate(0deg)
+      display: block
+      background: currentColor
+      width: 100%
+      height: 2px
+      position: absolute
+      width: 24px
+
+      &:nth-child(1)
+        top: 12px
+
+      &:nth-child(2), &:nth-child(3)
+        top: 50%
+
+      &:nth-child(4)
+        bottom: 10px
+
+  .open-search
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 36px
+    height: 36px
+    outline-offset: 4px
+
+    svg
+      height: 22px
+      top: 2px
+      position: relative
+      width: 22px
+
+      @media screen and (max-width: $break-small)
+        height: 20px
+        width: 20px
+
+  .header-cart
+    display: flex
+    align-items: center
+    justify-content: flex-end
+
+    &__link
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 36px
+      height: 36px
+      position: relative
+
+      svg
+        fill: currentColor
+        height: 32px
+        width: 32px
+
+        @media screen and (max-width: $break-small)
+          height: 28px
+          width: 28px
+
+.open-search, .open-mobile-navigation
+  transition: color .2s linear
+
+  &:hover
+    color: var(--link-hover-color)
+
+.cart-value
+  position: absolute
+  right: -4px
+  border-radius: 50%
+  background: var(--text-color)
+  color: var(--background-color)
+  display: flex
+  font-weight: 500
+  align-items: center
+  justify-content: center
+  font-size: 12px
+  padding: 2px
+  top: 6px
+  height: 18px
+  width: 18px
+
+.header-navigation
+  @media screen and (max-width: $break-small)
+    display: none
+
+.header-pages
+  display: flex
+  column-gap: 32px
+  row-gap: 4px
+  font-size: 1.1em
+  flex-wrap: wrap
+  list-style: none
+  margin: 0
+  padding: 0
+  text-align: center
+  flex-direction: row
+  justify-content: center
+  font-family: var(--serif-font)
+
+.category-nav
+  position: relative
+
+.header-page-link
+  a, .category-nav-heading
+    display: flex
+    position: relative
+    align-items: center
+    gap: 8px
+    outline-offset: 4px
+    border-radius: 0
+    transition: color .2s linear
+
+  .category-nav-arrow
+    width: 12px
+
+  @media (hover: hover)
+    a:hover
+      text-decoration: underline
+
+    .category-nav-heading:hover
+      color: var(--link-hover-color)
+
+      .category-nav-page
+        text-underline-offset: 4px
+        text-decoration: underline
+
+.category-dropdown
+  +transform-origin(100% 0%)
+  +transform(scaleY(0.75))
+  background: var(--background-color)
+  border-radius: var(--border-radius)
+  border: 1px solid var(--text-color)
+  left: -20px
+  margin: 0 auto
+  min-width: 250px
+  opacity: 0
+  overflow-y: scroll
+  padding: 10px 15px
+  font-size: 1rem
+  position: absolute
+  text-align: left
+  visibility: hidden
+  height: auto
+  max-height: 50vh
+  z-index: 3
+  top: calc(100% + 4px)
+  scrollbar-width: thin
+  scrollbar-color: #{"rgba(var(--text-color-rgb),.5)"} transparent
+  scrollbar-gutter: stable
+  box-shadow: var(--menu-box-shadow)
+
+  &[aria-hidden="false"]
+    transition: transform 0.3s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out
+    +transform(scale(1))
+    transition-delay: 0s
+    opacity: 1
+    visibility: visible
+
+  &::-webkit-scrollbar
+    height: .375rem
+    width: .75rem
+
+  &::-webkit-scrollbar-track
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb
+    border-radius: .375rem
+    border: 3px solid transparent
+    background-color: #{"rgba(var(--text-color-rgb),.5)"}
+    background-clip: content-box
+
+.dropdown-list
+  list-style: none
+  margin: 0
+  padding: 0
+  position: relative
+  z-index: 4
+
+  li
+    display: block
+
+    a
+      display: block
+      padding: 6px 8px
+
+      &:hover
+        text-decoration: underline
+
+#mobile-navigation
+  background: #{'rgba(var(--background-color-rgb), .8)'}
+  opacity: 0
+  visibility: hidden
+  width: 100%
+  height: calc(100vh - var(--header-bottom-position))
+  height: calc(100svh - var(--header-bottom-position))
+  z-index: 10
+  top: var(--header-bottom-position)
+  left: 0
+  position: fixed
+  transition: opacity .1s ease, visibility .1s ease
+  overscroll-behavior: contain
+
+  @media screen and (max-width: $break-medium)
+    &[aria-hidden="false"]
+      opacity: 1
+      visibility: visible
+
+      .mobile-navigation__wrapper
+        transform: translateX(0)
+
+.mobile-navigation
+  &__wrapper
+    background: var(--background-color)
+    border-top: 3px solid var(--border-color)
+    padding: 16px
+    height: 100%
+    width: 100%
+    transform: translateX(-100%)
+    transition: transform .1s linear
+    overflow-y: scroll
+    padding-bottom: var(--header-bottom-position)
+
+  &__body
+    display: grid
+    gap: 30px
+
+  &__links
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+    li a
+      padding: 4px 0
+      font-size: 1.1em
+
+  &__icons
+    column-gap: 16px
+    justify-content: flex-start

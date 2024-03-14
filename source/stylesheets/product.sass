@@ -1,0 +1,210 @@
+.product-container
+  display: grid
+  grid-template-columns: 1fr 360px
+  column-gap: 40px
+  row-gap: 40px
+
+  @media screen and (max-width: $break-medium)
+    grid-template-columns: minmax(0, 1fr)
+
+.product-breadcrumb
+  margin-bottom: 16px
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  column-gap: 12px
+  row-gap: 4px
+  flex-wrap: wrap
+  font-size: .925em
+  font-weight: bold
+
+  .next-arrow
+    width: 5px
+    fill: var(--primary-text-color)
+    opacity: .8
+
+  a
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+.reset-selection-button-container
+  text-align: center
+  width: 100%
+
+  button.reset-selection-button
+    display: none
+
+.product-form
+  button
+    max-width: 100%
+
+  .select
+    margin: 0
+
+.product_option_groups
+  display: flex
+  flex-direction: column
+  gap: 16px
+
+.product-selects
+  margin-bottom: 16px
+
+.product-detail
+  display: flex
+  flex-direction: column
+  row-gap: 32px
+
+  &__header
+    display: flex
+    flex-direction: column
+    row-gap: 0
+    align-items: flex-start
+    padding-bottom: 24px
+    border-bottom: 3px solid var(--accent-background-color)
+
+  &__pricing
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: var(--serif-font)
+    font-size: 1.5em
+    gap: 12px
+
+  &__status
+    font-weight: 500
+    font-size: .75rem
+    line-height: normal
+    padding: 6px 10px
+    color: var(--product-status-text-color)
+    background: var(--product-status-background-color)
+    border-radius: var(--product-status-border-radius)
+    font-family: var(--sans-serif-font)
+
+  &__description
+    margin-top: 16px
+
+    p
+      margin: revert
+
+    &>:first-child
+      margin-top: 0
+
+    &>:last-child
+      margin-bottom: 0
+
+    ol, ul
+      margin: 1em
+
+    ul
+      list-style: disc
+
+    ol
+      list-style: decimal
+
+    a
+      text-decoration: underline
+
+  h1
+    margin-bottom: 0
+    text-align: left
+
+#instant-checkout-button
+  margin-top: 12px
+
+.product-detail__share
+  color: var(--text-color)
+  font-weight: 500
+  position: relative
+
+  .product-share-launch
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 6px
+
+    &:hover
+      color: var(--link-hover-color)
+
+      span
+        text-decoration: underline
+        text-underline-offset: 4px
+
+    svg
+      height: 22px
+      width: 22px
+      fill: currentColor
+
+  .product-share-buttons
+    display: none
+    gap: 16px
+    position: absolute
+    background: var(--background-color)
+    border: 2px solid var(--border-color)
+    top: calc(100% + 4px)
+    padding: 12px
+    font-size: .925em
+    flex-direction: column
+    z-index: 3
+
+    li a
+      color: var(--text-color)
+      display: flex
+      gap: 12px
+      align-items: center
+
+    &[aria-hidden="false"]
+      display: flex
+
+    a:hover
+      color: var(--link-hover-color)
+
+    svg
+      fill: currentColor
+      height: 16px
+      width: 16px
+
+.related-products-container
+  margin-top: 64px
+
+  @media screen and (max-width: $break-medium)
+    margin-top: 32px
+
+.related-products-title
+  margin-bottom: 40px
+  text-align: center
+  position: relative
+  width: 100%
+  font-family: var(--sans-serif-font)
+  font-size: 1.5em
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.2em
+
+  span
+    background: var(--background-color)
+    padding: 0 20px
+    z-index: 2
+    position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 100%
+    height: 3px
+    background: var(--accent-background-color)
+    left: 0
+    z-index: 1
+
+.related-products-header
+  display: flex
+  align-items: center
+
+.related-product-list
+  --columns: 4
+
+  @media screen and (max-width: $break-medium)
+    --columns: 2

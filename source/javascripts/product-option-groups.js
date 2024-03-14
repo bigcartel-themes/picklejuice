@@ -9,15 +9,15 @@ function processProduct(product) {
       enableAddButton();
     }
   }
-  if ($('.product_option_select').length) {
-    if (show_sold_out_product_options === 'false') {
+  if ($('.product-option-select').length) {
+    if (themeOptions.showSoldOutOptions === false) {
       $('option[disabled-type="sold-out"]').wrap('<span>');
     }
   }
   $('.reset-selection-button').on('click', function() {
-    enableAddButton();
     $('#option').val(0);
     $(this).hide();
+    enableAddButton();
     $(".product_option_group option").each(function(index,element) {
       if (element.value > 0) {
         enableSelectOption($(element));
@@ -79,7 +79,9 @@ function setInitialProductOptionStatuses(product) {
 
 function processAvailableDropdownOptions(product, changed_dropdown) {
   selected_values = getSelectedValues();
-  num_selected = selected_values.count(item => item > 0);
+  num_selected = selected_values.count(function (item) {
+    return item > 0;
+  });
   allSelected = selected_values.every(isGreaterThanZero);
   num_option_groups = product.option_groups.length;
   changed_value = parseInt(changed_dropdown.val());
