@@ -20,7 +20,7 @@
   @media screen and (max-width: $break-large)
     --columns: calc(#{"{{ theme.max_products_per_row }}"} - 1)
 
-  @media screen and (max-width: $break-large)
+  @media screen and (max-width: $break-small)
     --columns: #{"{{ theme.max_products_per_row_mobile }}"}
     --gap: calc(var(--spacing-unit) * 2)
     justify-content: flex-start
