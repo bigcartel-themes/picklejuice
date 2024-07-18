@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "images": [
     {
       "variable": "logo",
@@ -33,15 +33,17 @@
               "secondary_font": "Goudy Bookletter 1911"
             },
             "colors": {
+              "announcement_background_color": "#2A6520",
+              "announcement_text_color": "#FFFFFF",
               "background_color": "#DBF1DA",
               "link_color": "#000000",
-              "link_hover_color": "#227e13",
+              "link_hover_color": "#2A6520",
               "text_color": "#000000",
               "accent_background_color": "#FFFFFF",
               "border_color": "#333333",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#333333",
-              "button_hover_background_color": "#227e13"
+              "button_hover_background_color": "#2A6520"
             }
           },
           {
@@ -51,6 +53,8 @@
               "secondary_font": "Cabin"
             },
             "colors": {
+              "announcement_background_color": "#1028B7",
+              "announcement_text_color": "#FFFFFF",
               "background_color": "#E6F3FF",
               "link_color": "#000000",
               "link_hover_color": "#1028B7",
@@ -74,6 +78,8 @@
               "secondary_font": "DM Sans"
             },
             "colors": {
+              "announcement_background_color": "#5900FF",
+              "announcement_text_color": "#FFFFFF",
               "background_color": "#FFFFFF",
               "link_color": "#000000",
               "link_hover_color": "#5900FF",
@@ -97,6 +103,8 @@
               "secondary_font": "Cutive Mono"
             },
             "colors": {
+              "announcement_background_color": "#584B53",
+              "announcement_text_color": "#FFFFFF",
               "background_color": "#FEF5EF",
               "link_color": "#000000",
               "link_hover_color": "#584B53",
@@ -115,6 +123,8 @@
               "secondary_font": "Source Sans Pro"
             },
             "colors": {
+              "announcement_background_color": "#8A5A5A",
+              "announcement_text_color": "#FFFFFF",
               "background_color": "#F1F1F1",
               "link_color": "#000000",
               "link_hover_color": "#8A5A5A",
@@ -152,6 +162,15 @@
       "variable": "accent_background_color",
       "label": "Accent background",
       "default": "#ffffff"
+    },{
+      "variable": "announcement_background_color",
+      "label": "Announcement Background",
+      "default": "#2A6520"
+    },
+    {
+      "variable": "announcement_text_color",
+      "label": "Announcement Text",
+      "default": "#FFFFFF"
     },
     {
       "variable": "text_color",
@@ -166,7 +185,7 @@
     {
       "variable": "link_hover_color",
       "label": "Link hover",
-      "default": "#227e13"
+      "default": "#2A6520"
     },
     {
       "variable": "button_text_color",
@@ -181,7 +200,7 @@
     {
       "variable": "button_hover_background_color",
       "label": "Button hover background",
-      "default": "#227e13"
+      "default": "#2A6520"
     },
     {
       "variable": "border_color",
@@ -206,6 +225,12 @@
     "link_color": "{{ secondary_color }}"
   },
   "options": [
+    {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
