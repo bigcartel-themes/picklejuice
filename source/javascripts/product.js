@@ -114,32 +114,3 @@ $(document).ready(function() {
 function getRandomIndex(elements) {
   return Math.floor(Math.random() * elements.length);
 }
-
-const shareButton = document.querySelector(".product-share-launch");
-const handleWebShare = () => {
-  const title = document.title;
-  const url = window.location.href;
-  navigator
-    .share({ title, url })
-    .catch((error) => console.error("Sharing failed:", error));
-}
-
-const toggleShareLinks = () => {
-  const shareLinks = document.querySelector(".product-share-buttons");
-
-  if (shareLinks) {
-    const isHidden = shareLinks.getAttribute("aria-hidden") === "true";
-    shareLinks.setAttribute("aria-hidden", isHidden ? "false" : "true");
-    shareButton.setAttribute("aria-expanded", isHidden ? "true" : "false");
-  }
-}
-
-if (shareButton) {
-  shareButton.addEventListener("click", () => {
-    if (navigator.share) {
-      handleWebShare();
-    } else {
-      toggleShareLinks();
-    }
-  });
-}
