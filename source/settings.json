@@ -355,13 +355,6 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
-      "variable": "share_buttons",
-      "label": "Show product share button",
-      "type": "boolean",
-      "default": true,
-      "description": "Adds a Share button to your Product page after the description"
-    },
-    {
       "variable": "show_related_products",
       "label": "Show related products",
       "type": "boolean",
