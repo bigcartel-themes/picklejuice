@@ -10,8 +10,8 @@
   <div class="cart-container">
     {% if cart.items == blank %}
       <div class="cart-empty">
-        <div>Your cart is empty! Sounds like a good time to start shopping.</div>
-        <a href="/products" class="button">Shop now</a>
+        <div>Your cart is empty!</div>
+        <a href="/" class="button">Shop now</a>
       </div>
     {% else %}
       <form method="post" id="cart_form" class="cart-form" action="/cart" accept-charset="utf8">
@@ -65,7 +65,7 @@
             </div>
             <div class="cart-submit">
               <button type="submit" name="checkout" class="button button--checkout">Checkout</button>
-              <a class="button minimal-button" href="/products">Continue Shopping</a>
+              <a class="button minimal-button" href="/">Continue Shopping</a>
             </div>
           </div>
         </div>
