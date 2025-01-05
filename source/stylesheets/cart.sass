@@ -29,13 +29,13 @@
     grid-template-columns: 1fr
 
 .cart-header
-  display: flex
-  align-items: flex-end
-  justify-content: flex-start
-  margin-bottom: 32px
+  display: grid
+  justify-content: flex-end
+  margin-bottom: 10px
 
-  .page-title
-    margin-bottom: 0
+  .copy-cart-link
+    margin-left: auto
+    padding: 0
 
 .cart-items
   border-bottom: 2px solid var(--border-color)
@@ -152,8 +152,11 @@
     font-weight: 500
     font-size: .925em
     padding: 8px 16px
-    text-decoration: underline
+    text-decoration: none
     width: auto
+
+    &:hover
+      text-decoration: underline
 
     @media (max-width: $break-medium)
       padding: 4px 0
