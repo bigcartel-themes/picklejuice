@@ -95,22 +95,3 @@ function disableSelectOption(select_option, type) {
     }
   }
 }
-$(document).ready(function() {
-  if ($('.all-related-products').length) {
-    var elements = $('.all-related-products').children().toArray();
-    var num_to_display = $('.related-products-container').data('num-products');
-    for (var i=1; i<=num_to_display; i++) {
-      var randomIndex = getRandomIndex(elements);
-      $('.related-product-list').append($('.all-related-products').children().eq(randomIndex));
-      elements.splice(randomIndex, 1);
-    }
-    let total_inserted = $('.related-product-list').children().length;
-    if (total_inserted < num_to_display) {
-      $('.related-product-list').addClass('product-list--center');
-    }
-    $('.all-related-products').remove();
-  }
-});
-function getRandomIndex(elements) {
-  return Math.floor(Math.random() * elements.length);
-}
