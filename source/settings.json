@@ -519,12 +519,14 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
+      "max_length": 500,
       "description": "Displays an announcement message on the top of every page"
     },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
       "type": "text",
+      "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
