@@ -188,17 +188,25 @@
     <footer class="footer" data-bc-hook="footer">
       <div class="container">
         <div class="border"></div>
-        <ul class="footer__pages">
+        <ul class="footer__pages footer__pages--main">
           <li><a href="/">{{ pages.home.name }}</a></li>
           <li><a href="/products">{{ pages.products.name }}</a></li>
-          {% for page in pages.all %}
-            <li>{{ page | link_to }}</li>
-          {% endfor %}
           <li><a href="/contact">{{ pages.contact.name }}</a></li>
-          {% if store.website != blank %}
-            <li><a href="{{ store.website }}">Back to site</a></li>
-          {% endif %}
         </ul>
+        {% if categories.active.size > 0 %}
+          <ul class="footer__pages footer__pages--categories">
+            {% for category in categories.active %}
+              <li>{{ category | link_to }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if pages.all.size > 0 %}
+          <ul class="footer__pages footer__pages--pages">
+            {% for page in pages.all %}
+              <li>{{ page | link_to }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
           or theme.bluesky_url != blank
