@@ -77,10 +77,16 @@
     font-size: .75rem
     line-height: normal
     padding: 6px 10px
-    color: var(--product-status-text-color)
-    background: var(--product-status-background-color)
     border-radius: var(--product-status-border-radius)
     font-family: var(--sans-serif-font)
+
+    &.status-primary
+      background: var(--product-status-background-color)
+      color: var(--product-status-text-color)
+
+    &.status-secondary
+      background: var(--product-status-background-secondary-color)
+      color: var(--product-status-text-secondary-color)
 
   &__description
     margin-top: 16px

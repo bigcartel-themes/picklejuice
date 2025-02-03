@@ -131,6 +131,7 @@
                     {% when 'coming-soon' %}
                       {% assign related_product_status = 'Coming soon' %}
                   {% endcase %}
+                  {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                   <div class="product-list-thumb product-list-thumb--{{ theme.grid_image_style }} {{ related_product.css_class }}">
                     <a class="product-list-link" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
                       <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
@@ -150,7 +151,7 @@
                           "
                           data-sizes="auto"
                         >
-                        {% if related_product_status != blank %}<div class="product-list-thumb-status">{{ related_product_status }}</div>{% endif %}
+                        {% if related_product_status != blank %}<div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>{% endif %}
                       </div>
                       <div class="product-list-thumb-info">
                         <div class="product-list-thumb-name">{{ related_product.name }}</div>
