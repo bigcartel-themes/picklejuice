@@ -529,19 +529,36 @@
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays a search field in the Shop dropdown menu"
-    },
-    {
       "variable": "nav_items",
       "label": "Navigation items",
       "type": "select",
       "options": "0..4",
       "default": 2,
       "description": "The number of custom page links show in the main navigation"
+    },
+    {
+      "variable": "homepage_slideshow_autoplay",
+      "label": "Auto-play homepage slideshow",
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically advances slides in the homepage slideshow"
+    },
+    {
+      "variable": "homepage_slideshow_speed",
+      "label": "Slideshow speed",
+      "type": "select",
+      "options": [
+        ["Slowest", 6000],
+        ["Slower", 5000],
+        ["Normal", 4000],
+        ["Faster", 3500],
+        ["Fastest", 3000]
+      ],
+      "default": 4000,
+      "description": "Controls how quickly slides advance in the auto-playing slideshow",
+      "requires": [
+        "homepage_slideshow_autoplay eq true"
+      ]
     },
     {
       "variable": "featured_header",
@@ -642,6 +659,13 @@
       ],
       "default": "show-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a search field in the Shop dropdown menu"
     },
     {
       "variable": "show_related_products",
