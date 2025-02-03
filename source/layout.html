@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
@@ -188,6 +189,9 @@
     <footer class="footer" data-bc-hook="footer">
       <div class="container">
         <div class="border"></div>
+        {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
+          <div class="footer__custom_text">{{ theme.footer_text }}</div>
+        {% endif %}
         <ul class="footer__pages footer__pages--main">
           <li><a href="/">{{ pages.home.name }}</a></li>
           <li><a href="/products">{{ pages.products.name }}</a></li>
@@ -265,6 +269,9 @@
               {% endif %}
             </ul>
           </nav>
+        {% endif %}
+        {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
+          <div class="footer__custom_text">{{ theme.footer_text }}</div>
         {% endif %}
         <div class="footer-store-credit">{{ powered_by_big_cartel }}</div>
       </div>
