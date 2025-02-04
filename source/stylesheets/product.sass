@@ -77,10 +77,16 @@
     font-size: .75rem
     line-height: normal
     padding: 6px 10px
-    color: var(--product-status-text-color)
-    background: var(--product-status-background-color)
     border-radius: var(--product-status-border-radius)
     font-family: var(--sans-serif-font)
+
+    &.status-primary
+      background: var(--product-status-background-color)
+      color: var(--product-status-text-color)
+
+    &.status-secondary
+      background: var(--product-status-background-secondary-color)
+      color: var(--product-status-text-secondary-color)
 
   &__description
     margin-top: 16px
@@ -109,9 +115,6 @@
   h1
     margin-bottom: 0
     text-align: left
-
-#instant-checkout-button
-  margin-top: 12px
 
 .related-products-container
   margin-top: 64px
@@ -156,3 +159,13 @@
 
   @media screen and (max-width: $break-medium)
     --columns: 2
+
+#instant-checkout-button
+  margin-top: 12px
+
+.inventory-status-message
+  color: var(--inventory-status-text-color)
+  margin: 10px 0 auto
+  text-align: center
+  padding: 8px 0
+  font-weight: 500

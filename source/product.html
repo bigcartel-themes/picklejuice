@@ -7,7 +7,7 @@
 	{% when 'coming-soon' %}
 		{% assign product_status = 'Coming soon' %}
 {% endcase %}
-
+{% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
 <nav class="product-breadcrumb" role="navigation" aria-label="breadcrumbs">
   {% if product.categories != blank %}
     <a href="/">{{ pages.home.name }}</a>
@@ -138,7 +138,7 @@
       <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>
       <div class="product-detail__pricing">
         <div class="product-detail__price"> {{ product_pricing }}</div>
-        {% if product_status != blank %}<div class="product-detail__status">{{ product_status }}</div>{% endif %}
+        {% if product_status != blank %}<div class="product-detail__status {{ status_class }}">{{ product_status }}</div>{% endif %}
       </div>
     </div>
     {% if product.status == 'active' %}
@@ -165,7 +165,7 @@
               </div>
             {% else %}
               <div class="select">
-                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
+                <select class="product-option-select" id="option" name="cart[add][id]" aria-label="Select variant" required>
                   <option value="" disabled="disabled" selected>Select variant</option>
                   {% for option in product.options %}
                     <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
@@ -178,6 +178,7 @@
         {% endif %}
         <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
+        <div class="inventory-status-message" data-inventory-message></div>
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
             <button class="button minimal-button reset-selection-button" type="reset">Reset selection</button>
