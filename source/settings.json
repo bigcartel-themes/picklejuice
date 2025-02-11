@@ -734,7 +734,7 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product options in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": [ "inventory" ]
     },
     {
       "variable": "show_low_inventory_messages",
@@ -786,7 +786,7 @@
       "label": "Footer text",
       "type": "text",
       "max_length": 2048,
-      "description": "Show a custom message to your shop's footer"
+      "description": "Show a custom message in your shop's footer"
     },
     {
       "variable": "footer_text_position",
@@ -797,7 +797,7 @@
         ["End of footer", "end"]
       ],
       "default": "after",
-      "description": "Choose where to show your footer message (beginning or end)",
+      "description": "Choose where to show your footer message",
       "requires": [
         "footer_text present"
       ]
