@@ -403,22 +403,22 @@
               "secondary_font": "DM Sans"
             },
             "colors": {
-              "announcement_background_color": "#7EA9B1",
+              "announcement_background_color": "#99B7BC",
               "announcement_text_color": "#FFFFFF",
-              "background_color": "#E0F4F2",
-              "link_color": "#4A7C75",
-              "link_hover_color": "#7EA9B1",
-              "text_color": "#4A7C75",
-              "accent_background_color": "#D3EEEB",
-              "border_color": "#C5DDE2",
+              "background_color": "#F5FAFA",
+              "link_color": "#506F75",
+              "link_hover_color": "#99B7BC",
+              "text_color": "#506F75",
+              "accent_background_color": "#E8F3F4",
+              "border_color": "#D5E5E7",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#7EA9B1",
-              "button_hover_background_color": "#669D95",
+              "button_background_color": "#99B7BC",
+              "button_hover_background_color": "#7A9CA2",
               "product_status_text_color": "#FFFFFF",
-              "product_status_background_color": "#7EA9B1",
+              "product_status_background_color": "#99B7BC",
               "product_status_text_secondary_color": "#FFFFFF",
-              "product_status_background_secondary_color": "#999999",
-              "inventory_status_text_color": "#7EA9B1"
+              "product_status_background_secondary_color": "#B3C9CC",
+              "inventory_status_text_color": "#99B7BC"
             }
           }
         ]
