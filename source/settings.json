@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "3.5.2",
+  "version": "3.6.0",
   "images": [
     {
       "variable": "logo",
@@ -549,6 +549,13 @@
       "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
+    {
+      "variable": "contact_text",
+      "label": "Contact page text",
+      "type": "text",
+      "max_length": 1024,
+      "description": "Displays a message on your contact page"
     },
     {
       "variable": "nav_items",

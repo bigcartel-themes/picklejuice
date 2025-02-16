@@ -27,7 +27,8 @@
 
   .recaptcha-note
     font-family: var(--serif-font)
-    margin-top: 10px
+    font-size: 0.75rem
+    margin-top: 30px
     text-align: center
 
     a
@@ -42,3 +43,28 @@
     @media screen and (max-width: $break-small)
       margin-top: 0
       max-width: 100%
+
+.message-banner
+  &--contact
+    color: var(--text-color)
+    background-color: unset
+    padding: 0
+    text-align: center
+    width: 100%
+
+    a
+      display: inline
+      white-space: nowrap
+      text-decoration: underline
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 10px 0
+      
+    li
+      text-align: center
+    
+    img
+      display: block
+      margin: 10px auto
