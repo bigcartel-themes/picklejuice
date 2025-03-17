@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "images": [
     {
       "variable": "logo",
@@ -159,8 +159,8 @@
           {
             "style_name": "Bold #3",
             "fonts": {
-              "primary_font": "Syne",
-              "secondary_font": "Inter"
+              "primary_font": "Rubik Dirt",
+              "secondary_font": "Merriweather"
             },
             "colors": {
               "announcement_background_color": "#006D77",
@@ -197,7 +197,7 @@
               "announcement_text_color": "#FF6B6B",
               "background_color": "#FF6B6B",
               "link_color": "#FFFFFF",
-              "link_hover_color": "#4ECDC4",
+              "link_hover_color": "#FFE81A",
               "text_color": "#FFFFFF",
               "accent_background_color": "#FF5252",
               "border_color": "#FF8787",
@@ -214,8 +214,8 @@
           {
             "style_name": "Playful #2",
             "fonts": {
-              "primary_font": "Chewy",
-              "secondary_font": "DM Sans"
+              "primary_font": "Over the Rainbow",
+              "secondary_font": "Work Sans"
             },
             "colors": {
               "announcement_background_color": "#FFE81A",
@@ -229,8 +229,8 @@
               "button_text_color": "#00B894",
               "button_background_color": "#FFE81A",
               "button_hover_background_color": "#FFE200",
-              "product_status_text_color": "#FFFFFF",
-              "product_status_background_color": "#00B894",
+              "product_status_text_color": "#000000",
+              "product_status_background_color": "#FFE200",
               "product_status_text_secondary_color": "#FFFFFF",
               "product_status_background_secondary_color": "#999999",
               "inventory_status_text_color": "#00B894"
@@ -718,7 +718,7 @@
       "label": "Related products",
       "type": "select",
       "options": "1..8",
-      "default": 4,
+      "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
         "show_related_products eq true"
@@ -808,6 +808,13 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
     },
     {
       "variable": "money_format",
