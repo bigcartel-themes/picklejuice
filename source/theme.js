@@ -4,6 +4,7 @@
 //= require javascripts/cart
 //= require javascripts/home-carousel
 //= require javascripts/product
+//= require javascripts/product-payment-messaging
 //= require javascripts/product-option-groups
 //= require javascripts/navigation
 //= require javascripts/product-carousel
