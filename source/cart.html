@@ -19,6 +19,9 @@
         <a href="{{ cart.shareable_link }}" class="button minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
       </div>
       {% endif %}
+      {% if theme.cart_text != blank %}
+        <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
+      {% endif %}
       <form method="post" id="cart_form" class="cart-form" action="/cart" accept-charset="utf8">
         <div class="cart-columns">
           <div class="cart-details">
