@@ -43,7 +43,7 @@
               <span></span><span></span><span></span><span></span>
             </button>
             {% if theme.show_search %}
-              <button class="open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="Open search menu">
+              <button class="open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="{{ t['navigation.search'] }}">
                 <svg fill="currentColor" aria-hidden="true" viewBox="3.9 3.8 22.2 22.4"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"></path></svg>
               </button>
             {% endif %}
@@ -63,12 +63,12 @@
           </div>
           <div class="header-right">
             {% if theme.show_search %}
-              <button class="open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="Open search menu">
+              <button class="open-search" type="button" aria-haspopup="dialog" aria-controls="search-modal" title="{{ t['navigation.search'] }}">
                 <svg fill="currentColor" aria-hidden="true" viewBox="3.9 3.8 22.2 22.4"><path d="M26.1 24.7l-5.9-5.9c1.3-1.6 2-3.6 2-5.8 0-5.1-4.1-9.2-9.2-9.2S3.9 8 3.9 13.1s4.1 9.2 9.2 9.2c2.2 0 4.2-.8 5.8-2l5.9 5.9 1.3-1.5zM5.9 13.1c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2-3.2 7.2-7.2 7.2-7.2-3.2-7.2-7.2z"></path></svg>
               </button>
             {% endif %}
             <div class="header-cart">
-              <a href="/cart" class="header-cart__link" title="View cart">
+              <a href="/cart" class="header-cart__link" title="{{ t['cart.view_cart'] }}">
                 <svg class="cart-icon" aria-hidden="true" viewBox="5 319.01 5110 4487.99">
                   <g id="l6c2BFAwyiaLStnBR2n2kt4">
                     <g>
@@ -80,8 +80,8 @@
                   </g>
                 </svg>
                 <span class="cart-value" aria-hidden="true">{{ cart.item_count }}</span>
-                <span class="visually-hidden">View cart</span>
-                <span class="cart-num-items-hidden visually-hidden" aria-live="polite" aria-atomic="true">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
+                <span class="visually-hidden">{{ t['cart.view_cart'] }}</span>
+                <span class="cart-num-items-hidden visually-hidden" aria-live="polite" aria-atomic="true">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}</span>
               </a>
             </div>
           </div>
@@ -92,13 +92,13 @@
               {% if categories.active != blank %}
                 <div class="category-nav header-category-nav">
                   <button class="category-nav-heading" aria-label="Open category navigation" aria-controls="header-dropdown" aria-expanded="false">
-                    <div class="category-nav-page">Shop</div>
+                    <div class="category-nav-page">{{ t['navigation.shop'] }}</div>
                     <svg aria-hidden="true" fill="currentColor" class="category-nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
                   </button>
                   <div class="category-dropdown" id="header-dropdown" aria-hidden="true">
                     {% if categories.active != blank %}
                       <ul class="dropdown-list categories-list">
-                        <li><a href="/products">All products</a></li>
+                        <li><a href="/products">{{ t['navigation.all_products'] }}</a></li>
                         {% for category in categories.active %}
                           <li>{{ category | link_to }}</li>
                         {% endfor %}
@@ -107,13 +107,13 @@
                   </div>
                 </div>
               {% else %}
-                <a href="/products">{{ pages.products.name }}</a>
+                <a href="/products">{{ t['navigation.products'] }}</a>
               {% endif %}
             </li>
             {% for page in pages.all limit: theme.nav_items %}
               <li class="header-page-link">{{ page | link_to }}</li>
             {% endfor %}
-            <li class="header-page-link"><a href="/contact">{{ pages.contact.name }}</a></li>
+            <li class="header-page-link"><a href="/contact">{{ t['navigation.contact'] }}</a></li>
           </ul>
         </nav>
       </div>
@@ -141,15 +141,17 @@
                   {% assign related_product_status = '' %}
                   {% case related_product.status %}
                     {% when 'active' %}
-                      {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %}
+                      {% if related_product.on_sale %}
+                        {% assign related_product_status = t['products.on_sale'] %}
+                      {% endif %}
                     {% when 'sold-out' %}
-                      {% assign related_product_status = 'Sold out' %}
+                      {% assign related_product_status = t['products.sold_out'] %}
                     {% when 'coming-soon' %}
-                      {% assign related_product_status = 'Coming soon' %}
+                      {% assign related_product_status = t['products.coming_soon'] %}
                   {% endcase %}
                   {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                   <div class="product-list-thumb product-list-thumb--{{ theme.grid_image_style }} {{ related_product.css_class }}">
-                    <a class="product-list-link" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+                    <a class="product-list-link" href="{{ related_product.url }}" title="{{ related_product.name | escape }}">
                       <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                         <img
                           alt=""
@@ -187,7 +189,7 @@
           {% endif %}
         {% endif %}
         {% if product_divs != blank %}
-          {% assign related_products_header = theme.related_products_header | default: 'You might also like' %}
+          {% assign related_products_header = t['products.related_products'] %}
           <aside class="related-products-container" data-num-products="4" role="complementary" aria-label="{{ related_products_header }}">
             <div class="wrapper">
               <div class="related-products-header">
@@ -208,9 +210,9 @@
           <div class="footer__custom_text">{{ theme.footer_text }}</div>
         {% endif %}
         <ul class="footer__pages footer__pages--main">
-          <li><a href="/">{{ pages.home.name }}</a></li>
-          <li><a href="/products">{{ pages.products.name }}</a></li>
-          <li><a href="/contact">{{ pages.contact.name }}</a></li>
+          <li><a href="/">{{ t['navigation.home'] }}</a></li>
+          <li><a href="/products">{{ t['navigation.products'] }}</a></li>
+          <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
         </ul>
         {% if categories.active.size > 0 %}
           <ul class="footer__pages footer__pages--categories">
@@ -316,7 +318,7 @@
 
           <nav aria-label="Browse products">
             <ul class="mobile-navigation__links">
-              <li><a href="/products">{% if theme.collections %}All Collections{% else %}All Products{% endif %}</a></li>
+              <li><a href="/products">{% if theme.collections %}{{ t['navigation.categories'] }}{% else %}{{ t['navigation.products'] }}{% endif %}</a></li>
               {% for category in categories.active %}
                 <li>{{ category | link_to }}</li>
               {% endfor %}
@@ -328,9 +330,9 @@
               {% for page in pages.all %}
                 <li>{{ page | link_to }}</li>
               {% endfor %}
-              <li><a href="/contact">{{ pages.contact.name }}</a></li>
+              <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
               {% if store.website != blank %}
-                <li><a href="{{ store.website }}">Back to site</a></li>
+                <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
               {% endif %}
             </ul>
           </nav>
@@ -423,7 +425,7 @@
             </button>
             <form class="search-modal__form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
               <input type="hidden" name="utf8" value='✓'>
-              <label class="search-modal__label" for="search-input">Search products</label>
+              <label class="search-modal__label" for="search-input">{{ t['navigation.search'] }}</label>
               <input class="search-modal__input" id="search-input" name="search" type="search" autocomplete="off" />
               <button type="submit" class="search-modal__submit" aria-label="Submit search form">
                 <svg class="search-modal__submit-icon" aria-hidden="true" fill="currentColor" height="22" width="22" viewBox="0 0 30 30">
@@ -462,6 +464,11 @@
         primaryTextColor: '{{ theme.text_color }}',
         textColor: '{{ theme.text_color }}',
         borderColor: '{{ theme.border_color }}',
+      };
+      const themeTranslations = {
+        cart: {
+          shareThisCartLinkCopySuccess: "{{ t['cart.share_this_cart_link_copy_success'] | replace: '"', '\"' | replace: "'", "\\'" }}"
+        }
       };
     </script>
     {% if theme.announcement_message_text != blank %}
