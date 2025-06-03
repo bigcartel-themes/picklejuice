@@ -305,11 +305,11 @@
         {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
           <div class="footer__custom_text">{{ theme.footer_text }}</div>
         {% endif %}
-        <div class="footer-store-credit" data-bc-hook="credit">
-          {% unless theme.hide_big_cartel_credit %}
+        {% unless theme.hide_big_cartel_credit %}
+          <div class="footer-store-credit" data-bc-hook="credit">
             {{ big_cartel_credit_logo }}
-          {% endunless %}  
-        </div>
+          </div>
+        {% endunless %}
       </div>
     </footer>
     <div id="mobile-navigation" aria-hidden="true" role="dialog" aria-modal="true">
