@@ -1,28 +1,30 @@
 {% assign product_status = '' %}
 {% case product.status %}
 	{% when 'active' %}
-		{% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+		{% if product.on_sale %}
+      {% assign product_status = t['products.on_sale'] %}
+    {% endif %}
 	{% when 'sold-out' %}
-		{% assign product_status = 'Sold out' %}
+		{% assign product_status = t['products.sold_out'] %}
 	{% when 'coming-soon' %}
-		{% assign product_status = 'Coming soon' %}
+		{% assign product_status = t['products.coming_soon'] %}
 {% endcase %}
 {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
 <nav class="product-breadcrumb" role="navigation" aria-label="breadcrumbs">
   {% if product.categories != blank %}
-    <a href="/">{{ pages.home.name }}</a>
+    <a href="/">{{ t['navigation.home'] }}</a>
     <svg class="next-arrow" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
-    <a href="/products">{% if theme.collections %}Collections{% else %}{{ pages.products.name }}{% endif %}</a>
+    <a href="/products">{% if theme.collections %}{{ t['navigation.categories'] }}{% else %}{{ t['navigation.products'] }}{% endif %}</a>
     <svg class="next-arrow" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
     {{ product.categories.first | link_to }}
   {% else %}
-    <a href="/">{{ pages.home.name }}</a>
+    <a href="/">{{ t['navigation.home'] }}</a>
     <svg class="next-arrow" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
-    <a href="/products">{% if theme.collections %}Collections{% else %}{{ pages.products.name }}{% endif %}</a>
+    <a href="/products">{% if theme.collections %}{{ t['navigation.categories'] }}{% else %}{{ t['navigation.products'] }}{% endif %}</a>
   {% endif %}
 </nav>
 
-<div class="product-container">
+<div class="product-container" data-bc-hook="product-container">
   <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">
     {% if product.images.size > 1 %}
       <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
@@ -161,8 +163,8 @@
                 <input id="option" name="cart[add][id]" type="hidden" value="0">
                 {% for option_group in product.option_groups %}
                   <div class="select">
-                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
-                      <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                      <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                       {% for value in option_group.values %}
                         <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
                       {% endfor %}
@@ -173,10 +175,10 @@
               </div>
             {% else %}
               <div class="select">
-                <select class="product-option-select" id="option" name="cart[add][id]" aria-label="Select variant" required>
-                  <option value="" disabled="disabled" selected>Select variant</option>
+                <select class="product-option-select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
+                  <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
                   {% for option in product.options %}
-                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
                   {% endfor %}
                 </select>
                 <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.98 1.01 14.02 8.02"> <path d="M7.28125 8.71875L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L8 6.59375L13.2812 1.3125C13.6562 0.90625 14.3125 0.90625 14.6875 1.3125C15.0938 1.6875 15.0938 2.34375 14.6875 2.71875L8.6875 8.71875C8.3125 9.125 7.65625 9.125 7.28125 8.71875Z"></path> </svg>
@@ -184,12 +186,12 @@
             {% endif %}
           </div>
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}">{{ t['products.add_to_cart'] }}</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         <div class="inventory-status-message" data-inventory-message></div>
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
-            <button class="button minimal-button reset-selection-button" type="reset">Reset selection</button>
+            <button class="button minimal-button reset-selection-button" type="reset">{{ t['products.reset'] }}</button>
           </div>
         {% endif %}
       </form>

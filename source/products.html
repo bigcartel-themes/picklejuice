@@ -1,4 +1,14 @@
-<h1 class="page-title">{% if page.full_url contains 'search=' %}Search Results{% else %}{{ page.name }}{% endif %}</h1>
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.products'] %}
+{% if page.full_url contains "search=" %}
+  {% assign page_title = t['products.search_results'] %}
+{% elsif page.name != 'Products' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
+<h1 class="page-title">{{ page_title }}</h1>
 
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
@@ -11,15 +21,17 @@
           {% assign product_status = '' %}
           {% case product.status %}
             {% when 'active' %}
-              {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+              {% if product.on_sale %}
+                {% assign product_status = t['products.on_sale'] %}
+              {% endif %}
             {% when 'sold-out' %}
-              {% assign product_status = 'Sold out' %}
+              {% assign product_status = t['products.sold_out'] %}
             {% when 'coming-soon' %}
-              {% assign product_status = 'Coming soon' %}
+              {% assign product_status = t['products.coming_soon'] %}
           {% endcase %}
           {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
           <div class="product-list-thumb product-list-thumb--{{ theme.grid_image_style }} {{ product.css_class }}">
-            <a class="product-list-link{% if product.images[1] != blank and theme.secondary_image_on_hover == true %} product-list-link--show-secondary{% endif %}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+            <a class="product-list-link{% if product.images[1] != blank and theme.secondary_image_on_hover == true %} product-list-link--show-secondary{% endif %}" href="{{ product.url }}" title="{{ product.name | escape }}">
               <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                 <img
                   alt=""
@@ -88,30 +100,30 @@
         {% if paginate.previous.is_link %}
           <a aria-label="Go to previous page" class="page-link previous-page-link" href="{{ paginate.previous.url }}">
             <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M0.46875 6.96875L6.46875 1C6.75 0.6875 7.21875 0.6875 7.53125 1C7.8125 1.28125 7.8125 1.75 7.53125 2.03125L2.03125 7.5L7.5 13C7.8125 13.2812 7.8125 13.75 7.5 14.0312C7.21875 14.3438 6.75 14.3438 6.46875 14.0312L0.46875 8.03125C0.15625 7.75 0.15625 7.28125 0.46875 6.96875Z"></path></svg>
-            <span>Previous</span>
+            <span>{{ t['navigation.previous'] }}</span>
           </a>
         {% else %}
           <span class="page-link previous-page-link disabled">
             <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M0.46875 6.96875L6.46875 1C6.75 0.6875 7.21875 0.6875 7.53125 1C7.8125 1.28125 7.8125 1.75 7.53125 2.03125L2.03125 7.5L7.5 13C7.8125 13.2812 7.8125 13.75 7.5 14.0312C7.21875 14.3438 6.75 14.3438 6.46875 14.0312L0.46875 8.03125C0.15625 7.75 0.15625 7.28125 0.46875 6.96875Z"></path></svg>
-            <span>Previous</span>
+            <span>{{ t['navigation.previous'] }}</span>
           </span>
         {% endif %}
         {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
 
         {% if paginate.next.is_link %}
           <a aria-label="Go to next page" class="page-link next-page-link" href="{{ paginate.next.url }}">
-            <span>Next</span>
+            <span>{{ t['navigation.next'] }}</span>
             <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
           </a>
         {% else %}
           <span class="page-link next-page-link disabled">
-            <span>Next</span>
+            <span>{{ t['navigation.next'] }}</span>
             <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.23 0.77 7.51 13.5"><path d="M7.53125 6.96875C7.8125 7.28125 7.8125 7.75 7.53125 8.03125L1.53125 14.0312C1.21875 14.3438 0.75 14.3438 0.46875 14.0312C0.15625 13.75 0.15625 13.2812 0.46875 13L5.9375 7.53125L0.46875 2.03125C0.15625 1.75 0.15625 1.28125 0.46875 1C0.75 0.6875 1.21875 0.6875 1.5 1L7.53125 6.96875Z"></path></svg>
           </span>
         {% endif %}
       </nav>
     {% endif %}
   {% else %}
-    <div class="message-banner message-banner--centered message-banner--no-bg">No products found.</div>
+    <div class="message-banner message-banner--centered message-banner--no-bg">{{ t['products.no_products'] }}</div>
   {% endif %}
 {% endpaginate %}

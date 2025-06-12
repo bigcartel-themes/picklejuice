@@ -74,7 +74,7 @@
 
   &__status
     font-weight: 500
-    font-size: .75rem
+    font-size: 1rem
     line-height: normal
     padding: 6px 10px
     border-radius: var(--product-status-border-radius)
@@ -101,7 +101,11 @@
       margin-bottom: 0
 
     ol, ul
-      margin: 1em
+      padding-left: 1.5em
+      margin: 1em 0
+
+      ol, ul
+        margin: 0.5em 0
 
     ul
       list-style: disc
@@ -117,16 +121,22 @@
       margin: 0 auto
       max-width: 100%
       margin-bottom: 16px
+    
+    iframe
+      display: block
+      margin: 0 auto
+      max-width: 100%
+      margin-bottom: 16px
 
   h1
     margin-bottom: 0
     text-align: left
 
 .related-products-container
-  margin-top: 64px
+  margin-top: 100px
 
   @media screen and (max-width: $break-medium)
-    margin-top: 32px
+    margin-top: 64px
 
 .related-products-title
   margin-bottom: 40px
@@ -145,20 +155,12 @@
     z-index: 2
     position: relative
 
-  &:after
-    content: ""
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
-    width: 100%
-    height: 3px
-    background: var(--accent-background-color)
-    left: 0
-    z-index: 1
-
 .related-products-header
   display: flex
   align-items: center
+
+  @media screen and (max-width: $break-small)
+    display: block
 
 .related-product-list
   --columns: 4
