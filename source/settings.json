@@ -531,6 +531,32 @@
       "description": "The number of custom page links show in the main navigation"
     },
     {
+      "variable": "nav_text_transform_header",
+      "label": "Transform text in shop header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your header"
+    },
+    {
+      "variable": "nav_text_transform_footer",
+      "label": "Transform text in shop footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Default", "initial"],
+        ["Uppercase", "uppercase"],
+        ["Lowercase", "lowercase"]
+      ],
+      "default": "initial",
+      "description": "Controls the text case styling in your footer"
+    },
+    {
       "variable": "show_search",
       "label": "Show search",
       "section": "global_navigation",
