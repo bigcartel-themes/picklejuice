@@ -96,12 +96,15 @@
                     <svg aria-hidden="true" fill="currentColor" class="category-nav-arrow" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
                   </button>
                   <div class="category-dropdown" id="header-dropdown" aria-hidden="true">
-                    {% if categories.active != blank %}
+                    {% if categories.active != blank or pages.subscribe_url %}
                       <ul class="dropdown-list categories-list">
                         <li><a href="/products">{{ t['navigation.all_products'] }}</a></li>
                         {% for category in categories.active %}
                           <li>{{ category | link_to }}</li>
                         {% endfor %}
+                        {% if pages.subscribe_page %}
+                          <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+                        {% endif %}
                       </ul>
                     {% endif %}
                   </div>
@@ -110,10 +113,14 @@
                 <a href="/products">{{ t['navigation.products'] }}</a>
               {% endif %}
             </li>
-            {% for page in pages.all limit: theme.nav_items %}
-              <li class="header-page-link">{{ page | link_to }}</li>
-            {% endfor %}
-            <li class="header-page-link"><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
+              {% for custom_page in pages.custom_pages limit: theme.nav_items %}
+                <li class="header-page-link">{{ custom_page | link_to }}</li>
+              {% endfor %}
+            {% endif %}
+            {% if theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
+              <li class="header-page-link"><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            {% endif %}
           </ul>
         </nav>
       </div>
@@ -212,7 +219,13 @@
         <ul class="footer__pages footer__pages--main">
           <li><a href="/">{{ t['navigation.home'] }}</a></li>
           <li><a href="/products">{{ t['navigation.products'] }}</a></li>
-          <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          {% if pages.subscribe_page %}
+            <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+          {% endif %}
+          {% if theme.nav_page_display == "all" or theme.nav_page_display_footer == "contact_only" %}
+            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          {% endif %}
+          <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
         </ul>
         {% if categories.active.size > 0 %}
           <ul class="footer__pages footer__pages--categories">
@@ -221,13 +234,38 @@
             {% endfor %}
           </ul>
         {% endif %}
-        {% if pages.all.size > 0 %}
+
+        {% assign show_pages_section_in_footer = false %}
+        {% if pages.required_pages.size > 0 %}
+          {% assign show_pages_section_in_footer = true %}
+        {% endif %}
+        {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "pages_only" %}
+          {% if pages.custom_pages.size > 0 and theme.nav_items_footer > 0 %}
+            {% assign show_pages_section_in_footer = true %}
+          {% endif %}
+        {% endif %}
+        {% if store.website != blank %}
+          {% assign show_pages_section_in_footer = true %}
+        {% endif %}
+
+        {% if show_pages_section_in_footer %}
           <ul class="footer__pages footer__pages--pages">
-            {% for page in pages.all %}
-              <li>{{ page | link_to }}</li>
-            {% endfor %}
+            {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "pages_only" %}
+              {% for custom_page in pages.custom_pages limit: theme.nav_items_footer %}
+                <li>{{ custom_page | link_to }}</li>
+              {% endfor %}
+            {% endif %}
+            {% if pages.required_pages.size > 0 %}
+              {% for required_page in pages.required_pages %}
+                <li>{{ required_page | link_to }}</li>
+              {% endfor %}
+            {% endif %}
+            {% if store.website != blank %}
+              <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
+            {% endif %}
           </ul>
         {% endif %}
+
         {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
           or theme.bluesky_url != blank
@@ -347,10 +385,17 @@
 
           <nav aria-label="Pages">
             <ul class="mobile-navigation__links">
-              {% for page in pages.all %}
-                <li>{{ page | link_to }}</li>
-              {% endfor %}
-              <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+              {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
+                {% for custom_page in pages.custom_pages limit: theme.nav_items_footer %}
+                  <li>{{ custom_page | link_to }}</li>
+                {% endfor %}
+              {% endif %}
+              {% if pages.subscribe_page %}
+                <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+              {% endif %}
+              {% if theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
+                <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+              {% endif %}
               {% if store.website != blank %}
                 <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
               {% endif %}
