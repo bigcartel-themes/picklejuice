@@ -1,5 +1,5 @@
 function initSplide() {
-  const homeSlideshow = document.querySelector(".splide.splide.home-slideshow");
+  const homeSlideshow = document.querySelector(".splide.home-slideshow");
   if (homeSlideshow) {
     var homeSplide = new Splide('.splide.home-slideshow', {
       rewind: true,
