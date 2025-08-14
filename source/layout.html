@@ -186,6 +186,15 @@
                             {% else %}
                               {{ related_product.default_price | money: theme.money_format }}
                             {% endif %}
+
+                            {% if related_product.price_suffix != blank %}
+                              {% if related_product.variable_pricing %}
+                                {% assign formatted_suffix = '(' | append: related_product.price_suffix | append: ')' %}
+                              {% else %}
+                                {% assign formatted_suffix = related_product.price_suffix %}
+                              {% endif %}
+                              <span class="price-suffix">{{ formatted_suffix }}</span>
+                            {% endif %}
                         </div>
                       </div>
                     </a>
