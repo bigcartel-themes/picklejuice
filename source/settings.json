@@ -32,7 +32,7 @@
             "style_name": "Classic #1",
             "fonts": {
               "primary_font": "Montserrat",
-              "secondary_font": "Goudy Bookletter 1911"
+              "secondary_font": "Merriweather"
             },
             "colors": {
               "announcement_background_color": "#2A6520",
@@ -436,7 +436,7 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Goudy Bookletter 1911"
+      "default": "Merriweather"
     }
   ],
   "colors": [
