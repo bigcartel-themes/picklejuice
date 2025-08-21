@@ -254,6 +254,9 @@ footer
   font-family: var(--serif-font)
   padding: 48px 0
 
+  *:not(.footer-custom-content)
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
+
   @media screen and (max-width: $break-small)
     padding: 24px 0
 
@@ -288,10 +291,15 @@ footer
       text-decoration: underline
 
 .footer__custom_text
-  display: flex
-  justify-content: center
-  align-items: center
+  display: block
   text-align: center
+
+  img
+    display: block
+    margin: 20px auto
+
+  a
+    text-decoration: underline
 
 .social-icons
   display: flex
@@ -315,11 +323,16 @@ footer
 
     svg
       fill: currentColor
-      height: 22px
-      width: 22px
+      height: 24px
+      width: 24px
 
       &.tumblr-icon
-        width: 14px
+        width: 15px
+
+      &.reddit-icon,
+      &.discord-icon
+        width: 26px
+        height: 26px
 
 .bigcartel-credit
   line-height: 1em

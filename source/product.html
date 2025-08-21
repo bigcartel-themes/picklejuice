@@ -139,10 +139,20 @@
       {% endif %}
 
       {% capture product_pricing %}
-        {% if product.variable_pricing %}
-          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-        {% else %}
-          {{ product.default_price | money: theme.money_format }}
+        {{ product | product_price: theme.money_format }}
+
+        {% if product.price_suffix != blank %}
+          {% assign variable_price_shown = true %}
+          {% if theme.product_variable_pricing_display_format == "min_only" or theme.product_variable_pricing_display_format == "max_only" %}
+            {% assign variable_price_shown = false %}
+          {% endif %}
+
+          {% if product.variable_pricing and variable_price_shown %}
+            {% assign formatted_suffix = '(' | append: product.price_suffix | append: ')' %}
+          {% else %}
+            {% assign formatted_suffix = product.price_suffix %}
+          {% endif %}
+          <span class="price-suffix">{{ formatted_suffix }}</span>
         {% endif %}
       {% endcapture %}
       <h1 class="page-title page-title--left product-detail__title">{{ product.name }}</h1>

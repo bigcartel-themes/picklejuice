@@ -65,11 +65,19 @@
   .slideshow-image
     border-radius: var(--border-radius)
     width: 100%
+    
+    &.slideshow-clickable
+      cursor: pointer
+
+  .splide__slide.slideshow-clickable
+    cursor: pointer
 
   .splide__arrow
     border-radius: var(--border-radius)
     width: 2em
     height: 4em
+    top: calc(50% - 15px)
+    transform: translateY(-50%)
 
   .splide__slide
     width: 100%
