@@ -5,8 +5,14 @@
     {
       "variable": "logo",
       "label": "Header image",
-      "section": "global_navigation", 
+      "section": "global_navigation",
       "description": "Use a PNG file with a transparent background. Your logo should be at least 200px tall. Wide logos look better than square ones."
+    },
+    {
+      "variable": "maintenance_image",
+      "label": "Maintenance page image",
+      "section": "messaging",
+      "description": "Adds an image to your Maintenance page. We recommend a rectangular image that is 1200px wide."
     }
   ],
   "image_sets": [
@@ -959,6 +965,23 @@
       }
     },
     {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "section": "messaging",
+      "type": "textarea",
+      "max_length": 2048,
+      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
+      "default": "We're getting things ready. Check back soon!"
+    },
+    {
+      "variable": "show_shop_name_on_maintenance_page",
+      "label": "Show shop name on Maintenance Mode page",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display your shop name on the Maintenance Mode page. Turn this off if your maintenance image already includes your shop name to avoid duplication."
+    },
+    {
       "variable": "announcement_message_text",
       "label": "Announcement banner",
       "section": "messaging",
@@ -989,15 +1012,6 @@
       "max_length": 1024,
       "type": "textarea",
       "description": "Displays a message at the top your cart page when there are items in the cart. Supports HTML for advanced customization."
-    },
-    {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
-      "section": "messaging",
-      "type": "textarea",
-      "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
-      "default": "We’re getting things ready. Check back soon!"
     },
     {
       "variable": "translation_locale",
