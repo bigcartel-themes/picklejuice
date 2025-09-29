@@ -25,20 +25,24 @@
   </div>
 {% endif %}
 
+{% assign featured_header = t['home.featured'] %}
+{% assign featured_text = theme.homepage_featured_text %}
+{% assign featured_text_position = theme.homepage_featured_text_position %}
+
+{% comment %} Show featured text above when position is "above" OR when no featured products {% endcomment %}
+{% if featured_text != blank %}
+  {% if featured_text_position == "above" or theme.featured_products == 0 %}
+    <div class="featured-message page-title">{{ featured_text }}</div>
+  {% endif %}
+{% endif %}
+
 {% if theme.featured_products > 0 %}
   <div class="home-featured-products">
     <div class="featured-container">
-      {% assign featured_header = t['home.featured'] %}
-      {% assign featured_text = theme.homepage_featured_text %}
-      {% assign featured_text_position = theme.homepage_featured_text_position %}
-      
-      {% if featured_text != blank and featured_text_position == "above" %}
-        <div class="featured-message page-title">{{ featured_text }}</div>
-      {% endif %}
-
       <h1 class="featured-title">{{ featured_header }}</h1>
 
-      {% if featured_text != blank and featured_text_position != "above" %}
+      {% comment %} Only show within if we have products AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_products > 0 %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
