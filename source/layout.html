@@ -60,14 +60,14 @@
               </button>
             {% endif %}
           </div>
-          <div class="store-name {% if theme.logo != blank %}image{% else %}text{% endif %}">
+          <div class="store-name {% if theme.logo_image != blank %}image{% else %}text{% endif %}">
             <a href="/" class="store-link" title="{{ store.name | escape }}">
-              {% if theme.logo != blank %}
+              {% if theme.logo_image != blank %}
                 <img
                   class="store-logo"
                   alt="{{ store.name }} Home"
-                  src="{{ theme.images.logo.url | constrain: '600', '200' }}"
-                  srcset="{{ theme.images.logo.url | constrain: '600', '200' }} 2x, {{ theme.images.logo.url | constrain: '300', '100' }} 1x">
+                  src="{{ theme.images.logo_image.url | constrain: '600', '200' }}"
+                  srcset="{{ theme.images.logo_image.url | constrain: '600', '200' }} 2x, {{ theme.images.logo_image.url | constrain: '300', '100' }} 1x">
               {% else %}
                 {{ store.name }}
               {% endif %}

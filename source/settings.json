@@ -3,7 +3,7 @@
   "version": "3.12.0",
   "images": [
     {
-      "variable": "logo",
+      "variable": "logo_image",
       "label": "Header image",
       "section": "global_navigation",
       "description": "Use a PNG file with a transparent background. Your logo should be at least 200px tall. Wide logos look better than square ones."
@@ -1928,7 +1928,7 @@
     }
   ],
   "checkout": {
-    "header_image": "{{ logo }}",
+    "header_image": "{{ logo_image }}",
     "header_width": "300px",
     "title_background_color": "{{ background_color }}",
     "title_color": "#333333",
