@@ -59,6 +59,20 @@ body
     position: fixed
     width: 100%
 
+
+// shop sprinkles overrides
+.emoji
+  font-size: var(--shop-sprinkles-size) !important
+  animation-name: var(--shop-sprinkles-animation) !important
+  animation-duration: var(--shop-sprinkles-style-duration) !important
+  animation-timing-function: var(--shop-sprinkles-style-timing) !important
+
+.emoji .inner
+  animation-duration: var(--shop-sprinkles-fall-duration) !important
+
+.emoji .inner span
+  animation-name: var(--shop-sprinkles-spin-animation) !important
+
 a.skip-link
   +transition(all .3s)
   background: var(--background-color)
