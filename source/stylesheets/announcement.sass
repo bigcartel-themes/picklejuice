@@ -51,11 +51,15 @@
   &__scroll-wrapper
     overflow: hidden
     width: 100%
+    // Isolate this container to prevent layout thrashing
+    isolation: isolate
 
   &__scroll-content
     display: inline-flex
     white-space: nowrap
     animation: scroll var(--announcement-scroll-duration, 15s) linear infinite
+    // Contain the rendering to this element only
+    contain: layout style
 
   &--scrolling &__text
     display: inline-flex
@@ -86,8 +90,10 @@
     height: 14px
     width: 14px
 
+// Keyframe animation for smooth scrolling
+// Uses exact pixel distance calculated by JavaScript for seamless looping
 @keyframes scroll
   0%
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0)
   100%
-    transform: translateX(-20%)
+    transform: translate3d(var(--scroll-distance, -20%), 0, 0)
