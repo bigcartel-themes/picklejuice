@@ -17,6 +17,21 @@
   --button-background-color: #{'{{ theme.button_background_color }}'}
   --button-hover-background-color: #{'{{ theme.button_hover_background_color }}'}
 
+  --font-scale: #{'{{ theme.global_text_scale | default: 1 }}'}
+  --shop-name-scale: #{'{{ theme.shop_name_text_scale | default: 1 }}'}
+  --product-grid-scale: #{'{{ theme.product_grid_scale | default: 1 }}'}
+  --product-title-scale: #{'{{ theme.product_page_heading_scale | default: 1 }}'}
+  --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
+  --header-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
+  --footer-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
+  --shop-sprinkles-size: #{"{{ theme.shop_sprinkles_size | default: '2em' }}"}
+  --shop-sprinkles-animation: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}orbit{% when 'tumble' %}tumble{% else %}shake{% endcase %}"}
+  --shop-sprinkles-style-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}5.2s{% else %}4.6s{% endcase %}"}
+  --shop-sprinkles-style-timing: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}linear{% else %}cubic-bezier(0.33,0.65,0.45,1){% endcase %}"}
+  --shop-sprinkles-fall-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}12.5s{% else %}10.8s{% endcase %}"}
+  --shop-sprinkles-spin-animation: #{"{% if theme.shop_sprinkles_animation == 'tumble' %}tumble-spin{% else %}none{% endif %}"}
+  --shop-sprinkles-density: #{"{{ theme.shop_sprinkles_density | default: 12 }}"}
+
   --product-status-text-color: #{'{{ theme.product_status_text_color }}'}
   --product-status-background-color: #{'{{ theme.product_status_background_color }}'}
   --product-status-text-secondary-color: #{'{{ theme.product_status_text_secondary_color }}'}
@@ -27,6 +42,7 @@
 
   --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
+  --announcement-scroll-duration: #{'{{ theme.announcement_scroll_speed | default: "15s" }}'}
 
   --border-radius: 0
   --border-radius-sm: 2px

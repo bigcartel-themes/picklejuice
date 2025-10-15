@@ -1,3 +1,10 @@
+.product-password-form-container
+  margin: 80px auto
+  padding: 0 20px
+
+  h1
+    font-size: 1.5rem
+
 .product-container
   display: grid
   grid-template-columns: 1fr 360px
@@ -15,7 +22,7 @@
   column-gap: 12px
   row-gap: 4px
   flex-wrap: wrap
-  font-size: .925em
+  font-size: 0.925rem
   font-weight: 500
 
   .next-arrow
@@ -64,17 +71,29 @@
     padding-bottom: 24px
     border-bottom: 3px solid var(--accent-background-color)
 
+  &__title
+    font-family: var(--sans-serif-font)
+    font-size: calc(1.8rem * var(--product-title-scale, 1))
+    line-height: 1.2
+    text-align: left
+
+    @media screen and (max-width: $break-medium)
+      font-size: calc(1.6rem * var(--product-title-scale, 1))
+
+    @media screen and (max-width: $break-small)
+      font-size: calc(1.4rem * var(--product-title-scale, 1))
+
   &__pricing
     display: flex
     align-items: center
     justify-content: center
     font-family: var(--serif-font)
-    font-size: 1.5em
+    font-size: calc(1.5rem * var(--product-title-scale, 1))
     gap: 12px
 
   &__status
     font-weight: 500
-    font-size: 1rem
+    font-size: calc(1rem * var(--product-title-scale, 1))
     line-height: normal
     padding: 6px 10px
     border-radius: var(--product-status-border-radius)
@@ -90,6 +109,7 @@
 
   &__description
     margin-top: 16px
+    font-size: calc(1rem * var(--product-description-scale, 1))
 
     p
       margin: revert
@@ -144,10 +164,10 @@
   position: relative
   width: 100%
   font-family: var(--sans-serif-font)
-  font-size: 1.5em
+  font-size: 1.5rem
 
   @media screen and (max-width: $break-small)
-    font-size: 1.2em
+    font-size: 1.2rem
 
   span
     background: var(--background-color)

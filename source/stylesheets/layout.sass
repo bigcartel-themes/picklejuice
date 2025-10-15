@@ -17,6 +17,7 @@ a
   width: 100%
 
 html
+  font-size: calc(16px * var(--font-scale, 1))
   height: 100%
 
   &:before
@@ -32,7 +33,7 @@ body
   +flex-direction(column)
   background-color: var(--background-color)
   color: var(--text-color)
-  font-size: 16px
+  font-size: 1rem
   font-family: var(--serif-font)
   height: 100%
   min-height: 100vh
@@ -58,6 +59,20 @@ body
     position: fixed
     width: 100%
 
+
+// shop sprinkles overrides
+.emoji
+  font-size: var(--shop-sprinkles-size) !important
+  animation-name: var(--shop-sprinkles-animation) !important
+  animation-duration: var(--shop-sprinkles-style-duration) !important
+  animation-timing-function: var(--shop-sprinkles-style-timing) !important
+
+.emoji .inner
+  animation-duration: var(--shop-sprinkles-fall-duration) !important
+
+.emoji .inner span
+  animation-name: var(--shop-sprinkles-spin-animation) !important
+
 a.skip-link
   +transition(all .3s)
   background: var(--background-color)
@@ -81,21 +96,21 @@ h1, h2, h3, h4, h5
   font-weight: 500
 
 h1
-  font-size: 1.8em
+  font-size: 1.8rem
   margin-bottom: 32px
   text-align: center
 
   @media screen and (max-width: $break-medium)
-    font-size: 1.6em
+    font-size: 1.6rem
 
   @media screen and (max-width: $break-small)
-    font-size: 1.4em
+    font-size: 1.4rem
 
 h2
-  font-size: 1.5em
+  font-size: 1.5rem
 
   @media screen and (max-width: $break-small)
-    font-size: 1.1em
+    font-size: 1.1rem
 
 .button, a.button
   transition: background .1s linear
@@ -196,7 +211,7 @@ h2
 
 .store-name
   font-family: var(--sans-serif-font)
-  font-size: 2em
+  font-size: calc(2rem * var(--shop-name-scale, 1) * var(--header-scale, 1))
   display: flex
   font-weight: 500
   align-items: center
@@ -207,10 +222,10 @@ h2
   margin: 0 auto
 
   @media screen and (max-width: $break-medium)
-    font-size: 1.75em
+    font-size: calc(1.75rem * var(--shop-name-scale, 1) * var(--header-scale, 1))
 
   @media screen and (max-width: $break-small)
-    font-size: 1.2em
+    font-size: calc(1.2rem * var(--shop-name-scale, 1) * var(--header-scale, 1))
 
   a
     display: flex
@@ -279,6 +294,7 @@ footer
   margin: 0 auto
   justify-content: center
   row-gap: 12px
+  font-size: calc(1rem * var(--footer-scale, 1))
 
   @media screen and (max-width: $break-small)
     flex-direction: column
@@ -293,6 +309,7 @@ footer
 .footer__custom_text
   display: block
   text-align: center
+  font-size: calc(1rem * var(--footer-scale, 1))
 
   img
     display: block
@@ -318,25 +335,25 @@ footer
     align-items: center
     justify-content: center
     flex-shrink: 0
-    width: 36px
-    height: 36px
+    width: 30px
+    height: 30px
 
     svg
       fill: currentColor
-      height: 24px
-      width: 24px
+      height: 22px
+      width: 22px
 
       &.tumblr-icon
-        width: 15px
+        width: 14px
 
       &.reddit-icon,
       &.discord-icon
-        width: 26px
-        height: 26px
+        width: 24px
+        height: 24px
 
 .bigcartel-credit
   line-height: 1em
-  font-size: 15px
+  font-size: 0.9375rem
   display: inline-flex
   align-items: center
   gap: 8px

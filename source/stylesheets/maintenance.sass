@@ -1,31 +1,55 @@
 #maintenance
+  --font-scale: 1
+  --shop-name-scale: 1
+  --product-grid-scale: 1
+  --product-title-scale: 1
+  --product-description-scale: 1
+  --header-scale: 1
+  --footer-scale: 1
   +align-items(center)
   +flexbox
   font-family: var(--serif-font)
-  font-size: 20px
   height: auto
-  padding: 100px 20px
+  min-height: 100vh
+  padding: 60px 20px
   text-align: center
+  font-size: 16px
 
   .maintenance-container
     display: grid
     gap: 32px
+    max-width: 800px
+    margin: 0 auto
+
+  .maintenance-image
+    display: block
+    margin: 0 auto
+    max-width: 100%
+    height: auto
 
   .maintenance-store-name
-    font-size: 1.5em
+    font-size: 33.6px
+    line-height: 1.2
+    margin: 0
 
-  .social-links
+  .maintenance-message
+    font-size: 20px
+    line-height: 1.4
+    margin: 0
+
+  .social-icons
     +flexbox
     +justify-content(center)
-    gap: 24px
+    gap: 20px
+    margin-top: 20px
+    max-width: 80%
+    margin: 20px auto 0 auto
 
     a
       +align-items(center)
       +justify-content(center)
       +flexbox
       color: var(--text-color)
-      height: 32px
-      width: 32px
 
       &:hover
         color: var(--link-hover-color)
@@ -35,3 +59,15 @@
       display: block
       height: 20px
       width: 20px
+
+  @media screen and (max-width: $break-small)
+    padding: 40px 20px
+
+    .maintenance-container
+      gap: 24px
+
+    .maintenance-store-name
+      font-size: 28px
+
+    .maintenance-message
+      font-size: 18px

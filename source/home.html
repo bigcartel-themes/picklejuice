@@ -25,20 +25,29 @@
   </div>
 {% endif %}
 
+{% assign featured_header = t['home.featured'] %}
+{% assign featured_text = theme.homepage_featured_text %}
+{% assign featured_text_position = theme.homepage_featured_text_position %}
+
+{% comment %}
+  Featured text display logic:
+  - Show in "above" section when position is "above" OR when no featured products exist (automatic fallback)
+  - Show in "within" section when position is "within" AND featured products exist
+  - Never duplicate
+{% endcomment %}
+{% if featured_text != blank %}
+  {% if featured_text_position == "above" or theme.featured_products == 0 %}
+    <div class="featured-message page-title">{{ featured_text }}</div>
+  {% endif %}
+{% endif %}
+
 {% if theme.featured_products > 0 %}
   <div class="home-featured-products">
     <div class="featured-container">
-      {% assign featured_header = t['home.featured'] %}
-      {% assign featured_text = theme.homepage_featured_text %}
-      {% assign featured_text_position = theme.homepage_featured_text_position %}
-      
-      {% if featured_text != blank and featured_text_position == "above" %}
-        <div class="featured-message page-title">{{ featured_text }}</div>
-      {% endif %}
-
       <h1 class="featured-title">{{ featured_header }}</h1>
 
-      {% if featured_text != blank and featured_text_position != "above" %}
+      {% comment %} Show featured text within products section only when position is "within" AND products exist {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
@@ -97,6 +106,9 @@
                       {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
                         {% assign hide_price = true %}
                       {% endif %}
+                      {% if product.has_password_protection and theme.show_password_protected_product_prices == false %}
+                        {% assign hide_price = true %}
+                      {% endif %}
 
                       {% unless hide_price %}
                         {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
@@ -129,7 +141,7 @@
             {% endfor %}
           </div>
         </div>
-        {% if paginate.pages > 1 %}
+        {% if theme.homepage_show_all_items_link and paginate.pages > 1 %}
           {% assign all_products_button_text = t['home.all_products'] %}
           {% if all_products_button_text != blank %}
             <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
