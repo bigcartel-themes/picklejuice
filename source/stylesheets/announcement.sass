@@ -30,11 +30,12 @@
 
   &--scrolling
     cursor: pointer
-    padding: 16px 0
-    min-height: fit-content
-
-    @media screen and (max-width: $break-small)
-      padding: 14px 0
+    padding: 0
+    overflow: visible
+    display: flex
+    align-items: center
+    justify-content: center
+    // Safari fix: overflow visible on parent, hidden on wrapper
 
     // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
     @media (hover: hover)
@@ -49,10 +50,16 @@
       animation-play-state: paused
 
   &__scroll-wrapper
+    padding: 16px 0
     overflow: hidden
     width: 100%
+    display: flex
+    align-items: center
     // Isolate this container to prevent layout thrashing
     isolation: isolate
+
+    @media screen and (max-width: $break-small)
+      padding: 14px 0
 
   &__scroll-content
     display: inline-flex
