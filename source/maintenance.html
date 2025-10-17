@@ -9,7 +9,9 @@
   </head>
   <body id="{{ page.permalink }}" class="{{ page.category }}">
     <div class="maintenance-container">
-      {% if theme.maintenance_image %}<img src="{{ theme.maintenance_image.url }}" alt="" loading="lazy" class="maintenance-image">{% endif %}
+      {% if theme.images.maintenance_image != blank %}
+        <img src="{{ theme.images.maintenance_image.url | constrain: 800 }}" alt="" loading="lazy" class="maintenance-image">
+      {% endif %}
       <h1 class="maintenance-store-name{% if theme.show_shop_name_on_maintenance_page == false %} visually-hidden{% endif %}">{{ store.name }}</h1>
       {% if theme.maintenance_message != blank %}<div class="maintenance-message">{{ theme.maintenance_message }}</div>{% endif %}
       {% if theme.instagram_url != blank
