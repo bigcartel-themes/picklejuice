@@ -60,9 +60,9 @@
               </button>
             {% endif %}
           </div>
-          <div class="store-name {% if theme.logo_image != blank %}image{% else %}text{% endif %}">
+          <div class="store-name {% if theme.images.logo_image != blank %}image{% else %}text{% endif %}">
             <a href="/" class="store-link" title="{{ store.name | escape }}">
-              {% if theme.logo_image != blank %}
+              {% if theme.images.logo_image != blank %}
                 <img
                   class="store-logo"
                   alt="{{ store.name }} Home"
