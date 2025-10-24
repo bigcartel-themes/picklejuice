@@ -1,4 +1,7 @@
 function processProduct(product) {
+  window.bigcartel = window.bigcartel || {};
+  window.bigcartel.product = product;
+
   if (product.has_option_groups) {
     setInitialProductOptionStatuses(product);
     $(".product_option_group").on('change',function() {
@@ -25,6 +28,11 @@ function processProduct(product) {
     });
     setInitialProductOptionStatuses(product);
   })
+
+  // Update inventory message after setting product data
+  if (typeof updateInventoryMessage === 'function') {
+    updateInventoryMessage();
+  }
 }
 function createCartesianProductOptions(product) {
   product_option_groups = [];
