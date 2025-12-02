@@ -1,6 +1,6 @@
 {
   "name": "PickleJuice",
-  "version": "3.12.4",
+  "version": "3.13.0",
   "images": [
     {
       "variable": "logo_image",
