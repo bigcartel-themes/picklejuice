@@ -216,9 +216,7 @@
         </div>
       </div>
     {% endif %}
-    {% if product.description != blank %}
-      <div class="product-detail__description">{{ product.description | paragraphs }}</div>
-    {% endif %}
+    <div class="product-detail__description" data-bc-hook="product-description">{%- if product.description != blank %}{{ product.description | paragraphs }}{% endif -%}</div>
 
   </section>
 </div>
