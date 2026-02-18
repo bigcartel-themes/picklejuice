@@ -30,7 +30,8 @@ if (themeOptions.productImageZoom === true) {
 }
 $('.product-option-select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
+  var original_price = $(this).find("option:selected").attr("data-original-price");
+  enableAddButton(option_price, original_price);
 });
 
 function updateInventoryMessage(optionId = null) {
@@ -92,19 +93,35 @@ function updateInventoryMessage(optionId = null) {
   }
 }
 
-function enableAddButton(updated_price) {
+function updateProductPrice(updated_price, original_price) {
+  var priceContainer = $('.product-price-value');
+  if (!priceContainer.length || !updated_price) return;
+
+  var updatedNum = parseFloat(updated_price) || 0;
+  var originalNum = parseFloat(original_price) || 0;
+
+  var showStrikethrough = originalNum > updatedNum && themeOptions.showStrikethroughPricing;
+
+  var priceHtml;
+  if (showStrikethrough) {
+    var regularFormatted = formatMoney(original_price, true, true);
+    var saleFormatted = formatMoney(updated_price, true, true);
+    priceHtml = '<s class="price-compare">' + regularFormatted + '</s> <span class="price-sale">' + saleFormatted + '</span>';
+  } else {
+    priceHtml = formatMoney(updated_price, true, true);
+  }
+
+  priceContainer.html(priceHtml);
+}
+
+function enableAddButton(updated_price, original_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
-  if (updated_price) {
-    priceTitle = ' - ' + formatMoney(updated_price, true, true);
-  }
-  else {
-    priceTitle = '';
-  }
-  addButton.html(addButtonTitle + priceTitle);
+  addButton.html(addButtonTitle);
   addButton.attr('aria-label',addButton.text());
   updateInventoryMessage($('#option').val());
+  updateProductPrice(updated_price, original_price);
   showBnplMessaging(updated_price, { alignment: 'center', displayMode: 'flex', pageType: 'product' });
 }
 
