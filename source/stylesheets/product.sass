@@ -50,6 +50,11 @@
   .select
     margin: 0
 
+  select span, select span option
+    display: none
+    opacity: 0
+    visibility: hidden
+
 .product_option_groups
   display: flex
   flex-direction: column
@@ -66,7 +71,7 @@
   &__header
     display: flex
     flex-direction: column
-    row-gap: 0
+    row-gap: 10px
     align-items: flex-start
     padding-bottom: 24px
     border-bottom: 3px solid var(--accent-background-color)
@@ -110,6 +115,9 @@
   &__description
     margin-top: 16px
     font-size: calc(1rem * var(--product-description-scale, 1))
+
+    &:empty
+      display: none
 
     p
       margin: revert
