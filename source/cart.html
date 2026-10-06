@@ -36,6 +36,10 @@
             <input type="hidden" name="utf8" value='✓'>
             <ul class="cart-items">
               {% for item in cart.items %}
+                {% assign show_cart_strikethrough = false %}
+                {% if theme.show_strikethrough_pricing and item.original_unit_price > item.unit_price %}
+                  {% assign show_cart_strikethrough = true %}
+                {% endif %}
                 {% capture aria_label_name %}{{ item.product.name | escape }}{% unless item.product.has_default_option %} - {{ item.option.name | escape }}{% endunless %}{% endcapture %}
                 <li class="cart-item" data-item-id="{{ item.id }}">
                   <div class="cart-item-image-holder">
@@ -49,9 +53,9 @@
                     </a>
                     <div class="option-name">
                       {% unless item.product.has_default_option %}
-                        {{ item.option.name }} - <span class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</span>
+                        {{ item.option.name }} - <span class="cart-item-unit-price">{% if show_cart_strikethrough %}<s class="price-compare">{{ item.original_unit_price | money: theme.money_format }}</s> <span class="price-sale">{{ item.unit_price | money: theme.money_format }}</span>{% else %}{{ item.unit_price | money: theme.money_format }}{% endif %}</span>
                       {% else %}
-                        <div class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
+                        <div class="cart-item-unit-price">{% if show_cart_strikethrough %}<s class="price-compare">{{ item.original_unit_price | money: theme.money_format }}</s> <span class="price-sale">{{ item.unit_price | money: theme.money_format }}</span>{% else %}{{ item.unit_price | money: theme.money_format }}{% endif %}</div>
                       {% endunless %}
                     </div>
                   </div>
